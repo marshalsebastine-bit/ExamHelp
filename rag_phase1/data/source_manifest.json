@@ -1,0 +1,16 @@
+{
+  "sources": [
+    {
+      "id": "pflbg",
+      "name": "Pflegeberufegesetz (PflBG)",
+      "url": "https://www.gesetze-im-internet.de/pflbg/",
+      "type": "official_german_federal_law"
+    },
+    {
+      "id": "pflaprv",
+      "name": "Pflegeberufe-Ausbildungs- und Prüfungsverordnung (PflAPrV)",
+      "url": "https://www.gesetze-im-internet.de/pflaprv/",
+      "type": "official_german_federal_regulation"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{"query":"Welche Anforderungen gelten für den schriftlichen Teil der staatlichen Prüfung?","expected_sources":["PflAPrV"]}
+{"query":"Welche Kompetenzen werden im mündlichen Teil der staatlichen Prüfung geprüft?","expected_sources":["PflAPrV"]}
+{"query":"Welche Aufgaben sind der Pflegefachperson vorbehalten?","expected_sources":["PflBG"],"expected_source_locator":"§ 4"}
+{"query":"Welche Anforderungen gelten für die Formulierung einer verständlichen Fallsituation?","expected_sources":["Sprachsensibel"],"expected_content_type":"guidance","expected_section":"Fallsituationen"}
+{"query":"Was verlangt der Operator begründen?","expected_sources":["Operatoren"],"expected_content_type":"operator","expected_operator":"begründen"}
+{"query":"Prüfe diese Aufgabenstellung auf Anzahl der geforderten Nennungen.","expected_sources":["Operatoren","Sprachsensibel"],"expected_content_type":"checklist_item"}

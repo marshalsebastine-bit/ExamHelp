@@ -1,0 +1,9 @@
+beautifulsoup4>=4.12
+faiss-cpu>=1.8
+lxml>=5.0
+numpy>=1.26
+pypdf>=5.0
+pyyaml>=6.0
+rank-bm25>=0.2.2
+sentence-transformers>=3.0
+tqdm>=4.66

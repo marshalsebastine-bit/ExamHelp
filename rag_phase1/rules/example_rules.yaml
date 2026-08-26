@@ -1,0 +1,3 @@
+# Placeholder for deterministic rules.
+# Validate each rule against authoritative source text before activation.
+rules: []
