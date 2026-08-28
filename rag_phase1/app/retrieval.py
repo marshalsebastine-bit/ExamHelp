@@ -22,6 +22,26 @@ def minmax(values):
     return (values - lo) / (hi - lo)
 
 
+def metadata_value(item: dict, key: str):
+    """Read a top-level or dotted metadata field, e.g. ``structure.section``."""
+    value: object = item
+    for part in key.split("."):
+        if not isinstance(value, dict):
+            return None
+        value = value.get(part)
+    return value
+
+
+def matches_filters(item: dict, filters: dict[str, str] | None) -> bool:
+    """Match all metadata filters case-insensitively using exact field values."""
+    if not filters:
+        return True
+    return all(
+        str(metadata_value(item, key) or "").casefold() == str(expected).casefold()
+        for key, expected in filters.items()
+    )
+
+
 def load_index():
     index = faiss.read_index(str(INDEX_DIR / "faiss.index"))
     metadata = json.loads((INDEX_DIR / "metadata.json").read_text(encoding="utf-8"))
@@ -31,7 +51,7 @@ def load_index():
     return model, index, metadata, bm25
 
 
-def search(query: str, resources=None):
+def search(query: str, filters: dict[str, str] | None = None, resources=None):
     """Run hybrid retrieval.
 
     ``resources`` lets batch callers load the embedding model and indexes once.
@@ -39,15 +59,22 @@ def search(query: str, resources=None):
     model, index, metadata, bm25 = resources or load_index()
     q = model.encode([query], normalize_embeddings=True)
     q = np.asarray(q, dtype=np.float32)
-    dense_scores, dense_ids = index.search(q, TOP_K_DENSE)
+    # With a filter, inspect all candidates before taking the dense/BM25 top-k.
+    # This avoids silently excluding a valid chunk merely because its global rank is low.
+    dense_limit = index.ntotal if filters else TOP_K_DENSE
+    dense_scores, dense_ids = index.search(q, min(dense_limit, index.ntotal))
 
     candidates = {}
     for idx, score in zip(dense_ids[0], dense_scores[0]):
-        if idx >= 0:
+        if idx >= 0 and matches_filters(metadata[int(idx)], filters):
             candidates.setdefault(int(idx), {})["dense"] = float(score)
 
     bm25_scores_all = np.asarray(bm25.get_scores(tokenize(query)), dtype=np.float32)
-    bm25_ids = np.argsort(-bm25_scores_all)[:TOP_K_BM25]
+    bm25_ids = np.argsort(-bm25_scores_all)
+    if filters:
+        bm25_ids = [idx for idx in bm25_ids if matches_filters(metadata[int(idx)], filters)][:TOP_K_BM25]
+    else:
+        bm25_ids = bm25_ids[:TOP_K_BM25]
     for idx in bm25_ids:
         candidates.setdefault(int(idx), {})["bm25"] = float(bm25_scores_all[idx])
 

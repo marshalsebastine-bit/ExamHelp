@@ -3,14 +3,18 @@
     {
       "id": "pflbg",
       "name": "Pflegeberufegesetz (PflBG)",
-      "url": "https://www.gesetze-im-internet.de/pflbg/",
-      "type": "official_german_federal_law"
+      "source_file": "PflBG.html",
+      "url": "https://www.gesetze-im-internet.de/pflbg/BJNR258110017.html",
+      "type": "official_german_federal_law",
+      "authority": "official_german_federal_law"
     },
     {
       "id": "pflaprv",
       "name": "Pflegeberufe-Ausbildungs- und Prüfungsverordnung (PflAPrV)",
-      "url": "https://www.gesetze-im-internet.de/pflaprv/",
-      "type": "official_german_federal_regulation"
+      "source_file": "PflAPrV.html",
+      "url": "https://www.gesetze-im-internet.de/pflaprv/BJNR157200018.html",
+      "type": "official_german_federal_regulation",
+      "authority": "official_german_federal_regulation"
     }
   ]
 }

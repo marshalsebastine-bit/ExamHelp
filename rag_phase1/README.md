@@ -89,6 +89,17 @@ HF_HUB_OFFLINE=1 python3 scripts/evaluate.py
 
 Use `--top-k 5` to inspect a more permissive threshold while improving retrieval.
 
+## Filter retrieval
+
+Restrict results to metadata before hybrid ranking. Filters can be repeated and all must match:
+
+```bash
+HF_HUB_OFFLINE=1 python3 scripts/query.py "Welche Aufgaben sind vorbehalten?" --filter document_type=legal --filter source_file=PflBG.html
+HF_HUB_OFFLINE=1 python3 scripts/query.py "Wie formuliere ich eine Aufgabe?" --filter content_type=checklist_item
+```
+
+Nested fields are supported, for example `--filter 'structure.section=§ 4'`.
+
 ## Important
 
 Do not use confidential examination material in public/free notebook environments. Use public legal sources and synthetic/anonymized examples during Phase 1.

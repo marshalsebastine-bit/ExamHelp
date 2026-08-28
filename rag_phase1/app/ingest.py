@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Iterable
 
@@ -9,6 +10,12 @@ from bs4 import BeautifulSoup
 from pypdf import PdfReader
 
 from app.chunking import SourceDocument, chunk_document, classify_source
+
+
+LEGAL_SOURCE_URLS = {
+    "pflbg": "https://www.gesetze-im-internet.de/pflbg/BJNR258110017.html",
+    "pflaprv": "https://www.gesetze-im-internet.de/pflaprv/BJNR157200018.html",
+}
 
 
 def clean_text(text: str) -> str:
@@ -51,6 +58,38 @@ def read_legal_html(path: Path) -> str:
     if not provisions:
         raise ValueError(f"No individual provisions found in official legal HTML: {path}")
     return "\n\n".join(provisions)
+
+
+def legal_source_metadata(path: Path) -> dict[str, object]:
+    """Read provenance that applies to the whole official consolidated document."""
+    source_key = path.stem.casefold()
+    metadata: dict[str, object] = {
+        "authority": "official_german_federal_law" if source_key == "pflbg" else "official_german_federal_regulation",
+        "source_url": LEGAL_SOURCE_URLS.get(source_key),
+        "retrieved_at": datetime.fromtimestamp(path.stat().st_mtime, UTC).date().isoformat(),
+        "legal_status": None,
+        "effective_from": None,
+        "effective_to": None,
+    }
+    if path.suffix.lower() not in {".html", ".htm"}:
+        return metadata
+
+    soup = BeautifulSoup(path.read_text(encoding="iso-8859-1"), "lxml")
+    title = soup.select_one('div.jnnorm[title="Rahmen"] .jnheader h1')
+    if title:
+        metadata["official_title"] = clean_text(title.get_text(" "))
+    status = soup.select_one("table.standangaben")
+    if status:
+        metadata["legal_status"] = clean_text(status.get_text(" "))
+    return metadata
+
+
+def source_metadata(path: Path, document_type: str) -> dict[str, object]:
+    if document_type == "legal":
+        return legal_source_metadata(path)
+    if document_type.startswith("handreichung"):
+        return {"authority": "internal_guidance"}
+    return {}
 
 
 def read_pdf(path: Path) -> str:
@@ -117,9 +156,12 @@ def build_chunks(paths: Iterable[Path]) -> list[dict]:
     all_chunks: list[dict] = []
     for path in paths:
         document_type = classify_source(path)
+        metadata = source_metadata(path, document_type)
         document = SourceDocument(
-            document_id=source_id(path), path=path, title=path.stem,
+            document_id=source_id(path), path=path,
+            title=str(metadata.get("official_title") or path.stem),
             text=read_source(path, document_type=document_type), document_type=document_type,
+            metadata=metadata,
         )
         all_chunks.extend(chunk_document(document))
     return all_chunks

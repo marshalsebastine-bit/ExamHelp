@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import re
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterable
 
@@ -20,6 +20,7 @@ class SourceDocument:
     title: str
     text: str
     document_type: str
+    metadata: dict[str, object] = field(default_factory=dict)
 
 
 def _compact(value: str) -> str:
@@ -59,11 +60,15 @@ class DocumentChunker(ABC):
             "document_type": document.document_type,
             "title": document.title,
             "source_file": document.path.name,
+            "source_url": None,
+            "retrieved_at": None,
+            "legal_status": None,
             "text": text.strip(),
             "source_locator": locator,
             "authority": "internal_guidance" if document.document_type.startswith("handreichung") else "official_source",
             "effective_from": None,
             "effective_to": None,
+            **document.metadata,
             **metadata,
         }
 
