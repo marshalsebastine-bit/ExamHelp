@@ -1,0 +1,666 @@
+meta:
+  id: kompetenzen
+  title: Kompetenztaxonomie fuer die generalistische Pflegeausbildung
+  purpose: Competency catalogue for Family B. KOMP-06 tests set membership against `anlage_2_authoritative`,
+    never against the Lehrplan-derived list.
+  sources:
+  - role: authoritative competency catalogue
+    document: Anlage 2 PflAPrV (zu § 9 Absatz 1 Satz 2)
+    url: https://www.gesetze-im-internet.de/pflaprv/anlage_2.html
+    authority: binding_federal
+  - role: 'curricular structure: CE, Zeitrichtwerte, CE-to-competency mapping'
+    document: Lehrplaene und Ausbildungsplaene fuer die Berufsfachschule fuer Pflege (StMUK / ISB Bayern,
+      Juli 2020)
+    authority: official_state
+  generated_by: scripts/extract_lehrplan.py
+  scope_note: Generalistische Ausbildung only. The Anlage 3 (Kinderkrankenpflege) and Anlage 4 (Altenpflege)
+    curricula in the same document are excluded.
+  counts:
+    curriculare_einheiten: 11
+    zeitrichtwert_gesamt_stunden: 1260
+    einheiten_im_dritten_drittel: 8
+    anlage_2_authoritative: 85
+    anlage_1_authoritative: 79
+  cross_check:
+    anlage_1:
+      lehrplan_derived_count: 76
+      pflaprv_authoritative_count: 79
+      in_both: 76
+      cited_by_lehrplan_but_absent_from_pflaprv: []
+      in_pflaprv_but_never_cited_by_lehrplan:
+      - I.1.g
+      - I.1.i
+      - I.2.d
+    anlage_2:
+      lehrplan_derived_count: 79
+      pflaprv_authoritative_count: 85
+      in_both: 79
+      cited_by_lehrplan_but_absent_from_pflaprv: []
+      in_pflaprv_but_never_cited_by_lehrplan:
+      - I.1.a
+      - I.1.f
+      - I.1.h
+      - I.1.i
+      - I.2.d
+      - I.2.f
+  komp_06_finding: 'Every code the Lehrplan cites under an Anlage-2 heading does exist in PflAPrV''s Anlage
+    2, so the Lehrplan invents nothing -- but it is a strict subset. 6 Anlage-2 competencies are never
+    cited by the Lehrplan at the Anlage-2 level: I.1.a, I.1.f, I.1.h, I.1.i, I.2.d, I.2.f. KOMP-06 built
+    on the Lehrplan-derived list would therefore have raised a false flag against an item legitimately
+    claiming any of them -- including I.1.h, the code tech doc 3.3.1 uses as its worked example. This
+    is why KOMP-06 reads `anlage_2_authoritative`, and it resolves the verification item in tech doc 12.'
+anlage_2_authoritative:
+- I.1.a
+- I.1.b
+- I.1.c
+- I.1.d
+- I.1.e
+- I.1.f
+- I.1.g
+- I.1.h
+- I.1.i
+- I.2.a
+- I.2.b
+- I.2.c
+- I.2.d
+- I.2.e
+- I.2.f
+- I.3.a
+- I.3.b
+- I.3.c
+- I.3.d
+- I.3.e
+- I.3.f
+- I.4.a
+- I.4.b
+- I.4.c
+- I.5.a
+- I.5.b
+- I.5.c
+- I.5.d
+- I.6.a
+- I.6.b
+- I.6.c
+- I.6.d
+- I.6.e
+- II.1.a
+- II.1.b
+- II.1.c
+- II.1.d
+- II.1.e
+- II.1.f
+- II.1.g
+- II.2.a
+- II.2.b
+- II.2.c
+- II.2.d
+- II.3.a
+- II.3.b
+- II.3.c
+- III.1.a
+- III.1.b
+- III.1.c
+- III.1.d
+- III.1.e
+- III.1.f
+- III.2.a
+- III.2.b
+- III.2.c
+- III.2.d
+- III.2.e
+- III.2.f
+- III.3.a
+- III.3.b
+- III.3.c
+- III.3.d
+- III.3.e
+- III.3.f
+- IV.1.a
+- IV.1.b
+- IV.1.c
+- IV.1.d
+- IV.2.a
+- IV.2.b
+- IV.2.c
+- IV.2.d
+- IV.2.e
+- V.1.a
+- V.1.b
+- V.1.c
+- V.1.d
+- V.2.a
+- V.2.b
+- V.2.c
+- V.2.d
+- V.2.e
+- V.2.f
+- V.2.g
+anlage_1_authoritative:
+- I.1.a
+- I.1.b
+- I.1.c
+- I.1.d
+- I.1.e
+- I.1.f
+- I.1.g
+- I.1.h
+- I.1.i
+- I.2.a
+- I.2.b
+- I.2.c
+- I.2.d
+- I.2.e
+- I.2.f
+- I.2.g
+- I.3.a
+- I.3.b
+- I.3.c
+- I.3.d
+- I.3.e
+- I.4.a
+- I.4.b
+- I.4.c
+- I.5.a
+- I.5.b
+- I.5.c
+- I.5.d
+- I.6.a
+- I.6.b
+- I.6.c
+- I.6.d
+- I.6.e
+- II.1.a
+- II.1.b
+- II.1.c
+- II.1.d
+- II.1.e
+- II.1.f
+- II.1.g
+- II.2.a
+- II.2.b
+- II.2.c
+- II.3.a
+- II.3.b
+- II.3.c
+- III.1.a
+- III.1.b
+- III.1.c
+- III.1.d
+- III.1.e
+- III.2.a
+- III.2.b
+- III.2.c
+- III.2.d
+- III.2.e
+- III.3.a
+- III.3.b
+- III.3.c
+- III.3.d
+- III.3.e
+- III.3.f
+- IV.1.a
+- IV.1.b
+- IV.2.a
+- IV.2.b
+- IV.2.c
+- IV.2.d
+- IV.2.e
+- V.1.a
+- V.1.b
+- V.1.c
+- V.2.a
+- V.2.b
+- V.2.c
+- V.2.d
+- V.2.e
+- V.2.f
+- V.2.g
+curriculare_einheiten:
+- ce: CE 01
+  titel: Ausbildungsstart – Pflegefachfrau/Pflegefachmann werden
+  zeitrichtwert_stunden: 70
+  seite: 28
+  kompetenzen_anlage_1:
+  - I.1.h
+  - I.6.a
+  - II.1.d
+  - II.3.a
+  - II.3.b
+  - III.1.e
+  - IV.2.a
+  - V.2.a
+  - V.2.c
+  - V.2.d
+  - V.2.e
+  - V.2.g
+  kompetenzen_anlage_2: []
+  im_dritten_ausbildungsdrittel: false
+- ce: CE 02
+  titel: Zu pflegende Menschen in der Bewegung und Selbstversorgung unterstützen
+  zeitrichtwert_stunden: 180
+  seite: 44
+  kompetenzen_anlage_1:
+  - I.1.a
+  - I.1.b
+  - I.1.c
+  - I.1.d
+  - I.1.e
+  - I.1.f
+  - I.2.a
+  - I.2.b
+  - I.2.f
+  - I.2.g
+  - I.6.a
+  - I.6.e
+  - II.1.a
+  - II.1.b
+  - II.1.c
+  - II.1.e
+  - II.2.a
+  - II.3.a
+  - III.1.a
+  - III.1.d
+  - III.2.a
+  - IV.1.b
+  - IV.2.a
+  - V.2.b
+  - V.2.c
+  kompetenzen_anlage_2: []
+  im_dritten_ausbildungsdrittel: false
+- ce: CE 03
+  titel: Erste Pflegeerfahrungen reflektieren – verständigungsorientiert kommunizieren
+  zeitrichtwert_stunden: 80
+  seite: 31
+  kompetenzen_anlage_1:
+  - I.1.h
+  - II.1.a
+  - II.1.b
+  - II.1.c
+  - II.1.d
+  - II.1.e
+  - II.1.g
+  - III.1.b
+  - V.2.b
+  - V.2.c
+  - V.2.d
+  kompetenzen_anlage_2: []
+  im_dritten_ausbildungsdrittel: false
+- ce: CE 04
+  titel: Gesundheit fördern und präventiv handeln
+  zeitrichtwert_stunden: 80
+  seite: 62
+  kompetenzen_anlage_1:
+  - I.6.a
+  - I.6.d
+  - II.1.a
+  - II.1.b
+  - II.1.d
+  - II.2.a
+  - II.2.b
+  - II.2.c
+  - III.1.b
+  - III.1.c
+  - III.3.c
+  - IV.2.b
+  - IV.2.c
+  - IV.2.e
+  - V.1.b
+  - V.1.c
+  - V.2.a
+  - V.2.b
+  - V.2.c
+  - V.2.d
+  - V.2.e
+  kompetenzen_anlage_2:
+  - I.6.a
+  - I.6.d
+  - II.1.a
+  - II.1.b
+  - II.1.d
+  - II.2.a
+  - II.2.b
+  - II.2.c
+  - II.2.d
+  - III.1.c
+  - III.1.f
+  - III.3.c
+  - IV.2.b
+  - IV.2.c
+  - IV.2.e
+  - V.1.b
+  - V.1.c
+  - V.2.a
+  - V.2.b
+  - V.2.c
+  - V.2.e
+  - V.2.f
+  im_dritten_ausbildungsdrittel: true
+- ce: CE 05
+  titel: Menschen in kurativen Prozessen pflegerisch unterstützen und Patientensicherheit stärken
+  zeitrichtwert_stunden: 200
+  seite: 83
+  kompetenzen_anlage_1:
+  - I.2.a
+  - I.2.b
+  - I.2.c
+  - I.2.f
+  - II.1.d
+  - II.1.e
+  - II.2.b
+  - III.2.a
+  - III.2.b
+  - III.2.c
+  - III.2.d
+  - III.2.e
+  - III.3.d
+  - III.3.f
+  - IV.1.a
+  - IV.1.b
+  - IV.2.e
+  - V.1.b
+  kompetenzen_anlage_2:
+  - I.2.a
+  - I.2.b
+  - I.2.e
+  - I.3.c
+  - II.1.d
+  - II.2.a
+  - II.2.b
+  - II.2.c
+  - II.2.d
+  - II.3.b
+  - III.1.b
+  - III.1.c
+  - III.2.a
+  - III.2.b
+  - III.2.c
+  - III.2.d
+  - III.2.e
+  - III.2.f
+  - III.3.e
+  - III.3.f
+  - IV.1.a
+  - IV.1.b
+  - IV.2.a
+  - IV.2.e
+  - V.1.a
+  - V.1.b
+  - V.1.c
+  - V.2.e
+  im_dritten_ausbildungsdrittel: true
+- ce: CE 06
+  titel: In Akutsituationen sicher handeln
+  zeitrichtwert_stunden: 60
+  seite: 92
+  kompetenzen_anlage_1:
+  - I.1.d
+  - I.4.a
+  - I.4.b
+  - I.4.c
+  - I.6.a
+  - II.1.b
+  - II.1.c
+  - II.3.c
+  - III.2.b
+  - V.2.b
+  - V.2.c
+  kompetenzen_anlage_2:
+  - I.1.d
+  - I.4.a
+  - I.4.b
+  - I.4.c
+  - I.6.a
+  - II.1.b
+  - II.1.c
+  - II.3.b
+  - II.3.c
+  - III.2.b
+  - V.2.b
+  - V.2.c
+  im_dritten_ausbildungsdrittel: true
+- ce: CE 07
+  titel: Rehabilitatives Pflegehandeln im interprofessionellen Team
+  zeitrichtwert_stunden: 80
+  seite: 34
+  kompetenzen_anlage_1:
+  - I.1.b
+  - I.1.c
+  - I.1.e
+  - I.2.a
+  - I.2.b
+  - I.2.c
+  - I.6.a
+  - I.6.b
+  - I.6.c
+  - II.1.a
+  - II.2.a
+  - II.2.b
+  - II.3.b
+  - III.1.a
+  - III.1.b
+  - III.2.b
+  - III.3.a
+  - III.3.b
+  - III.3.c
+  - III.3.d
+  - III.3.f
+  - IV.1.b
+  - V.1.b
+  kompetenzen_anlage_2:
+  - I.5.a
+  - I.5.b
+  - I.5.d
+  - I.6.b
+  - I.6.c
+  - I.6.d
+  - II.1.e
+  - II.2.a
+  - II.2.c
+  - II.2.d
+  - II.3.a
+  - III.2.f
+  - III.3.a
+  - III.3.b
+  - III.3.c
+  - III.3.d
+  - III.3.e
+  - III.3.f
+  - IV.1.a
+  - IV.2.b
+  - IV.2.d
+  - V.2.d
+  - V.2.e
+  - V.2.g
+  im_dritten_ausbildungsdrittel: true
+- ce: CE 08
+  titel: Menschen in kritischen Lebenssituationen und in der letzten Lebensphase begleiten
+  zeitrichtwert_stunden: 160
+  seite: 98
+  kompetenzen_anlage_1:
+  - I.3.a
+  - I.3.b
+  - I.3.c
+  - I.3.d
+  - I.3.e
+  - I.6.a
+  - II.1.a
+  - II.1.d
+  - II.3.a
+  - II.3.c
+  - III.1.a
+  - III.1.b
+  - III.2.b
+  - III.2.d
+  - III.3.e
+  - IV.1.b
+  - IV.2.b
+  - IV.2.e
+  - V.1.b
+  - V.1.c
+  - V.2.b
+  - V.2.c
+  kompetenzen_anlage_2:
+  - I.3.a
+  - I.3.b
+  - I.3.c
+  - I.3.d
+  - I.3.e
+  - I.3.f
+  - I.6.a
+  - II.1.a
+  - II.2.c
+  - II.3.a
+  - III.1.a
+  - III.1.e
+  - III.2.b
+  - III.2.d
+  - III.2.f
+  - III.3.e
+  - IV.1.b
+  - IV.1.d
+  - IV.2.b
+  - IV.2.e
+  - V.1.b
+  - V.1.c
+  - V.1.d
+  - V.2.b
+  - V.2.c
+  im_dritten_ausbildungsdrittel: true
+- ce: CE 09
+  titel: Menschen bei der Lebensgestaltung lebenswertorientiert unterstützen
+  zeitrichtwert_stunden: 150
+  seite: 54
+  kompetenzen_anlage_1:
+  - I.5.a
+  - I.5.b
+  - I.5.c
+  - I.5.d
+  - I.6.a
+  - I.6.d
+  - II.1.b
+  - II.1.e
+  - III.1.d
+  - III.3.a
+  - IV.2.d
+  - V.1.c
+  - V.2.f
+  kompetenzen_anlage_2:
+  - I.1.g
+  - I.5.a
+  - I.5.b
+  - I.5.c
+  - I.5.d
+  - I.6.d
+  - I.6.e
+  - II.1.b
+  - II.1.e
+  - II.3.b
+  - III.1.a
+  - III.1.b
+  - III.1.c
+  - III.1.d
+  - III.1.e
+  - III.3.a
+  - IV.1.c
+  - V.1.c
+  - V.2.a
+  im_dritten_ausbildungsdrittel: true
+- ce: CE 10
+  titel: Entwicklung und Gesundheit in Kindheit und Jugend in pflegerischen Situationen fördern
+  zeitrichtwert_stunden: 120
+  seite: 72
+  kompetenzen_anlage_1:
+  - I.1.d
+  - I.1.e
+  - I.5.a
+  - I.6.d
+  - I.6.e
+  - II.1.a
+  - II.1.b
+  - II.2.a
+  - III.1.b
+  - III.2.a
+  - IV.1.b
+  - V.1.a
+  - V.1.c
+  kompetenzen_anlage_2:
+  - I.1.b
+  - I.1.c
+  - I.1.e
+  - I.2.c
+  - I.3.b
+  - I.6.e
+  - II.1.c
+  - II.1.f
+  - II.1.g
+  - II.2.a
+  - II.2.b
+  - II.2.c
+  - II.3.a
+  - II.3.c
+  - III.2.a
+  - III.2.d
+  - III.2.f
+  - III.3.a
+  - III.3.b
+  - IV.1.b
+  - IV.1.d
+  - IV.2.a
+  - V.1.c
+  - V.2.a
+  - V.2.b
+  - V.2.d
+  im_dritten_ausbildungsdrittel: true
+- ce: CE 11
+  titel: Menschen mit psychischen Gesundheitsproblemen und kognitiven Beeinträchtigungen personenzentriert
+    und lebensweltbezogen unterstützen
+  zeitrichtwert_stunden: 80
+  seite: 108
+  kompetenzen_anlage_1:
+  - I.2.a
+  - I.2.b
+  - I.2.e
+  - I.2.f
+  - I.3.a
+  - I.3.b
+  - I.6.a
+  - II.1.a
+  - II.1.b
+  - II.1.c
+  - II.1.d
+  - II.1.e
+  - II.1.f
+  - II.1.g
+  - II.2.a
+  - III.2.c
+  - III.2.d
+  - III.3.c
+  - IV.2.c
+  - V.2.b
+  - V.2.c
+  kompetenzen_anlage_2:
+  - I.2.a
+  - I.2.b
+  - I.3.a
+  - I.6.a
+  - I.6.d
+  - II.1.a
+  - II.1.b
+  - II.1.c
+  - II.1.d
+  - II.1.e
+  - II.1.f
+  - II.1.g
+  - II.2.a
+  - II.2.b
+  - II.3.c
+  - III.2.f
+  - III.3.b
+  - III.3.c
+  - III.3.d
+  - IV.1.c
+  - IV.2.b
+  - V.1.d
+  - V.2.c
+  - V.2.d
+  im_dritten_ausbildungsdrittel: true

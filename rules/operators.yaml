@@ -1,0 +1,525 @@
+meta:
+  id: operators
+  title: Operatorentabelle fuer die schriftliche Pflegepruefung (Bayern)
+  purpose: 'Lookup table for FORM-03 (operator is on the list) and FORM-04 (operator matches the declared
+    Anforderungsniveau). A set-membership test, never a similarity search: an invented operator must return
+    nothing rather than its nearest real neighbour (repo review 2.1).'
+  source:
+    document: 'PflegePlus Handreichung 01: Umgang mit Operatoren in der Pflegeausbildung'
+    section: 3.2 Erweiterte Operatorenliste
+    publisher: Kamm / Roche, PflegePlus (ILS GmbH), 2025
+    url: https://www.pflegeplus-sprache.de
+  authority: third_party_advisory
+  binding_status: unverified
+  generated_by: scripts/migrate_operators.py
+  open_questions:
+  - The official Liste der Operatoren des Bay. StMUK (section 3.1 of the same document) is scanned images
+    with no extractable text. It must be obtained first-hand from StMUK; it cannot be recovered from this
+    PDF without OCR (repo review 4.2, 5).
+  - Section 3.2's preamble states it reproduces the binding StMUK operators verbatim and extends them,
+    but does not mark which entries are binding. Until the StMUK list is in hand, FORM-03 cannot distinguish
+    'not an approved operator' from 'approved only in the extended list'.
+  - Licence for the Erweiterte Operatorenliste is unresolved (repo review 5, action 3).
+  counts:
+    entries: 28
+    distinct_operators: 27
+    by_anforderungsbereich:
+      I: 9
+      II: 11
+      III: 8
+operators:
+- operator: nennen
+  display: nennen
+  anforderungsbereich: I
+  anforderungsbereich_titel: Reproduktion – Wiedergabe von Kenntnissen
+  task_formulation: Nennen Sie …
+  explanation: Informationen in Form von Stichpunkten schreiben. Keine ganzen Sätze formulieren.
+  redemittel: 'Stichpunkte ohne Redemittel (oder: Hierzu zählt … / Hierzu gehört … / Folgende Punkte sind
+    von Bedeutung… )'
+  example_task: Nennen Sie 3 relevante Maßnahmen zur Sturzprophylaxe bei Frau Isper.
+  example_answer: 'z.B.: - Stolperfallen entfernen - für ausreichende Lichtverhältnisse sorgen - sichere
+    Schuhe tragen'
+  source_row: null
+- operator: aufzählen
+  display: aufzählen
+  anforderungsbereich: I
+  anforderungsbereich_titel: Reproduktion – Wiedergabe von Kenntnissen
+  task_formulation: Zählen Sie auf …
+  explanation: Informationen in Form von Stichpunkten schreiben. Keine ganzen Sätze formulieren.
+  redemittel: 'Stichpunkte ohne Redemittel (oder: Hierzu zählt … / Hierzu gehört … / Folgende Punkte sind
+    von Bedeutung… )'
+  example_task: Zählen Sie 3 relevante Prophylaxen auf, die Sie bei der pflegerischen Versorgung von Frau
+    Schneider beachten.
+  example_answer: 'z.B.: Relevante Prophylaxen: - Dekubitusprophylaxe - Pneumonieprophylaxe - Obstipationsprophylaxe'
+  source_row: null
+- operator: benennen
+  display: benennen
+  anforderungsbereich: I
+  anforderungsbereich_titel: Reproduktion – Wiedergabe von Kenntnissen
+  task_formulation: Benennen Sie …
+  explanation: Informationen in Form von Stichpunkten schreiben. Keine ganzen Sätze formulieren.
+  redemittel: 'Stichpunkte ohne Redemittel (oder: Hierzu zählt … / Hierzu gehört … / Folgende Punkte sind
+    von Bedeutung… )'
+  example_task: Benennen Sie die 5 Infektionszeichen von Frau Kowalski mit dem lateinischen Fachbegriff.
+  example_answer: 'Infektionszeichen: - Rubor - Calor - Tumor - Dolor - Functio laesa'
+  source_row: null
+- operator: bezeichnen
+  display: bezeichnen
+  anforderungsbereich: I
+  anforderungsbereich_titel: Reproduktion – Wiedergabe von Kenntnissen
+  task_formulation: Bezeichnen Sie …
+  explanation: Informationen in Form von Stichpunkten schreiben. Keine ganzen Sätze formulieren.
+  redemittel: 'Stichpunkte ohne Redemittel (oder: Hierzu zählt … / Hierzu gehört … / Folgende Punkte sind
+    von Bedeutung… )'
+  example_task: Bezeichnen Sie 4 Berufsgruppen die im interdisziplinären Team an der Versorgung von Herrn
+    Spielberg mitwirken.
+  example_answer: 'z.B.: - Pflegefachfrauen und Pflegefachmänner bzw. Pflegefachpersonen - Physiotherapeuten
+    und Physiotherapeutinnen - Ergotherapeuten und Ergotherapeutinnen - Ökotrophologen und Ökotrophologinnen'
+  source_row: null
+- operator: beschreiben
+  display: beschreiben
+  anforderungsbereich: I
+  anforderungsbereich_titel: Reproduktion – Wiedergabe von Kenntnissen
+  task_formulation: Beschreiben Sie …
+  explanation: Informationen mit eigenen Worten genau beschreiben. Ganze Sätze formulieren.
+  redemittel: '… bedeutet … Eine Möglichkeit ist … Ein wichtiger Punkt ist … Bei … geht es um … Folgende
+    Punkte sind von Bedeutung: … Man muss beachten, dass … Das kann man an … erkennen. Um … zu verdeutlichen
+    …'
+  example_task: Beschreiben Sie 2 Assessmentinstrumente zur Erfassung der Schmerzen von Frau Rossi.
+  example_answer: Eine Möglichkeit ist die numerische Rating-Skala. Eine NRS ist eine eindimensionale
+    Schmerzskala, Patienten können damit ihren subjektiv empfundenen Schmerz einordnen. Hierzu wird der
+    Patient aufgefordert, seine Schmerzen einer Skala von 0 bis 10 zuzuordnen. "10" steht für "stärkste
+    vorstellbare Schmerzen", "0" für "kein Schmerz". Eine zweite Möglichkeit ist ein Schmerztagebuch.
+    Damit können die Schmerzsituationen und der Schmerzverlauf über einen längeren Zeitraum (meist 14
+    Tage) systematisch erfasst und dokumentiert werden. Dabei werden das Ausmaß und der Verlauf der Schmerzen
+    genauer erfasst. Ein Schmerztagebuch hilft Betroffenen, ihre Schmerzen selbst einzuschätzen und mögliche
+    Schmerzauslöser zu identifizieren.
+  source_row: null
+- operator: definieren
+  display: definieren
+  anforderungsbereich: I
+  anforderungsbereich_titel: Reproduktion – Wiedergabe von Kenntnissen
+  task_formulation: Definieren Sie …
+  explanation: Informationen mit Fachbegriffen genau beschreiben. Ganze Sätze formulieren.
+  redemittel: 'Unter … versteht man … Der Begriff … bedeutet … … heißt … Von … spricht man, wenn … Mit
+    diesem Begriff wird folgendes bezeichnet: …'
+  example_task: Definieren Sie den Begriff Inklusion anhand von 2 Merkmalen.
+  example_answer: Unter Inklusion versteht man, dass Menschen mit Behinderung ihr Leben nicht mehr an
+    vorhandene Strukturen anpassen müssen. Die Gesellschaft ist dafür verantwortlich, dass alle Menschen
+    von Anfang an am gesellschaftlichen Leben teilhaben können. Das gilt auch für Menschen mit Behinderung.
+  source_row: null
+- operator: erarbeiten
+  display: erarbeiten
+  anforderungsbereich: I
+  anforderungsbereich_titel: Reproduktion – Wiedergabe von Kenntnissen
+  task_formulation: Erarbeiten Sie …
+  explanation: Informationen kurz mit eigenen Worten und Fachbegriffen beschreiben. Ganze Sätze formulieren.
+  redemittel: 'Aufgrund der Fallsituation … Basierend auf den vorgegebenen Informationen … Die Situation
+    zeigt, dass … Man kann erkennen, dass … Folgende Punkte stehen in einem Zusammenhang: …'
+  example_task: Erarbeiten Sie anhand der Situation von Frau Subotic 3 passende pflegerische Maßnahmen
+    zur Intertrigoprophylaxe bei immobilen Patienten.
+  example_answer: 'Basierend auf den vorgegebenen Informationen müssen bei Frau Subotic folgende Pflegemaßnahmen
+    durchgeführt werden: Regelmäßige Kontrolle der Hautfalten (min. 1x in 8 Std.) durchführen. Hautfalten
+    regelmäßig reinigen, trocken tupfen und nicht reiben. Beratung zur Gewichtsreduktion zur Verringerung
+    von Hautfalten und Reibungskräften anbieten.'
+  source_row: null
+- operator: zusammenfassen
+  display: zusammenfassen
+  anforderungsbereich: I
+  anforderungsbereich_titel: Reproduktion – Wiedergabe von Kenntnissen
+  task_formulation: Fassen Sie … zusammen.
+  explanation: Informationen kurz mit eigenen Worten und Fachbegriffen beschreiben. Ganze Sätze formulieren.
+  redemittel: Zusammenfassend (kann man sagen) … Insgesamt bedeutet das, dass … Bei … geht es um …
+  example_task: Fassen Sie anhand von 3 Aspekten die Vorteile von Supervision in der Pflege zusammen.
+  example_answer: 'Zusammenfassend kann man sagen, dass Supervision in der Pflege folgende Vorteile hat:
+    Supervision verbessert die Kommunikation am Arbeitsplatz und stärkt eine wertschätzende und achtsame
+    Kommunikation im Team. Supervision unterstützt Konfliktklärung im Team und fördert somit die kollegiale
+    und konstruktive Zusammenarbeit. Supervision leistet einen Beitrag zur Organisationsentwicklung und
+    macht systematische Zusammenhänge sichtbar.'
+  source_row: null
+- operator: formulieren
+  display: formulieren
+  anforderungsbereich: I
+  anforderungsbereich_titel: Reproduktion – Wiedergabe von Kenntnissen
+  task_formulation: Formulieren Sie …
+  explanation: Informationen kurz mit eigenen Worten und Fachbegriffen beschreiben. Ganze Sätze formulieren.
+  redemittel: Zu nennen sind … … bedeutet … Man kann sagen, dass … Anders gesagt bedeutet es, dass …
+  example_task: Formulieren Sie anhand der Fallsituation 4 präventive Maßnahmen zur Vermeidung von Burnout.
+  example_answer: 'Anhand der Situation von Max sind folgende 4 Maßnahmen zur Vermeidung von Burnout zu
+    nennen: Ressourcen sollten gestärkt werden, z.B. durch soziale Kontakte. Einstellung sollten geändert
+    werden, z.B. durch blockieren von negativen Glaubenssätzen. Work-Life-Balance sollte gefördert werden,
+    z.B. durch regelmäßiges Wahrnehmen von Freizeitangeboten. Umgang mit Zeit und Energie sollte ausgeglichen
+    sein, z.B. durch Zeitmanagement nach der Eisenhower-Methode. Anforderungsbereich II: Vertraute Sachverhalte
+    in neuem Zusammenhang benutzen (Transfer) – Anwenden von Kenntnissen'
+  source_row: null
+- operator: analysieren
+  display: analysieren
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Analysieren Sie …
+  explanation: Ein System oder eine Struktur auf vorgegebene Informationen anwenden. Das Ergebnis und
+    das fachliche Hintergrundwissen in ganzen Sätzen formulieren.
+  redemittel: Auf der Grundlage von… Anhand von … Man kann erkennen, dass … Die vorliegende Situation
+    zeigt, dass … Es wird deutlich, dass … Es fällt auf, dass … Ein Grund für … könnte sein, dass …
+  example_task: 'Analysieren Sie die Aussage Ihrer Kollegin: „Ich kann mich nicht um alles kümmern!“ anhand
+    eines Kommunikationsmodells.'
+  example_answer: 'Auf der Grundlage des Kommunikationsmodells von Schulz von Thun hat eine Nachricht
+    4 Ebenen. Der Empfänger kann die Nachricht der Kollegin auf verschiedenen Ebenen empfangen/mit verschiedenen
+    Ohren hören: Sachebene: „Ich kann das gerade nicht erledigen“. Selbstoffenbarungsebene: „Ich fühle
+    mich überfordert“. Beziehungsebene: „Ich fühle mich von Dir im Stich gelassen“. Apellebene: „Bitte
+    hilf mir!“'
+  source_row: null
+- operator: bestimmen
+  display: bestimmen
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Bestimmen Sie …
+  explanation: Fachwissen anhand von vorgegebenen Informationen wiedergeben. Ganze Sätze formulieren.
+  redemittel: 'Zu … zählt … Hierzu gehört … Folgende Punkte sind von Bedeutung:'
+  example_task: Bestimmen Sie 4 Prädilektionsstellen für einen Dekubitus bei Jan Steinert.
+  example_answer: Zu den Prädilektionsstellen bei Jan Steinert gehören der Trochanter major, die Schulterblätter,
+    das Steißbein und die PEG-Eintrittsstelle.
+  source_row: null
+- operator: ermitteln
+  display: ermitteln
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Ermitteln Sie …
+  explanation: Fachwissen anhand von vorgegebenen Informationen wiedergeben. Ganze Sätze formulieren.
+  redemittel: 'Grundsätzlich … Man kann erkennen, dass … Die vorliegende Situation zeigt, dass … Eine
+    Ursache kann sein, dass … Folgende Punkte lassen sich aus der Situation erschließen: … Aus dem Kontext
+    geht hervor, dass …'
+  example_task: Ermitteln Sie anhand der Fallsituation 3 Wirkungen von Wickeln und Auflagen.
+  example_answer: 'Anhand der Fallsituation kann man erkennen, dass Wickel und Auflagen folgende Wirkungen
+    zeigen können: Wickel können heilend wirken, wenn Zusätze ihren Wirkstoff an der betroffenen Körperstelle
+    durch die Haut abgeben. Kalte Wickel können z.B. bei Entzündungen Hitze entziehen. Warme Wickel können
+    entspannend und entkrampfend wirken.'
+  source_row: null
+- operator: begründen
+  display: begründen
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Begründen Sie …
+  explanation: Eine Begründung zu einer vorgegebenen Information schreiben (warum). Ganze Sätze mit Nebensatz
+    formulieren.
+  redemittel: 'Weil … Da/Daher … Aus diesem Grund … Dies liegt daran, dass … Verursacht wird dies durch
+    … Folgende Gründe sind aufzuführen: … Der Grund dafür ist … Das trägt dazu bei, dass …'
+  example_task: Begründen Sie die regelmäßige und gründliche Durchführung der Mundpflege bei Frau Herbert
+    anhand von 2 Aspekten.
+  example_answer: Eine regelmäßige und gründliche Mundpflege bei Frau Herbert ist wichtig, weil eine unzureichende
+    Mundhygiene zu Infektionen im Mundbereich, wie zum Beispiel Gingivitis oder Parodontitis führen kann.
+    Darüber hinaus kann es gerade bei immobilen Patienten durch eine hohe Keimlast im Mundbereich zu Infektionen
+    der Atemwege, wie zum Beispiel einer Pneumonie kommen. Eine sorgfältige Mundpflege trägt dazu bei,
+    dass das Wohlbefinden und die körperliche Gesundheit von Frau Herbert unterstützt werden.
+  source_row: null
+- operator: erklären
+  display: erklären
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Erklären Sie …
+  explanation: Informationen mit einem Beispiel genau beschreiben. Ganze Sätze formulieren.
+  redemittel: Das lässt sich wie folgt erklären … Der wichtigste Punkt ist … Ein wesentlicher Aspekt ist
+    … Das zeigt sich durch/in … Ich verstehe es so, dass … Aus meiner Sicht es so, dass …
+  example_task: Erklären Sie die Auswirkung von Fatigue bei Frau Horneber anhand von 2 Merkmalen.
+  example_answer: 'Die Auswirkungen der Fatigue zeigen sich bei Frau Horneber durch: Konzentrationsstörungen,
+    zum Beispiel ist Frau Horneber oft unkonzentriert und weiß dann nicht mehr was sie als nächstes tun
+    wollte, fängt dann oft wieder von vorne an. Müdigkeit/Energiemangel, zum Beispiel hat Frau Horneber
+    ein erhöhtes Bedürfnis sich auszuruhen und muss auch bei einfachen Tätigkeiten immer öfter eine Pause
+    einlegen, was dazu führt, dass diese oft sehr lange dauern.'
+  source_row: null
+- operator: erläutern
+  display: erläutern
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Erläutern Sie …
+  explanation: Informationen mit einem Beispiel genau beschreiben. Ganze Sätze formulieren.
+  redemittel: 'Die wichtigsten Punkte/Aspekte sind … Es ist wichtig zu verstehen/zu erwähnen, dass… Der
+    Sachverhalte lässt sich wie folgt erläutern … Anhand von … kann man sagen, dass … Hier möchte ich
+    folgende Beispiele anführen: … Am folgenden Beispiel werde ich es erläutern: … Verweisen möchte ich
+    auf … Beispielsweise ist …'
+  example_task: Erläutern Sie 3 wichtige Maßnahmen die Sie bei der Pflege des zentralen Venenkatheters
+    von Frau Nuss beachten.
+  example_answer: 'Die wichtigsten Aspekte bei der Pflege des zentralen Venenkatheters (ZVK) von Frau
+    Nuss sind: Verlegte Lumen dürfen nie durchgespült werden, da das Durchspülen zum Beispiel zu schweren
+    Komplikationen führen kann. Die ZVK-Zuleitung ist immer steril zu behandeln, dazu müssen zum Beispiel
+    sterile Handschuhe getragen werden. Das Lumen des ZVKs muss offengehalten werden. Das kann zum Beispiel
+    über einen Infusomat 10ml/h oder Perfusor 2 ml/h erfolgen. Vor dem Abstöpseln sollte jeder Schenkel
+    mit mindesten 10ml NaCL 0,9% durchgespült werden.'
+  source_row: null
+- operator: einordnen
+  display: einordnen
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Ordnen Sie … ein.
+  explanation: Eine vorgegebene Information in fachliches Hintergrundwissen einordnen. Ganze Sätze formulieren.
+  redemittel: Anhand von … kann man erkennen/sagen … Dies wird deutlich an … Das kann man erkennen an
+    … Das bezieht sich auf das Thema … Je …, desto … Je …, umso … Entsprechend …
+  example_task: Ordnen Sie den Sachverhalt einer freiheitsentziehenden Maßnahme in der Fallsituation ein.
+  example_answer: In der Fallsituation liegt eine freiheitsentziehende Maßnahme vor, dies kann man daran
+    erkennen, dass der zu Pflegende durch das Anbringen der Bettgitter am Verlassen des Bettes gehindert
+    wird. Allerdings wird deutlich, dass dies auf ausdrücklichen Wunsch des zu Pflegenden durchgeführt
+    wird. Es muss deshalb kein richterlicher Beschluss eingeholt werden.
+  source_row: null
+- operator: zuordnen
+  display: zuordnen
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Ordnen Sie … zu.
+  explanation: Eine vorgegebene Information zu fachlichem Hintergrundwissen zuordnen. Ganze Sätze formulieren.
+  redemittel: Anhand von … kann man erkennen/sagen … Dies wird deutlich an … Die kann man erkennen an
+    … Das bezieht sich auf das Thema … Je …, desto … Je …, umso … Entsprechend …
+  example_task: Ordnen Sie anhand von 3 Beobachtungen bei Frau Williams die passende Sterbephase nach
+    Kübler-Ross zu.
+  example_answer: Anhand der Beobachtungen bei Frau Williams kann man erkennen, dass sie sich in der Phase
+    4 (Depression) nach Kübler-Ross befindet. Dies wird deutlich an ihrem Rückzug von anderen Menschen,
+    da sie kaum noch Besuch empfangen möchte. Das kann man außerdem daran erkennen, dass sie häufig weint
+    und sagt, „dass alles keinen Sinn mehr hat“. Eine weitere Beobachtung ist, dass sie kaum noch isst
+    und das Interesse an früher wichtigen Dingen, wie dem Lesen oder Handarbeiten, verloren hat. Entsprechend
+    zeigt sich eine tiefe Traurigkeit und Resignation in ihrem Verhalten.
+  source_row: null
+- operator: ableiten
+  display: ableiten
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Leiten Sie … ab.
+  explanation: Zu einer vorgegebenen Situation passende Informationen schreiben. Ganze Sätze formulieren.
+  redemittel: Aus … lässt sich ableiten, dass … Daraus folgt, dass … Daraus kann geschlossen werden, dass
+    … In der Situation lässt sich erkennen, dass … Es ist naheliegend, dass …
+  example_task: Leiten Sie anhand der Risikofaktoren von Herrn Maier 5 Maßnahmen zur Prävention eines
+    Bandscheibenvorfalles ab.
+  example_answer: 'Aus den Risikofaktoren von Herrn Maier lassen sich folgende 5 pflegerische Maßnahmen
+    zur Prävention eines Bandscheibenvorfalls ableiten: Anleitung zu rückenschonender Arbeitsweise um
+    die Fehlbelastung der Wirbelsäule zu vermeiden. Anleitung zu regelmäßigem Rückentraining um durch
+    gezielte Kräftigungsübungen die Rücken- und Bauchmuskulatur zu stärken. Beratung zur Gewichtsreduktion
+    und gesunden Ernährung um die Druckbelastung auf die Bandscheiben zu reduzieren. Ergonomische Gestaltung
+    des Arbeitsplatzes mit angepasster Arbeitshöhe und häufigen Positionswechseln. Förderung von Bewegung
+    und Haltungswechseln im Alltag um die Bandscheiben regelmäßig zu entlasten und die Durchblutung zu
+    fördern.'
+  source_row: null
+- operator: gegenüberstellen
+  display: gegenüberstellen
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Stellen Sie … gegenüber.
+  explanation: Zwei Informationen miteinander vergleichen. Das Ergebnis und eine Zusammenfassung in ganzen
+    Sätzen formulieren.
+  redemittel: 'Auf der einen Seite … auf der anderen Seite … Einerseits … andererseits … Folgendes ist
+    zu unterscheiden: … Außerdem … Hinzu kommt, dass …'
+  example_task: Stellen Sie der Aussage von Frau Sing „In der Psychiatrie werden alle nur ruhiggestellt!“
+    2 professionelle Argumente gegenüber.
+  example_answer: Der Aussagen von Frau Sing ist entgegenzuhalten, dass in der Psychiatrie Menschen mit
+    akuten psychischen Erkrankungen aufgenommen werden. Ihre Symptome machen gegebenenfalls die Verabreichung
+    von Sedativa notwendig. Sie werden so beispielsweise vor fremd- und selbstgefährdendem Verhalten geschützt.
+    Außerdem wird der Einsatz von sedierenden Medikamenten ausschließlich im Einzelfall vom behandelnden
+    Arzt angeordnet und niemals pauschal ausgeführt.
+  source_row: null
+- operator: vergleichen
+  display: vergleichen
+  anforderungsbereich: II
+  anforderungsbereich_titel: Vertraute Sachverhalte in neuem Zusammenhang benutzen (Transfer) – Anwenden
+    von
+  task_formulation: Vergleichen Sie …
+  explanation: Zwei Informationen miteinander vergleichen. Das Ergebnis und eine Zusammenfassung in ganzen
+    Sätzen formulieren.
+  redemittel: 'Auf der einen Seite … auf der anderen Seite … Einerseits … andererseits … Dem ist entgegenzuhalten,
+    dass … Folgendes ist zu unterscheiden: … Außerdem … Ferner … Hinzu kommt, dass … Der Unterschied ist
+    …, die Gemeinsamkeit ist … … weicht ab von … Im Vergleich zu …'
+  example_task: Vergleichen Sie Infusionen und Transfusionen anhand von 2 Unterschieden und 2 Gemeinsamkeiten.
+  example_answer: 'Die Unterschiede von Transfusionen und Infusionen sind: Transfusionen dürfen nur vom
+    Arzt angehängt und gestartet werden. Transfusionen müssen gekühlt gelagert werden. Die Gemeinsamkeiten
+    von Transfusionen und Infusionen sind: Bei Beiden müssen Unversehrtheit und Haltbarkeit überprüft
+    werden. Die Vorbereitung erfolgt unter denselben hygienischen Bedingungen. Anforderungsbereich III:
+    Sachverhalte neu erarbeiten und reflektieren – Problemlösen und Werten'
+  source_row: null
+- operator: beurteilen
+  display: beurteilen
+  anforderungsbereich: III
+  anforderungsbereich_titel: Sachverhalte neu erarbeiten und reflektieren – Problemlösen und Werten
+  task_formulation: Beurteilen Sie …
+  explanation: Eine Situation oder vorgegebene Information fachlich bewerten. Ganze Sätze formulieren.
+  redemittel: Grundsätzlich ist … Aus professioneller Sicht … Meiner Meinung nach … Meiner Überzeugung
+    nach ist … Aus meiner Position heraus … Ich bin der Ansicht, dass… Ich sehe den Grund für … in … Ein
+    entscheidender Nachteil/Vorteil ist … Ein negativer/positiver Aspekt ist … Insgesamt kann man sagen,
+    dass … Insgesamt überwiegt …
+  example_task: Beurteilen Sie die Verweigerung der geplanten transurethralen Prostataresektion durch
+    Herrn Hartmann anhand von 3 Aspekten.
+  example_answer: Grundsätzlich ist der medizinische Eingriff laut ärztlicher Aussage zwingend erforderlich
+    um die Gesundheit von Herrn Hartmann wiederherzustellen. Die Ablehnung Herrn Hartmanns kann zahlreiche
+    persönliche Gründe haben, wie z.B. Angst vor der Narkose oder Libido Verlust. Aus professioneller
+    Sicht überwiegt die Autonomie des Patienten. Patientenautonomie ist ein grundlegendes Prinzip der
+    medizinischen Ethik, das den Patienten das Recht einräumt, informierte Entscheidungen über ihre medizinische
+    Versorgung zu treffen. Eine Durchführung des Eingriffs ohne die Zustimmung des Patienten würde es
+    sich also um Körperverletzung handeln.
+  source_row: null
+- operator: bewerten
+  display: bewerten
+  anforderungsbereich: III
+  anforderungsbereich_titel: Sachverhalte neu erarbeiten und reflektieren – Problemlösen und Werten
+  task_formulation: Bewerten Sie …
+  explanation: Eine Situation oder vorgegebene Information fachlich bewerten. Ganze Sätze formulieren.
+  redemittel: Grundsätzlich ist … Aus professioneller Sicht … Meiner Meinung nach … Meiner Überzeugung
+    nach ist … Aus meiner Position heraus … Ich bin der Ansicht, dass… Ich sehe den Grund für … in … Ein
+    entscheidender Nachteil/Vorteil ist … Ein negativer/positiver Aspekt ist … Insgesamt kann man sagen,
+    dass … Insgesamt überwiegt …
+  example_task: Bewerten Sie die präoperative Haarentfernung bei Herr Peterson anhand von 2 Argumenten.
+  example_answer: Grundsätzlich darf die Haarentfernung nur aufgrund ärztlicher Anordnung erfolgen. Ein
+    entscheidender Vorteil ist die Reduzierung des Infektionsrisikos im Operationsgebiet. Ein weiterer
+    Vorteil ist die bessere Sicht im Operationsgebiet für den Chirurgen bei starker Behaarung. Insgesamt
+    kann man also sagen, dass eine präoperative Haarentfernung vorteilhaft ist.
+  source_row: null
+- operator: stellung nehmen
+  display: Stellung nehmen
+  anforderungsbereich: III
+  anforderungsbereich_titel: Sachverhalte neu erarbeiten und reflektieren – Problemlösen und Werten
+  task_formulation: Nehmen Sie Stellung …
+  explanation: Eine Situation oder vorgegebene Information fachlich bewerten. Ganze Sätze formulieren.
+  redemittel: Grundsätzlich ist … Aus professioneller Sicht … Meiner Meinung nach … Meiner Überzeugung
+    nach … Aus meiner Position heraus … Ich bin der Ansicht, dass… Ich sehe den Grund für … in … Ein entscheidender
+    Nachteil/Vorteil ist … Ein negativer/positiver Aspekt ist … Insgesamt kann man sagen, dass … Insgesamt
+    überwiegt …
+  example_task: 'Nehmen Sie mit 3 Argumenten Stellung zur Aussage von Ingrid: „Bei der Pflege von Kindern
+    und Erwachsenen gibt es doch keinen Unterschied.“'
+  example_answer: 'Als professionell Pflegende vertrete ich die Meinung, dass es bei der Versorgung von
+    Kindern einige wichtige Besonderheiten gibt. Diese sind unter anderem: Säuglinge und Kinder können
+    sich je nach Alter verbal nicht klar äußern. Die pflegerische Beobachtung nimmt hier einen großen
+    Stellenwert ein. Bei der Versorgung von Kindern sollen Pflegende die Bezugsperson in die Körperpflege
+    integrieren, dies erfordert besondere Kenntnisse zum Umgang mit den Eltern. Kinder reagieren auf unangenehme
+    Dinge oft mit Abwehrhaltung. Der professionelle Umgang damit erfordert einen speziellen pflegerischen
+    Umgang.'
+  source_row: null
+- operator: diskutieren
+  display: diskutieren
+  anforderungsbereich: III
+  anforderungsbereich_titel: Sachverhalte neu erarbeiten und reflektieren – Problemlösen und Werten
+  task_formulation: Diskutieren Sie …
+  explanation: Vor- und Nachteile einer vorgegebenen Information beschreiben und ein Fazit schreiben.
+    Ganze Sätze formulieren.
+  redemittel: Grundsätzlich kann man sagen, dass … Es ist wichtig, dass … Ein häufiges Argument ist, dass
+    … Ein Gegenargument ist, dass … Darüber hinaus … Im Gegensatz dazu … Vorteile sind … Nachteile sind
+    … Abschließend kann man sagen … Deshalb/Daher … Folglich ist … Daraus folgt, dass … Offen bleibt,
+    wie … Dies ist abzugrenzen von …, weil …
+  example_task: Diskutieren Sie anhand von 3 Vorteilen und 3 Nachteilen die parenterale Ernährung von
+    Klaus.
+  example_answer: Grundsätzlich kann man sagen, dass die intravenöse Versorgung mit Nährstoffen bei einem
+    Kind gut überlegt werden muss. Vorteile der parenteralen Ernährung sind die Sicherstellung der Versorgung
+    mit lebensrettenden Nährstoffen sowie die Vermeidung von Belastung des geschädigten Verdauungssystems
+    und darüber hinaus die schnelle und präzise Dosierung der Nährstoffzusammensetzung. Nachteile sind
+    das erhöhte Infektionsrisiko durch den Katheter, Komplikationen wie z.B. Thrombosen durch die Katheteranlage
+    sowie eine beeinträchtigte Darmfunktion durch die langfristige Nichtnutzung des Verdauungstrakts.
+    Abschließend kann man sagen, dass ein individuell abgestimmtes Vorgehen und eine enge interdisziplinäre
+    Zusammenarbeit entscheidend sind, um das bestmögliche Ergebnis für Klaus zu erzielen.
+  source_row: null
+- operator: interpretieren
+  display: interpretieren
+  anforderungsbereich: III
+  anforderungsbereich_titel: Sachverhalte neu erarbeiten und reflektieren – Problemlösen und Werten
+  task_formulation: Interpretieren Sie …
+  explanation: Zu einer vorgegebenen Information oder Situation die Bedeutung beschreiben und die eigene
+    Sichtweise erklären. Ganze Sätze (im Konjunktiv) formulieren.
+  redemittel: Die Aussage könnte bedeuten, dass … Um die Bedeutung zu verstehen, … Es scheint, dass …
+    Aus der Sichtweise von … Um den Hintergrund zu betrachten, … Es könnte gemeint sein, dass … Möglich
+    wäre … Meiner Interpretation nach … Die Angaben basieren auf …
+  example_task: Interpretieren Sie die Aussage von Frau Katzbach „Was wollen Sie als Krankenschwester
+    da schon machen?“ anhand einer Kommunikationstheorie.
+  example_answer: 'Um die Aussage von Frau Katzbach zu verstehen, kann diese anhand der Kommunikationstheorie
+    von Schulz von Thun interpretiert werden. Dazu müssen die 4 Ebenen einer Nachricht analysiert werden:
+    Sachebene: Auf der Sachebene könnte Frau Katzbach eine objektive Information, nämlich die Rolle der
+    Pflegefachperson in der Situation ansprechen. Selbstoffenbarungsebene: Frau Katzbach zeigt ihre eigene
+    Gefühlsebene (z.B. Skepsis oder Verzweiflung über die Situation). Sie könnte sich machtlos oder hilflos
+    fühlen und dies auf die Pflegefachperson projizieren. Beziehungsebene: Fr. Katzbach könnte ein Machtgefälle
+    zum Ausdruck bringen, bei dem sie die Pflegefachperson als weniger einflussreich oder unwichtig ansieht.
+    Apellebene: Frau Katzbach könnte mit ihrer Aussage etwas erreichen wollen. Z.B., dass jemand anderes
+    (z.B. der Arzt) eingreift oder dass die Pflegefachperson genauer erklärt, was sie tatsächlich tun
+    kann.'
+  source_row: null
+- operator: entwickeln
+  display: entwickeln
+  anforderungsbereich: III
+  anforderungsbereich_titel: Sachverhalte neu erarbeiten und reflektieren – Problemlösen und Werten
+  task_formulation: Entwickeln Sie …
+  explanation: Zu einer vorgegebenen Situation eine komplexe, fachliche Lösung systematisch beschreiben.
+    Teilsätze in tabellarischer Struktur formulieren.
+  redemittel: 'Anhand der Situation kann man … entwickeln. Anhand der Informationen kann man erkennen,
+    dass … Die … lautet: Daraus lässt sich ableiten, dass … Eine Ressource ist/ Ressourcen sind … Das
+    Ziel ist/ Die Ziele sind … Eine passende Intervention ist/ Passende Interventionen sind … Eine passende
+    Maßnahme ist/ Passende Maßnahmen sind …'
+  example_task: Entwickeln Sie 1 problembezogene aktuelle Pflegediagnose nach dem PÄS/PES-Format mit 1
+    passendenden Ressource von Herrn Franz. Leiten Sie dazu 1 Pflegeziel ab und planen Sie 1 Pflegeintervention.
+  example_answer: 'Anhand der Situation kann man Für Herrn Franz die Pflegediagnose „Beeinträchtigte körperliche
+    Mobilität“ entwickeln. P: Beeinträchtigte körperliche Mobilität Ä/ E: Schmerzen in den Gelenken aufgrund
+    von Arthrose S: Schwierigkeiten beim Gehen, eingeschränkte Bewegungsfreiheit, Steifigkeit der Gelenke,
+    Unsicherheit beim Gehen und Stehen Ressource: Herr Franz zeigt eine hohe Compliance und möchte seine
+    Mobilität durch Bewegungsübungen verbessern. Ziel: Herr Franz geht innerhalb von zwei Wochen, mit
+    minimaler Unterstützung 15 Meter ohne Pausen, wobei die Schmerzintensität auf der numerischen Rangskala
+    von 0-10 unter 4 bleibt. Intervention: Tägliche Anleitung und Unterstützung bei aktiven und passiven
+    Bewegungsübungen zur Förderung der Gelenkbeweglichkeit und Muskelkraft. Literatur Gesetz über die
+    Pflegeberufe (PflBG) vom 17. Juli 2017 (BGBl. I 2017, Nr. 45, S. 2581), zuletzt geändert durch Artikel
+    2a des Gesetzes vom 12. Dezember 2023 (BGBl. I 2023, Nr. 359) Kamm A./ Roche J. (2025): Handreichung
+    02. Sprachsensibel Prüfen in der Pflegeausbildung . abrufbar unter: www. Pflegeplus -sprache.de PflAPrV
+    (2018): Pflegeberufe‑ Ausbildungs‑ und Prüfungsverordnung vom 2. Oktober 2018, i. d. F. vom 02.10.2018,
+    BGBl. I 2018'
+  source_row: entwickeln, planen, ableiten
+- operator: planen
+  display: planen
+  anforderungsbereich: III
+  anforderungsbereich_titel: Sachverhalte neu erarbeiten und reflektieren – Problemlösen und Werten
+  task_formulation: Planen Sie …
+  explanation: Zu einer vorgegebenen Situation eine komplexe, fachliche Lösung systematisch beschreiben.
+    Teilsätze in tabellarischer Struktur formulieren.
+  redemittel: 'Anhand der Situation kann man … entwickeln. Anhand der Informationen kann man erkennen,
+    dass … Die … lautet: Daraus lässt sich ableiten, dass … Eine Ressource ist/ Ressourcen sind … Das
+    Ziel ist/ Die Ziele sind … Eine passende Intervention ist/ Passende Interventionen sind … Eine passende
+    Maßnahme ist/ Passende Maßnahmen sind …'
+  example_task: Entwickeln Sie 1 problembezogene aktuelle Pflegediagnose nach dem PÄS/PES-Format mit 1
+    passendenden Ressource von Herrn Franz. Leiten Sie dazu 1 Pflegeziel ab und planen Sie 1 Pflegeintervention.
+  example_answer: 'Anhand der Situation kann man Für Herrn Franz die Pflegediagnose „Beeinträchtigte körperliche
+    Mobilität“ entwickeln. P: Beeinträchtigte körperliche Mobilität Ä/ E: Schmerzen in den Gelenken aufgrund
+    von Arthrose S: Schwierigkeiten beim Gehen, eingeschränkte Bewegungsfreiheit, Steifigkeit der Gelenke,
+    Unsicherheit beim Gehen und Stehen Ressource: Herr Franz zeigt eine hohe Compliance und möchte seine
+    Mobilität durch Bewegungsübungen verbessern. Ziel: Herr Franz geht innerhalb von zwei Wochen, mit
+    minimaler Unterstützung 15 Meter ohne Pausen, wobei die Schmerzintensität auf der numerischen Rangskala
+    von 0-10 unter 4 bleibt. Intervention: Tägliche Anleitung und Unterstützung bei aktiven und passiven
+    Bewegungsübungen zur Förderung der Gelenkbeweglichkeit und Muskelkraft. Literatur Gesetz über die
+    Pflegeberufe (PflBG) vom 17. Juli 2017 (BGBl. I 2017, Nr. 45, S. 2581), zuletzt geändert durch Artikel
+    2a des Gesetzes vom 12. Dezember 2023 (BGBl. I 2023, Nr. 359) Kamm A./ Roche J. (2025): Handreichung
+    02. Sprachsensibel Prüfen in der Pflegeausbildung . abrufbar unter: www. Pflegeplus -sprache.de PflAPrV
+    (2018): Pflegeberufe‑ Ausbildungs‑ und Prüfungsverordnung vom 2. Oktober 2018, i. d. F. vom 02.10.2018,
+    BGBl. I 2018'
+  source_row: entwickeln, planen, ableiten
+- operator: ableiten
+  display: ableiten
+  anforderungsbereich: III
+  anforderungsbereich_titel: Sachverhalte neu erarbeiten und reflektieren – Problemlösen und Werten
+  task_formulation: Leiten Sie … ab.
+  explanation: Zu einer vorgegebenen Situation eine komplexe, fachliche Lösung systematisch beschreiben.
+    Teilsätze in tabellarischer Struktur formulieren.
+  redemittel: 'Anhand der Situation kann man … entwickeln. Anhand der Informationen kann man erkennen,
+    dass … Die … lautet: Daraus lässt sich ableiten, dass … Eine Ressource ist/ Ressourcen sind … Das
+    Ziel ist/ Die Ziele sind … Eine passende Intervention ist/ Passende Interventionen sind … Eine passende
+    Maßnahme ist/ Passende Maßnahmen sind …'
+  example_task: Entwickeln Sie 1 problembezogene aktuelle Pflegediagnose nach dem PÄS/PES-Format mit 1
+    passendenden Ressource von Herrn Franz. Leiten Sie dazu 1 Pflegeziel ab und planen Sie 1 Pflegeintervention.
+  example_answer: 'Anhand der Situation kann man Für Herrn Franz die Pflegediagnose „Beeinträchtigte körperliche
+    Mobilität“ entwickeln. P: Beeinträchtigte körperliche Mobilität Ä/ E: Schmerzen in den Gelenken aufgrund
+    von Arthrose S: Schwierigkeiten beim Gehen, eingeschränkte Bewegungsfreiheit, Steifigkeit der Gelenke,
+    Unsicherheit beim Gehen und Stehen Ressource: Herr Franz zeigt eine hohe Compliance und möchte seine
+    Mobilität durch Bewegungsübungen verbessern. Ziel: Herr Franz geht innerhalb von zwei Wochen, mit
+    minimaler Unterstützung 15 Meter ohne Pausen, wobei die Schmerzintensität auf der numerischen Rangskala
+    von 0-10 unter 4 bleibt. Intervention: Tägliche Anleitung und Unterstützung bei aktiven und passiven
+    Bewegungsübungen zur Förderung der Gelenkbeweglichkeit und Muskelkraft. Literatur Gesetz über die
+    Pflegeberufe (PflBG) vom 17. Juli 2017 (BGBl. I 2017, Nr. 45, S. 2581), zuletzt geändert durch Artikel
+    2a des Gesetzes vom 12. Dezember 2023 (BGBl. I 2023, Nr. 359) Kamm A./ Roche J. (2025): Handreichung
+    02. Sprachsensibel Prüfen in der Pflegeausbildung . abrufbar unter: www. Pflegeplus -sprache.de PflAPrV
+    (2018): Pflegeberufe‑ Ausbildungs‑ und Prüfungsverordnung vom 2. Oktober 2018, i. d. F. vom 02.10.2018,
+    BGBl. I 2018'
+  source_row: entwickeln, planen, ableiten

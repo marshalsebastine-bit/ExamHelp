@@ -1,0 +1,81 @@
+{
+  "note": "authority is how binding a source is, not where it came from (repo review 2.3). Severity of a rule derives from the authority of its source.",
+  "sources": [
+    {
+      "id": "pflbg",
+      "name": "Pflegeberufegesetz (PflBG)",
+      "source_file": "PflBG.html",
+      "url": "https://www.gesetze-im-internet.de/pflbg/BJNR258110017.html",
+      "document_type": "legal",
+      "authority": "binding_federal",
+      "licence": "public_federal_law",
+      "in_retrieval_corpus": true
+    },
+    {
+      "id": "pflaprv",
+      "name": "Pflegeberufe-Ausbildungs- und Pruefungsverordnung (PflAPrV)",
+      "source_file": "PflAPrV.html",
+      "url": "https://www.gesetze-im-internet.de/pflaprv/BJNR157200018.html",
+      "document_type": "legal",
+      "authority": "binding_federal",
+      "licence": "public_federal_law",
+      "in_retrieval_corpus": true,
+      "note": "Anlage 1 and Anlage 2 carry the competency catalogues. Anlage 2 is the authoritative source for KOMP-06."
+    },
+    {
+      "id": "lehrplan_by_2020",
+      "name": "Lehrplaene und Ausbildungsplaene fuer die Berufsfachschule fuer Pflege (StMUK / ISB Bayern)",
+      "source_file": "bfs_lp_pflegefachmann.pdf",
+      "url": "https://www.isb.bayern.de/schularten/berufliche-schulen/berufsfachschule/",
+      "document_type": "curricular",
+      "authority": "official_state",
+      "licence": "state_publication_terms_unconfirmed",
+      "in_retrieval_corpus": true,
+      "binding_by": "Verfuegung 21.07.2020, Az. VI.5-BS9600.1-3-7a.67273",
+      "note": "Actual PDF (507 pages), not plain UTF-8 text as the planning docs state. Supplies CE structure, Zeitrichtwerte, Situationsmerkmale, and CE-to-competency mapping. Version currency is a kickoff verification item (tech doc 12)."
+    },
+    {
+      "id": "operatoren_stmuk",
+      "name": "Liste der Operatoren des Bay. StMUK",
+      "source_file": "01 Handreichung Operatoren_PflegePlus.pdf",
+      "document_type": "operator_list",
+      "authority": "official_state",
+      "licence": "official_state_list_reproduced_in_third_party_document",
+      "in_retrieval_corpus": false,
+      "reproduced_via": "PflegePlus Handreichung 01, section 3.1",
+      "note": "OPEN: obtain first-hand from StMUK rather than via this reproduction (repo review 4.2, 5). This is the citable authority for FORM-03/FORM-04."
+    },
+    {
+      "id": "operatoren_erweitert",
+      "name": "Erweiterte Operatorenliste (PflegePlus)",
+      "source_file": "01 Handreichung Operatoren_PflegePlus.pdf",
+      "document_type": "operator_list",
+      "authority": "third_party_advisory",
+      "licence": "copyright_kamm_roche_2025_unresolved",
+      "in_retrieval_corpus": false,
+      "note": "Third-party extension of the StMUK list. Kamm / Roche, PflegePlus (ILS GmbH), 2025."
+    },
+    {
+      "id": "sprachsensibel",
+      "name": "Handreichung 02: Sprachsensibel Pruefen in der Pflegeausbildung",
+      "source_file": "02 Handreichung Sprachsensibel Pruefen_PflegePlus.pdf",
+      "document_type": "guidance",
+      "authority": "third_party_advisory",
+      "licence": "copyright_kamm_roche_2025_unresolved",
+      "in_retrieval_corpus": false,
+      "note": "Mined for Family A rule substance only, with independently worded rule_text (repo review 5, action 2). Guidance prose and example pairs are held OUT of the retrieval corpus and out of prompts until the licence question is resolved, because prompt content reaches non-EU providers (tech doc 6.2)."
+    },
+    {
+      "id": "dnqp_mobilitaet",
+      "name": "Expertenstandard Erhaltung und Foerderung der Mobilitaet in der Pflege (Aktualisierung 2020)",
+      "source_file": null,
+      "url": "https://www.gs-qsa-pflege.de/",
+      "document_type": "normative",
+      "authority": "professional_normative",
+      "licence": "published_free_full_text",
+      "in_retrieval_corpus": true,
+      "acquired": false,
+      "note": "NOT YET ACQUIRED. Target corpus for Family C (QUELL-01/02). Maps onto CE 02 A. The one DNQP Expertenstandard published free and full-text."
+    }
+  ]
+}

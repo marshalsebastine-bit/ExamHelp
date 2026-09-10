@@ -1,0 +1,55 @@
+meta:
+  id: pruefungsbereiche
+  title: Die drei schriftlichen Pruefungsbereiche und ihre Kompetenzschwerpunkte
+  purpose: Lookup for KOMP-03. PflAPrV § 14 (1) states which Kompetenzschwerpunkte each written Pruefungsbereich
+    draws on, so coverage is decidable deterministically against binding law.
+  source:
+    document: PflAPrV
+    locator: § 14 Absatz 1
+    url: https://www.gesetze-im-internet.de/pflaprv/__14.html
+    authority: binding_federal
+  generated_by: scripts/extract_pruefungsbereiche.py
+  counts:
+    pruefungsbereiche: 3
+pruefungsbereiche:
+- nummer: 1
+  titel: Pflegeprozessgestaltung einschließlich Interaktion und Beziehungsgestaltung in akuten und dauerhaften
+    Pflegesituationen
+  kompetenzschwerpunkte:
+  - I.1
+  - I.5
+  - I.6
+  - II.1
+  einzubeziehende_kompetenzbereiche:
+  - IV
+  quote: Pflegeprozessgestaltung einschließlich Interaktion und Beziehungsgestaltung in akuten und dauerhaften
+    Pflegesituationen (Kompetenzschwerpunkte I.1, II.1) unter Einbeziehung von lebensweltlichen Aspekten
+    und pflegerischen Aufgaben im Zusammenhang mit der Lebensgestaltung sowie unter Berücksichtigung von
+    Autonomieerhalt und Entwicklungsförderung der zu pflegenden Menschen (Kompetenzschwerpunkte I.5, I.6),
+    wobei darüber hinaus ausgewählte Kontextbedingungen des Kompetenzbereiches IV in die Fallbearbeitung
+    einbezogen werden sollen
+- nummer: 2
+  titel: Pflegeprozessgestaltung bei Menschen mit gesundheitlichen Problemlagen unter besonderer Berücksichtigung
+    von Gesundheitsförderung und Prävention in Verbindung mit verschiedenen Schwerpunkten und Gesichtspunkten
+    von Beratung
+  kompetenzschwerpunkte:
+  - I.2
+  - II.2
+  - V.1
+  einzubeziehende_kompetenzbereiche: []
+  quote: Pflegeprozessgestaltung bei Menschen mit gesundheitlichen Problemlagen unter besonderer Berücksichtigung
+    von Gesundheitsförderung und Prävention in Verbindung mit verschiedenen Schwerpunkten und Gesichtspunkten
+    von Beratung (Kompetenzschwerpunkte I.2, II.2), wobei im Rahmen der Fallbearbeitung erforderliche
+    Handlungsentscheidungen anhand von pflegewissenschaftlichem Begründungswissen begründet werden sollen
+    (Kompetenzschwerpunkt V.1)
+- nummer: 3
+  titel: Pflegeprozesssteuerung in kritischen und krisenhaften Pflegesituationen
+  kompetenzschwerpunkte:
+  - I.3
+  - I.4
+  - II.3
+  - III.2
+  einzubeziehende_kompetenzbereiche: []
+  quote: Pflegeprozesssteuerung in kritischen und krisenhaften Pflegesituationen (Kompetenzschwerpunkte
+    I.3, I.4) in Verbindung mit der eigenständigen Durchführung ärztlicher Anordnungen (Kompetenzschwerpunkt
+    III.2) und ethischen Entscheidungsprozessen (Kompetenzschwerpunkt II.3)

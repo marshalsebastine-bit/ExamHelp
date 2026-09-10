@@ -1,0 +1,973 @@
+meta:
+  id: situationsmerkmale
+  title: Situationsmerkmale je curriculare Einheit
+  purpose: The Lehrplan's Situationsprinzip vocabulary. Structures the Fallsituation fields of the item
+    schema (tech doc 2.2) and supplies the comparison target for KOMP-07.
+  dimensions_structured_per_ce:
+  - handlungsanlaesse
+  - kontextbedingungen
+  - handlungsmuster
+  dimensions_prose_only:
+  - akteure
+  - erleben_deuten_verarbeiten
+  dimensions_note: The Lehrplan sets only Handlungsanlaesse, Kontextbedingungen and Handlungsmuster as
+    table rows per CE. Akteure and Erleben/Deuten/Verarbeiten are prose in the introduction and the didaktischer
+    Kommentar, so there is no per-CE list to compare against. The item schema keeps an `akteure` field
+    because authors do describe who appears in a Fallsituation, but KOMP-07 can only compare the three
+    structured dimensions.
+  source:
+    document: Lehrplaene und Ausbildungsplaene fuer die Berufsfachschule fuer Pflege (StMUK / ISB Bayern,
+      Juli 2020)
+    authority: official_state
+  generated_by: scripts/extract_lehrplan.py
+  extraction_note: Extracted from a PDF table set in narrow columns. Content is indicative for KOMP-07
+    development and needs a spot review against the document before KOMP-07 is scored.
+curriculare_einheiten:
+- ce: CE 01
+  titel: Ausbildungsstart – Pflegefachfrau/Pflegefachmann werden
+  handlungsanlaesse:
+  - Ankommen in der Lerngruppe bzw. in der Schule
+  - Ankommen im Team bzw. in der Pflegepraxis
+  - berufliche Identität entwickeln
+  - Kontaktaufnahme mit zu pflegenden Menschen (der „fremde Mensch“) in verschiedenen Altersstufen
+  kontextbedingungen:
+  - Lernprozesse in der Ausbildung und Lernorte – Pflegeschule, simulative Lernumgebungen, Pflegepraxis
+  - 'Instrumente der schulischen und praktischen Ausbildung: Curriculum, Ausbildungsplan, Ausbildungsnachweis'
+  - 'vielfältiges Spektrum gesundheitsbezogener Einrichtungen und pflegerischer Handlungsfelder Makroebene
+    Gesetzlicher Rahmen: 29 Gestaltung von Arbeits- und Beziehungsprozessen CE O1 Ausbildungsstart – Pflegefachfrau/Pflegefachmann
+    werden'
+  - gesetzliche Grundlagen der Ausbildung, u. a. Pflegeberufegesetz (PflBG), insbesondere Berufsbezeichnung
+    Pflegefachfrau/Pflegefachmann
+  - Datenschutz, Schweigepflicht
+  - Arbeitsrecht, u. a. Ausbildungsvertrag, Arbeitsvertrag
+  - Patientensicherheit
+  - Betriebsverfassungsgesetz (Personal)
+  handlungsmuster:
+  - Lernen in der Gruppe, Gruppendynamik
+  - Reflexion pflegerischer Vorerfahrungen und der Lernbiografie (inkl. digitaler Kompetenzen)
+  - 'Einführung in die Beziehungsgestaltung: Kommunikation, Fürsorge, Kultursensibilität, ethische Haltung,
+    Empathie'
+  - Pflegeprozess als Problemlösungs- und Beziehungsprozess
+  - Einführung in die Grundlagen der Pflegewissenschaft bzw. in das professionelle Pflegehandeln (z. B.
+    Grundbegriffe, Gegenstand)
+  - sich im Kontext zurechtfinden (ausgewählte Aspekte, wie z. B. EDV)
+  - Kontakt zum Team aufnehmen
+  - Aufmerksam-Sein für die eigene Gesundheit und den Schutz vor physischen und psychischen Belastungen
+  - Handlungsmuster zu ausgewählten Szenarien, die den Auszubildenden begegnen werden Wissensgrundlagen
+  - kurzer Überblick über die Geschichte des Pflegeberufes – auch internationale Vergleiche
+  - kurzer Überblick Pflegeprozessgestaltung, u. a. der sechsschrittige Pflegeprozess und der vierschrittige
+    Pflegeprozess im Sinne des Strukturmodells
+  - kurzer Überblick über die Begriffe Pflegediagnoseklassifikation (NANDA International, Inc.; NANDA-I),
+    Pflegeinterventionsklassifikation (Nursing Intervention Classification; NIC), Pflegeergebnisklassifikation
+    (Nursing Outcome Classification; NOC)
+  - ICN–Ethikkodex für Pflegende
+  - 'Einstieg in Kommunikationsmodelle: Sender-Empfänger-Modell (Vertiefung CE 03)'
+  - EDV in der Ausbildung (Arbeits- und Präsentationsmittel, vgl. auch Mediencurriculum der Schule)
+  - Grundprinzipien der EDV- und papiergestützten Pflegedokumentation
+  - die Bundesrepublik als wertgebundener, freiheitlicher, demokratischer Staat, u. a. Menschenbild des
+    Grundgesetzes (GG) und Grundrechte 30 Gestaltung von Arbeits- und Beziehungsprozessen
+- ce: CE 02
+  titel: Zu pflegende Menschen in der Bewegung und Selbstversorgung unterstützen
+  handlungsanlaesse:
+  - entwicklungs- und gesundheitsbedingt beeinträchtigte körperliche Mobilität
+  - beeinträchtigte Mobilität im Bett
+  - beeinträchtigte Gehfähigkeit
+  - bewegungsarmer Lebensstil
+  - Gesundheitsrisiken durch Mobilitätsbeeinträchtigungen, z. B. erhöhtes Sturzrisiko
+  - Gefahr einer verzögerten sensomotorischen Entwicklung (Vertiefung in CE 10) Auszubildende
+  - berufliche Gesundheitsrisiken und Gefahren
+  - Selbstfürsorge, insbesondere für die Gesunderhaltung des eigenen Bewegungsapparats sowie die Erhaltung
+    und Weiterentwicklung der persönlichen Mobilität als zentrales Moment der pflegerischen Interaktion
+  - Pflegebedürftigkeit
+  - Pflegephänomene, z. B. Hilflosigkeit, Abhängigkeit, Fremdheit, Scham, Bedürfnis nach Zuwendung, Orientierung
+    und Berührung
+  - gesundheits- oder entwicklungsbedingte Beeinträchtigungen in der Selbstversorgung (Körperpflege bzw.
+    Kleiden, Nahrungs- und Flüssigkeitsaufnahme, Ausscheidung)
+  - pflegebedingte Notwendigkeit der Beobachtung des Gesundheitszustands (inkl. der Vitalwerte)
+  - (Risiko von) Veränderungen des Hautzustands und Erfordernis entsprechend ausgewählter Prophylaxen,
+    z. B. Intertrigoprophylaxe, Dekubitusprophylaxe (vgl. CE 02 A)
+  - Bedarf an Entwicklungs- und Gesundheitsförderung über Berührung
+  - Mangelernährung
+  - Flüssigkeitsdefizit
+  - beeinträchtigte Harnausscheidung
+  - beeinträchtigte Stuhlausscheidung
+  - ggf. Schlafstörung oder Unruhe (sollte in anderen curricularen Einheiten wieder aufgegriffen werden)
+  kontextbedingungen:
+  - unterschiedliche Einrichtungen und Versorgungsbereiche im Orientierungseinsatz
+  - technische und digitale Hilfsmittel zur Unterstützung bei der Bewegungsförderung und Positionierung
+    und Regelungen zu deren Verfügbarkeit (z. B. rechtliche Regelungen zu Medizinprodukten)
+  - Rechtsgrundlagen in Bezug auf Haftung, Arbeitsschutz und Sicherheit der zu pflegenden Menschen
+  - Arbeitssicherheit und Unfallverhütung
+  - verschiedene Versorgungsbereiche der Pflege (insbesondere solche, in denen die Lernenden im Orientierungseinsatz
+    eingesetzt werden)
+  - Angehörige und Bezugspersonen, die bei der Pflege anwesend sein können
+  handlungsmuster:
+  - Fähigkeiten und Ressourcen sowie Beeinträchtigungen in der Mobilität unter Nutzung ausgewählter Assessmentverfahren
+    beobachten und beschreiben bzw. dokumentieren
+  - Menschen bei Alltagsaktivitäten in ihrer Mobilität unterstützen und bei Bedarf technische und digitale
+    Hilfsmittel nutzen
+  - eine sichere Umgebung für Menschen aller Altersstufen auch mit Beeinträchtigungen des Sehens und Hörens
+    gestalten
+  - Risiken bei Beeinträchtigungen der Mobilität systematisch personen- und umgebungsbezogen einschätzen
+    und dokumentieren 48 Unterstützung bei der selbstbestimmten Lebensführung und Selbstpflege CE 02 A
+    Mobilität interaktiv, gesundheitsfördernd und präventiv gestalten sowie individuelle Pflegemaßnahmen
+    planen, durchführen und evaluieren
+  - Angebote zur Mobilitätsförderung und -erhaltung sowie zur Entwicklungsförderung unter Einbezug entsprechender
+    Bewegungskonzepte planen, durchführen und evaluieren
+  - Menschen über die Bedeutung von Mobilität in Bezug auf Gesundheitsförderung und Prävention informieren
+  - Menschen zu hilfreichen Bewegungsabläufen instruieren
+  - Menschen bei Orts- und Positionswechseln unterstützen
+  - Maßnahmen zur Förderung und Erhaltung der Mobilität im pflegerischen und therapeutischen Team besprechen
+    und abstimmen
+  - das eigene Handeln an ausgewählten Expertenstandards der Pflege orientieren − Überblick zu ausgewählten
+    Standards in Verbindung mit Mobilitätsförderung und -einschränkungen Auszubildende
+  - das eigene Gesundheits- und Bewegungsverhalten reflektieren
+  - eigene Bewegungsabläufe analysieren und vor dem Hintergrund pflegerischer Bewegungskonzepte reflektieren
+  - hilfreiche Bewegungsabläufe und Interaktionen in die pflegerische Unterstützung von Menschen aller
+    Altersstufen integrieren und deren Wirkung auf den eigenen Körper evaluieren
+  - eigene Grenzen der körperlichen Belastbarkeit wahrnehmen und technische Hilfen in der Unterstützung
+    von Menschen mit beeinträchtigter Mobilität fachgerecht nutzen
+  - selbstfürsorglich mit sich selbst umgehen und Aktivitäten zur Gesundheitsförderung wahrnehmen Wissensgrundlagen
+  - Metaparadigmen der Pflege anhand einer ausgewählten Pflegetheorie
+  - sensomotorische Entwicklung im Kindesalter (Vertiefung in CE 10) und physiologische Veränderungen
+    der Motorik im Alter (Vertiefung in CE 09) mit entsprechenden Beeinträchtigungen
+  - Anatomie, Physiologie, Pathologie des Bewegungsapparats, u. a. Osteoporose, Arthrose, rheumatoide
+    Arthritis, Frakturen der Wirbelsäule, Bandscheibenprolaps, Hüftdysplasie
+  - Expertenstandards, u. a. Sturzprophylaxe in der Pflege, Erhaltung und Förderung der Mobilität, Dekubitusprophylaxe
+    in der Pflege (vgl. CE 02 B)
+  - Kontrakturprophylaxe
+  - Thromboseprophylaxe (Vertiefung in CE 05)
+  - rückengerechtes Arbeiten 49 Unterstützung bei der selbstbestimmten Lebensführung und Selbstpflege
+    CE 02 A Mobilität interaktiv, gesundheitsfördernd und präventiv gestalten
+  - Vertiefung Pflegeprozess, u. a. Strukturmodell (vgl. CE 01)
+  - analoge und digitale Dokumentation
+  - aktivierende Pflege 50 Unterstützung bei der selbstbestimmten Lebensführung und Selbstpflege CE 02
+    B Menschen in der Selbstversorgung unterstützen CE 02 B Menschen in der Selbstversorgung unterstützen
+    Inhalte/Situationsmerkmale
+  - Selbstversorgungsdefizite, Ressourcen und Fähigkeiten der zu pflegenden Menschen mithilfe erster pflegerischer
+    Modelle und Theorien beobachten und beschreiben
+  - individuelle Bedürfnisse wahrnehmen und in der Unterstützung bei der Selbstversorgung berücksichtigen
+  - Veränderungen des Gesundheitszustands (inkl. der Vitalwerte) anhand von grundlegendem Wissen aus der
+    Pflege und den Bezugswissenschaften beobachten, beschreiben und sachgerecht dokumentieren
+  - Pflegebedürftigkeit beschreiben und einordnen (Vertiefung in CE 09)
+  - prophylaktische Maßnahmen bei gesundheits- und entwicklungsbedingten Einschränkungen der Mobilität
+    in die 51 Unterstützung bei der selbstbestimmten Lebensführung und Selbstpflege CE 02 B Menschen in
+    der Selbstversorgung unterstützen Körperpflege integrieren
+  - pflegerische Unterstützung oder entwicklungsbedingte Übernahme bei der Selbstversorgung geben und
+    dabei für die Patientensicherheit sorgen
+  - hygienische Maßnahmen in der pflegerischen Unterstützung berücksichtigen
+  - grundlegende Maßnahmen zur Gesundheitsförderung und Prävention in die pflegerische Unterstützung bei
+    der Selbstversorgung integrieren
+  - Kommunikation und Interaktion in körpernahen und intimen pflegerischen Handlungen einfühlsam gestalten
+  - das eigene Handeln an ausgewählten Expertenstandards der Pflege orientieren – exemplarische vertiefte
+    Auseinandersetzung mit ein bis zwei Standards, die sich auf die Unterstützung bei Einschränkungen
+    in der Selbstversorgung beziehen
+  - mit Pflegedokumentationssystemen (analog/digital) umgehen, diesen Informationen entnehmen und durchgeführte
+    Pflege dokumentieren
+  - digitale Messinstrumente und technische Hilfsmittel fachgerecht anwenden
+  - Patienten bei der Hilfsmittelversorgung unterstützen, z. B. beim Hören, Sehen
+  - beruflich bedingte Intimitätsverletzungen respekt- und würdevoll gestalten und sich selbst reflektieren
+  - Struktur und Organisation des Einsatzbereichs kennenlernen und sich darin orientieren Wissensgrundlagen
+  - Überblick über Anatomie, Physiologie der Haut
+  - Wahrnehmen, Beobachten, Beurteilen, Handeln
+  - Beobachten des nonverbalen Kommunikationsverhaltens, z. B. sieben Basisemotionen (P. Ekman)
+  - professionelle Hautbeobachtung
+  - häufige alters- und gesundheitsbedingte Veränderungen des Hautzustands aller Altersgruppen, u. a.
+    parasitäre Hauterkrankungen, Psoriasis; allergische Reaktionen, Malignome, Dermatitiden (vgl. CE 10)
+  - Grundlagen der Mikrobiologie und der Vermeidung von Infektionsübertragung
+  - Infektionskrankheiten, u. a. HIV/AIDS, Tuberkulose, Meningitis, multiresistente Erreger, Influenza,
+    Malaria, übertragbare Kinderkrankheiten (z. B. Masern, Röteln, Mumps, Scharlach, Windpocken), nosokomiale
+    Infektionen 52 Unterstützung bei der selbstbestimmten Lebensführung und Selbstpflege CE 02 B Menschen
+    in der Selbstversorgung unterstützen
+  - Infektionsschutzgesetz (IFSG) und Robert Koch-Institut (RKI)
+  - Erkrankungen des Mund- und Rachenraums
+  - Überblick über Anatomie, Physiologie der Verdauungsorgane (Vertiefung in CE 05)
+  - Überblick über Anatomie, Physiologie der ableitenden Harnwege (Vertiefung in CE 05)
+  - Hilfsmittel zur Unterstützung beim An- oder Auskleiden
+  - Hautpflegeprodukte, u. a O/W- und W/O-Produkte
+  - Berührungsqualität, belebende und beruhigende Waschung (Basale Stimulation, Vertiefung in CE 08)
+  - Entwicklung des Schamgefühls
+  - 'Einführung in die Ethik: Umgang mit Würde und Respekt'
+  - grundlegende Einführung in die Prinzipien pflegerischen Hygienehandelns
+  - professionelle Nähe-Distanz-Regelung in Pflegesituationen
+  - Intertrigoprophylaxe
+  - Mundpflege, u. a. spezielle Mundpflege
+  - Zahnprothesenpflege
+  - Soor- und Parotitisprophylaxe
+  - enterale und parenterale Ernährung
+  - Grundlagen der Ernährung bei Menschen aller Altersstufen
+  - verschiedene Ess- und Trinkhilfen
+  - Expertenstandards, u. a. „Ernährungsmanagement zur Sicherung und Förderung der ora
+- ce: CE 03
+  titel: Erste Pflegeerfahrungen reflektieren – verständigungsorientiert kommunizieren
+  handlungsanlaesse:
+  - erste Pflegeerfahrungen im Orientierungseinsatz, erlebte Anforderungen, Irritationen, Widersprüche
+    und die Komplexität pflegerischen Handelns
+  - erlebte Begegnungen mit Ekel, Selbstekel, Scham
+  - divergierende Interessen in der pflegerischen Kommunikation
+  - empfundene Sprachlosigkeit
+  - Kommunikations- und Informationsbedürfnisse zu pflegender Menschen und ihrer Bezugspersonen 32 Gestaltung
+    von Arbeits- und Beziehungsprozessen CE 03 Erste Pflegeerfahrungen reflektieren – verständigungsorientiert
+    kommunizieren
+  kontextbedingungen:
+  - Bedingungen bzw. Spannungsfelder im pflegerischen Handeln
+  - Asymmetrie pflegerischen Handelns
+  handlungsmuster:
+  - erste Pflegeerfahrungen reflektieren, inkl. erlebter Begegnungen, z. B. mit Ekel, Selbstekel, Scham
+    (vgl. erlebte Phänomene und CE 2 B)
+  - Emotionen regulieren
+  - mit belastenden, fordernden Erfahrungen umgehen, kollegiale Beratung in Anspruch nehmen
+  - Grundsätze der verständigungs- und beteiligungsorientierten Gesprächsführung und unterschiedliche
+    Kommunikationskanäle nutzen, Kommunikationsbarrieren abbauen
+  - Aushandlungsprozesse zwischen Pflegeanforderungen und individuellen Bedürfnissen von Betroffenen gestalten
+    (nicht nur sprachlich, sondern auch nonverbal und taktil) Wissensgrundlagen
+  - Einführung in die Emotionspsychologie
+  - Geltungsansprüche in Aushandlungsprozessen; (pflege)-berufswissenschaftliche Studien zu Phänomenen
+    von Macht und Machtmissbrauch in pflegerischen Interaktionen
+  - Gewalt in der Pflege, u. a. körperliche und psychische Gewalt, Risiken, Auslöser, Gewaltvermeidung
+  - Vertiefung des Pflegeprozesses – Bedürfnisse und Probleme erkennen
+  - Pflegeanamnese und Erstgespräch
+  - nonverbale, paralinguistische und leibliche Interaktionsformen, Kommunikationsmodelle (Vertiefung
+    von CE 01 und CE 02 B), u. a. Das Vier-SeitenModell (F. Schulz von Thun), Personenzentrierte Gesprächsführung
+    (C. R. Rogers), Themenzentrierte Interaktion (R. Cohn)
+  - Sinneseinschränkungen, u. a. Presbyakusis, Glaukom, Katarakt, Amaurose
+  - Gesundheitsförderung und Prävention als Grundbegriffe pflegerischen Handelns (auch Definition WHO)
+    (vgl. CE 04) 33 Gestaltung von Arbeits- und Beziehungsprozessen
+- ce: CE 04
+  titel: Gesundheit fördern und präventiv handeln
+  handlungsanlaesse:
+  - eigene Gesundheit erhalten bzw. verbessern wollen bzw. Bereitschaft zu einer verbesserten Selbstfürsorge
+  - mit subjektiven Gesundheitsvorstellungen konfrontiert sein bzw. subjektive Gesundheitsvorstellungen
+    aufdecken
+  - Bereitschaft zu gesundheitsförderlichen und präventiven Verhaltensweisen in verschiedenen Altersstufen,
+    z. B. im Hinblick auf Vorsorgeuntersuchungen und Impfungen
+  - vorhandene bzw. fehlende Gesundheitsressourcen
+  - Informations- und Beratungsbedarfe von (zu pflegenden) Menschen aller 66 Gesundheit und Entwicklung
+    fördern CE 04 Gesundheit fördern und präventiv handeln Altersstufen und ihren Bezugspersonen zu o.
+    g. gesundheitsbezogenen Themen
+  - Gefahr der Entwicklung eines metabolischen Syndroms
+  - Gefahr einer Gesundheitsschädigung bzw. gefahrengeneigtes Gesundheitsverhalten in allen Altersstufen,
+    z. B. Suchtverhalten, bewegungsarmer Lebensstil, (entwicklungsbedingtes) Risikoverhalten (z. B. auch
+    von Klein- und Schulkindern im Straßenverkehr und im Haushalt, von Jugendlichen im Umgang mit Suchtstoffen
+    und -formen oder Gefahr einer beeinträchtigten Risikoeinschätzung)
+  - Risiko der Verschlechterung der gesundheitlichen Lage bzw. Komplikationsrisiko
+  - (fehlende) soziale Unterstützung im gesundheitsförderlichen Verhalten
+  - beeinträchtigte individuelle und familiäre Resilienz bzw. Bereitschaft zu einer verbesserten Resilienz
+  - beeinträchtigte Familienprozesse und fehlende individuelle und familiäre Schutz- und Risikofaktoren
+    für das Kindeswohl
+  - Bereitschaft zu einer verbesserten elterlichen Fürsorge bzw. Gefahr einer beeinträchtigten elterlichen
+    Fürsorge
+  - Bindung bzw. Gefahr einer beeinträchtigten Bindung
+  - Vernachlässigung, fehlende Verlässlichkeit der Bezugspersonen
+  - sich gestresst fühlen, sich ausgebrannt fühlen (Burn-out, Cool-out)
+  - Mobbing und Hate Speech
+  - gesundheitsförderliche Bedingungen am Arbeits- und Lernplatz gestalten wollen
+  - Informations-, Anleitungs- und Beratungsbedarfe von Auszubildenden und Teammitgliedern zu pflegefachlichen
+    Fragestellungen
+  - institutionelle gesundheitsbezogene Bedingungen, u. a. gesundheitsgefährdende Arbeitsbedingungen und
+    physische und psychische Belastungen am Arbeits- und Lernplatz
+  - Verantwortung für Patientensicherheit 3. Ausbildungsdrittel
+  - Informations- und Beratungsbedarfe von Menschen aller Altersstufen und Einrichtungen zu gesundheitsbezogenen
+    Fragen
+  - gesundheitsbezogene (ethische) Entscheidungskonflikte
+  - Belastungssituationen in der intraprofessionellen Zusammenarbeit bzw. drohende Konflikte im Pflegeteam
+  - Unterstützungsbedarfe in Familien und Familiengesundheit
+  - drohende (auch sexuelle) Gewalt 67 Gesundheit und Entwicklung fördern CE 04 Gesundheit fördern und
+    präventiv handeln
+  - Gefahr von Kindesmissbrauch bzw. Gefahr des beeinträchtigten Kindeswohls
+  kontextbedingungen:
+  - alle gesundheitsbezogenen Einrichtungen und pflegerischen Handlungsfelder
+  - weitere Einrichtungen (z. B. Betriebe, Schulen, Kindertagestätten, Familienzentren, Kinderschutzzentren,
+    Sozialpädiatrische Zentren, Frühförderung, Jugendämter, Polizei), die gesundheitsbezogene Angebote
+    unterbreiten
+  - gesundheitsbezogene Werte und Normen in der Gesellschaft und in Institutionen 3. Ausbildungsdrittel
+    – erweiternd
+  - rechtliche Rahmenbedingungen zu Gesundheitsförderung und Prävention
+  - Schnittstellen zwischen Gesundheitsberufen, anderen beratenden Berufen und in der Prävention tätigen
+    Organisationen und Netzwerken
+  handlungsmuster:
+  - Reflexion des eigenen konkreten Gesundheitsverhaltens anhand von Gesundheitsverhaltensmodellen und
+    Ableitung konkreter Konsequenzen für das eigene gesundheitsbezogene Verhalten und für das pflegerische
+    Handeln
+  - Reflexion und Mitgestaltung der Arbeitsplatz- und Lernbedingungen, gesundheitsförderliches Verhalten
+    in der Lerngruppe befördern
+  - Maßnahmen zum Arbeitsschutz
+  - bewusste Arbeitszeit- und Freizeitgestaltung bzw. Selbstsorge
+  - individuelles Gesundheitscoaching
+  - Methoden zum Schutz vor physischen und psychischen Belastungen, Stressbewältigung und -reduktion und
+    Resilienzentwicklung, z. B. Entspannungsübungen, Supervision, Mediation Fokus auf andere Akteure
+  - Erhebung von Resilienz- oder/und Risikofaktoren anhand von Instrumenten und Screening
+  - gesundheitsförderliche und präventive Handlungsmöglichkeiten im pflegerischen Handeln identifizieren
+  - 'Gesundheitskommunikation: Information und Schulung verschiedener Zielgruppen zu gesundheitsbezogenen
+    Fragen unter Einbezug biografischer, sozialisatorischer und entwicklungsbedingter 68 Gesundheit und
+    Entwicklung fördern CE 04 Gesundheit fördern und präventiv handeln Voraussetzungen'
+  - Kompetenzen, Gewohnheiten, Lebensstile und soziale Unterstützungsmöglichkeiten
+  - gesundheitsförderliche Angebote für verschiedene Zielgruppen gestalten (z. B. in Kindertagesstätten,
+    Schulen, Einrichtungen des betreuten Wohnens, in Betrieben)
+  - Information, Schulung und Beratung von zu pflegenden Menschen mit metabolischem Syndrom und ihren
+    Bezugspersonen (Sekundärprävention)
+  - Maßnahmen der Suchtprävention
+  - technische bzw. digitale Hilfsmittel für gesundheitsförderliche und präventive Informations- und Beratungsangebote
+    nutzen (z. B. Gesundheits-Apps, Telecare) und kritische fachliche Reflexion der Angebote
+  - gesundheitsbezogene Angebote in Pflegeschule und Praxiseinrichtung mitgestalten bzw. nutzen
+  - Maßnahmen zur Patientensicherheit
+  - Information, Anleitung und Beratung von Auszubildenden, Praktikant*innen sowie freiwillig Engagierten
+    3. Ausbildungsdrittel
+  - 'spezielle Gesundheitskommunikation: Beratung verschiedener Zielgruppen zu gesundheitsbezogenen Fragen'
+  - Gestaltung von Pflegesituationen, in denen aktuelle Bedürfnisse zu pflegender Menschen langfristigen
+    Bedarfen, wie Wohlbefinden oder Lebensqualität oder Lebensdauer, entgegenstehen
+  - gesundheitsbezogene Entscheidungsfindung bzw. informierte Entscheidung, ethische Aspekte
+  - Konzepte der Familiengesundheit umsetzen, frühe Hilfen einbeziehen
+  - Identifikation drohender Konflikte und Belastungen im Team und Methoden zur Konfliktprävention
+  - Maßnahmen zur Gewaltprävention (u. a. sexuelle Gewalt), vgl. CE 03
+  - Maßnahmen zur Stressreduktion
+  - Zusammenarbeiten mit Institutionen und Netzwerken im Bereich der Gesundheitsförderung und Prävention
+  - Einschätzung der eigenen Kompetenzen und adäquate Abgrenzung bzw. Weitervermittlung an andere Netzwerkakteure
+  - Information, Anleitung und Beratung von Teammitgliedern 69 Gesundheit und Entwicklung fördern CE 04
+    Gesundheit fördern und präventiv handeln Wissensgrundlagen 1./2. Ausbildungsdrittel Mikro- und Mesoebene
+  - Überblick über die Anatomie, Physiologie, Pathologie der endokrinen Organe, u. a. metabolisches Syndrom,
+    Diabetes mellitus (vgl. CE 10)
+  - berufliches Selbstverständnis entwickeln, das Gesundheitsförderung und Prävention umfasst (hierbei
+    auch historische Betrachtung der Veränderung des Berufsprofils)
+  - 'Modelle zu Gesundheit: Salutogenese (A. Antonovsky)'
+  - Modelle zum Gesundheitsverhalten, u. a. Health Action Process Approach Modell (HAPA-Modell; R. Schwarzer),
+    Relapse-Prevention-Modell (G. A. Marlatt/J. R. Gordon), transaktionales Stressmodell (R. Lazerus)
+  - Aspekte der Motivations- und Gesundheitspsychologie
+  - Prävention, u. a. Präventionsstufen, Verhaltens- und Verhältnisprävention
+  - Vorsorgeuntersuch
+- ce: CE 05
+  titel: Menschen in kurativen Prozessen pflegerisch unterstützen und Patientensicherheit stärken
+  handlungsanlaesse:
+  - Durchblutungsstörungen, u. a. periphere, kardiale und cerebrale
+  - verminderte Herz- und Kreislaufleistung
+  - unausgeglichene Körpertemperatur
+  - beeinträchtigter Atemvorgang bzw. Gasaustausch
+  - Blutungsgefahr, z. B. Thrombozytopenie
+  - Leberfunktionsstörungen, u. a. Leberzirrhose, Hepatitis 87 Pflegehandeln in kurativen Prozessen und
+    Akutsituationen CE 05 Menschen in kurativen Prozessen pflegerisch unterstützen und Patientensicherheit
+    stärken
+  - Risiko eines Elektrolyt-, Säure-Basen- und Flüssigkeitsungleichgewichts
+  - akuter Schmerz
+  - Wundversorgung
+  - Übelkeit, beeinträchtigtes Wohlbefinden, Obstipationsgefahr, Orientierungsstörung, verzögerte postoperative
+    Erholung 3. Ausbildungsdrittel
+  - unterschiedliche Facetten von Coping und Adhärenz
+  - belastende Gefühle der zu pflegenden Menschen
+  - belastende Gefühle der Pflegenden selbst
+  - Entscheidungskonflikte Multimorbidität als Kombination u. a. folgender Handlungsanlässe
+  - verminderte Herz- bzw. Kreislaufleistung
+  - 'reduzierte Nierenleistung: akute und chronische Niereninsuffizienz, Nierenersatzverfahren'
+  - Elektrolyt-, Säure-Basen- und Flüssigkeitsungleichgewicht
+  - akute und chronische Wunden, u. a. Ulcus cruris
+  - psychische Komorbidität bei Multimorbidität
+  - Medikationsfehler
+  - Nebenwirkungen und Arzneimittelinteraktionen
+  - Gefahr eines Immobilitätssyndroms
+  kontextbedingungen:
+  - Clinical Pathways
+  - Pflegesysteme und Ablauforganisation
+  - Organisations- und Teamstrukturen im Krankenhaus sowie in den nachsorgenden Sektoren
+  - Grundlagen Krankenversicherung, Krankenhausfinanzierung, Personalbemessung
+  - nationale und internationale Versorgungssysteme im kurativen Bereich
+  - Geschichte der Pflege im Kontext der medizinischen Entwicklung und Wandel vom Assistenz- zum Heilberuf
+  - Arbeitsschutz und Prävention von Risiken 88 Pflegehandeln in kurativen Prozessen und Akutsituationen
+    CE 05 Menschen in kurativen Prozessen pflegerisch unterstützen und Patientensicherheit stärken 3.
+    Ausbildungsdrittel – zusätzlich
+  - Versorgungsketten
+  - 'institutionsübergreifende (integrierte) Versorgung: national und international'
+  - medizintechnologische Entwicklungen und ihre finanziellen und ethischen Implikationen
+  - Telenursing, Telemedizin
+  - ausgewählte Leitlinien und/oder Expertenstandards (u. a. Pflege von Menschen mit chronischen Wunden,
+    Entlassungsmanagement in der Pflege)
+  - neue Formen der Verteilung von Aufgaben und Verantwortung zwischen den Berufsgruppen
+  - pflegerische Weiterbildungen und neue pflegerische Berufe
+  - Arbeitsbedingungen (im Krankenhaus) vor dem Hintergrund rechtlicher und ökonomischer Rahmenbedingungen
+  handlungsmuster:
+  - Pflegebedarf feststellen und Pflegeprozesse zur Unterstützung der Kuration planen, steuern, durchführen
+    und evaluieren
+  - kommunizieren, informieren, schulen
+  - Adhärenz und Gesundheitskompetenz fördern
+  - psychisches Wohlbefinden fördern
+  - interkulturell pflegen
+  - Patientenaufnahme im klinischen Kontext (elektiv bzw. akut)
+  - Pflege an standardisierten Abläufen (Clinical Pathways) ausrichten
+  - perioperative Pflege, u. a. Zu- und Ableitungen, Infusionen, Injektionen
+  - Assistenz bei ärztlichen Interventionen
+  - Stomaversorgung, u. a. Tracheostoma (vgl. CE 02)
+  - im intra- und interprofessionellen Team zusammenarbeiten
+  - Wundmanagement
+  - Schmerzmanagement (akute Schmerzen)
+  - Infektionsprävention
+  - 'Thermoregulation: Interventionen bei Hypo- und Hyperthermie'
+  - Interventionen zur Unterstützung der erwünschten Wirkung pharmakologischer Wirkstoffe
+  - ausgewählte Interventionen zur Optimierung der Zirkulation von Blut 89 Pflegehandeln in kurativen
+    Prozessen und Akutsituationen CE 05 Menschen in kurativen Prozessen pflegerisch unterstützen und Patientensicherheit
+    stärken und Flüssigkeiten im Gewebe
+  - Elektrolyt-, Säure-Basen-, Wasser-Haushalts-Management (u. a. Dehydrationsprophylaxe)
+  - Interventionen zur Förderung der Durchgängigkeit der Atemwege und des Gasaustauschs (u. a. Pneumonieprophylaxe)
+  - Risikomanagement (Grundlagen)
+  - Entlassungsmanagement (Grundlagen)
+  - Einbindung ausgewählter Leitlinien und Expertenstandards 3. Ausbildungsdrittel
+  - Pflegebedarf feststellen und Pflegeprozesse zur Versorgung von Menschen mit unterschiedlichen, komplexen
+    gesundheitlichen Problemlagen und Pflegebedarfen in verschiedenen Settings und Phasen der Versorgungskette
+    mit wechselnden Versorgungsschwerpunkten und Teams planen, steuern, durchführen und evaluieren
+  - Case und Care Management in verschiedenen Versorgungskontexten sowie sektoren- und berufsgruppenübergreifende
+    Organisation
+  - integrierte Versorgung in der Primärversorgung
+  - Interventionen zur Unterstützung der erwünschten Wirkung pharmakologischer Wirkstoffe in Krisensituationen
+  - ausgewählte Interventionen zur Optimierung der Zirkulation von Blut und Flüssigkeiten im Gewebe
+  - Immobilitätsmanagement
+  - Atemunterstützung in komplexen Situationen
+  - Interventionen zur Regulierung des Flüssigkeits-, Elektrolyt- und SäureBasen-Gleichgewichts
+  - Interventionen zur Reduktion von Risiken
+  - Förderung des physischen und psychischen Wohlbefindens auch bei schwerer Krankheit sowie lang andauernden
+    und quälenden Beschwerden
+  - Umgebungsmanagement
+  - Interventionen zur Unterstützung und Einbindung von Bezugspersonen
+  - Beziehungsaufbau, Information, Schulung und Beratung in Krisenund Konfliktsituationen und bei Kommunikationsbarrieren
+  - Shared Decision Making bei unterschiedlichen Entscheidungsoptionen und eingeschränkter Selbstbestimmungsfähigkeit
+  - interkulturell und Menschen mit prekären sozioökonomischen Bedingungen pflegen
+  - interprofessionelle Patientenbesprechung 90 Pflegehandeln in kurativen Prozessen und Akutsituationen
+    CE 05 Menschen in kurativen Prozessen pflegerisch unterstützen und Patientensicherheit stärken Wissensgrundlagen
+    1./2. Ausbildungsdrittel
+  - Wissensrecherche und -bewertung, auch unter Nutzung von digitalen Informationsund Kommunikationstechnologien
+  - Einführung in die Evidenzbasierte Pflege
+  - Überblick über die Anatomie, Physiologie, Pathologie des Herz-Kreislaufsystems, u. a. Herzinsuffizienz,
+    (Vertiefung in CE 06; CE 09; CE 10), entzündliche Herzerkrankungen
+  - Überblick über die Anatomie, Physiologie, Pathologie des Atmungssystems, u. a. Bronchitis, Pneumonie,
+    COPD, Asthma bronchiale (vgl. CE 10), Mukoviszidose (CF)
+  - Überblick über die Anatomie, Physiologie, Pathologie des Blutes und des Lymphsystems, z. B. Thrombozytopenie,
+    Anämie
+  - Erkrankungen des Gastrointestinaltrakts (vgl. CE 02), u. a. Leberzirrhose, Hepatitis, Hernien, I
+- ce: CE 06
+  titel: In Akutsituationen sicher handeln
+  handlungsanlaesse:
+  - Notfall, u. a. Herz- oder Kreislaufversagen, Herzinfarkt, Lungenembolie, Schlaganfall, akute Atemnot,
+    Vergiftung, akutes Abdomen
+  - Unfälle, u. a. Aspiration, Polytrauma, Schädel-Hirn-Trauma, kindliches Beinahe-Ertrinken, Vergiftungen
+  - Traumatisierung
+  - Einrichtungsevakuierung, z. B. bei Brand, Bombenfund 3. Ausbildungsdrittel – erweiternd
+  - komplexere Notfälle aus dem 1./2. Ausbildungsdrittel, z. B. ausgedehnte Verbrennungen, Elektro- und
+    Blitzunfälle, Unfälle mit mehreren Betroffenen
+  - Notfälle, Unfälle mit Anwesenheit von Bezugspersonen
+  - Pandemien, z. B. durch Influenzaviren, Noroviren
+  - Hitzewelle
+  - Chemieunfälle in der Einrichtung oder der unmittelbaren Umgebung
+  - Massenanfall von Verletzten (MANV)
+  - Amokläufe, Terroranschläge
+  - Naturkatastrophen, z. B. Sturm, Hochwasser
+  kontextbedingungen:
+  - ambulant-häuslicher Kontext, akutstationäre und langzeitstationäre Einrichtungen, nicht beruflicher
+    Alltag
+  - digitale Notfall-Informationssysteme und Notrufsysteme, digitale Frühwarnsysteme
+  - 'Qualitätsmanagement: Brandschutz, Evakuierungspläne, Aufgaben, Zielgruppen, Arbeitsweisen und Herausforderungen
+    der Notaufnahme'
+  - Gesundheitspolitik, z. B. Förderung der Reanimation durch Laien, Defibrillatoren an öffentlichen Orten
+  - aktuelle Gesetze, z. B. Katastrophenschutzgesetze der jeweiligen Bundesländer
+  - rechtliche Rahmenbedingungen, z. B. Patientenverfügung, Notfalleinwilligung, Manchester-Triage bei
+    Massenanfall von Verletzten, unterlassene Hilfeleistung
+  - Vorschriften zur Sicherstellung der Notfallversorgung, z. B. Erste-HilfeSchulungen (Pflichtfortbildungen)
+    für Pflegeeinrichtungen; Prüfkatalog des 95 Pflegehandeln in kurativen Prozessen und Akutsituationen
+    CE 06 In Akutsituationen sicher handeln MDK für die ambulante Pflege 3. Ausbildungsdrittel
+  - technikgestützte Systeme zur Risikoerkennung, z. B. Sensorsysteme zur Bewegungs- und Sturzerkennung
+  - Richtlinien und Regelungen der Notfallversorgung, z. B. G-BA-Regelung
+  - Resilienz und Sicherheitskonzepte der Bevölkerung, z. B. freiwillige soziale Notfallgemeinschaften
+  handlungsmuster:
+  - eigenes „Funktionieren“ in Krisen- und Katastrophensituationen (professionelle Distanz)
+  - Ruhe und Sicherheit durch routiniertes Handeln und handlungsbegleitende Information vermitteln
+  - Kommando-Kommunikation innerhalb von Notfallsituationen
+  - Kommunikationssysteme und -techniken in Krisen- und Katastrophensituationen, Behandlungspfade
+  - Eingriffe und Maßnahmen erklären, verrichtungsbegleitende Kommunikation
+  - Erste Hilfe-Maßnahmen
+  - Verabreichung von Notfallmedikamenten nach ärztlicher Anordnung
+  - Reanimation nach aktuellen Reanimationsleitlinien und anderen dazugehörigen Algorithmen und Behandlungspfaden
+  - Paediatric Advanced Life Support
+  - Beziehungsarbeit und Kommunikation zur emotionalen Stabilisierung von Betroffenen, z. B. Fassungsarbeit
+  - Screening und Assessment-Instrumente zur Einschätzung der Vitalfunktionen nutzen (Atmung, Herz-Kreislauf-Funktion,
+    Bewusstsein)
+  - Informationsweitergabe
+  - Koordination der eigenen Aufgaben mit relevanten Personengruppen in Krisen- und Katastrophensituationen
+    3. Ausbildungsdrittel
+  - Verletzungen, auffällige Befunde erkennen, die auf Anzeichen von Gewalt hindeuten, und Verdacht ansprechen
+  - Koordination der Ersthelfer*innen
+  - Interventionen zur emotionalen Stabilisierung von traumatisierten Bezugspersonen, Familien, Laien
+    96 Pflegehandeln in kurativen Prozessen und Akutsituationen CE 06 In Akutsituationen sicher handeln
+    Wissensgrundlagen 1./2. Ausbildungsdrittel
+  - Stressregulierung in Notfallsituationen
+  - Grundlagen der Emotionsarbeit in personenbezogenen Dienstleistungsberufen (Mental Health)
+  - Krankheitsbilder, u. a. Herzinfarkt, Lungenembolie, Vergiftungen, akutes Abdomen, Krampfanfälle, Schlaganfall
+    3. Ausbildungsdrittel
+  - 'Notfallpflege als Handlungsfeld beruflich Pflegender: kurzer geschichtlicher Abriss, Weiterbildungsmöglichkeiten
+    und -regelungen'
+  - Stroke-Unit-Pflege als Handlungsfeld beruflich Pflegender (u. a. Bobath-Konzept) 97 Pflegehandeln
+    in ausgewählten Pflegeanlässen
+- ce: CE 07
+  titel: Rehabilitatives Pflegehandeln im interprofessionellen Team
+  handlungsanlaesse:
+  - beeinträchtigtes Wohlbefinden
+  - beeinträchtigte körperliche Mobilität und Gehfähigkeit
+  - beeinträchtigte Mobilität mit dem Rollstuhl
+  - Sturzgefahr
+  - Körperbildstörung
+  - verzögerte(s) Wachstum und Entwicklung
+  - gestörte Denkprozesse
+  - beeinträchtigte Gedächtnisleistung
+  - Orientierungsstörung
+  - ineffektive Impulskontrolle
+  - beeinträchtigtes Essverhalten
+  - beeinträchtigte Urin- und Stuhlausscheidung
+  - Schmerzen
+  - desorganisiertes kindliches Verhalten
+  - Bereitschaft zu verbesserter Selbstfürsorge
+  - Hoffnungslosigkeit
+  - Machtlosigkeit
+  - unwirksame Adhärenz
+  - beeinträchtigte Resilienz
+  - Relokationsstresssyndrom
+  - beeinträchtigte verbale Kommunikation 39 Gestaltung von Arbeits- und Beziehungsprozessen CE 07 Rehabilitatives
+    Pflegehandeln im interprofessionellen Team
+  - beeinträchtigte soziale Interaktion
+  - Stressüberlastung
+  - situationsbedingtes geringes Selbstwertgefühl
+  - Angst (spezifizieren) 3. Ausbildungsdrittel
+  - gefährdendes familiäres Coping
+  - beeinträchtigte Familienprozesse
+  - Rollenüberlastung der zu pflegenden Menschen und der pflegenden Bezugspersonen
+  - beeinträchtigte Haushaltsführung
+  - Informationsbedarfe für die Entscheidungsfindung bei technischen und digitalen Assistenzsystemen
+  - Informationsbedarfe bei der Inanspruchnahme von Gesundheitsdiensten und Leistungsträgern der Rehabilitation
+    Mesoebene
+  - Notwendigkeit der Pflegeüberleitung und der Nachsorgekonzeption für die ambulante oder institutionelle
+    Weiterversorgung nach Abschluss der Rehabilitationsbehandlung
+  - Notwendigkeit der settingübergreifenden Koordination der Versorgung und Fürsprache für bestimmte Gruppen
+    von zu pflegenden Menschen
+  - Konflikte im interprofessionellen Team
+  kontextbedingungen:
+  - ambulante, teilstationäre und stationäre Einrichtungen der medizinischen Rehabilitation, der Kinder-
+    und Jugend-Rehabilitation, Nachsorgeeinrichtungen bzw. berufliche Rehabilitation, Einrichtungen der
+    Anschlussheilbehandlungen (AHB), Rehabilitationskliniken sowie ambulante und häusliche Kontexte Makroebene
+  - International classification of function and disability and health (ICF)
+  - UN-Behindertenrechtskonvention
+  - relevante Gesetze, u. a. Bundesteilhabegesetz (BTHG), Sozialgesetzbuch (SGB V, VII, IX, XI); Grundgesetz
+    Artikel 3
+  - barrierefreier öffentlicher Raum 40 Gestaltung von Arbeits- und Beziehungsprozessen CE 07 Rehabilitatives
+    Pflegehandeln im interprofessionellen Team 3. Ausbildungsdrittel
+  - 'Leistungsträger der Rehabilitation: Bundesagentur für Arbeit, Deutsche Rentenversicherung, gesetzliche
+    Krankenkassen, gesetzliche Unfallversicherung, Träger der Kinder- und Jugendhilfe, Träger der Sozialhilfe,
+    Träger der Kriegsopfer und Kriegsopferfürsorge'
+  - Case Management
+  handlungsmuster:
+  - Verhaltensinterventionen (z. B. bei Bewegungs- und/oder Körperbildstörungen, Wahrnehmungs- und Ausdrucksförderung,
+    Förderung motorischer und geistiger Fähigkeiten)
+  - Durchführen gezielter Schulungen zur Förderung der Alltagsbewältigung unter Berücksichtigung biografisch
+    bedingter Gewohnheiten, von Lebenslagen und sozialen Unterstützungssystemen sowie unter Nutzung technischer
+    und digitaler Assistenzsysteme
+  - 'Information über rehabilitative Einrichtungen und Versorgungsprozesse sowie Versorgungskonzepte Im
+    eigenständigen Verantwortungs- und Aufgabenbereich:'
+  - Unterstützung bei diagnostischen und therapeutischen Interventionen und Anordnungen
+  - Schmerzmanagement und Verabreichung von Medikamenten auf ärztliche Anordnung im Pflegekontext
+  - 'Case Management und Umgebungsmanagement (mit-)gestalten Im interprofessionellen Verantwortungs- und
+    Aufgabenbereich:'
+  - interprofessionellen Rehabilitationsprozess mitgestalten (gemeinsam mit dem zu pflegenden Menschen,
+    den Bezugspersonen und beteiligten Berufsgruppen) 41 Gestaltung von Arbeits- und Beziehungsprozessen
+    CE 07 Rehabilitatives Pflegehandeln im interprofessionellen Team
+  - Evaluationsinstrumente zur Wirksamkeit von interprofessionellen Rehabilitationsprozessen anwenden
+    und reflektieren
+  - die Übernahme des therapeutisch Erlernten in den persönlichen Alltag schulen und unterstützen
+  - Verlegungsplanung bzw. Überleitung in das jeweilige Umgebungsmanagement (mit-)gestalten
+  - im interprofessionellen Team zusammenarbeiten und an interprofessionellen Fallbesprechungen teilnehmen
+    3. Ausbildungsdrittel
+  - Zusammenarbeit im interprofessionellen Team sowie Planung von interprofessionellen Fallbesprechungen
+  - Kommunikation und Koordinierung von Rehabilitationsplänen in Absprache von Verantwortlichkeiten
+  - Planen und Umsetzen eines pflegerischen Case Managements in verschiedenen Versorgungskontexten
+  - Beratung, Schulung und Information von zu pflegenden Menschen und deren Bezugspersonen sowie freiwillig
+    Engagierten in Fragen der Wiedererlangung der eigenständigen Lebensführung und gesellschaftlichen
+    Teilhabe und der Finanzierung und Antragstellung von Leistungen der Rehabilitation, ggf. Weiterleitung
+    an Sozialarbeiter*innen
+  - Unterstützen bei der Bewältigung einer erlebten Stigmatisierung
+  - Konfliktbewältigung im interprofessionellen Team Wissensgrundlagen
+  - Verhältnis von Pflege und Rehabilitation
+  - Berufs- und Pflegeverständnis in Bezug auf die Rolle der Pflege im Rehabilitationsprozess (z. B. aktuelle
+    Studien)
+  - Einblick in berufspolitische Verbände und Selbstverwaltungsorgane der Pflege (Pflegekammer; Vereinigung
+    der Pflegenden) und deren Mitgestaltungsmöglichkeiten in der Gesundheitspolitik
+  - Überblick über Anatomie, Physiologie und Pathologie des Nervensystems, u. a. Morbus Parkinson, Infantile
+    Zerebralparese, Rückenmarkschädigungen, Querschnittslähmung
+  - Reizwahrnehmung und Weiterleitung, Bewusstsein
+  - Grundlagen des Medikationsmanagements
+  - theoretische Grundlagen zu Inklusion (Theorien, Konzepte, Kontroversen)
+  - Grundlagen der relevanten sozialrechtlichen Vorgaben und deren Auswirkungen auf Pflege- und Unterstützungsleistungen
+  - interprofessionelles Team (z. B. Physio- und Ergotherapeut*innen, Logopäd*innen, 42 Gestaltung von
+    Arbeits- und Beziehungsprozessen CE 07 Rehabilitatives Pflegehandeln im interprof
+- ce: CE 08
+  titel: Menschen in kritischen Lebenssituationen und in der letzten Lebensphase begleiten
+  handlungsanlaesse:
+  - Pflegebedarf bei Menschen aller Altersstufen und deren Bezugspersonen in kritischen Lebenssituationen,
+    ausgelöst durch chronische, onkologische oder andere, auch angeborene, lebenslimitierende Erkrankungen
+  - Pflegebedarf bei sterbenden Menschen bzw. Menschen in der letzten Lebensphase aller Altersstufen und
+    deren Bezugspersonen
+  - Pflegekonzepte zur Unterstützung schwerkranker und sterbender Menschen, u. a. Basale Stimulation (Vertiefung
+    aus CE 2 B)
+  - 'gesundheits-, alters- und entwicklungsbedingte Bearbeitungs- bzw. Bewältigungsphänomene: Veränderungspotenziale,
+    Widerstandsfaktoren, Umstellung von Lebensplänen, Coping bzw. unwirksames Coping und Bereitschaft
+    zum Coping'
+  - spezifische (auch religiöse und kulturell bedingte) Selbstversorgungsbedürfnisse
+  - umfassender Pflegebedarf bei Menschen aller Altersstufen und deren Bezugspersonen in kritischen Lebenssituationen,
+    ausgelöst durch chronische oder onkologische Erkrankungen, u. a Inanspruchnahme von ambulanten und
+    stationären Hospizdiensten
+  - Pflegebedarf vor und nach Organtransplantation
+  - Strukturen der Palliativversorgung; Kosten und Finanzierung 103 Pflegehandeln in ausgewählten Pflegeanlässen
+    CE 08 Menschen in kritischen Lebenssituationen und in der letzten Lebensphase begleiten
+  - Pflegediagnosen und -phänomene im Zusammenhang mit kritischen Lebenssituationen und in der letzten
+    Lebensphase
+  - umfassender Pflegebedarf bei sterbenden Menschen bzw. bei Menschen in der letzten Lebensphase aller
+    Altersstufen und deren Bezugspersonen
+  - Versorgung Verstorbener unter Berücksichtigung kultureller Bedürfnisse
+  kontextbedingungen:
+  - alle Bereiche der Akut- und Langzeitversorgung
+  - 'institutionelle und gesellschaftliche Bedingungen: Kultur und Religion 3. Ausbildungsdrittel'
+  - ambulante und stationäre Palliativ- und Hospizversorgung
+  - 'institutionelle und gesellschaftliche Bedingungen: Patientenverfügung, Sterbehilfe, palliative Versorgung,
+    gesellschaftlicher Umgang mit kritischen Lebenssituationen und Begleitung in der letzten Lebensphase'
+  handlungsmuster:
+  - persönliche Reflexion kritischer Lebenssituationen und des eigenen Erlebens angesichts chronisch und
+    onkologisch erkrankter und sterbender Menschen aller Altersstufen
+  - Reflexion eigener Bewältigungsstrategien, Erkennen von Faktoren der Resilienz und/oder (drohender)
+    Überforderung, frühzeitiges Annehmen und aktives Einfordern von Unterstützungsangeboten
+  - 'mit belastenden Erfahrungen umgehen, kollegiale Beratung in Anspruch nehmen, an Ritualen im Team
+    mitwirken Fokus auf zu pflegende Menschen und ihre Bezugspersonen und Familien: 104 Pflegehandeln
+    in ausgewählten Pflegeanlässen CE 08 Menschen in kritischen Lebenssituationen und in der letzten Lebensphase
+    begleiten'
+  - Gestaltung von Pflegeprozessen unter Einbezug des Expertenstandards
+  - „Schmerzmanagement in der Pflege bei chronischen Schmerzen“ und relevanter Leitlinien sowie weiterer
+    pflegewissenschaftlicher Erkenntnisse
+  - Palliative Care als Konzept und Versorgungsansatz, insbesondere Leiden lindern und vorbeugen sowie
+    Wohlbefinden fördern, u. a. im Rahmen des Schmerzmanagements, bei Mundschleimhautproblemen
+  - personen- und situationsbezogene Gesprächsführung, u. a. Beileidsbekundungen aussprechen
+  - Unterstützung z. B. bei der individuellen Auseinandersetzung mit den Veränderungen und bei der Lebensführung
+  - Informationsgabe, z. B. zur Förderung der Alltagskompetenz, der Familiengesundheit und der Selbstwirksamkeit
+  - eigenständige Durchführung ärztlich angeordneter Maßnahmen im Rahmen der Diagnostik und Therapie von
+    Menschen mit chronischen und onkologischen Erkrankungen, Mitwirkung an Therapien (z. B. Chemotherapie,
+    inkl. Arbeitsschutz, Konzepte und Leitlinien zur ökonomischen und ökologischen Gestaltung der Einrichtung),
+    u. a. Versorgung von Port, Zentraler Venenkatheter (ZVK)
+  - Interventionen zur Unterstützung der erwünschten Wirkung medizinischer Therapien
+  - Mitwirken an Entscheidungsfindungsprozessen
+  - im intra- und interprofessionellen Team zusammenarbeiten
+  - Analyse von Versorgungskontexten und Systemzusammenhängen in Einrichtungen der Akut- und Langzeitversorgung,
+    ökonomische und ökologische Prinzipien beachten 3. Ausbildungsdrittel
+  - Beratung, Schulung und Unterstützung von Menschen in kritischen Lebenssituationen bei der individuellen
+    Auseinandersetzung mit den Veränderungen sowie bei der Erhaltung und Stärkung der eigenstä
+- ce: CE 09
+  titel: Menschen bei der Lebensgestaltung lebenswertorientiert unterstützen
+  handlungsanlaesse:
+  - (junge) erwachsene Menschen mit Unterstützungsbedarf in der Lebensgestaltung aufgrund gesundheitsbedingter
+    und/oder funktionaler Veränderungen, u. a. Erkrankungsfolgen des Kreislaufsystems, oder neurodegenerativer
+    Veränderungen, Unfallfolgen
+  - Wegfall sozialer Netzwerke und sozialer Ressourcen, soziale Isolation, Vereinsamungsgefahr und Deprivation
+  - Veränderungen bzw. Wechsel des Wohnraums und Wohnumfelds als Zäsur der individuellen Lebenswelt 3.
+    Ausbildungsdrittel
+  - Unterstützungsbedarf von Bezugspersonen und sozialen Netzen in der Bewältigung und Gestaltung von
+    Lebens- und Pflegesituationen
+  - Beratungsbedarf bei Überlastungsphänomenen pflegender Bezugspersonen und des Familiensystems
+  - Gefahr der sozialen Isolation des Familiensystems in der Lebenswelt und im Quartier, im Sozialraum,
+    u. a. Deprivation
+  - Unterstützungsbedarf bei der Wohnraumgestaltung und beim Wechsel der Wohnformen
+  - Notwendigkeit der Zusammenarbeit mit informell Pflegenden
+  kontextbedingungen:
+  - 'gesellschaftliche Entwicklungen, die Lebensverläufe und Gesundheitsverläufe beeinflussen (Verhaltens-
+    und Verhältnisprävention): Technisierung, Digitalisierung, Überfluss, Armut, Nahrungsmittelverfügbarkeit,
+    Entgrenzung von Arbeit, kulturelle und religiöse Vielfalt'
+  - Wohnraum und Wohnumfeld, stationäre und ambulante Versorgungskontexte mit ihren Schnittstellen
+  - rechtliche Zuständigkeiten und Abrechnungssysteme für verschiedene Pflegesektoren 58 Unterstützung
+    bei der selbstbestimmten Lebensführung und Selbstpflege CE 09 Menschen bei der Lebensgestaltung lebenswertorientiert
+    unterstützen
+  - Möglichkeiten sozialer Vernetzung; besondere Netzwerke von Menschen mit LSBTI-Identitäten (Lesben,
+    Schwule, Bisexuelle, Transsexuelle, Transgender und Intersexuelle)
+  - lebensaltersentsprechende, entwicklungsgerechte und diversitätssensible Wohnraum- und Umgebungsgestaltung
+    3. Ausbildungsdrittel
+  - Sozialraum, Quartier, Kommune, ländlicher und städtischer Raum, z. B. Quartierskonzepte, Versorgungskonzepte
+    in strukturschwachen, ländlichen Räumen
+  - (pflege-)unterstützende Einrichtungen des Sozialraums, z. B. Pflegestützpunkte, Pflegeberatung, Freiwilligendienste,
+    Lotsensysteme
+  - alternative Wohnformen für Menschen unterschiedlicher Altersstufen
+  - rechtliche Grundlagen, finanzielle Förderung und Kostenträger der Wohnberatung
+  - sozialrechtliche Grundlagen der Pflegeberatung (SGB XI)
+  handlungsmuster:
+  - diversitätssensible Biografiearbeit
+  - Beobachtungen und Gespräche zur Aufschlüsselung lebensgeschichtlich bedeutsamer Verhaltensweisen
+  - Erzählungen und Erinnerungen anregen, narratives Interview (z. B. F. Schütze)
+  - sprachlich-prozedurale und leiblich-affektive Interaktion mit demenziell veränderten Menschen
+  - Pflegevisiten (unter Einbeziehung der Angehörigen und Bezugspersonen)
+  - Beratungsmethoden zur Einschätzung der Situation durch die zu pflegenden Menschen (und ihre Angehörigen),
+    zum Ausloten ihrer potenziellen Handlungsmöglichkeiten oder -barrieren
+  - lebensweltlich orientierte Pflegedokumentation (Dokumentation eigener Perspektiven durch die zu pflegenden
+    Menschen und ihre Bezugspersonen)
+  - Erkennen und Verstehen biografisch bedingter unterschiedlicher Lebensentwürfe und unterschiedlicher
+    Lebensgestaltung, subjektiver Krankheits- und Gesundheitsüberzeugungen sowie der darin vorhandenen
+    Ressourcen
+  - lebensweltlich orientierte Möglichkeiten sinnstiftender Aktivität für Menschen unterschiedlicher Altersstufen
+    und kultureller Herkunft
+  - Erfassen bedeutsamer Orientierungsmuster, elementarer Bedürfnisse und 59 Unterstützung bei der selbstbestimmten
+    Lebensführung und Selbstpflege CE 09 Menschen bei der Lebensgestaltung lebenswertorientiert unterstützen
+    eingenommener Haltungen bei Aufnahme in eine Einrichtung oder beim Aufsuchen in der eigenen Häuslichkeit
+    3. Ausbildungsdrittel
+  - Einschätzung der Pflegebereitschaft und Pflegekompetenzen von Bezugspersonen, in der Nachbarschaftshilfe
+    und im Freiwilligenengagement sowie von Ressourcen und Belastungen
+  - Koordination im Pflegeprozess mit einem qualifikationsheterogenen Team, z. B. Skills Mix und Grade
+    Mix
+  - Schulung zu ausgewählten Pflegeinterventionen und -techniken
+  - Beratung über technische Hilfsmittel und digitale Assistenzsysteme zur Unterstützung der Kommunikation
+    und Umfeldkontrolle
+  - Information über Einrichtungen und Dienste sowie digitale Netzwerke im Sozialraum
+  - Information über Angebote und Leistungsansprüche für pflegende Angehörige, zur Pflegeberatung, zu
+    entlastenden Diensten, z. B. zur Nachbarschaftshilfe, zu Freiwilligendiensten und zu Angeboten für
+    das eigene Wohlbefinden
+  - Analyse von Familienkonflikten im Pflegekontext
+  - (interdisziplinäre) Fallbesprechungen, um unterschiedlichen Dimensionen der Lebenswelt Rechnung zu
+    tragen
+  - Beratung, Begleitung und Unterstützung an institutionellen Schnittstellen und beim Wechsel des Versorgungskontextes
+    Wissensgrundlagen 1./2. Ausbildungsdrittel
+  - Erkrankungsfolgen des Kreislaufsystems, u. a. chronische Herzinsuffizienz im Kindesund Jugendalter
+  - neurodegenerative Veränderungen, u. a. Multiple Sklerose, Unfallfolgen (u. a. Querschnittslähmung)
+  - Grundlagen der Biografiearbeit, z. B. Zeitformen und Vorgehensweise (D. McTaggart)
+  - Konzept der Lebenswelt und Lebensweltorientierung, z. B. Lebensweltorientierte soziale Arbeit (H.
+    Thiersch)
+  - Veränderungen des Sprachvermögens und der sprachlichen Verständigungsfähigkeit in unterschiedlichen
+    Demenzstadien
+  - Konzepte und Theorien der familienorientierten Pflege, inkl. traditionelle Familie und Vielfalt der
+    Lebensformen, u. a. Theorie des systemischen Gleichgewichts (M.-L. Friedemann)
+  - Konzepte der inter- und transkulturellen Pflege, z. B. Sunrise-Modell (M. Leininger) 60 Unterstützung
+    bei der selbstbestimmten Lebensführung und Selbstpflege CE 09 Menschen bei der Lebensgestaltung lebenswertorientiert
+    unterstützen
+  - konzeptionelle Ansätze der Intersektionalität und einer Diversity-Pflege
+  - 'Pflegebedürftigkeit: sozialrechtliche Grundlagen des SGB XI, Begriff, Begutachtungsassessment (NBA),
+    Begutachtungsrichtlinien, Pflegegrade, Medizinischer Dienst der Krankenkassen MDK'
+  - Strukturmodell der Pflegedokumentation 3. Ausbildungsdrittel
+  - Pflege und Sorge in der Zivilgesellschaft, „Sorgende Gemeinschaften“ als gesellschaftl
+- ce: CE 10
+  titel: Entwicklung und Gesundheit in Kindheit und Jugend in pflegerischen Situationen fördern
+  handlungsanlaesse:
+  - unzureichender Schwangerschafts-, Geburts- und Wochenbettverlauf
+  - reduziertes Geburtsgewicht und Unreifezeichen (fehlende Reifezeichen) beim Neugeborenen
+  - Wärmeverlust, Vitalitätsschwankungen, Atemstörungen, Probleme bei der Nahrungsaufnahme und bei der
+    Ausscheidung
+  - fehlender Saugreflex und Schluckstörungen beim Säugling
+  - unterbrochenes Stillen
+  - Infektionsgefahr
+  - Gefahr einer neonatalen Hyperbilirubinämie
+  - frühkindliche Regulationsstörung (u. a. Anpassungsstörungen)
+  - Gefahr einer Entwicklungsverzögerung Pflegebedarfe bezogen auf die Familiensituation und Elternkompetenzen
+  - beeinträchtigte Elternkompetenzen
+  - Gefahr einer beeinträchtigten Bindung
+  - beeinträchtigte soziale Interaktion
+  - Gefahr einer beeinträchtigten Beziehung Pflegebedarfe in späteren Lebensphasen
+  - großflächige Hautschädigungen, Kratzspuren, Krustenbildung und Hautblutungen
+  - Juckreiz und Hautläsionen
+  - Schlafstörungen durch Juckreiz
+  - Infektionsgefahr der Hautläsionen
+  - Gefahr einer Hyperthermie, Wärmestauungen und Unruhe
+  - Schmerzen, beeinträchtigtes Wohlbefinden
+  - Gefahr einer kognitiven und sozialen Entwicklungsverzögerung, Veränderungen im Entwicklungsverlauf,
+    soziale Isolation Pflegebedarfe in späteren Lebensphasen bezogen auf die Familiensituation und Elternkompetenzen
+    76 Gesundheit und Entwicklung fördern CE 10 Entwicklung und Gesundheit in Kindheit und Jugend in pflegerischen
+    Situationen fördern
+  - Rollenüberlastung der pflegenden Bezugspersonen
+  - elterliche Rollenkonflikte
+  - gefährdetes familiäres Coping
+  - Gefahr von Machtlosigkeit 3. Ausbildungsdrittel
+  - Gefahr einer behinderten Atmung, Kurzatmigkeit, pfeifende Atemgeräusche, Luftnot sowie eine Unterversorgung
+    mit Sauerstoff
+  - Gefahr eines Asthmaanfalls, Hustenreiz und zäher Schleim, Atemnot bis zur Erstickungsgefahr, Ruhelosigkeit
+    und Angst
+  - Gefahr einer allergischen Reaktion
+  - Risiken oder Beeinträchtigungen der kindlichen Entwicklung und einer sozialen Isolation
+  - Notwendigkeit eines Medikamentenmanagements
+  - Gefahr eines instabilen Blutzuckerspiegels
+  - Gefahr einer Gesundheitsschädigung bzw. einer Stoffwechselentgleisung
+  - Gefahr einer Aktivitätsintoleranz
+  - unwirksames Therapiemanagement
+  - unwirksames Management der eigenen Gesundheit
+  - gefahrengeneigtes Gesundheitsverhalten
+  - beeinträchtigte Compliance oder Adhärenz
+  - Wissensdefizit bezüglich relevanter gesundheits- und pflegebezogener Themen
+  - Gefahr eines geringen Selbstwertgefühls
+  - Gefahr von Entwicklungsverzögerung und Überforderung durch zu frühe Selbständigkeit oder die erhöhte
+    Forderung an die Selbständigkeit
+  - Gefahr einer sozialen Isolation
+  - Gefahr der Überforderung der Familie durch Entwicklungsaufgaben und das erforderliche situative Gesundheitsmanagement
+  - vermeidende dysfunktionale Bewältigungsstrategien
+  - familiäre Konflikte und dysfunktionale Kommunikationsformen innerhalb der Familie
+  - depressive Stimmungslagen 77 Gesundheit und Entwicklung fördern CE 10 Entwicklung und Gesundheit in
+    Kindheit und Jugend in pflegerischen Situationen fördern
+  - Gefahr einer beeinträchtigten elterlichen Fürsorge
+  - veränderte Lebenspläne und familiäre Anpassungsaufgaben
+  - familiäre Widerstandsfaktoren und Risiken
+  - Gefahr eines beeinträchtigten familiären Copings
+  - beeinträchtigte Familienprozesse bzw. Entwicklungsphasen
+  kontextbedingungen:
+  - stationäre und ambulante Einrichtungen zur pflegerischen Versorgung von Kindern und Jugendlichen,
+    wie pädiatrische Einrichtungen, z. B. Kinderkliniken oder Kinderfachabteilungen
+  - ambulante und stationäre Versorgung gesunder Neugeborener und Wöchnerinnen
+  - 'Gesetze, Leitlinien und Chartas: o die UN-Kinderrechtskonvention o die EACH-Charta o die Kinderrechte
+    und Schutzgesetze o das Sorgerecht o die Selbstbestimmungsrechte von Kindern und Jugendlichen 78 Gesundheit
+    und Entwicklung fördern CE 10 Entwicklung und Gesundheit in Kindheit und Jugend in pflegerischen Situationen
+    fördern'
+  handlungsmuster:
+  - Erhebung entwicklungsbedingter, allgemeiner und gesundheitsbedingter Selbstpflegeerfordernisse bzw.
+    Pflegebedarfe
+  - Erhebung des Unterstützungs- und Informationsbedarfs von Wöchnerinnen
+  - Mitwirkung bei der Erstversorgung eines Neu- oder Frühgeborenen im Kreißsaal
+  - Beobachtung des Interaktionsverhalten zwischen Neu- und Frühgeborenen und deren Bezugspersonen
+  - Beobachtung und Einschätzung von (intuitiven) Elternkompetenzen
+  - pflegerische Unterstützung und Begleitung von kindlichen und mütterlichen Anpassungsprozessen
+  - Einschätzung von Reifezeichen
+  - Beobachtung und Einschätzung der Vitalität des Neu- oder Frühgeborenen
+  - Pflege des Neugeborenen oder Frühgeborenen und der Wöchnerin
+  - Stärkung des Saug- und Schluckreflexes
+  - Stillanleitung und -förderung
+  - Mitwirkung bei präventiven Maßnahmen in der Neugeborenenperiode (bei stabilen Frühgeburten)
+  - Vorsorgeuntersuchungen
+  - Neugeborenen-Screening
+  - Umsetzung von entwicklungsfördernden Pflegekonzepten
+  - Gestaltung einer entwicklungsfördernden Umgebung
+  - Informationen zur Gesundheitsförderung und Prävention (auch SIDS) situationsorientiert und adressatengerecht
+    weitergeben
+  - Förderung von Eltern und Bezugspersonen in der Interaktionsgestaltung mit einem Neugeborenen oder
+    einem moderat zu früh geborenen Kind (Bonding)
+  - Zusammenarbeit im geburtshilflichen Team und Abgrenzung der jeweiligen Verantwortungs- und Aufgabenbereiche
+  - Beobachtung des Entwicklungsstands von Kindern und Jugendlichen (motorische, soziale, emotionale,
+    sprachliche und kognitive Entwicklung) und Erkennen von Entwicklungs- und Gesundheitsrisiken unter
+    Nutzung von Entwicklungsskalen 79 Gesundheit und Entwicklung fördern CE 10 Entwicklung und Gesundheit
+    in Kindheit und Jugend in pflegerischen Situationen fördern
+  - Erhebung sozialer und familiärer Informationen und Kontextbedingungen von Kindern und Jugendlichen
+  - Erhebung einer Familienanamnese unter Berücksichtigung familiärer Schutz- und Widerstandsfaktoren
+    Pflegerische Unterstützung in späteren Altersphasen
+  - Erhebung und Einschätzung des Hautzustands, frühzeitiges Erkennen und Prävention von Superinfektionen
+  - frühzeitiges Erkennen von Belastungsfaktoren, Maßnahmen zur Reduktion von Juckreiz und Hautschädigungen
+    und Förderung einer intakten Haut
+  - Durchführung diagnostischer, therapeutischer und rehabilitativer Maßnahmen
+  - entwicklungsorientierte Vorbereitung und Begleitung von Kindern und Jugendlichen bei invasiven Maßnahmen
+    unter Berücksichtigung der emotionalen und kognitiven Entwicklung
+  - Förderung von Selbstpflege- und Dependenzpflegekompetenz
+  - Förderung sozialer Integration
+  - Beziehungsgestaltung unter Berücksichtigung der umfassenden Entwicklung von Kindern und Jugendlichen
+    in Einrichtungen der Akut- und Langzeitpflege
+  - Gestaltung entwicklungsorientierter Kommunikation
+  - Gewährleistung von physischem und psychischem Schutz und von Sicherheit 3. Ausbildungsdrittel
+  - Erhebung des Pflegebedarfs von Kindern und Jugendlichen mit gesundheitlichen Problemlagen unter Nutzung
+    ausgewählter spezifischer, auf das Kindesalter ausgerichteter Assessmentinstrumente
+  - Beobachtung und Einschätzung von Atmung und Atemwegsobstruktionen, auch durch Messung der Sauerstoffsättigung,
+    die Beobachtung der Hautfarbe, Lippen und Fingernägel
+  - Peak-Flow-Messungen, Führung eines Asthmatagebuchs
+  - Sicherung der Flüssigkeitszufuhr und Entspannung
+  - Durchführung von Inhalationen und atemunterstützenden Maßnahmen
+  - Mitwirkung an der Notfallplanung in Atemnotsituationen, in Notfallsituationen sicher handeln
+  - Aushandlung von Rollen und Aufgabenbereichen mit den Familien, 80 Gesundheit und Entwicklung fördern
+    CE 10 Entwicklung und Gesundheit in Kindheit und Jugend in pflegerischen Situationen fördern Eltern
+    und Bezugspersonen
+- ce: CE 11
+  titel: Menschen mit psychischen Gesundheitsproblemen und kognitiven Beeinträchtigungen personenzentriert
+    und lebensweltbezogen unterstützen
+  handlungsanlaesse:
+  - situationsbedingtes bzw. chronisch geringes Selbstwertgefühl
+  - beeinträchtigte soziale Interaktion
+  - Machtlosigkeit
+  - beeinträchtigte Denkprozesse (mit Einschränkungen u. a. des Gedächtnisses, der Aufmerksamkeit, der
+    Handlungsplanung, der Urteilsfähigkeit)
+  - akute und chronische Verwirrtheit
+  - Angst, Furcht
+  - Antriebsschwäche
+  - unwirksames oder defensives Coping
+  - Wahrnehmungsstörung
+  - psychosomatische Beschwerden
+  - unwirksames Rollenverhalten
+  - Schlafstörung, nächtliche Unruhe
+  - Stressüberlastung (z. B. Burn-out)
+  - herausforderndes Verhalten
+  - Gefahr einer selbst- und/oder fremdgefährdenden Gewalttätigkeit
+  - Suizidgedanken, -gefahr
+  - Selbstverletzung und Selbstverletzungsgefahr
+  - Körperbildstörung
+  - unwirksame Leugnung
+  - gefährdendes und verhindertes familiäres Coping
+  - beeinträchtigte und unterbrochene Familienprozesse
+  - elterlicher Rollenkonflikt
+  - Gefahr einer Rollenüberlastung der pflegenden Bezugsperson bzw. Rollenüberlastung der pflegenden Bezugsperson
+  - posttraumatische Reaktion
+  kontextbedingungen:
+  - Geschichte und Gegenwart der gerontopsychiatrischen Pflege (u. a. Pflege im Nationalsozialismus, Psychiatriereform)
+  - spezifische gesetzliche Rahmenbedingungen (u. a. BayPsychKHG, Betreuungsrecht, UN-Behindertenrechtskonvention)
+  - spezifische ökonomische Rahmenbedingungen
+  - Inklusion und Stigmatisierung und Diskriminierung psychisch kranker und kognitiv beeinträchtigter
+    Menschen
+  - Verständnis von psychischer und kognitiver Gesundheit und Krankheit vor dem Hintergrund anthropologischer
+    Erkenntnisse und sozial konstruierter Normabweichung Mesoebene
+  - Institutionen der (geronto-)psychiatrischen und geriatrischen sowie kinder- und jugendpsychiatrischen
+    Versorgung
+  - pflegerisches Selbstverständnis in der psychiatrischen Pflege
+  - 'Arbeitsablaufstrukturen bzw. Pflegesystem: Bezugspflege, Primary Nursing 114 Pflegehandeln in ausgewählten
+    Pflegeanlässen CE 11 Menschen mit psychischen Gesundheitsproblemen und kognitiven Beeinträchtigungen
+    personenzentriert und lebensweltbezogen unterstützen 3. Ausbildungsdrittel'
+  - ausgewählte Leitlinien (z. B. zu freiheitsentziehenden Maßnahmen Werdenfelser Weg)
+  - Expertenstandard „Beziehungsgestaltung in der Pflege von Menschen mit Demenz“
+  - sozialrechtliche Vorgaben in Bezug auf die gemeindenahe und lebensweltorientierte Versorgung von Menschen
+    mit schweren psychischen Erkrankungen und komplexem Hilfebedarf (u. a. PsychVVG, SGB XI, SGB X und
+    SGB IX)
+  - pflegerische Weiterbildungen und neue pflegerische Berufe im psychiatrischen Feld
+  handlungsmuster:
+  - Pflegebedarf feststellen und Pflegeprozesse zur personenzentrierten Unterstützung von Menschen mit
+    psychischen Erkrankungen dialogisch planen, steuern, durchführen und evaluieren, dabei Orientierung
+    an spezifischen
+  - Pflegemodellen und -theorien
+  - Kommunikation unter Berücksichtigung von Stimmungslagen
+  - Beziehungsaufbau und -gestaltung unter Berücksichtigung anderer Formen der Realitätswahrnehmung und
+    ggf. eigener Projektionen sowie einer personenzentrierten Haltung und Aspekten der Lebensweltorientierung
+  - Informationsweitergabe
+  - biopsychosoziale Beobachtung, Beschreibung und Interpretation (z. B. im Hinblick auf die Pharmakotherapie)
+  - Ermittlung der die jeweilige Pflegediagnose ursächlichen bzw. begünstigenden Faktoren und die Einschätzung
+    von Risikofaktoren sowie des Ausmaßes der Beeinträchtigung
+  - begleitende Alltagshilfe und Unterstützung bei der Bewältigung von Alltagsanforderungen und der Selbstversorgung
+  - Milieugestaltung
+  - Unterstützen im Umgang mit der gegenwärtigen Situation, Hinwendung zu positiven Veränderungen fördern
+    sowie zur Steigerungung des Wohlbefindens
+  - kollegiale Beratung, Supervision 3. Ausbildungsdrittel
+  - Pflegebedarf feststellen und Pflegeprozesse zur Unterstützung von Menschen mit schweren psychischen
+    Erkrankungen und komplexem 115 Pflegehandeln in ausgewählten Pflegeanlässen CE 11 Menschen mit psychischen
+    Gesundheitsproblemen und kognitiven Beeinträchtigungen personenzentriert und lebensweltbezogen unterstützen
+    Hilfebedarf (trialogisch) planen, steuern, durchführen und evaluieren
+  - personenzentrierte und lebensweltorientierte Beziehungsgestaltung unter Berücksichtigung der auszubalancierenden
+    Aspekte
+  - Unterstützung und Einbindung von sozialen Bezugspersonen
+  - Familienbeteiligungsförderung
+  - Information und Schulung von einzelnen zu pflegenden Menschen und Gruppen zu pflegender Menschen,
+    z. B. bzgl. des Medikamentenmanagements, der Lebensgestaltung, der Förderung sozialer Teilhabe, des
+    Bewältigungshandelns
+  - entlastende und orientierungsgebende Gesprächsführung (Einführung)
+  - psychische Krisen erkennen und Gewährleistung unmittelbarer kurzfristiger Hilfe in psychischen und
+    physischen Krisen, Prävention von Risiken
+  - Deeskalation, Interventionen zur Vermeidung von Gewalt
+  - interprofessionelle Zusammenarbeit
+  - Case Management in verschiedenen Versorgungskontexten sowie sektoren- und berufsgruppenübergreifende
+    Organisation der Versorgung
+  - Care Management (z. B. regionale Hilfsangebote)
+  - ambulante, aufsuchende Versorgungsansätze Wissensgrundlagen
+  - soziologische und sozialwissenschaftliche Grundlagen der Demenz („Demenz ist keine Krankheit“) und
+    psychischer Erkrankungen
+  - Delir, Demenz (amnestische und andere kognitive Störungen) und deren Differentialdiagnosen
+  - gerontopsychiatrische Konzepte und Modelle, u. a. Validation (N. Feil), Realitätsorientierungstraining
+    (L. R. Taulbee et al.), Personzentierte Pflege und Betreuung (T. Kitwood); Psychobiografisches Pflegemodell
+    (E. Böhm)
+  - psychiatrische Konzepte, u. a. Recovery-Modell
+  - unterschiedliche Klassifikationssysteme in der psychiatrischen Pflege (z. B. NANDA-I, NOC, ICD, DSM,
+    ICF)
+  - posttraumatische Belastungsstörung, posttraumatisches Wachstum (R. G. Tedeschi)
+  - affektive Störungen
+  - Suchterkrankungen, u. a. stoffgebundene und nicht-stoffgebundene Süchte
+  - Zwangserkrankungen
+  - Persönlichkeitsstörungen, u. a. Borderline-Störung, Schizophrenie
+  - psychische und Verhaltensstörungen
+  - Essstörungen 116 Pflegehandeln in ausgewählten Pflegeanlässen CE 11 Menschen mit psychischen Gesundheitsproblemen
+    und kognitiven Beeinträchtigungen personenzentriert und lebensweltbezogen unterstützen
+  - 'verhaltens- und emotionale Störungen mit Beginn in der Kindheit und Jugend: Aufmerksamkeitsdefizit'
+  - Sekundärtraumatisierung von beruflich Pflegenden
+  - Überblick über spezielle psychiatrische und psyc

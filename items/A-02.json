@@ -1,0 +1,79 @@
+{
+  "aufgabe_id": "A-02",
+  "metadaten": {
+    "pruefungsbereich": "2",
+    "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann",
+    "bearbeitungszeit_minuten": 120,
+    "autor": "synthetisch (PoC-Testkorpus)",
+    "version": "1.0",
+    "datum": "2026-09-08"
+  },
+  "ce_bezug": ["CE 04"],
+  "fallsituation": {
+    "text": "Herr Baumgartner ist 54 Jahre alt und arbeitet als Busfahrer im Schichtdienst. Er liegt seit 2 Tagen auf der internistischen Station. Bei der Aufnahme betrug sein HbA1c 9,4 Prozent. Der Arzt hat einen Diabetes mellitus Typ 2 diagnostiziert. Herr Baumgartner raucht seit 30 Jahren etwa 20 Zigaretten taeglich. Sein Body-Mass-Index liegt bei 32. Er sagt Ihnen, er habe von Diabetes bisher nur gehoert, dass man dann nichts Sues mehr essen darf. Seine Frau kocht zu Hause, er isst waehrend der Schichten meist an Raststaetten. Herr Baumgartner moechte seinen Beruf weiter ausueben und fragt Sie, ob das noch geht.",
+    "situationsmerkmale": {
+      "handlungsanlaesse": ["neu diagnostizierte chronische Erkrankung", "Gesundheitsrisiken durch Lebensstil", "Informationsbedarf"],
+      "kontextbedingungen": ["Akutkrankenhaus, internistische Station", "Schichtarbeit", "Ernaehrungssituation unterwegs"],
+      "handlungsmuster": ["Gesundheitsfoerderung", "Beratung", "Praevention von Folgeerkrankungen"],
+      "akteure": ["Herr Baumgartner", "Ehefrau", "Arzt", "Pflegefachperson"]
+    },
+    "versorgungsbereich": "stationaer_akut",
+    "altersgruppe": "erwachsener",
+    "pflegebeduerftigkeit": "keine Pflegebeduerftigkeit im Sinne des SGB XI, hoher Beratungsbedarf"
+  },
+  "teilaufgaben": [
+    {
+      "text": "Nennen Sie 5 Risikofaktoren fuer Folgeerkrankungen, die die Fallsituation von Herrn Baumgartner benennt.",
+      "anforderungsniveau": "I",
+      "punkte": 5.0,
+      "kompetenzzuordnung": ["I.2.a"],
+      "erwartungshorizont": {
+        "erwartungspunkte": [
+          {"text": "HbA1c von 9,4 Prozent", "punkte": 1.0},
+          {"text": "Nikotinkonsum von 20 Zigaretten taeglich ueber 30 Jahre", "punkte": 1.0},
+          {"text": "Body-Mass-Index von 32", "punkte": 1.0},
+          {"text": "Schichtarbeit mit unregelmaessigen Mahlzeiten", "punkte": 1.0},
+          {"text": "geringes Wissen ueber die Erkrankung", "punkte": 1.0}
+        ]
+      }
+    },
+    {
+      "text": "Erklaeren Sie 3 Inhalte, die Sie mit Herrn Baumgartner im Beratungsgespraech zur Ernaehrung bei Schichtarbeit besprechen.",
+      "anforderungsniveau": "II",
+      "punkte": 9.0,
+      "kompetenzzuordnung": ["II.2.b"],
+      "erwartungshorizont": {
+        "erwartungspunkte": [
+          {"text": "Mahlzeitenverteilung ueber die Schicht statt einer Hauptmahlzeit", "punkte": 3.0},
+          {"text": "Auswahlmoeglichkeiten an Raststaetten realistisch besprechen", "punkte": 3.0},
+          {"text": "Einbeziehung der Ehefrau in die Mahlzeitenplanung", "punkte": 3.0}
+        ]
+      }
+    },
+    {
+      "text": "Begruenden Sie 2 praeventive Massnahmen fuer Herrn Baumgartner mit pflegewissenschaftlichem Begruendungswissen.",
+      "anforderungsniveau": "II",
+      "punkte": 8.0,
+      "kompetenzzuordnung": ["V.1.b"],
+      "erwartungshorizont": {
+        "erwartungspunkte": [
+          {"text": "strukturierte Schulung, weil Selbstmanagementkompetenz die Stoffwechsellage nachweislich verbessert", "punkte": 4.0},
+          {"text": "Fussinspektion und Fusspflege, weil die Polyneuropathie ein Hauptrisiko fuer Ulzerationen ist", "punkte": 4.0}
+        ]
+      }
+    },
+    {
+      "text": "Beurteilen Sie 2 Auswirkungen der Erkrankung auf die Berufstaetigkeit von Herrn Baumgartner.",
+      "anforderungsniveau": "III",
+      "punkte": 8.0,
+      "kompetenzzuordnung": ["I.2.d"],
+      "erwartungshorizont": {
+        "erwartungspunkte": [
+          {"text": "Hypoglykaemierisiko im Strassenverkehr und dessen arbeitsmedizinische Bedeutung", "punkte": 4.0},
+          {"text": "Vereinbarkeit von Schichtdienst und Therapieregime, Berufsausuebung bleibt bei stabiler Einstellung moeglich", "punkte": 4.0}
+        ]
+      }
+    }
+  ],
+  "geschwister_aufgaben": ["A-01", "A-03"]
+}

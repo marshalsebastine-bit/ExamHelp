@@ -1,0 +1,27 @@
+{
+  "aufgabe_id": "B-03",
+  "metadaten": {"pruefungsbereich": "3", "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann", "bearbeitungszeit_minuten": 120, "autor": "synthetisch (PoC-Testkorpus)", "version": "1.0", "datum": "2026-09-08"},
+  "ce_bezug": ["CE 08"],
+  "fallsituation": {
+    "text": "Frau Lindqvist ist 88 Jahre alt und lebt seit 4 Jahren in einer Pflegeeinrichtung. Sie hat eine fortgeschrittene Herzinsuffizienz. In den letzten 2 Wochen hat sie 3 Kilogramm abgenommen und isst nur noch wenige Loeffel pro Mahlzeit. Frau Lindqvist schlaeft tagsueber viel und spricht kaum. Sie hat eine Patientenverfuegung, die lebensverlaengernde Massnahmen ablehnt. Ihr Sohn fordert die Verlegung ins Krankenhaus und eine Infusionstherapie. Die Hausaerztin haelt eine palliative Begleitung fuer angezeigt. Eine Pflegehelferin sagt im Dienstzimmer, man koenne sie doch nicht einfach verhungern lassen.",
+    "situationsmerkmale": {
+      "handlungsanlaesse": ["letzte Lebensphase", "nachlassende Nahrungsaufnahme", "Konflikt um die Behandlungsentscheidung"],
+      "kontextbedingungen": ["Langzeitpflegeeinrichtung", "vorliegende Patientenverfuegung", "divergierende Erwartungen im Umfeld"],
+      "handlungsmuster": ["palliative Begleitung", "ethische Entscheidungsfindung", "Kommunikation mit Angehoerigen"],
+      "akteure": ["Frau Lindqvist", "Sohn", "Hausaerztin", "Pflegehelferin", "Pflegefachperson"]
+    },
+    "versorgungsbereich": "stationaer_langzeit", "altersgruppe": "alter_mensch",
+    "pflegebeduerftigkeit": "hoher Grad an Pflegebeduerftigkeit in der letzten Lebensphase"
+  },
+  "teilaufgaben": [
+    {"text": "Benennen Sie 4 Beobachtungen bei Frau Lindqvist, die auf die letzte Lebensphase hinweisen.", "anforderungsniveau": "I", "punkte": 6.0, "kompetenzzuordnung": ["I.3.d"],
+     "erwartungshorizont": {"erwartungspunkte": [{"text": "Gewichtsabnahme von 3 Kilogramm in 2 Wochen", "punkte": 1.5}, {"text": "deutlich reduzierte Nahrungsaufnahme", "punkte": 1.5}, {"text": "zunehmende Schlafdauer am Tag", "punkte": 1.5}, {"text": "nachlassende verbale Kommunikation", "punkte": 1.5}]}},
+    {"text": "Erlaeutern Sie 3 pflegerische Massnahmen, die das Wohlbefinden von Frau Lindqvist erhalten.", "anforderungsniveau": "II", "punkte": 9.0, "kompetenzzuordnung": ["I.3.e"],
+     "erwartungshorizont": {"erwartungspunkte": [{"text": "Mundpflege zur Linderung von Durstgefuehl und Mundtrockenheit", "punkte": 3.0}, {"text": "Nahrungs- und Fluessigkeitsangebot nach Wunsch ohne Zwang", "punkte": 3.0}, {"text": "Positionierung und Hautpflege zur Vermeidung von Druckschmerz", "punkte": 3.0}]}},
+    {"text": "Erlaeutern Sie 2 Aspekte zur Verbindlichkeit der Patientenverfuegung von Frau Lindqvist.", "anforderungsniveau": "II", "punkte": 7.0, "kompetenzzuordnung": ["III.2.a"],
+     "erwartungshorizont": {"erwartungspunkte": [{"text": "die Verfuegung ist bindend, soweit sie auf die aktuelle Situation zutrifft", "punkte": 3.5}, {"text": "der Sohn kann sie nicht gegen den erklaerten Willen aussetzen", "punkte": 3.5}]}},
+    {"text": "Beurteilen Sie 2 Handlungsmoeglichkeiten im Konflikt zwischen dem Sohn und der Patientenverfuegung.", "anforderungsniveau": "III", "punkte": 10.0, "kompetenzzuordnung": ["II.3.a", "II.3.c"],
+     "erwartungshorizont": {"erwartungspunkte": [{"text": "ethische Fallbesprechung im Team mit Hausaerztin und Sohn einberufen, Abwaegung von Autonomie und Fuersorge", "punkte": 5.0}, {"text": "Gespraech mit dem Sohn ueber Sinn und Grenzen einer Infusionstherapie, Abwaegung von Nichtschaden und Erwartungsdruck", "punkte": 5.0}]}}
+  ],
+  "geschwister_aufgaben": ["B-01", "B-02"]
+}

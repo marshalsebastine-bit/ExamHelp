@@ -1,0 +1,480 @@
+meta:
+  id: form
+  family: A
+  title: Familie A — Form und Konstruktion
+  purpose: >
+    Formal and constructional properties of an Aufsichtsarbeit. The highest-precision,
+    lowest-risk family. Ten of the fifteen rules need no model at all.
+  copyright_note: >
+    Where a rule's substance comes from the PflegePlus Handreichungen (Kamm / Roche, 2025),
+    rule_text is the project's own wording and source.quote is a short attributed citation.
+    Reproducing the Handreichung's formulation as rule_text would not be permissible;
+    citing it is (repo review 5, action 2).
+  jurisdiction_note: >
+    Rules sourced from the operator list and the Handreichungen are Bavaria-facing (BY).
+    Rules sourced from PflAPrV are federal and apply in all sixteen Laender.
+
+rules:
+
+  - id: FORM-01
+    family: A
+    title: Fallsituation vorhanden und fuer jede Teilaufgabe tragend
+    rule_text: >
+      Die Aufsichtsarbeit muss eine Fallsituation enthalten, und jede Teilaufgabe muss
+      sich auf diese Fallsituation beziehen. Eine Teilaufgabe, die auch ohne die
+      Fallsituation unveraendert beantwortbar ist, pruft kein fallbezogenes Handeln.
+    source:
+      document: PflAPrV
+      locator: § 14 Absatz 2 Satz 1
+      url: https://www.gesetze-im-internet.de/pflaprv/__14.html
+      quote: >
+        Die zu pruefende Person hat zu jedem dieser drei Pruefungsbereiche in jeweils einer
+        entsprechenden Aufsichtsarbeit schriftlich gestellte fallbezogene Aufgaben zu bearbeiten.
+    authority: binding_federal
+    jurisdiction: federal
+    check_type: hybrid
+    scope: aufgabe
+    input_slice: [fallsituation.text, teilaufgabe.text]
+    requires: [fallsituation.text, teilaufgabe.text]
+    severity_default: blocker
+    suggestion_template:
+      - "Die Teilaufgabe so umformulieren, dass sie auf konkrete Angaben der Fallsituation Bezug nimmt."
+      - "Alternativ die Fallsituation um die Angaben ergaenzen, die die Teilaufgabe voraussetzt."
+    mutation:
+      id: MUT-FORM-01
+      operation: decouple_teilaufgabe_from_fallsituation
+      description: >
+        Replace a case-referring Teilaufgabe with a generic knowledge question that is
+        answerable without reading the Fallsituation, leaving the Fallsituation unchanged.
+      target: teilaufgabe.text
+
+  - id: FORM-02
+    family: A
+    title: Bearbeitungsumfang plausibel fuer die Bearbeitungszeit
+    rule_text: >
+      Der Bearbeitungsumfang muss zur Bearbeitungszeit passen. Eine Aufsichtsarbeit dauert
+      120 Minuten; Punktzahl und Anzahl der Teilaufgaben duerfen daraus keinen Umfang
+      ergeben, der in dieser Zeit nicht zu bearbeiten ist.
+    source:
+      document: PflAPrV
+      locator: § 14 Absatz 3 Satz 1
+      url: https://www.gesetze-im-internet.de/pflaprv/__14.html
+      quote: "Die Aufsichtsarbeiten dauern jeweils 120 Minuten."
+    authority: binding_federal
+    jurisdiction: federal
+    check_type: deterministic
+    scope: aufgabe
+    input_slice:
+      - aufgabe.metadaten.bearbeitungszeit_minuten
+      - aufgabe.teilaufgaben
+      - teilaufgabe.punkte
+    requires: [aufgabe.teilaufgaben, teilaufgabe.punkte]
+    severity_default: pruefen
+    suggestion_template:
+      - "Punktzahl oder Anzahl der Teilaufgaben reduzieren."
+      - "Den Erwartungshorizont auf die Kernanforderungen kuerzen."
+    mutation:
+      id: MUT-FORM-02
+      operation: inflate_scope
+      description: >
+        Double the total Punkte and the number of Teilaufgaben while leaving the
+        Bearbeitungszeit at 120 minutes.
+      target: aufgabe.teilaufgaben
+
+  - id: FORM-03
+    family: A
+    title: Operator stammt aus der Operatorenliste
+    rule_text: >
+      Der in einer Teilaufgabe verwendete Operator muss auf der fuer die Pruefungserstellung
+      bereitgestellten Operatorenliste stehen. Ein nicht gelisteter Handlungsverb laesst
+      offen, welche Leistung erwartet wird.
+    source:
+      document: "PflegePlus Handreichung 01: Umgang mit Operatoren in der Pflegeausbildung"
+      locator: 3.2 Erweiterte Operatorenliste
+      url: https://www.pflegeplus-sprache.de
+      quote: >
+        eine Liste mit einer Auswahl der gelaeufigsten Operatoren mit verbindlichem Charakter
+    authority: third_party_advisory
+    jurisdiction: BY
+    check_type: deterministic
+    scope: teilaufgabe
+    input_slice: [teilaufgabe.text]
+    requires: [teilaufgabe.text]
+    severity_default: pruefen
+    suggestion_template:
+      - "Das Handlungsverb durch einen Operator der Liste ersetzen, der die gewuenschte Leistung beschreibt."
+    mutation:
+      id: MUT-FORM-03
+      operation: replace_operator_with_unlisted
+      description: >
+        Replace the Operator with a plausible but unlisted German verb ("erfinden",
+        "ueberlegen"), which a similarity search would silently match to its nearest
+        listed neighbour but a set-membership test must reject.
+      target: teilaufgabe.text
+    notes: >
+      Reads rules/operators.yaml as a lookup table. This must be set membership, never a
+      similarity search: an invented operator has to return nothing rather than its nearest
+      real neighbour, or the check silently passes (repo review 2.1). The official
+      Bay. StMUK list is not yet in hand, so the extended list stands in — see
+      rules/operators.yaml meta.open_questions.
+
+  - id: FORM-04
+    family: A
+    title: Operator passt zum ausgewiesenen Anforderungsniveau
+    rule_text: >
+      Der verwendete Operator muss dem fuer die Teilaufgabe ausgewiesenen Anforderungsniveau
+      entsprechen. Ein Operator des Anforderungsbereichs I traegt kein Anforderungsniveau III.
+    source:
+      document: "PflegePlus Handreichung 01: Umgang mit Operatoren in der Pflegeausbildung"
+      locator: 3.2 Erweiterte Operatorenliste, Anforderungsbereiche I-III
+      url: https://www.pflegeplus-sprache.de
+      quote: "Anforderungsbereich I: Reproduktion – Wiedergabe von Kenntnissen"
+    authority: third_party_advisory
+    jurisdiction: BY
+    check_type: deterministic
+    scope: teilaufgabe
+    input_slice: [teilaufgabe.text, teilaufgabe.anforderungsniveau]
+    requires: [teilaufgabe.text, teilaufgabe.anforderungsniveau]
+    severity_default: pruefen
+    suggestion_template:
+      - "Den Operator auf einen des ausgewiesenen Anforderungsbereichs anheben."
+      - "Alternativ das ausgewiesene Anforderungsniveau an den verwendeten Operator anpassen."
+    mutation:
+      id: MUT-FORM-04
+      operation: swap_operator_level
+      description: >
+        Replace the Operator with one from a lower Anforderungsbereich while leaving the
+        declared Anforderungsniveau unchanged.
+      target: teilaufgabe.text
+    notes: >
+      An operator can sit at more than one Anforderungsbereich ("ableiten" at II and III),
+      so the check passes if the declared level matches any of the operator's levels.
+
+  - id: FORM-05
+    family: A
+    title: Keine verschachtelten Saetze, keine doppelte Negation
+    rule_text: >
+      Fallsituation und Aufgabenstellung sollen ohne Schachtelsaetze, Genitivketten und
+      doppelte Negationen formuliert sein. Sprachliche Komplexitaet, die nicht Teil des
+      Pruefungsgegenstands ist, verzerrt das Pruefungsergebnis.
+    source:
+      document: "PflegePlus Handreichung 02: Sprachsensibel Pruefen in der Pflegeausbildung"
+      locator: Anhang 1, Checkliste
+      url: https://www.pflegeplus-sprache.de
+      quote: "keine komplexen Satzstrukturen (Schachtelsaetze, Nebensaetze, Genitivketten)"
+    authority: third_party_advisory
+    jurisdiction: BY
+    check_type: deterministic
+    scope: aufgabe
+    input_slice: [fallsituation.text, teilaufgabe.text]
+    requires: []
+    severity_default: hinweis
+    suggestion_template:
+      - "Den Satz in zwei Hauptsaetze aufteilen."
+      - "Die doppelte Negation durch eine positive Formulierung ersetzen."
+    mutation:
+      id: MUT-FORM-05
+      operation: nest_clauses
+      description: >
+        Rewrite one sentence with three levels of subordinate clause and one double
+        negation, leaving the content unchanged.
+      target: fallsituation.text
+
+  - id: FORM-06
+    family: A
+    title: Punktarithmetik konsistent
+    rule_text: >
+      Die Punktzahlen muessen zusammenpassen: die Punkte der Teilaufgaben ergeben die
+      Gesamtpunktzahl, und die Erwartungspunkte einer Teilaufgabe ergeben deren Punktzahl.
+    source:
+      document: Konstruktionsprinzip (projekteigene Regel, keine externe Quelle)
+      locator: FORM-06
+      quote: >
+        Die Punkte der Teilaufgaben ergeben die Gesamtpunktzahl; die Erwartungspunkte einer
+        Teilaufgabe ergeben deren Punktzahl.
+    authority: construction_principle
+    jurisdiction: federal
+    check_type: deterministic
+    scope: aufgabe
+    input_slice: [teilaufgabe.punkte, teilaufgabe.erwartungshorizont]
+    requires: [teilaufgabe.punkte]
+    severity_default: pruefen
+    suggestion_template:
+      - "Die abweichende Punktzahl korrigieren."
+      - "Die Erwartungspunkte so gewichten, dass sie die Punktzahl der Teilaufgabe ergeben."
+    mutation:
+      id: MUT-FORM-06
+      operation: perturb_punkte
+      description: >
+        Change one Erwartungspunkt's Punkte so the Erwartungshorizont no longer sums to
+        its Teilaufgabe's Punktzahl.
+      target: teilaufgabe.erwartungshorizont
+    notes: >
+      Authority is construction_principle, not a citation: no source states this, and
+      forcing one would fabricate evidence. The flag's evidence carries the computed
+      values alongside the rule text, which is what makes it verifiable.
+
+  - id: FORM-07
+    family: A
+    title: Erwartungshorizont antwortet auf die gestellte Teilaufgabe
+    rule_text: >
+      Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+      Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine
+      Begruendung bepunkten, und umgekehrt.
+    source:
+      document: Konstruktionsprinzip (projekteigene Regel, keine externe Quelle)
+      locator: FORM-07
+      quote: >
+        Die im Erwartungshorizont bepunktete Leistung muss der in der Teilaufgabe
+        verlangten Leistung entsprechen.
+    authority: construction_principle
+    jurisdiction: federal
+    check_type: llm
+    scope: teilaufgabe
+    input_slice: [teilaufgabe.text, teilaufgabe.erwartungshorizont]
+    requires: [teilaufgabe.text, teilaufgabe.erwartungshorizont]
+    severity_default: pruefen
+    suggestion_template:
+      - "Den Operator der Teilaufgabe an die im Erwartungshorizont erwartete Leistung anpassen."
+      - "Alternativ den Erwartungshorizont auf die in der Teilaufgabe verlangte Leistung reduzieren."
+    mutation:
+      id: MUT-FORM-07
+      operation: mismatch_erwartungshorizont
+      description: >
+        Lower the Teilaufgabe's Operator from "begruenden" to "nennen" while leaving an
+        Erwartungshorizont that rewards reasoning.
+      target: teilaufgabe.text
+    notes: >
+      The most compelling single check in the tool and the one that should lead the demo:
+      this mismatch is common, consequential, and invisible to a checklist (tech doc 3.4).
+
+  - id: FORM-08
+    family: A
+    title: Fallsituation liefert alle zur Beantwortung noetigen Angaben
+    rule_text: >
+      Die Fallsituation muss alle Angaben enthalten, die zur Beantwortung der Teilaufgaben
+      erforderlich sind. Fehlt eine Angabe, prueft die Aufgabe Vermutung statt Kompetenz.
+    source:
+      document: Konstruktionsprinzip (projekteigene Regel, keine externe Quelle)
+      locator: FORM-08
+      quote: >
+        Alle zur Beantwortung einer Teilaufgabe erforderlichen Angaben muessen in der
+        Fallsituation enthalten sein.
+    authority: construction_principle
+    jurisdiction: federal
+    check_type: llm
+    scope: aufgabe
+    input_slice: [fallsituation.text, teilaufgabe.text]
+    requires: [fallsituation.text, teilaufgabe.text]
+    severity_default: pruefen
+    suggestion_template:
+      - "Die fehlende Angabe in die Fallsituation aufnehmen."
+      - "Alternativ die Teilaufgabe auf die vorhandenen Angaben beschraenken."
+    mutation:
+      id: MUT-FORM-08
+      operation: remove_required_detail
+      description: >
+        Delete from the Fallsituation the one detail a Teilaufgabe depends on, leaving the
+        Teilaufgabe unchanged.
+      target: fallsituation.text
+    notes: >
+      This rule legitimately needs both the Fallsituation and the Teilaufgabe, which is why
+      input_slice is a per-rule declaration and not a global truncation (tech doc 3.3.1).
+
+  - id: FORM-09
+    family: A
+    title: Keine unbenutzten oder irrefuehrenden Angaben in der Fallsituation
+    rule_text: >
+      Die Fallsituation soll keine Angaben enthalten, die fuer keine Teilaufgabe benoetigt
+      werden und in eine falsche Richtung lenken. Zusaetzliche Laenge erhoeht die
+      Leseanforderung, ohne die gepruefte Kompetenz zu beruehren.
+    source:
+      document: "PflegePlus Handreichung 02: Sprachsensibel Pruefen in der Pflegeausbildung"
+      locator: Anhang 1, Checkliste, Fallsituation
+      url: https://www.pflegeplus-sprache.de
+      quote: "keine irrelevanten Informationen (Laenge!)"
+    authority: third_party_advisory
+    jurisdiction: BY
+    check_type: llm
+    scope: fallsituation
+    input_slice: [fallsituation.text, teilaufgabe.text]
+    requires: [fallsituation.text, teilaufgabe.text]
+    severity_default: hinweis
+    suggestion_template:
+      - "Die nicht benoetigte Angabe streichen."
+      - "Alternativ eine Teilaufgabe ergaenzen, die diese Angabe aufgreift."
+    mutation:
+      id: MUT-FORM-09
+      operation: insert_distractor_detail
+      description: >
+        Insert two clinically plausible but unused details into the Fallsituation that no
+        Teilaufgabe refers to.
+      target: fallsituation.text
+
+  - id: FORM-10
+    family: A
+    title: Fachsprachliche Angemessenheit, keine Stereotypisierung
+    rule_text: >
+      Die Fallsituation soll medizinische Fachbegriffe statt Umgangssprache oder
+      Pflegejargon verwenden und Personen ohne stereotype Zuschreibungen zu Herkunft,
+      Alter, Geschlecht oder sozialer Lage darstellen.
+    source:
+      document: "PflegePlus Handreichung 02: Sprachsensibel Pruefen in der Pflegeausbildung"
+      locator: Anhang 1, Checkliste, Fallsituation
+      url: https://www.pflegeplus-sprache.de
+      quote: "eindeutige Woerter und Begriffe: keine Umgangssprache, ... kein Pflegejargon"
+    authority: third_party_advisory
+    jurisdiction: BY
+    check_type: llm
+    scope: fallsituation
+    input_slice: [fallsituation.text]
+    requires: [fallsituation.text]
+    severity_default: hinweis
+    suggestion_template:
+      - "Den umgangssprachlichen Ausdruck durch den medizinischen Fachbegriff ersetzen."
+      - "Die Zuschreibung streichen oder durch eine pflegefachlich relevante Angabe ersetzen."
+    mutation:
+      id: MUT-FORM-10
+      operation: inject_jargon_and_stereotype
+      description: >
+        Replace one Fachbegriff with Pflegejargon and add one stereotyping attribution to
+        a person in the Fallsituation.
+      target: fallsituation.text
+
+  - id: FORM-11
+    family: A
+    title: Genau ein Operator, am Satzanfang
+    rule_text: >
+      Jede Teilaufgabe soll genau einen Operator enthalten, und dieser soll am Satzanfang
+      stehen. Zwei Operatoren in einer Teilaufgabe verlangen zwei Leistungen und lassen
+      sich nicht eindeutig bepunkten.
+    source:
+      document: "PflegePlus Handreichung 02: Sprachsensibel Pruefen in der Pflegeausbildung"
+      locator: Anhang 1, Checkliste, Aufgabenstellung
+      url: https://www.pflegeplus-sprache.de
+      quote: "1 Operator am Satzanfang"
+    authority: third_party_advisory
+    jurisdiction: BY
+    check_type: deterministic
+    scope: teilaufgabe
+    input_slice: [teilaufgabe.text]
+    requires: [teilaufgabe.text]
+    severity_default: pruefen
+    suggestion_template:
+      - "Die Teilaufgabe in zwei Teilaufgaben mit je einem Operator aufteilen."
+      - "Den Operator an den Satzanfang stellen."
+    mutation:
+      id: MUT-FORM-11
+      operation: add_second_operator
+      description: >
+        Append a second operator clause to a Teilaufgabe ("... und bewerten Sie diese"),
+        so it carries two operators.
+      target: teilaufgabe.text
+
+  - id: FORM-12
+    family: A
+    title: Ziffern statt Zahlwoerter
+    rule_text: >
+      Mengenangaben in Fallsituation und Aufgabenstellung sollen als Ziffer geschrieben
+      werden. Ziffern sind schneller zu erfassen als ausgeschriebene Zahlwoerter.
+    source:
+      document: "PflegePlus Handreichung 02: Sprachsensibel Pruefen in der Pflegeausbildung"
+      locator: Anhang 1, Checkliste
+      url: https://www.pflegeplus-sprache.de
+      quote: "Ziffern statt Zahlwoerter"
+    authority: third_party_advisory
+    jurisdiction: BY
+    check_type: deterministic
+    scope: aufgabe
+    input_slice: [fallsituation.text, teilaufgabe.text]
+    requires: []
+    severity_default: hinweis
+    suggestion_template:
+      - "Das Zahlwort durch die Ziffer ersetzen."
+    mutation:
+      id: MUT-FORM-12
+      operation: spell_out_numbers
+      description: Replace every digit in the Teilaufgabe with its German number word.
+      target: teilaufgabe.text
+
+  - id: FORM-13
+    family: A
+    title: Anzahl der geforderten Nennungen angegeben
+    rule_text: >
+      Verlangt eine Teilaufgabe eine Aufzaehlung, soll die Anzahl der erwarteten Nennungen
+      angegeben sein. Ohne Anzahl ist die erwartete Leistung unbestimmt und die Bepunktung
+      nicht nachvollziehbar.
+    source:
+      document: "PflegePlus Handreichung 02: Sprachsensibel Pruefen in der Pflegeausbildung"
+      locator: Anhang 1, Checkliste, Aufgabenstellung
+      url: https://www.pflegeplus-sprache.de
+      quote: "Anzahl Nennungen"
+    authority: third_party_advisory
+    jurisdiction: BY
+    check_type: deterministic
+    scope: teilaufgabe
+    input_slice: [teilaufgabe.text]
+    requires: [teilaufgabe.text]
+    severity_default: pruefen
+    suggestion_template:
+      - "Die erwartete Anzahl in die Aufgabenstellung aufnehmen, z. B. \"Nennen Sie 3 ...\"."
+    mutation:
+      id: MUT-FORM-13
+      operation: remove_count
+      description: >
+        Delete the numeric count from an enumerating Teilaufgabe ("Nennen Sie 3 Massnahmen"
+        becomes "Nennen Sie Massnahmen").
+      target: teilaufgabe.text
+
+  - id: FORM-14
+    family: A
+    title: Aktiv statt Passiv
+    rule_text: >
+      Fallsituation und Aufgabenstellung sollen im Aktiv formuliert sein. Das Passiv
+      verschweigt, wer handelt, was in einer Pflegesituation die pruefungsrelevante
+      Information sein kann.
+    source:
+      document: "PflegePlus Handreichung 02: Sprachsensibel Pruefen in der Pflegeausbildung"
+      locator: Anhang 1, Checkliste
+      url: https://www.pflegeplus-sprache.de
+      quote: "keine Passivkonstruktionen"
+    authority: third_party_advisory
+    jurisdiction: BY
+    check_type: deterministic
+    scope: aufgabe
+    input_slice: [fallsituation.text, teilaufgabe.text]
+    requires: []
+    severity_default: hinweis
+    suggestion_template:
+      - "Den Satz ins Aktiv setzen und die handelnde Person benennen."
+    mutation:
+      id: MUT-FORM-14
+      operation: passivise
+      description: Rewrite one active sentence of the Fallsituation as a werden-passive.
+      target: fallsituation.text
+
+  - id: FORM-15
+    family: A
+    title: Indikativ statt Konjunktiv
+    rule_text: >
+      Fallsituation und Aufgabenstellung sollen im Indikativ formuliert sein. Der Konjunktiv
+      laesst offen, ob ein Sachverhalt gegeben ist oder nur angenommen wird.
+    source:
+      document: "PflegePlus Handreichung 02: Sprachsensibel Pruefen in der Pflegeausbildung"
+      locator: Anhang 1, Checkliste
+      url: https://www.pflegeplus-sprache.de
+      quote: "Indikativ statt Konjunktiv"
+    authority: third_party_advisory
+    jurisdiction: BY
+    check_type: deterministic
+    scope: aufgabe
+    input_slice: [fallsituation.text, teilaufgabe.text]
+    requires: []
+    severity_default: hinweis
+    suggestion_template:
+      - "Die Konjunktivform durch den Indikativ ersetzen."
+    mutation:
+      id: MUT-FORM-15
+      operation: subjunctivise
+      description: Rewrite one indicative sentence of the Fallsituation in Konjunktiv II.
+      target: fallsituation.text

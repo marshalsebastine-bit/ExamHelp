@@ -1,0 +1,27 @@
+{
+  "aufgabe_id": "C-03",
+  "metadaten": {"pruefungsbereich": "3", "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann", "bearbeitungszeit_minuten": 120, "autor": "synthetisch (PoC-Testkorpus)", "version": "0.2", "datum": "2026-09-08"},
+  "ce_bezug": ["CE 11"],
+  "fallsituation": {
+    "text": "Herr Petrovic ist 47 Jahre alt und seit 5 Tagen auf einer psychiatrischen Station. Er hat eine paranoide Schizophrenie. Herr Petrovic hat die Medikamenteneinnahme vor 3 Wochen beendet. Er aeussert die Ueberzeugung, dass die Nachbarn ihn abhoeren. In der Nacht ist er unruhig und laeuft im Flur auf und ab. Am Morgen spricht er Sie mit lauter Stimme an und wirft einen Stuhl um. Zwei Mitpatienten verlassen den Aufenthaltsraum. Herr Petrovic arbeitet als Lagerlogistiker und hat eine 12-jaehrige Tochter.",
+    "situationsmerkmale": {
+      "handlungsanlaesse": ["akute psychotische Symptomatik", "Absetzen der Medikation", "angespannte Situation mit Gefaehrdungspotenzial"],
+      "kontextbedingungen": ["psychiatrische Akutstation", "Mitpatienten im Umfeld"],
+      "handlungsmuster": ["Deeskalation", "Beziehungsgestaltung", "Umgang mit Zwangskontext"],
+      "akteure": ["Herr Petrovic", "Mitpatienten", "Pflegefachperson"]
+    },
+    "versorgungsbereich": "psychiatrisch", "altersgruppe": "erwachsener",
+    "pflegebeduerftigkeit": "akute Pflegebeduerftigkeit bei instabiler psychischer Lage"
+  },
+  "teilaufgaben": [
+    {"text": "Nennen Sie 3 Beobachtungen bei Herrn Petrovic und bewerten Sie diese hinsichtlich einer Eigen- oder Fremdgefaehrdung.", "anforderungsniveau": "I", "punkte": 8.0, "kompetenzzuordnung": ["I.3.a"],
+     "erwartungshorizont": {"erwartungspunkte": [{"text": "naechtliche Unruhe", "punkte": 2.0}, {"text": "lautes Ansprechen und Umwerfen eines Stuhls", "punkte": 3.0}, {"text": "Wahnerleben bezogen auf die Nachbarn", "punkte": 3.0}]}},
+    {"text": "Nennen Sie 3 deeskalierende Massnahmen fuer die Situation im Aufenthaltsraum.", "anforderungsniveau": "I", "punkte": 6.0, "kompetenzzuordnung": ["I.2.g"],
+     "erwartungshorizont": {"erwartungspunkte": [{"text": "Reizreduktion herstellen", "punkte": 2.0}, {"text": "ruhige Ansprache mit Abstand", "punkte": 2.0}, {"text": "Mitpatienten schuetzen", "punkte": 2.0}]}},
+    {"text": "Nennen Sie 2 rechtliche Grundlagen fuer freiheitsentziehende Massnahmen.", "anforderungsniveau": "I", "punkte": 6.0, "kompetenzzuordnung": ["IV.1.a"],
+     "erwartungshorizont": {"erwartungspunkte": [{"text": "richterliche Genehmigung erforderlich", "punkte": 3.0}, {"text": "rechtfertigender Notstand als Ausnahme", "punkte": 3.0}]}},
+    {"text": "Nennen Sie 2 Aspekte zur Einbeziehung der Tochter von Herrn Petrovic.", "anforderungsniveau": "I", "punkte": 5.0, "kompetenzzuordnung": ["II.1.a"],
+     "erwartungshorizont": {"erwartungspunkte": [{"text": "altersgerechte Information", "punkte": 2.5}, {"text": "Schweigepflicht beachten", "punkte": 2.5}]}}
+  ],
+  "geschwister_aufgaben": ["C-01", "C-02"]
+}

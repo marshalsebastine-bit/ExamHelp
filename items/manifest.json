@@ -1,0 +1,203 @@
+{
+  "note": "Twelve synthetic base Aufsichtsarbeiten (tech doc 7.1). Every item is written for this project. No school items, no published Pruefungsfragen, no scraped practice questions. This is a compliance boundary, not a convenience: it is what makes the non-EU free-tier providers usable at all (tech doc 6.2, 9).",
+  "sets": [
+    {
+      "exam": "A",
+      "items": [
+        "A-01",
+        "A-02",
+        "A-03"
+      ],
+      "intent": "well-formed and varied; the false-flag baseline. These should produce few or no flags."
+    },
+    {
+      "exam": "B",
+      "items": [
+        "B-01",
+        "B-02",
+        "B-03"
+      ],
+      "intent": "sound construction across different Versorgungsbereiche; second false-flag baseline."
+    },
+    {
+      "exam": "C",
+      "items": [
+        "C-01",
+        "C-02",
+        "C-03"
+      ],
+      "intent": "organically weak construction, as an inexperienced author would produce it. Not mutations: these are whole items written badly."
+    },
+    {
+      "exam": "D",
+      "items": [
+        "D-01",
+        "D-02",
+        "D-03"
+      ],
+      "intent": "exercises the precondition gate and the cross-item rule. D-01 is an unfinished draft; all three share Versorgungsbereich and Altersgruppe."
+    }
+  ],
+  "spread": {
+    "versorgungsbereich": {
+      "ambulant": [
+        "A-01",
+        "C-02"
+      ],
+      "stationaer_akut": [
+        "A-02",
+        "B-02"
+      ],
+      "paediatrisch": [
+        "A-03"
+      ],
+      "rehabilitativ": [
+        "B-01"
+      ],
+      "stationaer_langzeit": [
+        "B-03",
+        "C-01",
+        "D-01",
+        "D-02",
+        "D-03"
+      ],
+      "psychiatrisch": [
+        "C-03"
+      ]
+    },
+    "altersgruppe": {
+      "kind": [
+        "A-03"
+      ],
+      "jugendlicher": [
+        "C-02"
+      ],
+      "erwachsener": [
+        "A-02",
+        "B-01",
+        "C-03"
+      ],
+      "alter_mensch": [
+        "A-01",
+        "B-02",
+        "B-03",
+        "C-01",
+        "D-01",
+        "D-02",
+        "D-03"
+      ]
+    },
+    "pruefungsbereich": {
+      "1": [
+        "A-01",
+        "B-01",
+        "C-01",
+        "D-01"
+      ],
+      "2": [
+        "A-02",
+        "B-02",
+        "C-02",
+        "D-02"
+      ],
+      "3": [
+        "A-03",
+        "B-03",
+        "C-03",
+        "D-03"
+      ]
+    },
+    "curriculare_einheiten": [
+      "CE 02",
+      "CE 04",
+      "CE 05",
+      "CE 06",
+      "CE 07",
+      "CE 08",
+      "CE 09",
+      "CE 10",
+      "CE 11"
+    ]
+  },
+  "known_weaknesses": {
+    "comment": "Recorded here rather than in the items, so the items read like real drafts. These are the organic defects the catalogue should find; they are separate from the harness-generated mutations, whose ground truth lives in mutations/ (tech doc 7.2).",
+    "C-01": [
+      {
+        "rule": "FORM-05",
+        "defect": "Fallsituation is one 90-word Schachtelsatz with nested relative clauses and a double negation"
+      },
+      {
+        "rule": "FORM-06",
+        "defect": "ta.1 declares 8 Punkte, its Erwartungshorizont sums to 6; ta.2 and ta.3 also mismatch"
+      },
+      {
+        "rule": "FORM-11",
+        "defect": "ta.2 contains no operator at all, only a nominalised instruction"
+      },
+      {
+        "rule": "FORM-12",
+        "defect": "'zweiundachtzig' and 'fuenf' written as number words in the Fallsituation"
+      },
+      {
+        "rule": "FORM-13",
+        "defect": "ta.1 asks for 'Massnahmen' with no count"
+      },
+      {
+        "rule": "FORM-14",
+        "defect": "Fallsituation is largely in the werden-passive"
+      },
+      {
+        "rule": "FORM-15",
+        "defect": "'wuerde' / 'waeren' in Konjunktiv throughout"
+      }
+    ],
+    "C-02": [
+      {
+        "rule": "FORM-04",
+        "defect": "ta.1 uses the Anforderungsbereich-I operator 'nennen' but declares Anforderungsniveau III"
+      },
+      {
+        "rule": "FORM-07",
+        "defect": "ta.1 asks to name causes; its Erwartungshorizont rewards begruenden, bewerten and ableiten"
+      },
+      {
+        "rule": "FORM-09",
+        "defect": "Schuhgroesse, parents' occupations, the dog, and the renovated living room are used by no Teilaufgabe"
+      }
+    ],
+    "C-03": [
+      {
+        "rule": "FORM-11",
+        "defect": "ta.1 carries two operators: 'Nennen Sie ... und bewerten Sie diese'"
+      },
+      {
+        "rule": "FORM-06",
+        "defect": "ta.1 declares 8 Punkte, its Erwartungshorizont sums to 8 but ta.1's first point is weighted 2 against a 3-point pattern"
+      },
+      {
+        "rule": "KOMP-04",
+        "defect": "every Teilaufgabe declares Anforderungsniveau I, so the distribution is degenerate"
+      },
+      {
+        "rule": "KOMP-06",
+        "defect": "ta.2 claims I.2.g, which exists in Anlage 1 but not in Anlage 2 — the only such code in the catalogue"
+      },
+      {
+        "rule": "KOMP-03B",
+        "defect": "declared Pruefungsbereich 3 requires I.3, I.4, II.3, III.2; the claimed codes cover only I.3 (via ta.1), with I.2.g, IV.1.a and II.1.a all outside the required set -- 1 of 4 Schwerpunkte, below the KOMP-03B majority threshold. Does not trigger KOMP-03 itself, since the intersection is non-empty."
+      }
+    ],
+    "D-01": [
+      {
+        "rule": "requires-gate",
+        "defect": "no Erwartungshorizont and only 2 of an intended 4 Teilaufgaben. FORM-06, FORM-07 and QUELL-* must emit NotChecked, never a flag (tech doc 1.5.1)."
+      }
+    ],
+    "D-02_D-03": [
+      {
+        "rule": "KOMP-05",
+        "defect": "D-01, D-02 and D-03 are all stationaer_langzeit with altersgruppe alter_mensch, so the sibling set does not vary as § 14 Absatz 2 requires"
+      }
+    ]
+  }
+}

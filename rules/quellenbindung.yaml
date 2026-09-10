@@ -1,0 +1,109 @@
+meta:
+  id: quellenbindung
+  family: C
+  title: Familie C — Quellenbindung
+  purpose: >
+    Whether the fachliche assertions in an Erwartungshorizont are supported by, and do not
+    contradict, a retrievable normative source.
+  scope_note: >
+    Scoped honestly as a demonstration, not a capability. Automated source-grounding is
+    unsolved everywhere. The corpus is public legal, curricular and professional-normative
+    text only: no copyrighted Fachliteratur and no commercial textbook is ingested.
+  pre_decided_cut: >
+    If time runs short, this family narrows to QUELL-03 alone, which is the one rule whose
+    source is already in the corpus (tech doc 8).
+
+rules:
+
+  - id: QUELL-01
+    family: C
+    title: Fachliche Aussagen im Erwartungshorizont sind belegbar
+    rule_text: >
+      Jede fachliche Aussage im Erwartungshorizont soll durch eine Passage einer
+      normativen Quelle des Korpus gestuetzt sein. Eine bepunktete Aussage, fuer die sich
+      keine Quelle finden laesst, ist im Streitfall nicht belegbar.
+    source:
+      document: Expertenstandard "Erhaltung und Foerderung der Mobilitaet in der Pflege" (Aktualisierung 2020)
+      locator: Struktur-, Prozess- und Ergebniskriterien
+      url: https://www.gs-qsa-pflege.de/
+    authority: professional_normative
+    jurisdiction: federal
+    check_type: llm
+    scope: erwartungshorizont
+    input_slice: [teilaufgabe.erwartungshorizont]
+    requires: [teilaufgabe.erwartungshorizont]
+    severity_default: hinweis
+    blocked_on: >
+      corpus source dnqp_mobilitaet is not yet acquired (see corpus/source_manifest.json).
+      Without it this rule cannot quote the passage its flag depends on, so it must not run.
+    mutation:
+      id: MUT-QUELL-01
+      operation: insert_unsupported_assertion
+      description: >
+        Add an Erwartungspunkt asserting a mobility-promotion measure that the
+        Expertenstandard does not specify.
+      target: teilaufgabe.erwartungshorizont
+
+  - id: QUELL-02
+    family: C
+    title: Keine Aussage widerspricht der belegten Passage
+    rule_text: >
+      Keine Aussage des Erwartungshorizonts darf der Passage widersprechen, die sie
+      stuetzen soll. Ein Widerspruch zu einem Expertenstandard bepunktet eine Leistung,
+      die dem fachlichen Standard entgegensteht.
+    source:
+      document: Expertenstandard "Erhaltung und Foerderung der Mobilitaet in der Pflege" (Aktualisierung 2020)
+      locator: Struktur-, Prozess- und Ergebniskriterien
+      url: https://www.gs-qsa-pflege.de/
+    authority: professional_normative
+    jurisdiction: federal
+    check_type: llm
+    scope: erwartungshorizont
+    input_slice: [teilaufgabe.erwartungshorizont]
+    requires: [teilaufgabe.erwartungshorizont]
+    severity_default: pruefen
+    blocked_on: >
+      corpus source dnqp_mobilitaet is not yet acquired (see corpus/source_manifest.json).
+      Without it this rule cannot quote the passage its flag depends on, so it must not run.
+    mutation:
+      id: MUT-QUELL-02
+      operation: contradict_retrieved_passage
+      description: >
+        Rewrite an Erwartungspunkt so it recommends immobilisation where the
+        Expertenstandard specifies mobility promotion.
+      target: teilaufgabe.erwartungshorizont
+
+  - id: QUELL-03
+    family: C
+    title: Normative Verweise korrekt zitiert
+    rule_text: >
+      Verweist eine Teilaufgabe oder ein Erwartungshorizont auf vorbehaltene Taetigkeiten,
+      muss der Verweis dem entsprechen, was § 4 PflBG tatsaechlich vorbehaelt. Als
+      vorbehalten bezeichnete Taetigkeiten, die es nicht sind, pruefen eine falsche
+      Rechtslage ab.
+    source:
+      document: PflBG
+      locator: § 4 Absatz 2
+      url: https://www.gesetze-im-internet.de/pflbg/__4.html
+      quote: >
+        Die pflegerischen Aufgaben im Sinne des Absatzes 1 umfassen 1. die Erhebung und
+        Feststellung des individuellen Pflegebedarfs und die Planung der Pflege ..., 2. die
+        Organisation, Gestaltung und Steuerung des Pflegeprozesses ... sowie 3. die Analyse,
+        Evaluation, Sicherung und Entwicklung der Qualitaet der Pflege ...
+    authority: binding_federal
+    jurisdiction: federal
+    check_type: llm
+    scope: aufgabe
+    input_slice: [teilaufgabe.text, teilaufgabe.erwartungshorizont]
+    requires: [teilaufgabe.text]
+    severity_default: pruefen
+    mutation:
+      id: MUT-QUELL-03
+      operation: misattribute_vorbehaltsaufgabe
+      description: >
+        Assert in an Erwartungspunkt that the administration of medication is a vorbehaltene
+        Taetigkeit under § 4 PflBG, which it is not.
+      target: teilaufgabe.erwartungshorizont
+    notes: >
+      The only Family C rule whose source is already in the corpus, which is why it is the
+      one that survives the pre-decided cut.

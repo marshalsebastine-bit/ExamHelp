@@ -1,0 +1,288 @@
+meta:
+  id: kompetenz
+  family: B
+  title: Familie B — Kompetenzzuordnung
+  purpose: >
+    Whether the item tests the competencies it claims to test, and whether those
+    competencies are the ones the staatliche Pruefung is for.
+  evidence_note: >
+    Family B rules carry no static source.quote: their evidence is the competency text
+    itself, looked up at runtime from rules/kompetenzen.yaml, which carries the Anlage
+    locator and Fundstelle for each code. A flag citing I.1.h quotes I.1.h.
+  data_dependencies:
+    - rules/kompetenzen.yaml    # anlage_2_authoritative, parsed from PflAPrV Anlage 2
+    - rules/pruefungsbereiche.yaml  # PflAPrV § 14 (1) Pruefungsbereich -> Kompetenzschwerpunkte
+    - rules/situationsmerkmale.yaml # Lehrplan Situationsmerkmale per CE
+
+rules:
+
+  - id: KOMP-01
+    family: B
+    title: Jede Teilaufgabe ist mindestens einer Anlage-2-Kompetenz zuordenbar
+    rule_text: >
+      Jede Teilaufgabe muss sich mindestens einer Einzelkompetenz der Anlage 2 PflAPrV
+      zuordnen lassen. Eine Teilaufgabe, die keiner Kompetenz der Anlage 2 entspricht,
+      prueft etwas, das nicht Gegenstand der staatlichen Pruefung ist.
+    source:
+      document: PflAPrV
+      locator: Anlage 2 (zu § 9 Absatz 1 Satz 2)
+      url: https://www.gesetze-im-internet.de/pflaprv/anlage_2.html
+    authority: binding_federal
+    jurisdiction: federal
+    check_type: llm
+    scope: teilaufgabe
+    input_slice: [teilaufgabe.text, teilaufgabe.anforderungsniveau]
+    requires: [teilaufgabe.text]
+    severity_default: pruefen
+    mutation:
+      id: MUT-KOMP-01
+      operation: replace_with_off_catalogue_task
+      description: >
+        Replace a Teilaufgabe with one testing content outside the Anlage 2 catalogue
+        entirely (e.g. abstract pharmacology arithmetic with no pflegerischer Handlungsbezug).
+      target: teilaufgabe.text
+    notes: Retrieval over the Anlage 2 competency chunks supplies the candidate codes.
+
+  - id: KOMP-02
+    family: B
+    title: Abgeleitete Kompetenzzuordnung stimmt mit der ausgewiesenen ueberein
+    rule_text: >
+      Die vom Autor ausgewiesene Kompetenzzuordnung einer Teilaufgabe soll mit der
+      Zuordnung uebereinstimmen, die sich aus dem Aufgabentext ergibt. Eine Abweichung
+      bedeutet, dass die Aufgabe etwas anderes prueft als ausgewiesen.
+    source:
+      document: PflAPrV
+      locator: Anlage 2 (zu § 9 Absatz 1 Satz 2)
+      url: https://www.gesetze-im-internet.de/pflaprv/anlage_2.html
+    authority: binding_federal
+    jurisdiction: federal
+    check_type: llm
+    scope: teilaufgabe
+    input_slice: [teilaufgabe.text, teilaufgabe.kompetenzzuordnung]
+    requires: [teilaufgabe.text, teilaufgabe.kompetenzzuordnung]
+    severity_default: pruefen
+    mutation:
+      id: MUT-KOMP-02
+      operation: swap_claimed_kompetenz
+      description: >
+        Replace the claimed competency code with one from a different Kompetenzbereich
+        while leaving the Teilaufgabe text unchanged.
+      target: teilaufgabe.kompetenzzuordnung
+    notes: >
+      This is the check the claimed-versus-derived separation in the item schema exists
+      for (tech doc 2.2). Conflating the two makes it impossible.
+
+  - id: KOMP-03
+    family: B
+    title: Die Aufsichtsarbeit beruehrt ihren Pruefungsbereich ueberhaupt
+    rule_text: >
+      Die Kompetenzzuordnungen einer Aufsichtsarbeit muessen mindestens einen der
+      Kompetenzschwerpunkte beruehren, die § 14 Absatz 1 PflAPrV fuer den jeweiligen
+      Pruefungsbereich benennt. Eine Aufsichtsarbeit, die keinen dieser Schwerpunkte
+      beruehrt, prueft den ihr zugeordneten Pruefungsbereich nicht.
+    source:
+      document: PflAPrV
+      locator: § 14 Absatz 1
+      url: https://www.gesetze-im-internet.de/pflaprv/__14.html
+      quote: >
+        Der schriftliche Teil der Pruefung erstreckt sich auf folgende Pruefungsbereiche aus
+        den Kompetenzbereichen I bis V der Anlage 2
+    authority: binding_federal
+    jurisdiction: federal
+    check_type: deterministic
+    scope: aufgabe
+    input_slice: [aufgabe.metadaten.pruefungsbereich, teilaufgabe.kompetenzzuordnung]
+    requires: [aufgabe.metadaten.pruefungsbereich, teilaufgabe.kompetenzzuordnung]
+    severity_default: blocker
+    mutation:
+      id: MUT-KOMP-03
+      operation: shift_all_kompetenzen_off_bereich
+      description: >
+        Replace every claimed competency code with codes from Kompetenzschwerpunkte that
+        belong to a different Pruefungsbereich, leaving the declared Pruefungsbereich unchanged.
+      target: teilaufgabe.kompetenzzuordnung
+    notes: >
+      Deterministic: intersect the item's claimed Kompetenzschwerpunkte (each code reduced
+      from Einzelkompetenz to Schwerpunkt form, e.g. I.3.a -> I.3) against
+      rules/pruefungsbereiche.yaml's required set for the declared Pruefungsbereich. Fires
+      only on an EMPTY intersection. This is deliberately the narrow, textually defensible
+      reading: § 14 (1) names which Schwerpunkte a Pruefungsbereich draws on, but states no
+      fractional coverage threshold, so blocker/binding_federal can only support "touches
+      nothing at all" -- not "does not touch every one of them" (see KOMP-03B for that).
+
+  - id: KOMP-03B
+    family: B
+    title: Die Aufsichtsarbeit deckt ihren Pruefungsbereich nur duenn ab
+    rule_text: >
+      Die Kompetenzzuordnungen einer Aufsichtsarbeit sollen mehr als die Haelfte der
+      Kompetenzschwerpunkte beruehren, die § 14 Absatz 1 PflAPrV fuer den jeweiligen
+      Pruefungsbereich benennt. Beruehrt die Aufsichtsarbeit nur einen kleinen Teil dieser
+      Schwerpunkte, ist die Passung zum Pruefungsbereich schwach, auch wenn KOMP-03 formal
+      nicht ausloest.
+    source:
+      document: Konstruktionsprinzip (projekteigene Regel, keine externe Quelle)
+      locator: KOMP-03B
+      quote: >
+        Die Kompetenzzuordnungen einer Aufsichtsarbeit sollen mehr als die Haelfte der fuer
+        ihren Pruefungsbereich benannten Kompetenzschwerpunkte beruehren.
+    authority: construction_principle
+    jurisdiction: federal
+    check_type: deterministic
+    scope: aufgabe
+    input_slice: [aufgabe.metadaten.pruefungsbereich, teilaufgabe.kompetenzzuordnung]
+    requires: [aufgabe.metadaten.pruefungsbereich, teilaufgabe.kompetenzzuordnung]
+    severity_default: pruefen
+    mutation:
+      id: MUT-KOMP-03B
+      operation: thin_out_kompetenzen_coverage
+      description: >
+        Replace all but one claimed competency code with codes from Kompetenzschwerpunkte
+        that belong to a different Pruefungsbereich, so only one of the required
+        Schwerpunkte remains touched.
+      target: teilaufgabe.kompetenzzuordnung
+    notes: >
+      Same lookup and reduction as KOMP-03, different threshold: fires when covered
+      Schwerpunkte are strictly fewer than half the required set. authority is
+      construction_principle, not binding_federal, because the 50% threshold is this
+      project's own judgement call, not a fraction PflAPrV states -- so it cannot carry
+      blocker (schemas/rule.py enforces this: severity ceiling derives from authority).
+      Exactly half (e.g. 2 of 4) does not fire, partly because that is a defensible split
+      and partly to avoid flagging a legitimately incomplete draft that has only reached
+      its second of four planned Teilaufgaben (tech doc 1.5.1).
+
+  - id: KOMP-04
+    family: B
+    title: Verteilung der Anforderungsniveaus nicht degeneriert
+    rule_text: >
+      Die Anforderungsniveaus der Teilaufgaben sollen sich ueber mehr als eine Stufe
+      verteilen. Eine Aufsichtsarbeit, deren Teilaufgaben alle auf Anforderungsbereich I
+      liegen, prueft keine Kompetenz im Sinne der Anlage 2, sondern Reproduktion.
+    source:
+      document: Konstruktionsprinzip (projekteigene Regel, keine externe Quelle)
+      locator: KOMP-04
+      quote: >
+        Die Anforderungsniveaus der Teilaufgaben einer Aufsichtsarbeit sollen mehr als eine
+        Stufe umfassen.
+    authority: construction_principle
+    jurisdiction: federal
+    check_type: deterministic
+    scope: aufgabe
+    input_slice: [teilaufgabe.anforderungsniveau, teilaufgabe.punkte]
+    requires: [teilaufgabe.anforderungsniveau]
+    severity_default: pruefen
+    mutation:
+      id: MUT-KOMP-04
+      operation: flatten_anforderungsniveau
+      description: Set every Teilaufgabe's Anforderungsniveau to I.
+      target: teilaufgabe.anforderungsniveau
+
+  - id: KOMP-05
+    family: B
+    title: Die Fallsituationen der drei Aufsichtsarbeiten variieren
+    rule_text: >
+      Die Fallsituationen der drei Aufsichtsarbeiten einer Pruefung muessen insgesamt in
+      Altersstufe, sozialem und kulturellem Umfeld sowie Versorgungsbereich variieren.
+      Drei Fallsituationen im gleichen Setting mit der gleichen Altersgruppe erfuellen
+      diese Anforderung nicht.
+    source:
+      document: PflAPrV
+      locator: § 14 Absatz 2 Satz 2
+      url: https://www.gesetze-im-internet.de/pflaprv/__14.html
+      quote: >
+        Die Fallsituationen fuer die drei Aufsichtsarbeiten sollen insgesamt variiert werden
+        in Bezug auf 1. die Altersstufe, der die zu pflegenden Menschen angehoeren, 2. das
+        soziale und kulturelle Umfeld der oder des zu pflegenden Menschen, 3. die
+        Versorgungsbereiche, in denen die Fallsituationen verortet sind.
+    authority: binding_federal
+    jurisdiction: federal
+    check_type: hybrid
+    scope: aufgabenset
+    input_slice:
+      - fallsituation.text
+      - fallsituation.altersgruppe
+      - fallsituation.versorgungsbereich
+      - aufgabe.geschwister_aufgaben
+    requires: [aufgabe.geschwister_aufgaben]
+    severity_default: blocker
+    mutation:
+      id: MUT-KOMP-05
+      operation: homogenise_sibling_fallsituationen
+      description: >
+        Set the Altersgruppe and Versorgungsbereich of all three sibling Aufsichtsarbeiten
+        to the same values.
+      target: aufgabe.geschwister_aufgaben
+    notes: >
+      The only cross-item rule in the catalogue, and the reason the item schema carries a
+      sibling reference as a first-class field. On a single item the precondition is unmet
+      and the runner emits NotChecked rather than a flag.
+
+  - id: KOMP-06
+    family: B
+    title: Jede ausgewiesene Kompetenz existiert in Anlage 2
+    rule_text: >
+      Jeder ausgewiesene Kompetenzcode muss in Anlage 2 PflAPrV vorkommen. Ein Code, der
+      nur in Anlage 1 steht, bezeichnet eine Kompetenz der Zwischenpruefung und ist nicht
+      Gegenstand der staatlichen Pruefung.
+    source:
+      document: PflAPrV
+      locator: Anlage 2 (zu § 9 Absatz 1 Satz 2)
+      url: https://www.gesetze-im-internet.de/pflaprv/anlage_2.html
+    authority: binding_federal
+    jurisdiction: federal
+    check_type: deterministic
+    scope: teilaufgabe
+    input_slice: [teilaufgabe.kompetenzzuordnung]
+    requires: [teilaufgabe.kompetenzzuordnung]
+    severity_default: blocker
+    mutation:
+      id: MUT-KOMP-06
+      operation: claim_anlage_1_only_kompetenz
+      description: >
+        Replace a claimed code with one that exists in Anlage 1 but not in Anlage 2, and
+        with one that exists in neither.
+      target: teilaufgabe.kompetenzzuordnung
+    notes: >
+      The cheapest high-value check in the catalogue: a set-membership test, no model.
+      It reads `anlage_2_authoritative` in rules/kompetenzen.yaml, which is parsed from
+      PflAPrV's own Anlage 2 text (85 codes) — NOT the Lehrplan's citations (79 codes).
+      The 6-code difference is not academic: building this on the Lehrplan list would
+      false-flag any item claiming I.1.a, I.1.f, I.1.h, I.1.i, I.2.d or I.2.f, all of
+      which are genuine Anlage 2 competencies. See kompetenzen.yaml meta.komp_06_finding.
+      Note on what this check actually catches: exactly one code, I.2.g, exists in Anlage 1
+      but not in Anlage 2, so the "claimed a Zwischenpruefungs-Kompetenz" case is narrow.
+      The common real defect is a code that exists in neither, i.e. a mistyped or invented
+      reference. Both are set-membership failures and both fire the same rule.
+
+  - id: KOMP-07
+    family: B
+    title: Situationsmerkmale der Fallsituation passen zur ausgewiesenen CE
+    rule_text: >
+      Die Handlungsanlaesse, Kontextbedingungen und Handlungsmuster der Fallsituation
+      sollen denen entsprechen, die der Lehrplan fuer die ausgewiesene curriculare Einheit
+      vorsieht. Eine Fallsituation, deren Handlungsanlass in keiner Beziehung zur
+      ausgewiesenen CE steht, prueft die Kompetenzen dieser CE nicht.
+    source:
+      document: Lehrplaene und Ausbildungsplaene fuer die Berufsfachschule fuer Pflege (StMUK / ISB Bayern, Juli 2020)
+      locator: Situationsmerkmale je curriculare Einheit
+      quote: >
+        Inhalte/Situationsmerkmale: Handlungsanlaesse, Kontextbedingungen, Handlungsmuster
+    authority: official_state
+    jurisdiction: BY
+    check_type: llm
+    scope: fallsituation
+    input_slice: [fallsituation.text, fallsituation.situationsmerkmale, aufgabe.ce_bezug]
+    requires: [fallsituation.text, aufgabe.ce_bezug]
+    severity_default: pruefen
+    mutation:
+      id: MUT-KOMP-07
+      operation: swap_ce_bezug
+      description: >
+        Change the declared ce_bezug to a curriculare Einheit whose Situationsmerkmale do
+        not match the Fallsituation, leaving the Fallsituation unchanged.
+      target: aufgabe.ce_bezug
+    notes: >
+      The most differentiating check in the tool: nothing on the market checks whether a
+      case scenario's Handlungsanlass matches the curricular unit whose competencies the
+      item claims to assess, and it is defensible because both sides come from binding
+      documents. Compares only the three dimensions the Lehrplan structures per CE —
+      Akteure and Erleben/Deuten/Verarbeiten are prose there, not a per-CE list.

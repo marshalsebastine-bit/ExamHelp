@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+
+# Notes, not deliverables
+notepad/
+
+# Derived corpus artifacts: rebuild with scripts/build_corpus.py
+corpus/chunks/*
+!corpus/chunks/.gitkeep
+
+# Extraction caches: rebuild from the sources in corpus/raw
+build/
+
+# Mutation variants are reproducible from a seed, so ground truth cannot
+# drift from the variants (tech doc 9).
+mutations/*
+!mutations/.gitkeep
+
+# pytest
+.pytest_cache/
