@@ -13,6 +13,22 @@ meta:
     - rules/kompetenzen.yaml    # anlage_2_authoritative, parsed from PflAPrV Anlage 2
     - rules/pruefungsbereiche.yaml  # PflAPrV § 14 (1) Pruefungsbereich -> Kompetenzschwerpunkte
     - rules/situationsmerkmale.yaml # Lehrplan Situationsmerkmale per CE
+  schema_migration_2026_09_11_revival: >
+    teilaufgabe.kompetenzzuordnung (the author-declared Anlage-2 claim) was removed with
+    no replacement earlier the same day, blocking every rule below. This revives four of
+    the five: KOMP-01 is now the derivation step itself -- an LLM, behind a provider-agnostic
+    gateway (gateway/model_gateway.py + gateway/base.py; Mistral AI is the default backend,
+    swappable via MODEL_PROVIDER without touching this rule or its check), chooses among a
+    deterministically-built candidate set
+    (checks/llm/kompetenz_candidates.py, from the Teilaufgabe's curriculare Einheit) and
+    writes the result onto the new teilaufgabe.kompetenzzuordnung_abgeleitet field. KOMP-03,
+    KOMP-03B and KOMP-06 (checks/deterministic/komp_03.py, komp_06.py) are unchanged in
+    logic, just re-pointed at that field. KOMP-02 cannot be revived the same way: its
+    premise was comparing an author claim against a derived value, and there is no more
+    claim to compare -- it is retired, not redesigned. Sequencing gap closed by
+    checks/runner.py::run_checks: it runs KOMP-01 first, always, before the deterministic
+    sweep that includes KOMP-03/03B/06, so kompetenzzuordnung_abgeleitet is populated (or
+    visibly NotChecked, if no classify function was given) before anything reads it.
 
 rules:
 
@@ -31,8 +47,11 @@ rules:
     jurisdiction: federal
     check_type: llm
     scope: teilaufgabe
-    input_slice: [teilaufgabe.text, teilaufgabe.anforderungsniveau]
-    requires: [teilaufgabe.text]
+    input_slice:
+      - teilaufgabe.text
+      - teilaufgabe.situationsmerkmale.curriculare_einheit
+      - aufgabe.aufgaben[].fallsituation.text
+    requires: ["teilaufgabe.text", "aufgabe.aufgaben[].fallsituation.text"]
     severity_default: pruefen
     mutation:
       id: MUT-KOMP-01
@@ -41,7 +60,28 @@ rules:
         Replace a Teilaufgabe with one testing content outside the Anlage 2 catalogue
         entirely (e.g. abstract pharmacology arithmetic with no pflegerischer Handlungsbezug).
       target: teilaufgabe.text
-    notes: Retrieval over the Anlage 2 competency chunks supplies the candidate codes.
+    notes: >
+      Now the derivation step itself (checks/llm/komp_01.py), not just a description of
+      one: candidates come from checks/llm/kompetenz_candidates.py, which builds the set
+      deterministically from teilaufgabe.situationsmerkmale.curriculare_einheit against
+      rules/kompetenzen.yaml's per-CE kompetenzen_anlage_2 lists, before the LLM ever
+      chooses among them (gateway/model_gateway.py, backend-agnostic). Three cases, not two: no CE
+      declared falls back to the full 85-code Anlage-2 set (unknown, search broadly); a
+      CE whose kompetenzen_anlage_2 list is genuinely empty (CE 01/02/03, the 1st/2nd
+      Ausbildungsdrittel units with no staatliche-Pruefungs-relevant competency at all)
+      stays empty rather than falling back -- that emptiness is itself the correct
+      answer, and firing on it is the textually defensible outcome, not a false
+      negative to route around. The chosen codes are written onto
+      teilaufgabe.kompetenzzuordnung_abgeleitet for KOMP-03/03B/06 to read.
+      The classifier prompt also carries the owning Aufgabe block's Fallsituation
+      text as required context, not just the Teilaufgabe text in isolation: a
+      Teilaufgabe often only makes sense read against its case scenario
+      ("Erlaeutern Sie anhand der Fallsituation..."), and without it the model
+      has to guess at details the Teilaufgabe never restates -- a guess this
+      project would rather not make silently. A Teilaufgabe whose Aufgabe block
+      has no Fallsituation text yet gets NotChecked ("Fallsituation fehlt noch"),
+      same treatment as a missing Teilaufgabentext, rather than a derivation run
+      on text alone (checks/llm/komp_01.py::check_komp_01).
 
   - id: KOMP-02
     family: B
@@ -68,9 +108,19 @@ rules:
         Replace the claimed competency code with one from a different Kompetenzbereich
         while leaving the Teilaufgabe text unchanged.
       target: teilaufgabe.kompetenzzuordnung
+    blocked_on: >
+      Retired, not merely blocked: this rule's entire premise is comparing an
+      author-declared claim against a derived value, and the schema has no author-facing
+      claim field any more (teilaufgabe.kompetenzzuordnung, removed 2026-09-11) nor is one
+      being reinstated -- competency evidence is now LLM-derived only
+      (teilaufgabe.kompetenzzuordnung_abgeleitet via KOMP-01, checks/llm/komp_01.py). There
+      is no "claimed" side left for a "derived" side to be compared against, so unlike
+      KOMP-01/03/03B/06 this is not a matter of re-pointing input_slice at a new field.
     notes: >
-      This is the check the claimed-versus-derived separation in the item schema exists
-      for (tech doc 2.2). Conflating the two makes it impossible.
+      This was the check the claimed-versus-derived separation in the item schema existed
+      for (tech doc 2.2). Kept in the catalogue as an audit trail of why the separation
+      mattered once, same precedent as Family C's permanently blocked_on rules -- not
+      deleted outright.
 
   - id: KOMP-03
     family: B
@@ -90,25 +140,37 @@ rules:
     authority: binding_federal
     jurisdiction: federal
     check_type: deterministic
-    scope: aufgabe
-    input_slice: [aufgabe.metadaten.pruefungsbereich, teilaufgabe.kompetenzzuordnung]
-    requires: [aufgabe.metadaten.pruefungsbereich, teilaufgabe.kompetenzzuordnung]
+    scope: aufsichtsarbeit
+    input_slice:
+      - aufgabe.metadaten.pruefungsbereich
+      - aufgabe.aufgaben[].teilaufgaben[].kompetenzzuordnung_abgeleitet
+    requires:
+      - aufgabe.metadaten.pruefungsbereich
+      - aufgabe.aufgaben[].teilaufgaben[].kompetenzzuordnung_abgeleitet
     severity_default: blocker
     mutation:
       id: MUT-KOMP-03
       operation: shift_all_kompetenzen_off_bereich
       description: >
-        Replace every claimed competency code with codes from Kompetenzschwerpunkte that
+        Replace every derived competency code with codes from Kompetenzschwerpunkte that
         belong to a different Pruefungsbereich, leaving the declared Pruefungsbereich unchanged.
-      target: teilaufgabe.kompetenzzuordnung
+      target: aufgabe.aufgaben[].teilaufgaben[].kompetenzzuordnung_abgeleitet
     notes: >
-      Deterministic: intersect the item's claimed Kompetenzschwerpunkte (each code reduced
+      Deterministic: intersect the item's derived Kompetenzschwerpunkte (each code reduced
       from Einzelkompetenz to Schwerpunkt form, e.g. I.3.a -> I.3) against
       rules/pruefungsbereiche.yaml's required set for the declared Pruefungsbereich. Fires
       only on an EMPTY intersection. This is deliberately the narrow, textually defensible
       reading: § 14 (1) names which Schwerpunkte a Pruefungsbereich draws on, but states no
       fractional coverage threshold, so blocker/binding_federal can only support "touches
       nothing at all" -- not "does not touch every one of them" (see KOMP-03B for that).
+      scope: aufsichtsarbeit because the Pruefungsbereich correspondence is one per whole
+      paper (PflAPrV § 14 (1)-(2)), not per Aufgabe block: derived codes are pooled across
+      both Aufgabe 1 and Aufgabe 2 via Aufsichtsarbeit.alle_teilaufgaben() before the
+      intersection is taken. A code derived only in Aufgabe 2 still counts toward coverage.
+      Reads teilaufgabe.kompetenzzuordnung_abgeleitet (checks/deterministic/komp_03.py),
+      populated by KOMP-01's LLM derivation (checks/llm/komp_01.py), not an author claim --
+      revived 2026-09-11 against that new field after teilaufgabe.kompetenzzuordnung's
+      removal had blocked this rule earlier the same day.
 
   - id: KOMP-03B
     family: B
@@ -128,20 +190,25 @@ rules:
     authority: construction_principle
     jurisdiction: federal
     check_type: deterministic
-    scope: aufgabe
-    input_slice: [aufgabe.metadaten.pruefungsbereich, teilaufgabe.kompetenzzuordnung]
-    requires: [aufgabe.metadaten.pruefungsbereich, teilaufgabe.kompetenzzuordnung]
+    scope: aufsichtsarbeit
+    input_slice:
+      - aufgabe.metadaten.pruefungsbereich
+      - aufgabe.aufgaben[].teilaufgaben[].kompetenzzuordnung_abgeleitet
+    requires:
+      - aufgabe.metadaten.pruefungsbereich
+      - aufgabe.aufgaben[].teilaufgaben[].kompetenzzuordnung_abgeleitet
     severity_default: pruefen
     mutation:
       id: MUT-KOMP-03B
       operation: thin_out_kompetenzen_coverage
       description: >
-        Replace all but one claimed competency code with codes from Kompetenzschwerpunkte
+        Replace all but one derived competency code with codes from Kompetenzschwerpunkte
         that belong to a different Pruefungsbereich, so only one of the required
         Schwerpunkte remains touched.
-      target: teilaufgabe.kompetenzzuordnung
+      target: aufgabe.aufgaben[].teilaufgaben[].kompetenzzuordnung_abgeleitet
     notes: >
-      Same lookup and reduction as KOMP-03, different threshold: fires when covered
+      Revived 2026-09-11 against teilaufgabe.kompetenzzuordnung_abgeleitet, same as KOMP-03
+      (see its notes). Same lookup and reduction as KOMP-03, different threshold: fires when covered
       Schwerpunkte are strictly fewer than half the required set. authority is
       construction_principle, not binding_federal, because the 50% threshold is this
       project's own judgement call, not a fraction PflAPrV states -- so it cannot carry
@@ -149,6 +216,8 @@ rules:
       Exactly half (e.g. 2 of 4) does not fire, partly because that is a defensible split
       and partly to avoid flagging a legitimately incomplete draft that has only reached
       its second of four planned Teilaufgaben (tech doc 1.5.1).
+      scope: aufsichtsarbeit for the same reason as KOMP-03: coverage is pooled across
+      both Aufgabe blocks via Aufsichtsarbeit.alle_teilaufgaben(), not judged per block.
 
   - id: KOMP-04
     family: B
@@ -166,15 +235,24 @@ rules:
     authority: construction_principle
     jurisdiction: federal
     check_type: deterministic
-    scope: aufgabe
-    input_slice: [teilaufgabe.anforderungsniveau, teilaufgabe.punkte]
-    requires: [teilaufgabe.anforderungsniveau]
+    scope: aufsichtsarbeit
+    input_slice:
+      - aufgabe.aufgaben[].teilaufgaben[].anforderungsniveau
+      - aufgabe.aufgaben[].teilaufgaben[].punkte
+    requires:
+      - aufgabe.aufgaben[].teilaufgaben[].anforderungsniveau
     severity_default: pruefen
     mutation:
       id: MUT-KOMP-04
       operation: flatten_anforderungsniveau
-      description: Set every Teilaufgabe's Anforderungsniveau to I.
-      target: teilaufgabe.anforderungsniveau
+      description: Set every Teilaufgabe's Anforderungsniveau to I, across both Aufgabe blocks.
+      target: aufgabe.aufgaben[].teilaufgaben[].anforderungsniveau
+    notes: >
+      scope: aufsichtsarbeit: distribution is judged across the whole paper (both Aufgabe
+      blocks pooled via Aufsichtsarbeit.alle_teilaufgaben()), not within one block. A block
+      that is internally all-level-I does not fire alone if the other block supplies variety;
+      whether that is the right bar or whether each block should independently show variety
+      is a judgement call worth revisiting once real drafts are seen.
 
   - id: KOMP-05
     family: B
@@ -198,9 +276,9 @@ rules:
     check_type: hybrid
     scope: aufgabenset
     input_slice:
-      - fallsituation.text
-      - fallsituation.altersgruppe
-      - fallsituation.versorgungsbereich
+      - aufgabe.aufgaben[].fallsituation.text
+      - aufgabe.aufgaben[].fallsituation.altersgruppe
+      - aufgabe.aufgaben[].fallsituation.versorgungsbereich
       - aufgabe.geschwister_aufgaben
     requires: [aufgabe.geschwister_aufgaben]
     severity_default: blocker
@@ -208,13 +286,21 @@ rules:
       id: MUT-KOMP-05
       operation: homogenise_sibling_fallsituationen
       description: >
-        Set the Altersgruppe and Versorgungsbereich of all three sibling Aufsichtsarbeiten
-        to the same values.
+        Set the Altersgruppe and Versorgungsbereich of every Aufgabe block across all three
+        sibling Aufsichtsarbeiten to the same values.
       target: aufgabe.geschwister_aufgaben
     notes: >
       The only cross-item rule in the catalogue, and the reason the item schema carries a
       sibling reference as a first-class field. On a single item the precondition is unmet
       and the runner emits NotChecked rather than a flag.
+      Compares at the Aufgabe-block level, not the whole-paper level: each Aufsichtsarbeit
+      now contributes 2 Fallsituationen (Aufgabe 1, Aufgabe 2), so three sibling
+      Aufsichtsarbeiten give 6 Fallsituationen total, and "insgesamt variiert" (§ 14 (2))
+      is judged across all 6, since that is the actual granularity at which a Fallsituation
+      theme exists. This is an interpretation choice PflAPrV does not spell out for the
+      two-blocks-per-paper structure -- worth confirming with a Fachpruefer before relying
+      on it as more than a demonstration, same caveat class as the KOMP-06 Anlage-2 count
+      (tech doc 12).
 
   - id: KOMP-06
     family: B
@@ -231,36 +317,37 @@ rules:
     jurisdiction: federal
     check_type: deterministic
     scope: teilaufgabe
-    input_slice: [teilaufgabe.kompetenzzuordnung]
-    requires: [teilaufgabe.kompetenzzuordnung]
+    input_slice: [teilaufgabe.kompetenzzuordnung_abgeleitet]
+    requires: [teilaufgabe.kompetenzzuordnung_abgeleitet]
     severity_default: blocker
     mutation:
       id: MUT-KOMP-06
       operation: claim_anlage_1_only_kompetenz
       description: >
-        Replace a claimed code with one that exists in Anlage 1 but not in Anlage 2, and
+        Replace a derived code with one that exists in Anlage 1 but not in Anlage 2, and
         with one that exists in neither.
-      target: teilaufgabe.kompetenzzuordnung
+      target: teilaufgabe.kompetenzzuordnung_abgeleitet
     notes: >
-      The cheapest high-value check in the catalogue: a set-membership test, no model.
-      It reads `anlage_2_authoritative` in rules/kompetenzen.yaml, which is parsed from
-      PflAPrV's own Anlage 2 text (85 codes) — NOT the Lehrplan's citations (79 codes).
-      The 6-code difference is not academic: building this on the Lehrplan list would
-      false-flag any item claiming I.1.a, I.1.f, I.1.h, I.1.i, I.2.d or I.2.f, all of
-      which are genuine Anlage 2 competencies. See kompetenzen.yaml meta.komp_06_finding.
-      Note on what this check actually catches: exactly one code, I.2.g, exists in Anlage 1
-      but not in Anlage 2, so the "claimed a Zwischenpruefungs-Kompetenz" case is narrow.
-      The common real defect is a code that exists in neither, i.e. a mistyped or invented
-      reference. Both are set-membership failures and both fire the same rule.
+      Never had a code implementation before this schema's competency evidence was
+      LLM-derived (checks/deterministic/komp_06.py, new 2026-09-11) rather than
+      author-declared. It reads `anlage_2_authoritative` in rules/kompetenzen.yaml, which is
+      parsed from PflAPrV's own Anlage 2 text (85 codes) — NOT the Lehrplan's citations (79
+      codes); see kompetenzen.yaml meta.komp_06_finding for why that distinction matters.
+      Since KOMP-01's derivation (checks/llm/komp_01.py) already filters its output to the
+      candidate set it built (checks/llm/kompetenz_candidates.py), which is itself always a
+      subset of Anlage 2, this should rarely fire in practice now -- it stays valuable as a
+      guardrail against a candidate-set construction bug or a gateway that stops filtering
+      correctly, rather than as the primary defect-catcher it would have been against an
+      author's own claim (where a mistyped or invented code was the common real defect).
 
   - id: KOMP-07
     family: B
-    title: Situationsmerkmale der Fallsituation passen zur ausgewiesenen CE
+    title: Situationsmerkmale der Teilaufgabe passen zur ausgewiesenen CE
     rule_text: >
-      Die Handlungsanlaesse, Kontextbedingungen und Handlungsmuster der Fallsituation
-      sollen denen entsprechen, die der Lehrplan fuer die ausgewiesene curriculare Einheit
-      vorsieht. Eine Fallsituation, deren Handlungsanlass in keiner Beziehung zur
-      ausgewiesenen CE steht, prueft die Kompetenzen dieser CE nicht.
+      Die Handlungsanlaesse, Kontextbedingungen und Handlungsmuster, die eine Teilaufgabe fuer
+      ihre curriculare Einheit angibt, sollen denen entsprechen, die der Lehrplan fuer diese
+      curriculare Einheit vorsieht. Eine Teilaufgabe, deren angegebener Handlungsanlass in
+      keiner Beziehung zur ausgewiesenen CE steht, prueft die Kompetenzen dieser CE nicht.
     source:
       document: Lehrplaene und Ausbildungsplaene fuer die Berufsfachschule fuer Pflege (StMUK / ISB Bayern, Juli 2020)
       locator: Situationsmerkmale je curriculare Einheit
@@ -269,20 +356,32 @@ rules:
     authority: official_state
     jurisdiction: BY
     check_type: llm
-    scope: fallsituation
-    input_slice: [fallsituation.text, fallsituation.situationsmerkmale, aufgabe.ce_bezug]
-    requires: [fallsituation.text, aufgabe.ce_bezug]
+    scope: teilaufgabe
+    input_slice:
+      - teilaufgabe.situationsmerkmale
+      - aufgabe.fallsituation.text
+    requires:
+      - teilaufgabe.situationsmerkmale.curriculare_einheit
     severity_default: pruefen
     mutation:
       id: MUT-KOMP-07
-      operation: swap_ce_bezug
+      operation: swap_curriculare_einheit
       description: >
-        Change the declared ce_bezug to a curriculare Einheit whose Situationsmerkmale do
-        not match the Fallsituation, leaving the Fallsituation unchanged.
-      target: aufgabe.ce_bezug
+        Change one Teilaufgabe's declared situationsmerkmale.curriculare_einheit to a
+        curriculare Einheit whose Situationsmerkmale do not match that Teilaufgabe's
+        Handlungsanlaesse/Kontextbedingungen/Handlungsmuster, leaving those unchanged.
+      target: teilaufgabe.situationsmerkmale.curriculare_einheit
     notes: >
       The most differentiating check in the tool: nothing on the market checks whether a
       case scenario's Handlungsanlass matches the curricular unit whose competencies the
       item claims to assess, and it is defensible because both sides come from binding
       documents. Compares only the three dimensions the Lehrplan structures per CE —
       Akteure and Erleben/Deuten/Verarbeiten are prose there, not a per-CE list.
+      Re-scoped from aufgabe to teilaufgabe by the schema change of 2026-09-11: the CE claim
+      and its Situationsmerkmale moved from Aufgabe.ce_bezug (one per block) down to
+      Teilaufgabe.situationsmerkmale.curriculare_einheit (one per Teilaufgabe), since a
+      block's several Teilaufgaben can legitimately target different CEs off one shared
+      Fallsituation. The block's Fallsituation.text stays in input_slice as context the model
+      needs to judge whether a Teilaufgabe's claimed Situationsmerkmale actually arise from
+      that prose; the comparison target for the mismatch itself is now the Teilaufgabe, not
+      the whole block.

@@ -1,21 +1,80 @@
 {
   "aufgabe_id": "D-01",
-  "metadaten": {"pruefungsbereich": "1", "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann", "bearbeitungszeit_minuten": 120, "autor": "synthetisch (PoC-Testkorpus)", "version": "0.1 Entwurf", "datum": "2026-09-08"},
-  "ce_bezug": ["CE 09"],
-  "fallsituation": {
-    "text": "Herr Waldherr ist 76 Jahre alt und lebt seit 2 Jahren in einer Pflegeeinrichtung. Er hat eine Demenz im mittleren Stadium. Herr Waldherr war Schreiner und geht jeden Vormittag in die Werkstatt der Einrichtung. Seit 2 Wochen zieht er sich zurueck und lehnt die Werkstatt ab. Beim Mittagessen sitzt er allein am Fensterplatz. Eine Pflegefachperson berichtet, dass sein Zimmernachbar vor 3 Wochen verstorben ist.",
-    "situationsmerkmale": {
-      "handlungsanlaesse": ["Rueckzug und Verlust einer Alltagsaktivitaet", "Verlusterfahrung"],
-      "kontextbedingungen": ["Langzeitpflegeeinrichtung", "Werkstatt als Tagesstruktur"],
-      "handlungsmuster": ["Lebensweltorientierung", "Biografiearbeit"],
-      "akteure": ["Herr Waldherr", "Pflegefachperson"]
-    },
-    "versorgungsbereich": "stationaer_langzeit", "altersgruppe": "alter_mensch",
-    "pflegebeduerftigkeit": "mittlerer Grad an Pflegebeduerftigkeit bei Demenz"
+  "metadaten": {
+    "pruefungsbereich": "1",
+    "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann",
+    "bearbeitungszeit_minuten": 120,
+    "autor": "synthetisch (PoC-Testkorpus)",
+    "version": "0.1 Entwurf",
+    "datum": "2026-09-08"
   },
-  "teilaufgaben": [
-    {"text": "Beschreiben Sie 4 Beobachtungen, die auf eine Veraenderung im Verhalten von Herrn Waldherr hinweisen.", "anforderungsniveau": "I", "punkte": 6.0, "kompetenzzuordnung": ["I.1.c"]},
-    {"text": "Begruenden Sie 2 Massnahmen, die Herrn Waldherr die Rueckkehr in die Werkstatt erleichtern.", "anforderungsniveau": "II", "punkte": 8.0, "kompetenzzuordnung": ["I.6.b"]}
+  "aufgaben": [
+    {
+      "fallsituation": {
+        "text": "Herr Waldherr ist 76 Jahre alt und lebt seit 2 Jahren in einer Pflegeeinrichtung. Er hat eine Demenz im mittleren Stadium. Herr Waldherr war Schreiner und geht jeden Vormittag in die Werkstatt der Einrichtung. Seit 2 Wochen zieht er sich zurueck und lehnt die Werkstatt ab. Beim Mittagessen sitzt er allein am Fensterplatz. Eine Pflegefachperson berichtet, dass sein Zimmernachbar vor 3 Wochen verstorben ist.",
+        "titel": "Herr Waldherr - Rueckzug bei Demenz nach Verlust des Zimmernachbarn",
+        "versorgungsbereich": "stationaer_langzeit",
+        "altersgruppe": "alter_mensch"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Beschreiben Sie 4 Beobachtungen, die auf eine Veraenderung im Verhalten von Herrn Waldherr hinweisen.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Rueckzug und Verlust einer Alltagsaktivitaet",
+              "Verlusterfahrung"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung",
+              "Werkstatt als Tagesstruktur"
+            ],
+            "handlungsmuster": [
+              "Lebensweltorientierung",
+              "Biografiearbeit"
+            ],
+            "curriculare_einheit": [
+              "CE 09"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.6.e"
+          ]
+        },
+        {
+          "text": "Begruenden Sie 2 Massnahmen, die Herrn Waldherr die Rueckkehr in die Werkstatt erleichtern.",
+          "anforderungsniveau": "II",
+          "punkte": 8.0,
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Rueckzug und Verlust einer Alltagsaktivitaet",
+              "Verlusterfahrung"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung",
+              "Werkstatt als Tagesstruktur"
+            ],
+            "handlungsmuster": [
+              "Lebensweltorientierung",
+              "Biografiearbeit"
+            ],
+            "curriculare_einheit": [
+              "CE 09"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.1.b",
+            "I.6.d"
+          ]
+        }
+      ]
+    }
   ],
-  "geschwister_aufgaben": ["D-02", "D-03"]
+  "geschwister_aufgaben": [
+    "D-02",
+    "D-03"
+  ]
 }

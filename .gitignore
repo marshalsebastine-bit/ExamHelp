@@ -3,6 +3,9 @@ __pycache__/
 .venv/
 .DS_Store
 
+# Local secrets (MISTRAL_API_KEY etc.) -- never committed
+.env
+
 # Notes, not deliverables
 notepad/
 
@@ -12,6 +15,10 @@ corpus/chunks/*
 
 # Extraction caches: rebuild from the sources in corpus/raw
 build/
+
+# Run logs (e.g. scripts/spot_check_german_quality.py's raw LLM responses):
+# regenerable by re-running the script, not a deliverable to track
+logs/
 
 # Mutation variants are reproducible from a seed, so ground truth cannot
 # drift from the variants (tech doc 9).

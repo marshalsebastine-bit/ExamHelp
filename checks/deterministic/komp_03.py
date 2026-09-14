@@ -1,10 +1,15 @@
-"""KOMP-03 and KOMP-03B: does the item's competency claims relate to its
-declared Prüfungsbereich at all, and if so, by how much.
+"""KOMP-03 and KOMP-03B: does the item's derived competency claims relate to
+its declared Prüfungsbereich at all, and if so, by how much.
 
-Both rules run the same lookup and the same set arithmetic; they differ only in
-the threshold applied to the result, which is why they are one module.  See the
-`notes` field of each rule in rules/kompetenz.yaml for why the threshold split
-exists rather than one rule with one bar.
+Both rules run the same lookup and the same set arithmetic; they differ only
+in the threshold applied to the result, which is why they are one module.
+See the `notes` field of each rule in rules/kompetenz.yaml for why the
+threshold split exists rather than one rule with one bar.
+
+Reads ``teilaufgabe.kompetenzzuordnung_abgeleitet`` (populated by KOMP-01's
+LLM derivation, checks/llm/komp_01.py) rather than an author-declared claim:
+the field this module read before this name was removed from the schema on
+2026-09-11 with no replacement, and this is the replacement.
 """
 from __future__ import annotations
 
@@ -19,8 +24,12 @@ def schwerpunkt(code: str) -> str:
     return f"{bereich}.{nummer}"
 
 
-def claimed_schwerpunkte(aufgabe: Aufsichtsarbeit) -> set[str]:
-    codes = {code for t in aufgabe.teilaufgaben for code in t.kompetenzzuordnung}
+def derived_schwerpunkte(aufgabe: Aufsichtsarbeit) -> set[str]:
+    """Pooled across both Aufgabe blocks: the Pruefungsbereich correspondence is one
+    per whole paper (PflAPrV Sec 14 (1)-(2)), not per Aufgabe 1 / Aufgabe 2, so a code
+    derived only in Aufgabe 2 still counts toward coverage of the declared Pruefungsbereich.
+    """
+    codes = {code for t in aufgabe.alle_teilaufgaben() for code in t.kompetenzzuordnung_abgeleitet}
     return {schwerpunkt(code) for code in codes}
 
 
@@ -29,9 +38,9 @@ def _gate(aufgabe: Aufsichtsarbeit, rule_id: str) -> tuple[set[str], dict] | lis
     missing = []
     if not aufgabe.metadaten.pruefungsbereich:
         missing.append("aufgabe.metadaten.pruefungsbereich")
-    claimed = claimed_schwerpunkte(aufgabe)
-    if not any(t.kompetenzzuordnung for t in aufgabe.teilaufgaben):
-        missing.append("teilaufgabe.kompetenzzuordnung")
+    derived = derived_schwerpunkte(aufgabe)
+    if not any(t.kompetenzzuordnung_abgeleitet for t in aufgabe.alle_teilaufgaben()):
+        missing.append("teilaufgabe.kompetenzzuordnung_abgeleitet")
     if missing:
         return [NotChecked(rule_id=rule_id, reason="Praeambel unvollstaendig", missing=missing)]
 
@@ -45,7 +54,7 @@ def _gate(aufgabe: Aufsichtsarbeit, rule_id: str) -> tuple[set[str], dict] | lis
                 missing=["aufgabe.metadaten.pruefungsbereich"],
             )
         ]
-    return claimed, bereiche[nummer]
+    return derived, bereiche[nummer]
 
 
 def check_komp_03(aufgabe: Aufsichtsarbeit) -> list[Flag] | list[NotChecked]:
@@ -56,9 +65,9 @@ def check_komp_03(aufgabe: Aufsichtsarbeit) -> list[Flag] | list[NotChecked]:
     result = _gate(aufgabe, "KOMP-03")
     if isinstance(result, list):
         return result
-    claimed, bereich = result
+    derived, bereich = result
 
-    covered = claimed & set(bereich["kompetenzschwerpunkte"])
+    covered = derived & set(bereich["kompetenzschwerpunkte"])
     if covered:
         return []
 
@@ -70,7 +79,7 @@ def check_komp_03(aufgabe: Aufsichtsarbeit) -> list[Flag] | list[NotChecked]:
             severity="blocker",
             mechanism="deterministic",
             finding=(
-                f"Keine der ausgewiesenen Kompetenzzuordnungen beruehrt einen der "
+                f"Keine der abgeleiteten Kompetenzzuordnungen beruehrt einen der "
                 f"Kompetenzschwerpunkte, die § 14 Absatz 1 PflAPrV fuer Pruefungsbereich "
                 f"{bereich['nummer']} benennt ({', '.join(bereich['kompetenzschwerpunkte'])})."
             ),
@@ -85,10 +94,10 @@ def check_komp_03b(aufgabe: Aufsichtsarbeit) -> list[Flag] | list[NotChecked]:
     result = _gate(aufgabe, "KOMP-03B")
     if isinstance(result, list):
         return result
-    claimed, bereich = result
+    derived, bereich = result
 
     required = set(bereich["kompetenzschwerpunkte"])
-    covered = claimed & required
+    covered = derived & required
     if len(covered) >= len(required) / 2:
         return []
 

@@ -47,6 +47,11 @@ rules:
         Replace a case-referring Teilaufgabe with a generic knowledge question that is
         answerable without reading the Fallsituation, leaving the Fallsituation unchanged.
       target: teilaufgabe.text
+    notes: >
+      scope: aufgabe means one Aufgabe block ("Aufgabe 1" / "Aufgabe 2"), not the whole
+      Aufsichtsarbeit: each block has its own Fallsituation, and this rule checks that block's
+      Teilaufgaben against that block's Fallsituation only. It must not compare a Teilaufgabe
+      in Aufgabe 2 against Aufgabe 1's Fallsituation.
 
   - id: FORM-02
     family: A
@@ -63,12 +68,14 @@ rules:
     authority: binding_federal
     jurisdiction: federal
     check_type: deterministic
-    scope: aufgabe
+    scope: aufsichtsarbeit
     input_slice:
       - aufgabe.metadaten.bearbeitungszeit_minuten
-      - aufgabe.teilaufgaben
-      - teilaufgabe.punkte
-    requires: [aufgabe.teilaufgaben, teilaufgabe.punkte]
+      - aufgabe.aufgaben[].teilaufgaben[]
+      - aufgabe.aufgaben[].teilaufgaben[].punkte
+    requires:
+      - aufgabe.aufgaben[].teilaufgaben[]
+      - aufgabe.aufgaben[].teilaufgaben[].punkte
     severity_default: pruefen
     suggestion_template:
       - "Punktzahl oder Anzahl der Teilaufgaben reduzieren."
@@ -79,7 +86,11 @@ rules:
       description: >
         Double the total Punkte and the number of Teilaufgaben while leaving the
         Bearbeitungszeit at 120 minutes.
-      target: aufgabe.teilaufgaben
+      target: aufgabe.aufgaben[].teilaufgaben[]
+    notes: >
+      scope: aufsichtsarbeit because Bearbeitungszeit is one budget shared by both Aufgabe
+      blocks (PflAPrV § 14 (3)): the check reads Aufsichtsarbeit.alle_teilaufgaben(), which
+      flattens across Aufgabe 1 and Aufgabe 2, not just one block's Teilaufgaben.
 
   - id: FORM-03
     family: A
@@ -195,7 +206,7 @@ rules:
     authority: construction_principle
     jurisdiction: federal
     check_type: deterministic
-    scope: aufgabe
+    scope: teilaufgabe
     input_slice: [teilaufgabe.punkte, teilaufgabe.erwartungshorizont]
     requires: [teilaufgabe.punkte]
     severity_default: pruefen
@@ -213,6 +224,12 @@ rules:
       Authority is construction_principle, not a citation: no source states this, and
       forcing one would fabricate evidence. The flag's evidence carries the computed
       values alongside the rule text, which is what makes it verifiable.
+      Rescoped from aufgabe to teilaufgabe when the Aufgabe-block restructuring was
+      introduced: rule_text mentions "Gesamtpunktzahl" but the only thing this check
+      actually verifies is per-Teilaufgabe (its Erwartungshorizont sums to its own Punktzahl),
+      which is teilaufgabe-scoped regardless of which Aufgabe block the Teilaufgabe sits in.
+      There is no separate declared whole-paper total field to check against; if one is added
+      later, that becomes its own aufsichtsarbeit-scoped rule rather than folding in here.
 
   - id: FORM-07
     family: A
@@ -296,7 +313,7 @@ rules:
     authority: third_party_advisory
     jurisdiction: BY
     check_type: llm
-    scope: fallsituation
+    scope: aufgabe
     input_slice: [fallsituation.text, teilaufgabe.text]
     requires: [fallsituation.text, teilaufgabe.text]
     severity_default: hinweis
@@ -326,7 +343,7 @@ rules:
     authority: third_party_advisory
     jurisdiction: BY
     check_type: llm
-    scope: fallsituation
+    scope: aufgabe
     input_slice: [fallsituation.text]
     requires: [fallsituation.text]
     severity_default: hinweis
@@ -478,3 +495,49 @@ rules:
       operation: subjunctivise
       description: Rewrite one indicative sentence of the Fallsituation in Konjunktiv II.
       target: fallsituation.text
+
+  - id: FORM-16
+    family: A
+    title: Aufgabe 1 und Aufgabe 2 tragen etwa gleich viel zur Gesamtpunktzahl bei
+    rule_text: >
+      Die beiden Aufgaben einer Aufsichtsarbeit sollen etwa gleich viele Punkte zur
+      Gesamtpunktzahl beitragen. Traegt eine Aufgabe deutlich weniger bei als die andere,
+      ist die Bearbeitungszeit von 120 Minuten faktisch nicht gleichmaessig auf die beiden
+      Fallsituationen verteilt.
+    source:
+      document: Konstruktionsprinzip (projekteigene Regel, keine externe Quelle)
+      locator: FORM-16
+      quote: >
+        Aufgabe 1 und Aufgabe 2 einer Aufsichtsarbeit sollen zu etwa gleichen Teilen zur
+        Gesamtpunktzahl beitragen.
+    authority: construction_principle
+    jurisdiction: federal
+    check_type: deterministic
+    scope: aufsichtsarbeit
+    input_slice:
+      - aufgabe.aufgaben[].teilaufgaben[].punkte
+    requires:
+      - aufgabe.aufgaben[].teilaufgaben[].punkte
+    severity_default: pruefen
+    suggestion_template:
+      - "Eine Teilaufgabe von der punktereicheren in die punkteaermere Aufgabe verschieben."
+      - "Die Punktzahl einzelner Teilaufgaben so anpassen, dass beide Aufgaben aehnlich viel wiegen."
+    mutation:
+      id: MUT-FORM-16
+      operation: skew_aufgabe_punkte
+      description: >
+        Move most of the Punkte from one Aufgabe block's Teilaufgaben to the other's,
+        leaving the whole-paper total unchanged.
+      target: aufgabe.aufgaben[].teilaufgaben[].punkte
+    notes: >
+      Deterministic: compare each Aufgabe block's Punkte-Summe to the whole-paper total via
+      Aufsichtsarbeit.alle_teilaufgaben(). Fires when the smaller block's share falls below
+      40 percent of the total (equivalently, the larger block exceeds 60 percent) -- a
+      tolerance band rather than a strict 50/50 requirement, since real Erwartungshorizont
+      arithmetic will not split evenly by chance. Confirmed as a real construction
+      expectation (2026-09-10): the two Aufgabe blocks share one 120-minute Bearbeitungszeit,
+      so a heavily skewed Punkte split means the smaller-share Fallsituation is worth
+      disproportionately little of the paper's grade for the time it takes to work through.
+      authority is construction_principle rather than a PflAPrV citation: the regulation
+      states the two-blocks-per-paper administration is per-school/Land practice, not text
+      in the federal regulation this project has in its corpus.

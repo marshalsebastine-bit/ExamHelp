@@ -40,8 +40,21 @@ class CheckType(str, Enum):
 
 
 class Scope(str, Enum):
-    aufgabe = "aufgabe"
-    fallsituation = "fallsituation"
+    """The granularity a check runs at — how many times it fires per item, and
+    what its input_slice paths are relative to.
+
+    ``aufgabe`` and ``aufsichtsarbeit`` are easy to confuse and deliberately
+    named after real vocabulary rather than invented terms: an Aufsichtsarbeit
+    is the whole 120-minute paper for one Prüfungsbereich; "Aufgabe 1" /
+    "Aufgabe 2" are the two independently-themed case blocks inside it, each
+    with its own Fallsituation and Teilaufgaben (schemas/aufgabe.py).
+    A rule scoped ``aufgabe`` runs once per block; one scoped ``aufsichtsarbeit``
+    runs once for the whole paper, aggregating across both blocks via
+    ``Aufsichtsarbeit.alle_teilaufgaben()``.
+    """
+
+    aufsichtsarbeit = "aufsichtsarbeit"  # the whole 120-minute paper, both Aufgabe blocks
+    aufgabe = "aufgabe"  # one Aufgabe block: its Fallsituation + its Teilaufgaben
     teilaufgabe = "teilaufgabe"
     erwartungshorizont = "erwartungshorizont"
     aufgabenset = "aufgabenset"  # across sibling Aufsichtsarbeiten

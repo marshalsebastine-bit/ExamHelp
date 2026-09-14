@@ -1,27 +1,381 @@
 {
   "aufgabe_id": "D-03",
-  "metadaten": {"pruefungsbereich": "3", "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann", "bearbeitungszeit_minuten": 120, "autor": "synthetisch (PoC-Testkorpus)", "version": "1.0", "datum": "2026-09-08"},
-  "ce_bezug": ["CE 06"],
-  "fallsituation": {
-    "text": "Herr Grasegger ist 84 Jahre alt und lebt seit 1 Jahr in derselben Pflegeeinrichtung wie Frau Sedlmeier. Um 6 Uhr finden Sie ihn auf dem Boden neben seinem Bett. Herr Grasegger ist wach und antwortet verlangsamt. Sein rechtes Bein ist nach aussen gedreht und verkuerzt. Er gibt Schmerzen in der Hueftregion an. Sein Blutdruck betraegt 145 zu 85 mmHg, der Puls 88 pro Minute. Herr Grasegger nimmt Apixaban ein. An der Stirn zeigt sich eine 3 Zentimeter lange Platzwunde.",
-    "situationsmerkmale": {
-      "handlungsanlaesse": ["Sturz mit Verletzungsfolge", "Verdacht auf Fraktur", "Blutungsrisiko unter Antikoagulation"],
-      "kontextbedingungen": ["Langzeitpflegeeinrichtung", "Fruehdienst mit geringer Personalstaerke"],
-      "handlungsmuster": ["Notfallersteinschaetzung", "Sofortmassnahmen", "Dokumentation eines Sturzereignisses"],
-      "akteure": ["Herr Grasegger", "Pflegefachperson", "Notarzt"]
-    },
-    "versorgungsbereich": "stationaer_langzeit", "altersgruppe": "alter_mensch",
-    "pflegebeduerftigkeit": "hoher Grad an Pflegebeduerftigkeit, akut instabile Situation"
+  "metadaten": {
+    "pruefungsbereich": "3",
+    "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann",
+    "bearbeitungszeit_minuten": 120,
+    "autor": "synthetisch (PoC-Testkorpus)",
+    "version": "1.0",
+    "datum": "2026-09-08"
   },
-  "teilaufgaben": [
-    {"text": "Benennen Sie 4 Beobachtungen bei Herrn Grasegger, die auf eine ernste Verletzung hinweisen.", "anforderungsniveau": "I", "punkte": 6.0, "kompetenzzuordnung": ["I.3.a"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Aussenrotation und Verkuerzung des rechten Beins", "punkte": 1.5}, {"text": "Schmerzen in der Hueftregion", "punkte": 1.5}, {"text": "Platzwunde an der Stirn unter Antikoagulation", "punkte": 1.5}, {"text": "verlangsamte Reaktion", "punkte": 1.5}]}},
-    {"text": "Bestimmen Sie 3 Sofortmassnahmen, die Sie bei Herrn Grasegger durchfuehren.", "anforderungsniveau": "II", "punkte": 9.0, "kompetenzzuordnung": ["I.4.a"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Notruf ausloesen und Herrn Grasegger nicht umlagern", "punkte": 3.0}, {"text": "Wunde keimarm abdecken und Blutung kontrollieren", "punkte": 3.0}, {"text": "Vitalparameter und Bewusstseinslage ueberwachen", "punkte": 3.0}]}},
-    {"text": "Erlaeutern Sie 2 Aspekte, die Sie bei der Dokumentation des Sturzereignisses beachten.", "anforderungsniveau": "II", "punkte": 7.0, "kompetenzzuordnung": ["III.2.b"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Auffindesituation sachlich und ohne Deutung festhalten", "punkte": 3.5}, {"text": "Zeitpunkt, Massnahmen und Rueckmeldungen nachvollziehbar erfassen", "punkte": 3.5}]}},
-    {"text": "Beurteilen Sie 2 Handlungsmoeglichkeiten unter ethischen Gesichtspunkten, wenn Herr Grasegger die Krankenhauseinweisung ablehnt.", "anforderungsniveau": "III", "punkte": 10.0, "kompetenzzuordnung": ["II.3.a"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Ablehnung als Ausdruck der Selbstbestimmung anerkennen und Einwilligungsfaehigkeit einschaetzen", "punkte": 5.0}, {"text": "Aufklaerung ueber Folgen wiederholen und Entscheidung dokumentieren", "punkte": 5.0}]}}
+  "aufgaben": [
+    {
+      "fallsituation": {
+        "text": "Herr Grasegger ist 84 Jahre alt und lebt seit 1 Jahr in derselben Pflegeeinrichtung wie Frau Sedlmeier. Um 6 Uhr finden Sie ihn auf dem Boden neben seinem Bett. Herr Grasegger ist wach und antwortet verlangsamt. Sein rechtes Bein ist nach aussen gedreht und verkuerzt. Er gibt Schmerzen in der Hueftregion an. Sein Blutdruck betraegt 145 zu 85 mmHg, der Puls 88 pro Minute. Herr Grasegger nimmt Apixaban ein. An der Stirn zeigt sich eine 3 Zentimeter lange Platzwunde.",
+        "titel": "Herr Grasegger - Sturz mit Verdacht auf Schenkelhalsfraktur",
+        "versorgungsbereich": "stationaer_langzeit",
+        "altersgruppe": "alter_mensch"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Benennen Sie 4 Beobachtungen bei Herrn Grasegger, die auf eine ernste Verletzung hinweisen.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Aussenrotation und Verkuerzung des rechten Beins",
+                "punkte": 1.5
+              },
+              {
+                "text": "Schmerzen in der Hueftregion",
+                "punkte": 1.5
+              },
+              {
+                "text": "Platzwunde an der Stirn unter Antikoagulation",
+                "punkte": 1.5
+              },
+              {
+                "text": "verlangsamte Reaktion",
+                "punkte": 1.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Sturz mit Verletzungsfolge",
+              "Verdacht auf Fraktur",
+              "Blutungsrisiko unter Antikoagulation"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung",
+              "Fruehdienst mit geringer Personalstaerke"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Dokumentation eines Sturzereignisses"
+            ],
+            "curriculare_einheit": [
+              "CE 06"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.4.a"
+          ]
+        },
+        {
+          "text": "Bestimmen Sie 3 Sofortmassnahmen, die Sie bei Herrn Grasegger durchfuehren.",
+          "anforderungsniveau": "II",
+          "punkte": 9.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Notruf ausloesen und Herrn Grasegger nicht umlagern",
+                "punkte": 3.0
+              },
+              {
+                "text": "Wunde keimarm abdecken und Blutung kontrollieren",
+                "punkte": 3.0
+              },
+              {
+                "text": "Vitalparameter und Bewusstseinslage ueberwachen",
+                "punkte": 3.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Sturz mit Verletzungsfolge",
+              "Verdacht auf Fraktur",
+              "Blutungsrisiko unter Antikoagulation"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung",
+              "Fruehdienst mit geringer Personalstaerke"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Dokumentation eines Sturzereignisses"
+            ],
+            "curriculare_einheit": [
+              "CE 06"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.4.b"
+          ]
+        },
+        {
+          "text": "Erlaeutern Sie 2 Aspekte, die Sie bei der Dokumentation des Sturzereignisses beachten.",
+          "anforderungsniveau": "II",
+          "punkte": 7.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Auffindesituation sachlich und ohne Deutung festhalten",
+                "punkte": 3.5
+              },
+              {
+                "text": "Zeitpunkt, Massnahmen und Rueckmeldungen nachvollziehbar erfassen",
+                "punkte": 3.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Sturz mit Verletzungsfolge",
+              "Verdacht auf Fraktur",
+              "Blutungsrisiko unter Antikoagulation"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung",
+              "Fruehdienst mit geringer Personalstaerke"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Dokumentation eines Sturzereignisses"
+            ],
+            "curriculare_einheit": [
+              "CE 06"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "III.2.b"
+          ]
+        },
+        {
+          "text": "Beurteilen Sie 2 Handlungsmoeglichkeiten unter ethischen Gesichtspunkten, wenn Herr Grasegger die Krankenhauseinweisung ablehnt.",
+          "anforderungsniveau": "III",
+          "punkte": 10.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Ablehnung als Ausdruck der Selbstbestimmung anerkennen und Einwilligungsfaehigkeit einschaetzen",
+                "punkte": 5.0
+              },
+              {
+                "text": "Aufklaerung ueber Folgen wiederholen und Entscheidung dokumentieren",
+                "punkte": 5.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Reflexion/Beurteilung",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Sturz mit Verletzungsfolge",
+              "Verdacht auf Fraktur",
+              "Blutungsrisiko unter Antikoagulation"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung",
+              "Fruehdienst mit geringer Personalstaerke"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Dokumentation eines Sturzereignisses"
+            ],
+            "curriculare_einheit": [
+              "CE 06"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.3.b"
+          ]
+        }
+      ]
+    },
+    {
+      "fallsituation": {
+        "text": "Frau Huber ist 89 Jahre alt und lebt seit 6 Jahren in derselben Pflegeeinrichtung wie Herr Grasegger. Sie hat eine fortgeschrittene Niereninsuffizienz. In der Nacht klagt sie ploetzlich ueber starke Uebelkeit und erbricht zweimal. Frau Huber ist blass und wirkt verwirrt, was fuer sie untypisch ist. Ihr Blutdruck betraegt 88 zu 52 mmHg. Die Nachtwache ist allein im Wohnbereich fuer 18 Bewohnerinnen und Bewohner zustaendig. Frau Huber hat eine Patientenverfuegung, die eine Dialyse ablehnt.",
+        "titel": "Frau Huber - Akute Uebelkeit und Kreislaufinstabilitaet bei Niereninsuffizienz",
+        "versorgungsbereich": "stationaer_langzeit",
+        "altersgruppe": "alter_mensch"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Benennen Sie 4 Beobachtungen bei Frau Huber, die auf eine akute Verschlechterung hinweisen.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "ploetzliche Uebelkeit mit wiederholtem Erbrechen",
+                "punkte": 1.5
+              },
+              {
+                "text": "Blutdruck von 88 zu 52 mmHg",
+                "punkte": 1.5
+              },
+              {
+                "text": "untypische Verwirrtheit",
+                "punkte": 1.5
+              },
+              {
+                "text": "Blaesse",
+                "punkte": 1.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "akute Verschlechterung bei fortgeschrittener Niereninsuffizienz",
+              "Kreislaufinstabilitaet"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung",
+              "Nachtdienst mit geringer Personalstaerke",
+              "vorliegende Patientenverfuegung"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Beruecksichtigung des Patientenwillens"
+            ],
+            "curriculare_einheit": [
+              "CE 08"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.3.a"
+          ]
+        },
+        {
+          "text": "Bestimmen Sie 3 Sofortmassnahmen, die Sie bei Frau Huber durchfuehren.",
+          "anforderungsniveau": "II",
+          "punkte": 9.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Frau Huber sicher lagern und Aspirationsschutz beachten",
+                "punkte": 3.0
+              },
+              {
+                "text": "engmaschige Kreislaufkontrolle",
+                "punkte": 3.0
+              },
+              {
+                "text": "hausaerztlichen Bereitschaftsdienst kontaktieren",
+                "punkte": 3.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "akute Verschlechterung bei fortgeschrittener Niereninsuffizienz",
+              "Kreislaufinstabilitaet"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung",
+              "Nachtdienst mit geringer Personalstaerke",
+              "vorliegende Patientenverfuegung"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Beruecksichtigung des Patientenwillens"
+            ],
+            "curriculare_einheit": [
+              "CE 08"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "III.2.d"
+          ]
+        },
+        {
+          "text": "Erlaeutern Sie 2 Aspekte, die Sie bei der Weitergabe der Situation an den Bereitschaftsdienst beachten.",
+          "anforderungsniveau": "II",
+          "punkte": 7.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Beobachtungen strukturiert und vollstaendig weitergeben",
+                "punkte": 3.5
+              },
+              {
+                "text": "auf die bestehende Patientenverfuegung hinweisen",
+                "punkte": 3.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "akute Verschlechterung bei fortgeschrittener Niereninsuffizienz",
+              "Kreislaufinstabilitaet"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung",
+              "Nachtdienst mit geringer Personalstaerke",
+              "vorliegende Patientenverfuegung"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Beruecksichtigung des Patientenwillens"
+            ],
+            "curriculare_einheit": [
+              "CE 08"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.3.a"
+          ]
+        },
+        {
+          "text": "Beurteilen Sie 2 Handlungsmoeglichkeiten unter ethischen Gesichtspunkten im Umgang mit der Patientenverfuegung von Frau Huber.",
+          "anforderungsniveau": "III",
+          "punkte": 10.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "die Ablehnung einer Dialyse bleibt bindend, auch in der akuten Situation",
+                "punkte": 5.0
+              },
+              {
+                "text": "symptomlindernde Massnahmen bleiben unabhaengig von der Verfuegung geboten",
+                "punkte": 5.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Reflexion/Beurteilung",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "akute Verschlechterung bei fortgeschrittener Niereninsuffizienz",
+              "Kreislaufinstabilitaet"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung",
+              "Nachtdienst mit geringer Personalstaerke",
+              "vorliegende Patientenverfuegung"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Beruecksichtigung des Patientenwillens"
+            ],
+            "curriculare_einheit": [
+              "CE 08"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "V.1.c"
+          ]
+        }
+      ]
+    }
   ],
-  "geschwister_aufgaben": ["D-01", "D-02"]
+  "geschwister_aufgaben": [
+    "D-01",
+    "D-02"
+  ]
 }

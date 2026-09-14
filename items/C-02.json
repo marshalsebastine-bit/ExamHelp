@@ -1,27 +1,265 @@
 {
   "aufgabe_id": "C-02",
-  "metadaten": {"pruefungsbereich": "2", "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann", "bearbeitungszeit_minuten": 120, "autor": "synthetisch (PoC-Testkorpus)", "version": "0.4", "datum": "2026-09-08"},
-  "ce_bezug": ["CE 10"],
-  "fallsituation": {
-    "text": "Jonas ist 15 Jahre alt und kommt zur Kontrolle in die Ambulanz. Er hat seit dem 9. Lebensjahr einen Diabetes mellitus Typ 1. Jonas spielt im Verein Handball und traegt Schuhgroesse 44. Seine Mutter arbeitet als Steuerfachangestellte und der Vater ist Fliesenleger. Die Familie hat einen Hund namens Rocky. In den letzten 3 Monaten hat Jonas seine Blutzuckerwerte nur unregelmaessig dokumentiert. Sein HbA1c ist von 7,1 auf 8,9 Prozent gestiegen. Jonas sagt, die Messungen seien ihm vor seinen Freunden unangenehm. Das Wohnzimmer der Familie wurde im letzten Jahr renoviert.",
-    "situationsmerkmale": {
-      "handlungsanlaesse": ["nachlassende Therapieadhaerenz in der Adoleszenz", "Verschlechterung der Stoffwechsellage"],
-      "kontextbedingungen": ["ambulante Betreuung", "Peer-Gruppe als Einflussfaktor"],
-      "handlungsmuster": ["Beratung von Jugendlichen", "Foerderung des Selbstmanagements"],
-      "akteure": ["Jonas", "Mutter", "Vater"]
-    },
-    "versorgungsbereich": "ambulant", "altersgruppe": "jugendlicher",
-    "pflegebeduerftigkeit": "keine Pflegebeduerftigkeit, hoher Beratungsbedarf"
+  "metadaten": {
+    "pruefungsbereich": "2",
+    "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann",
+    "bearbeitungszeit_minuten": 120,
+    "autor": "synthetisch (PoC-Testkorpus)",
+    "version": "0.4",
+    "datum": "2026-09-08"
   },
-  "teilaufgaben": [
-    {"text": "Nennen Sie 3 Ursachen fuer die Verschlechterung des HbA1c bei Jonas.", "anforderungsniveau": "III", "punkte": 9.0, "kompetenzzuordnung": ["I.2.a"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Begruenden Sie, warum die unregelmaessige Dokumentation zur Verschlechterung fuehrt", "punkte": 3.0}, {"text": "Bewerten Sie den Einfluss der Peer-Gruppe auf das Messverhalten", "punkte": 3.0}, {"text": "Leiten Sie aus dem Sportpensum den veraenderten Insulinbedarf ab", "punkte": 3.0}]}},
-    {"text": "Erklaeren Sie 2 Beratungsinhalte fuer Jonas zum Umgang mit der Messung in der Gruppe.", "anforderungsniveau": "II", "punkte": 8.0, "kompetenzzuordnung": ["II.2.b"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "diskrete Messmoeglichkeiten und Sensortechnik besprechen", "punkte": 4.0}, {"text": "Umgang mit Nachfragen der Freunde einueben", "punkte": 4.0}]}},
-    {"text": "Beschreiben Sie 2 Massnahmen zur Einbeziehung der Eltern von Jonas.", "anforderungsniveau": "I", "punkte": 6.0, "kompetenzzuordnung": ["II.2.c"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "gemeinsames Gespraech zur Rollenklaerung", "punkte": 3.0}, {"text": "Vereinbarung ueber die Eigenverantwortung von Jonas", "punkte": 3.0}]}},
-    {"text": "Begruenden Sie 2 praeventive Massnahmen zur Vermeidung von Folgeerkrankungen bei Jonas.", "anforderungsniveau": "II", "punkte": 7.0, "kompetenzzuordnung": ["V.1.b"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "strukturierte Schulung, weil Selbstmanagement die Stoffwechsellage verbessert", "punkte": 3.5}, {"text": "regelmaessige Verlaufskontrollen, weil Folgeschaeden frueh erkennbar sind", "punkte": 3.5}]}}
+  "aufgaben": [
+    {
+      "fallsituation": {
+        "text": "Jonas ist 15 Jahre alt und kommt zur Kontrolle in die Ambulanz. Er hat seit dem 9. Lebensjahr einen Diabetes mellitus Typ 1. Jonas spielt im Verein Handball und traegt Schuhgroesse 44. Seine Mutter arbeitet als Steuerfachangestellte und der Vater ist Fliesenleger. Die Familie hat einen Hund namens Rocky. In den letzten 3 Monaten hat Jonas seine Blutzuckerwerte nur unregelmaessig dokumentiert. Sein HbA1c ist von 7,1 auf 8,9 Prozent gestiegen. Jonas sagt, die Messungen seien ihm vor seinen Freunden unangenehm. Das Wohnzimmer der Familie wurde im letzten Jahr renoviert.",
+        "titel": "Jonas - Unregelmaessige Blutzuckerkontrolle bei Diabetes Typ 1",
+        "versorgungsbereich": "ambulant",
+        "altersgruppe": "jugendlicher"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Nennen Sie 3 Ursachen fuer die Verschlechterung des HbA1c bei Jonas.",
+          "anforderungsniveau": "III",
+          "punkte": 9.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Begruenden Sie, warum die unregelmaessige Dokumentation zur Verschlechterung fuehrt",
+                "punkte": 3.0
+              },
+              {
+                "text": "Bewerten Sie den Einfluss der Peer-Gruppe auf das Messverhalten",
+                "punkte": 3.0
+              },
+              {
+                "text": "Leiten Sie aus dem Sportpensum den veraenderten Insulinbedarf ab",
+                "punkte": 3.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Reflexion/Beurteilung",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "nachlassende Therapieadhaerenz in der Adoleszenz",
+              "Verschlechterung der Stoffwechsellage"
+            ],
+            "kontextbedingungen": [
+              "ambulante Betreuung",
+              "Peer-Gruppe als Einflussfaktor"
+            ],
+            "handlungsmuster": [
+              "Beratung von Jugendlichen",
+              "Foerderung des Selbstmanagements"
+            ],
+            "curriculare_einheit": [
+              "CE 10"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.2.c"
+          ]
+        },
+        {
+          "text": "Erklaeren Sie 2 Beratungsinhalte fuer Jonas zum Umgang mit der Messung in der Gruppe.",
+          "anforderungsniveau": "II",
+          "punkte": 8.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "diskrete Messmoeglichkeiten und Sensortechnik besprechen",
+                "punkte": 4.0
+              },
+              {
+                "text": "Umgang mit Nachfragen der Freunde einueben",
+                "punkte": 4.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "nachlassende Therapieadhaerenz in der Adoleszenz",
+              "Verschlechterung der Stoffwechsellage"
+            ],
+            "kontextbedingungen": [
+              "ambulante Betreuung",
+              "Peer-Gruppe als Einflussfaktor"
+            ],
+            "handlungsmuster": [
+              "Beratung von Jugendlichen",
+              "Foerderung des Selbstmanagements"
+            ],
+            "curriculare_einheit": [
+              "CE 10"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.2.a"
+          ]
+        },
+        {
+          "text": "Beschreiben Sie 2 Massnahmen zur Einbeziehung der Eltern von Jonas.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "gemeinsames Gespraech zur Rollenklaerung",
+                "punkte": 3.0
+              },
+              {
+                "text": "Vereinbarung ueber die Eigenverantwortung von Jonas",
+                "punkte": 3.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "nachlassende Therapieadhaerenz in der Adoleszenz",
+              "Verschlechterung der Stoffwechsellage"
+            ],
+            "kontextbedingungen": [
+              "ambulante Betreuung",
+              "Peer-Gruppe als Einflussfaktor"
+            ],
+            "handlungsmuster": [
+              "Beratung von Jugendlichen",
+              "Foerderung des Selbstmanagements"
+            ],
+            "curriculare_einheit": [
+              "CE 10"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.2.b"
+          ]
+        },
+        {
+          "text": "Begruenden Sie 2 praeventive Massnahmen zur Vermeidung von Folgeerkrankungen bei Jonas.",
+          "anforderungsniveau": "II",
+          "punkte": 7.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "strukturierte Schulung, weil Selbstmanagement die Stoffwechsellage verbessert",
+                "punkte": 3.5
+              },
+              {
+                "text": "regelmaessige Verlaufskontrollen, weil Folgeschaeden frueh erkennbar sind",
+                "punkte": 3.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "nachlassende Therapieadhaerenz in der Adoleszenz",
+              "Verschlechterung der Stoffwechsellage"
+            ],
+            "kontextbedingungen": [
+              "ambulante Betreuung",
+              "Peer-Gruppe als Einflussfaktor"
+            ],
+            "handlungsmuster": [
+              "Beratung von Jugendlichen",
+              "Foerderung des Selbstmanagements"
+            ],
+            "curriculare_einheit": [
+              "CE 10"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "V.1.c"
+          ]
+        }
+      ]
+    },
+    {
+      "fallsituation": {
+        "text": "Frau Kellner, welche im Rahmen einer Nachsorgeuntersuchung, die im Anschluss an eine laengere Phase erhoehter Blutdruckwerte, deren genaue Ursache bislang nicht abschliessend geklaert werden konnte, angesetzt wurde, vorstellig wird, berichtet, dass sie sich hinsichtlich der von ihr gewuenschten Umstellung ihrer Ernaehrungsgewohnheiten, welche sie eigentlich schon seit laengerem beabsichtigt habe, bislang nicht in der Lage gesehen habe, diese auch tatsaechlich umzusetzen. Es liegt ein Blutdruck von 150 zu 95 mmHg vor.",
+        "titel": "Frau Kellner - Ernaehrungsumstellung nach erhoehten Blutdruckwerten",
+        "versorgungsbereich": "ambulant",
+        "altersgruppe": "erwachsener"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Nennen Sie Risikofaktoren bei Frau Kellner.",
+          "anforderungsniveau": "I",
+          "punkte": 8.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "erhoehter Blutdruck",
+                "punkte": 4.0
+              },
+              {
+                "text": "bisher nicht umgesetzte Ernaehrungsumstellung",
+                "punkte": 4.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "erhoehter Blutdruck",
+              "Umsetzungsschwierigkeiten"
+            ],
+            "kontextbedingungen": [
+              "ambulante Nachsorge"
+            ],
+            "handlungsmuster": [
+              "Beratung"
+            ],
+            "curriculare_einheit": [
+              "CE 04"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "V.1.c"
+          ]
+        },
+        {
+          "text": "Es sollten Beratungsinhalte zur Ernaehrungsumstellung beschrieben werden.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "kleine, umsetzbare Schritte statt vollstaendiger Umstellung",
+                "punkte": 3.0
+              },
+              {
+                "text": "Ursachen der bisherigen Umsetzungsschwierigkeiten erfragen",
+                "punkte": 3.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "erhoehter Blutdruck",
+              "Umsetzungsschwierigkeiten"
+            ],
+            "kontextbedingungen": [
+              "ambulante Nachsorge"
+            ],
+            "handlungsmuster": [
+              "Beratung"
+            ],
+            "curriculare_einheit": [
+              "CE 04"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.2.b"
+          ]
+        }
+      ]
+    }
   ],
-  "geschwister_aufgaben": ["C-01", "C-03"]
+  "geschwister_aufgaben": [
+    "C-01",
+    "C-03"
+  ]
 }

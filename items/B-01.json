@@ -1,27 +1,341 @@
 {
   "aufgabe_id": "B-01",
-  "metadaten": {"pruefungsbereich": "1", "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann", "bearbeitungszeit_minuten": 120, "autor": "synthetisch (PoC-Testkorpus)", "version": "1.0", "datum": "2026-09-08"},
-  "ce_bezug": ["CE 07"],
-  "fallsituation": {
-    "text": "Frau Cikara ist 61 Jahre alt und seit 3 Wochen in einer neurologischen Rehabilitationseinrichtung. Sie hatte einen Schlaganfall mit einer Halbseitenlaehmung rechts. Frau Cikara war vorher als Schneiderin selbststaendig. Sie kann mit Unterstuetzung 15 Meter am Rollator gehen. Beim Anziehen benoetigt sie Hilfe fuer den rechten Arm. Ihr Ehemann kommt jeden Tag und moechte alle Handgriffe selbst uebernehmen. Die Physiotherapeutin berichtet von guten Fortschritten. Frau Cikara sagt Ihnen, sie wolle wieder naehen koennen. Im Teamgespraech ist die Entlassung in 4 Wochen geplant.",
-    "situationsmerkmale": {
-      "handlungsanlaesse": ["Beeinträchtigung der Mobilitaet nach Schlaganfall", "Beeinträchtigung der Selbstversorgung", "Wunsch nach beruflicher Wiedereingliederung"],
-      "kontextbedingungen": ["stationaere Rehabilitation", "interprofessionelles Team", "engagierter Angehoeriger"],
-      "handlungsmuster": ["rehabilitatives Pflegehandeln", "aktivierende Pflege", "Angehoerigenberatung"],
-      "akteure": ["Frau Cikara", "Ehemann", "Physiotherapeutin", "Pflegefachperson"]
-    },
-    "versorgungsbereich": "rehabilitativ", "altersgruppe": "erwachsener",
-    "pflegebeduerftigkeit": "mittlerer Grad an Pflegebeduerftigkeit, Rehabilitationspotenzial"
+  "metadaten": {
+    "pruefungsbereich": "1",
+    "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann",
+    "bearbeitungszeit_minuten": 120,
+    "autor": "synthetisch (PoC-Testkorpus)",
+    "version": "1.0",
+    "datum": "2026-09-08"
   },
-  "teilaufgaben": [
-    {"text": "Beschreiben Sie 4 Faehigkeiten von Frau Cikara, die Sie fuer die aktivierende Pflege nutzen.", "anforderungsniveau": "I", "punkte": 6.0, "kompetenzzuordnung": ["I.1.c"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Gehen von 15 Metern am Rollator", "punkte": 1.5}, {"text": "selbststaendiges Anziehen der linken Koerperseite", "punkte": 1.5}, {"text": "klare Zielvorstellung Naehen", "punkte": 1.5}, {"text": "gute Motivation und Fortschritte in der Therapie", "punkte": 1.5}]}},
-    {"text": "Begruenden Sie 2 Massnahmen, die die Selbststaendigkeit von Frau Cikara beim Anziehen foerdern.", "anforderungsniveau": "II", "punkte": 8.0, "kompetenzzuordnung": ["I.5.b"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Anleitung zur Anziehtechnik mit der betroffenen Seite zuerst, weil dies die Eigenaktivitaet erhaelt", "punkte": 4.0}, {"text": "Bereitstellung von Anziehhilfen, weil sie die Aufgabe ohne Fremdhilfe ermoeglichen", "punkte": 4.0}]}},
-    {"text": "Erlaeutern Sie 3 Inhalte fuer ein Beratungsgespraech mit dem Ehemann von Frau Cikara.", "anforderungsniveau": "II", "punkte": 9.0, "kompetenzzuordnung": ["II.1.c"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Wirkung von uebernommenen Handgriffen auf den Rehabilitationsverlauf", "punkte": 3.0}, {"text": "konkrete Aufgaben, bei denen seine Unterstuetzung hilft", "punkte": 3.0}, {"text": "Entlastung und eigene Belastungsgrenzen des Ehemanns", "punkte": 3.0}]}},
-    {"text": "Entwickeln Sie 3 Bestandteile eines Entlassungsplans fuer Frau Cikara.", "anforderungsniveau": "III", "punkte": 12.0, "kompetenzzuordnung": ["I.1.h", "III.1.b"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Hilfsmittelversorgung und Wohnraumanpassung klaeren", "punkte": 4.0}, {"text": "ambulante Therapiefortsetzung organisieren", "punkte": 4.0}, {"text": "berufliche Wiedereingliederung mit dem Sozialdienst anbahnen", "punkte": 4.0}]}}
+  "aufgaben": [
+    {
+      "fallsituation": {
+        "text": "Frau Cikara ist 61 Jahre alt und seit 3 Wochen in einer neurologischen Rehabilitationseinrichtung. Sie hatte einen Schlaganfall mit einer Halbseitenlaehmung rechts. Frau Cikara war vorher als Schneiderin selbststaendig. Sie kann mit Unterstuetzung 15 Meter am Rollator gehen. Beim Anziehen benoetigt sie Hilfe fuer den rechten Arm. Ihr Ehemann kommt jeden Tag und moechte alle Handgriffe selbst uebernehmen. Die Physiotherapeutin berichtet von guten Fortschritten. Frau Cikara sagt Ihnen, sie wolle wieder naehen koennen. Im Teamgespraech ist die Entlassung in 4 Wochen geplant.",
+        "titel": "Frau Cikara - Rehabilitation nach Schlaganfall mit Halbseitenlaehmung",
+        "versorgungsbereich": "rehabilitativ",
+        "altersgruppe": "erwachsener"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Beschreiben Sie 4 Faehigkeiten von Frau Cikara, die Sie fuer die aktivierende Pflege nutzen.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Gehen von 15 Metern am Rollator",
+                "punkte": 1.5
+              },
+              {
+                "text": "selbststaendiges Anziehen der linken Koerperseite",
+                "punkte": 1.5
+              },
+              {
+                "text": "klare Zielvorstellung Naehen",
+                "punkte": 1.5
+              },
+              {
+                "text": "gute Motivation und Fortschritte in der Therapie",
+                "punkte": 1.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Beeinträchtigung der Mobilitaet nach Schlaganfall",
+              "Beeinträchtigung der Selbstversorgung",
+              "Wunsch nach beruflicher Wiedereingliederung"
+            ],
+            "kontextbedingungen": [
+              "stationaere Rehabilitation",
+              "interprofessionelles Team",
+              "engagierter Angehoeriger"
+            ],
+            "handlungsmuster": [
+              "rehabilitatives Pflegehandeln",
+              "aktivierende Pflege",
+              "Angehoerigenberatung"
+            ],
+            "curriculare_einheit": [
+              "CE 07"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.6.b"
+          ]
+        },
+        {
+          "text": "Begruenden Sie 2 Massnahmen, die die Selbststaendigkeit von Frau Cikara beim Anziehen foerdern.",
+          "anforderungsniveau": "II",
+          "punkte": 8.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Anleitung zur Anziehtechnik mit der betroffenen Seite zuerst, weil dies die Eigenaktivitaet erhaelt",
+                "punkte": 4.0
+              },
+              {
+                "text": "Bereitstellung von Anziehhilfen, weil sie die Aufgabe ohne Fremdhilfe ermoeglichen",
+                "punkte": 4.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Beeinträchtigung der Mobilitaet nach Schlaganfall",
+              "Beeinträchtigung der Selbstversorgung",
+              "Wunsch nach beruflicher Wiedereingliederung"
+            ],
+            "kontextbedingungen": [
+              "stationaere Rehabilitation",
+              "interprofessionelles Team",
+              "engagierter Angehoeriger"
+            ],
+            "handlungsmuster": [
+              "rehabilitatives Pflegehandeln",
+              "aktivierende Pflege",
+              "Angehoerigenberatung"
+            ],
+            "curriculare_einheit": [
+              "CE 07"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.5.a"
+          ]
+        },
+        {
+          "text": "Erlaeutern Sie 3 Inhalte fuer ein Beratungsgespraech mit dem Ehemann von Frau Cikara.",
+          "anforderungsniveau": "II",
+          "punkte": 9.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Wirkung von uebernommenen Handgriffen auf den Rehabilitationsverlauf",
+                "punkte": 3.0
+              },
+              {
+                "text": "konkrete Aufgaben, bei denen seine Unterstuetzung hilft",
+                "punkte": 3.0
+              },
+              {
+                "text": "Entlastung und eigene Belastungsgrenzen des Ehemanns",
+                "punkte": 3.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Beeinträchtigung der Mobilitaet nach Schlaganfall",
+              "Beeinträchtigung der Selbstversorgung",
+              "Wunsch nach beruflicher Wiedereingliederung"
+            ],
+            "kontextbedingungen": [
+              "stationaere Rehabilitation",
+              "interprofessionelles Team",
+              "engagierter Angehoeriger"
+            ],
+            "handlungsmuster": [
+              "rehabilitatives Pflegehandeln",
+              "aktivierende Pflege",
+              "Angehoerigenberatung"
+            ],
+            "curriculare_einheit": [
+              "CE 07"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.1.e"
+          ]
+        },
+        {
+          "text": "Entwickeln Sie 3 Bestandteile eines Entlassungsplans fuer Frau Cikara.",
+          "anforderungsniveau": "III",
+          "punkte": 12.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Hilfsmittelversorgung und Wohnraumanpassung klaeren",
+                "punkte": 4.0
+              },
+              {
+                "text": "ambulante Therapiefortsetzung organisieren",
+                "punkte": 4.0
+              },
+              {
+                "text": "berufliche Wiedereingliederung mit dem Sozialdienst anbahnen",
+                "punkte": 4.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Reflexion/Beurteilung",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Beeinträchtigung der Mobilitaet nach Schlaganfall",
+              "Beeinträchtigung der Selbstversorgung",
+              "Wunsch nach beruflicher Wiedereingliederung"
+            ],
+            "kontextbedingungen": [
+              "stationaere Rehabilitation",
+              "interprofessionelles Team",
+              "engagierter Angehoeriger"
+            ],
+            "handlungsmuster": [
+              "rehabilitatives Pflegehandeln",
+              "aktivierende Pflege",
+              "Angehoerigenberatung"
+            ],
+            "curriculare_einheit": [
+              "CE 07"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.6.d"
+          ]
+        }
+      ]
+    },
+    {
+      "fallsituation": {
+        "text": "Mia ist 9 Jahre alt und hat eine spastische Zerebralparese. Sie wird von einem ambulanten Kinderpflegedienst zu Hause betreut. Mia bewegt sich mit einem Vorderrollator und benoetigt beim Anziehen Unterstuetzung fuer die Beine. In der Ergotherapie hat sie gelernt, die Schuhe teilweise selbst zu schliessen. Ihre Eltern uebernehmen abends meist alle Handgriffe, weil es schneller geht. Mia sagt, sie wolle die Schuhe wie ihre Freundinnen selbst binden koennen. Die Ergotherapeutin schlaegt ein taegliches Uebungsfenster vor.",
+        "titel": "Mia - Unterstuetzung bei Zerebralparese und Foerderung der Selbststaendigkeit",
+        "versorgungsbereich": "ambulant",
+        "altersgruppe": "kind"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Beschreiben Sie 3 Faehigkeiten von Mia, die Sie fuer die Foerderung ihrer Selbststaendigkeit nutzen.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Fortbewegung mit dem Vorderrollator",
+                "punkte": 2.0
+              },
+              {
+                "text": "teilweises selbststaendiges Schliessen der Schuhe",
+                "punkte": 2.0
+              },
+              {
+                "text": "eigener Wunsch nach mehr Selbststaendigkeit",
+                "punkte": 2.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "motorische Beeintraechtigung",
+              "Abhaengigkeit von Fremdhilfe trotz vorhandener Teilfaehigkeiten"
+            ],
+            "kontextbedingungen": [
+              "ambulante Kinderkrankenpflege",
+              "familiaeres Umfeld",
+              "Ergotherapie als Partner"
+            ],
+            "handlungsmuster": [
+              "Foerderung von Selbststaendigkeit",
+              "Anleitung von Bezugspersonen",
+              "Alltagsintegration von Uebungen"
+            ],
+            "curriculare_einheit": [
+              "CE 10"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.1.c"
+          ]
+        },
+        {
+          "text": "Begruenden Sie 2 Massnahmen, mit denen Sie die Eltern von Mia zur Foerderung ihrer Selbststaendigkeit anleiten.",
+          "anforderungsniveau": "II",
+          "punkte": 9.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "festes taegliches Uebungsfenster einplanen, weil Wiederholung motorisches Lernen bei Zerebralparese unterstuetzt",
+                "punkte": 4.5
+              },
+              {
+                "text": "Handgriffe schrittweise an Mia uebergeben, weil vollstaendige Uebernahme durch die Eltern vorhandene Faehigkeiten ungenutzt laesst",
+                "punkte": 4.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "motorische Beeintraechtigung",
+              "Abhaengigkeit von Fremdhilfe trotz vorhandener Teilfaehigkeiten"
+            ],
+            "kontextbedingungen": [
+              "ambulante Kinderkrankenpflege",
+              "familiaeres Umfeld",
+              "Ergotherapie als Partner"
+            ],
+            "handlungsmuster": [
+              "Foerderung von Selbststaendigkeit",
+              "Anleitung von Bezugspersonen",
+              "Alltagsintegration von Uebungen"
+            ],
+            "curriculare_einheit": [
+              "CE 10"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.6.e"
+          ]
+        },
+        {
+          "text": "Entwickeln Sie 2 Kriterien, anhand derer Sie den Foerdererfolg bei Mia im Alltag beurteilen.",
+          "anforderungsniveau": "III",
+          "punkte": 15.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Zunahme selbststaendig durchgefuehrter Teilschritte beim An- und Ausziehen",
+                "punkte": 7.5
+              },
+              {
+                "text": "Ruecklauf der elterlichen Uebernahme bei gleichzeitig positiver Rueckmeldung von Mia",
+                "punkte": 7.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Reflexion/Beurteilung",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "motorische Beeintraechtigung",
+              "Abhaengigkeit von Fremdhilfe trotz vorhandener Teilfaehigkeiten"
+            ],
+            "kontextbedingungen": [
+              "ambulante Kinderkrankenpflege",
+              "familiaeres Umfeld",
+              "Ergotherapie als Partner"
+            ],
+            "handlungsmuster": [
+              "Foerderung von Selbststaendigkeit",
+              "Anleitung von Bezugspersonen",
+              "Alltagsintegration von Uebungen"
+            ],
+            "curriculare_einheit": [
+              "CE 10"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.2.a"
+          ]
+        }
+      ]
+    }
   ],
-  "geschwister_aufgaben": ["B-02", "B-03"]
+  "geschwister_aufgaben": [
+    "B-02",
+    "B-03"
+  ]
 }

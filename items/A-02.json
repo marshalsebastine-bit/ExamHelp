@@ -8,72 +8,341 @@
     "version": "1.0",
     "datum": "2026-09-08"
   },
-  "ce_bezug": ["CE 04"],
-  "fallsituation": {
-    "text": "Herr Baumgartner ist 54 Jahre alt und arbeitet als Busfahrer im Schichtdienst. Er liegt seit 2 Tagen auf der internistischen Station. Bei der Aufnahme betrug sein HbA1c 9,4 Prozent. Der Arzt hat einen Diabetes mellitus Typ 2 diagnostiziert. Herr Baumgartner raucht seit 30 Jahren etwa 20 Zigaretten taeglich. Sein Body-Mass-Index liegt bei 32. Er sagt Ihnen, er habe von Diabetes bisher nur gehoert, dass man dann nichts Sues mehr essen darf. Seine Frau kocht zu Hause, er isst waehrend der Schichten meist an Raststaetten. Herr Baumgartner moechte seinen Beruf weiter ausueben und fragt Sie, ob das noch geht.",
-    "situationsmerkmale": {
-      "handlungsanlaesse": ["neu diagnostizierte chronische Erkrankung", "Gesundheitsrisiken durch Lebensstil", "Informationsbedarf"],
-      "kontextbedingungen": ["Akutkrankenhaus, internistische Station", "Schichtarbeit", "Ernaehrungssituation unterwegs"],
-      "handlungsmuster": ["Gesundheitsfoerderung", "Beratung", "Praevention von Folgeerkrankungen"],
-      "akteure": ["Herr Baumgartner", "Ehefrau", "Arzt", "Pflegefachperson"]
-    },
-    "versorgungsbereich": "stationaer_akut",
-    "altersgruppe": "erwachsener",
-    "pflegebeduerftigkeit": "keine Pflegebeduerftigkeit im Sinne des SGB XI, hoher Beratungsbedarf"
-  },
-  "teilaufgaben": [
+  "aufgaben": [
     {
-      "text": "Nennen Sie 5 Risikofaktoren fuer Folgeerkrankungen, die die Fallsituation von Herrn Baumgartner benennt.",
-      "anforderungsniveau": "I",
-      "punkte": 5.0,
-      "kompetenzzuordnung": ["I.2.a"],
-      "erwartungshorizont": {
-        "erwartungspunkte": [
-          {"text": "HbA1c von 9,4 Prozent", "punkte": 1.0},
-          {"text": "Nikotinkonsum von 20 Zigaretten taeglich ueber 30 Jahre", "punkte": 1.0},
-          {"text": "Body-Mass-Index von 32", "punkte": 1.0},
-          {"text": "Schichtarbeit mit unregelmaessigen Mahlzeiten", "punkte": 1.0},
-          {"text": "geringes Wissen ueber die Erkrankung", "punkte": 1.0}
-        ]
-      }
+      "fallsituation": {
+        "text": "Herr Baumgartner ist 54 Jahre alt und arbeitet als Busfahrer im Schichtdienst. Er liegt seit 2 Tagen auf der internistischen Station. Bei der Aufnahme betrug sein HbA1c 9,4 Prozent. Der Arzt hat einen Diabetes mellitus Typ 2 diagnostiziert. Herr Baumgartner raucht seit 30 Jahren etwa 20 Zigaretten taeglich. Sein Body-Mass-Index liegt bei 32. Er sagt Ihnen, er habe von Diabetes bisher nur gehoert, dass man dann nichts Sues mehr essen darf. Seine Frau kocht zu Hause, er isst waehrend der Schichten meist an Raststaetten. Herr Baumgartner moechte seinen Beruf weiter ausueben und fragt Sie, ob das noch geht.",
+        "titel": "Herr Baumgartner - Neu diagnostizierter Diabetes mellitus Typ 2",
+        "versorgungsbereich": "stationaer_akut",
+        "altersgruppe": "erwachsener"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Nennen Sie 5 Risikofaktoren fuer Folgeerkrankungen, die die Fallsituation von Herrn Baumgartner benennt.",
+          "anforderungsniveau": "I",
+          "punkte": 5.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "HbA1c von 9,4 Prozent",
+                "punkte": 1.0
+              },
+              {
+                "text": "Nikotinkonsum von 20 Zigaretten taeglich ueber 30 Jahre",
+                "punkte": 1.0
+              },
+              {
+                "text": "Body-Mass-Index von 32",
+                "punkte": 1.0
+              },
+              {
+                "text": "Schichtarbeit mit unregelmaessigen Mahlzeiten",
+                "punkte": 1.0
+              },
+              {
+                "text": "geringes Wissen ueber die Erkrankung",
+                "punkte": 1.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "neu diagnostizierte chronische Erkrankung",
+              "Gesundheitsrisiken durch Lebensstil",
+              "Informationsbedarf"
+            ],
+            "kontextbedingungen": [
+              "Akutkrankenhaus, internistische Station",
+              "Schichtarbeit",
+              "Ernaehrungssituation unterwegs"
+            ],
+            "handlungsmuster": [
+              "Gesundheitsfoerderung",
+              "Beratung",
+              "Praevention von Folgeerkrankungen"
+            ],
+            "curriculare_einheit": [
+              "CE 04"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "V.1.c"
+          ]
+        },
+        {
+          "text": "Erklaeren Sie 3 Inhalte, die Sie mit Herrn Baumgartner im Beratungsgespraech zur Ernaehrung bei Schichtarbeit besprechen.",
+          "anforderungsniveau": "II",
+          "punkte": 9.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Mahlzeitenverteilung ueber die Schicht statt einer Hauptmahlzeit",
+                "punkte": 3.0
+              },
+              {
+                "text": "Auswahlmoeglichkeiten an Raststaetten realistisch besprechen",
+                "punkte": 3.0
+              },
+              {
+                "text": "Einbeziehung der Ehefrau in die Mahlzeitenplanung",
+                "punkte": 3.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "neu diagnostizierte chronische Erkrankung",
+              "Gesundheitsrisiken durch Lebensstil",
+              "Informationsbedarf"
+            ],
+            "kontextbedingungen": [
+              "Akutkrankenhaus, internistische Station",
+              "Schichtarbeit",
+              "Ernaehrungssituation unterwegs"
+            ],
+            "handlungsmuster": [
+              "Gesundheitsfoerderung",
+              "Beratung",
+              "Praevention von Folgeerkrankungen"
+            ],
+            "curriculare_einheit": [
+              "CE 04"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.2.b"
+          ]
+        },
+        {
+          "text": "Begruenden Sie 2 praeventive Massnahmen fuer Herrn Baumgartner mit pflegewissenschaftlichem Begruendungswissen.",
+          "anforderungsniveau": "II",
+          "punkte": 8.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "strukturierte Schulung, weil Selbstmanagementkompetenz die Stoffwechsellage nachweislich verbessert",
+                "punkte": 4.0
+              },
+              {
+                "text": "Fussinspektion und Fusspflege, weil die Polyneuropathie ein Hauptrisiko fuer Ulzerationen ist",
+                "punkte": 4.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "neu diagnostizierte chronische Erkrankung",
+              "Gesundheitsrisiken durch Lebensstil",
+              "Informationsbedarf"
+            ],
+            "kontextbedingungen": [
+              "Akutkrankenhaus, internistische Station",
+              "Schichtarbeit",
+              "Ernaehrungssituation unterwegs"
+            ],
+            "handlungsmuster": [
+              "Gesundheitsfoerderung",
+              "Beratung",
+              "Praevention von Folgeerkrankungen"
+            ],
+            "curriculare_einheit": [
+              "CE 04"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "V.1.b"
+          ]
+        },
+        {
+          "text": "Beurteilen Sie 2 Auswirkungen der Erkrankung auf die Berufstaetigkeit von Herrn Baumgartner.",
+          "anforderungsniveau": "III",
+          "punkte": 8.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Hypoglykaemierisiko im Strassenverkehr und dessen arbeitsmedizinische Bedeutung",
+                "punkte": 4.0
+              },
+              {
+                "text": "Vereinbarkeit von Schichtdienst und Therapieregime, Berufsausuebung bleibt bei stabiler Einstellung moeglich",
+                "punkte": 4.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Reflexion/Beurteilung",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "neu diagnostizierte chronische Erkrankung",
+              "Gesundheitsrisiken durch Lebensstil",
+              "Informationsbedarf"
+            ],
+            "kontextbedingungen": [
+              "Akutkrankenhaus, internistische Station",
+              "Schichtarbeit",
+              "Ernaehrungssituation unterwegs"
+            ],
+            "handlungsmuster": [
+              "Gesundheitsfoerderung",
+              "Beratung",
+              "Praevention von Folgeerkrankungen"
+            ],
+            "curriculare_einheit": [
+              "CE 04"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.2.d"
+          ]
+        }
+      ]
     },
     {
-      "text": "Erklaeren Sie 3 Inhalte, die Sie mit Herrn Baumgartner im Beratungsgespraech zur Ernaehrung bei Schichtarbeit besprechen.",
-      "anforderungsniveau": "II",
-      "punkte": 9.0,
-      "kompetenzzuordnung": ["II.2.b"],
-      "erwartungshorizont": {
-        "erwartungspunkte": [
-          {"text": "Mahlzeitenverteilung ueber die Schicht statt einer Hauptmahlzeit", "punkte": 3.0},
-          {"text": "Auswahlmoeglichkeiten an Raststaetten realistisch besprechen", "punkte": 3.0},
-          {"text": "Einbeziehung der Ehefrau in die Mahlzeitenplanung", "punkte": 3.0}
-        ]
-      }
-    },
-    {
-      "text": "Begruenden Sie 2 praeventive Massnahmen fuer Herrn Baumgartner mit pflegewissenschaftlichem Begruendungswissen.",
-      "anforderungsniveau": "II",
-      "punkte": 8.0,
-      "kompetenzzuordnung": ["V.1.b"],
-      "erwartungshorizont": {
-        "erwartungspunkte": [
-          {"text": "strukturierte Schulung, weil Selbstmanagementkompetenz die Stoffwechsellage nachweislich verbessert", "punkte": 4.0},
-          {"text": "Fussinspektion und Fusspflege, weil die Polyneuropathie ein Hauptrisiko fuer Ulzerationen ist", "punkte": 4.0}
-        ]
-      }
-    },
-    {
-      "text": "Beurteilen Sie 2 Auswirkungen der Erkrankung auf die Berufstaetigkeit von Herrn Baumgartner.",
-      "anforderungsniveau": "III",
-      "punkte": 8.0,
-      "kompetenzzuordnung": ["I.2.d"],
-      "erwartungshorizont": {
-        "erwartungspunkte": [
-          {"text": "Hypoglykaemierisiko im Strassenverkehr und dessen arbeitsmedizinische Bedeutung", "punkte": 4.0},
-          {"text": "Vereinbarkeit von Schichtdienst und Therapieregime, Berufsausuebung bleibt bei stabiler Einstellung moeglich", "punkte": 4.0}
-        ]
-      }
+      "fallsituation": {
+        "text": "Lena ist 16 Jahre alt und kommt in Begleitung ihrer Mutter zur Beratung. Ihr Body-Mass-Index liegt bei 29. Lena bewegt sich nach eigener Aussage kaum, sie faehrt mit dem Bus zur Schule und verbringt die Nachmittage am Bildschirm. Bei der letzten Vorsorgeuntersuchung war der Naechternblutzucker grenzwertig erhoeht. Lena moechte etwas aendern, weiss aber nicht, wo sie anfangen soll. Sie sagt, in der Schulmensa gebe es kaum gesunde Optionen. Ihre Mutter arbeitet Vollzeit und kocht selten selbst.",
+        "titel": "Lena - Beratung zu Bewegung und Gewicht im Jugendalter",
+        "versorgungsbereich": "ambulant",
+        "altersgruppe": "jugendlicher"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Nennen Sie 3 Risikofaktoren, die die Fallsituation von Lena benennt.",
+          "anforderungsniveau": "I",
+          "punkte": 5.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Body-Mass-Index von 29",
+                "punkte": 2.0
+              },
+              {
+                "text": "geringe koerperliche Aktivitaet im Alltag",
+                "punkte": 1.5
+              },
+              {
+                "text": "grenzwertig erhoehter Naechternblutzucker",
+                "punkte": 1.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Bewegungsmangel",
+              "beginnendes metabolisches Risiko",
+              "Unsicherheit ueber eigene Handlungsmoeglichkeiten"
+            ],
+            "kontextbedingungen": [
+              "ambulante Beratungsstelle",
+              "schulischer Alltag",
+              "berufstaetige Bezugsperson"
+            ],
+            "handlungsmuster": [
+              "Gesundheitsfoerderung",
+              "Beratung von Jugendlichen",
+              "Einbeziehung der Familie"
+            ],
+            "curriculare_einheit": [
+              "CE 04"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "V.1.c"
+          ]
+        },
+        {
+          "text": "Erklaeren Sie 3 Beratungsinhalte, die Sie mit Lena zur Alltagsbewegung besprechen.",
+          "anforderungsniveau": "II",
+          "punkte": 12.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "kleine, alltagsnahe Bewegungsziele statt eines pauschalen Sportprogramms",
+                "punkte": 4.0
+              },
+              {
+                "text": "Einbeziehung der Mutter bei der Mahlzeitenplanung als unterstuetzenden Faktor",
+                "punkte": 4.0
+              },
+              {
+                "text": "realistische Alternativen zur Schulmensa fuer die Pausenverpflegung",
+                "punkte": 4.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Bewegungsmangel",
+              "beginnendes metabolisches Risiko",
+              "Unsicherheit ueber eigene Handlungsmoeglichkeiten"
+            ],
+            "kontextbedingungen": [
+              "ambulante Beratungsstelle",
+              "schulischer Alltag",
+              "berufstaetige Bezugsperson"
+            ],
+            "handlungsmuster": [
+              "Gesundheitsfoerderung",
+              "Beratung von Jugendlichen",
+              "Einbeziehung der Familie"
+            ],
+            "curriculare_einheit": [
+              "CE 04"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.2.a"
+          ]
+        },
+        {
+          "text": "Begruenden Sie 2 praeventive Massnahmen fuer Lena mit pflegewissenschaftlichem Begruendungswissen.",
+          "anforderungsniveau": "II",
+          "punkte": 13.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "schrittweise Verhaltensaenderung statt radikaler Diaetvorgabe, weil kleine Schritte nachweislich nachhaltiger wirken",
+                "punkte": 6.5
+              },
+              {
+                "text": "Einbeziehung der Peergroup, weil soziale Unterstuetzung die Umsetzung im Jugendalter erleichtert",
+                "punkte": 6.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Bewegungsmangel",
+              "beginnendes metabolisches Risiko",
+              "Unsicherheit ueber eigene Handlungsmoeglichkeiten"
+            ],
+            "kontextbedingungen": [
+              "ambulante Beratungsstelle",
+              "schulischer Alltag",
+              "berufstaetige Bezugsperson"
+            ],
+            "handlungsmuster": [
+              "Gesundheitsfoerderung",
+              "Beratung von Jugendlichen",
+              "Einbeziehung der Familie"
+            ],
+            "curriculare_einheit": [
+              "CE 04"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "V.1.b"
+          ]
+        }
+      ]
     }
   ],
-  "geschwister_aufgaben": ["A-01", "A-03"]
+  "geschwister_aufgaben": [
+    "A-01",
+    "A-03"
+  ]
 }

@@ -20,7 +20,7 @@ TARGET = Path(__file__).resolve().parents[1] / "docio" / "template_tags.md"
 
 # Elements that repeat in the document and therefore need a repeating section
 # control rather than a plain text control.
-REPEATING = {"teilaufgaben": "ta", "erwartungspunkte": "eh"}
+REPEATING = {"aufgaben": "ag", "teilaufgaben": "ta", "erwartungspunkte": "eh"}
 
 
 def type_label(annotation) -> str:

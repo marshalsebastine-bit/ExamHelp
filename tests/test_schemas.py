@@ -194,14 +194,29 @@ def test_sentence_anchoring_survives_abbreviations(text: str, expected: int) -> 
 def test_ids_identify_position_not_text() -> None:
     """The author rewrites the text; the ID still points at the same element."""
     aufgabe = Aufsichtsarbeit.model_validate(
-        {"teilaufgaben": [{"text": "Nennen Sie 3 Massnahmen."}, {"text": "Begruenden Sie 2 Schritte."}]}
+        {"aufgaben": [{"teilaufgaben": [{"text": "Nennen Sie 3 Massnahmen."}, {"text": "Begruenden Sie 2 Schritte."}]}]}
     )
-    assert aufgabe.resolve("ta.2").text == "Begruenden Sie 2 Schritte."
-    aufgabe.teilaufgaben[1].text = "Voellig anderer Text."
-    assert aufgabe.resolve("ta.2").text == "Voellig anderer Text."
+    assert aufgabe.resolve("ag.1.ta.2").text == "Begruenden Sie 2 Schritte."
+    aufgabe.aufgaben[0].teilaufgaben[1].text = "Voellig anderer Text."
+    assert aufgabe.resolve("ag.1.ta.2").text == "Voellig anderer Text."
+
+
+def test_ids_nest_under_the_correct_aufgabe_block() -> None:
+    """ag.1.ta.1 and ag.2.ta.1 are different Teilaufgaben: the block a Teilaufgabe
+    sits in is part of its identity, not just its position within that block."""
+    aufgabe = Aufsichtsarbeit.model_validate(
+        {
+            "aufgaben": [
+                {"teilaufgaben": [{"text": "Aufgabe 1, Teilaufgabe 1"}]},
+                {"teilaufgaben": [{"text": "Aufgabe 2, Teilaufgabe 1"}]},
+            ]
+        }
+    )
+    assert aufgabe.resolve("ag.1.ta.1").text == "Aufgabe 1, Teilaufgabe 1"
+    assert aufgabe.resolve("ag.2.ta.1").text == "Aufgabe 2, Teilaufgabe 1"
 
 
 def test_unknown_anchors_resolve_to_none_rather_than_raising() -> None:
-    aufgabe = Aufsichtsarbeit.model_validate({"teilaufgaben": [{"text": "x"}]})
-    for anchor in ("ta.9", "ta.1.eh.4", "nonsense", "ta", "ta.x"):
+    aufgabe = Aufsichtsarbeit.model_validate({"aufgaben": [{"teilaufgaben": [{"text": "x"}]}]})
+    for anchor in ("ag.9", "ag.1.ta.9", "ag.1.ta.1.eh.4", "nonsense", "ag", "ag.x", "ag.1.ta.x"):
         assert aufgabe.resolve(anchor) is None

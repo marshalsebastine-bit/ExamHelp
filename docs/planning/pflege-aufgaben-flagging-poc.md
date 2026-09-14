@@ -435,6 +435,12 @@ All free and open: Python, Pydantic (schemas), PyYAML (catalogue), Chroma (vecto
 
 ### 6.1 One model, chosen for the question the PoC actually asks
 
+**Update, 2026-09-14: the primary model is Mistral (`mistral-small-latest` via the Mistral AI API), not `gpt-oss-120b`/Groq.** The switch was made mid-implementation, confirmed with the user rather than silently carried forward, and is the sticking choice — this section's reasoning below is kept as the historical record of *why a model needed picking at all* and why size/openness mattered, but its concrete pick (`gpt-oss-120b` via Groq) is superseded as the *primary*. Two things this changes in practice: Mistral's free "Experiment" tier requires phone verification and is rate-limited/eval-only per Mistral's own terms, which is a different posture than the no-card, publicly-rate-limited Groq tier this section originally argued for (§6.2); and `mistral-small-latest` is a proprietary hosted model, not the open-weight family this section reasons about below — the open-weight/KI-Leitfaden argument for model *family* was not re-litigated when the switch happened and should be revisited if this PoC's output is ever used in a pitch that leans on that argument.
+
+**Further update, same day: a Groq/`gpt-oss-120b` backend was actually added** (`gateway/backends/groq.py`, registered in `gateway/model_gateway.py::BACKENDS`), not just left as a hypothetical — this was the same one-class change §6.1's earlier update note predicted, triggered initially by Mistral's key returning `429 rate_limited` on every call despite the console showing an active plan, active key, and non-zero published limits. Switching is manual (`MODEL_PROVIDER=groq`), not automatic failover within one call — that remains unbuilt, see §5.2's note on retry/backoff.
+
+**Same-day resolution of the Mistral 429s:** not a provisioning issue after all, but model-specific. Probing several model names directly against the SDK showed `mistral-small-latest` (the original default) and `open-mixtral-8x7b` returning `429 rate_limited` on *every* call, while `open-mistral-7b`, `ministral-3b-latest`, `ministral-8b-latest`, `mistral-tiny`, `open-mistral-nemo` and `codestral-latest` all worked immediately (JSON mode included) — i.e. this free-tier key had those two specific models rate-limited to zero, not the account as a whole. The default is now `open-mistral-nemo` (`gateway/backends/mistral.py::DEFAULT_MODEL`), which happens to also better satisfy this section's original open-weight preference than `mistral-small-latest` did (Apache-2.0, genuinely open-weight, vs. a proprietary hosted-only model).
+
 Zero budget and no GPU rules out a frontier API. The choice is between free open-weight models, and the PoC uses **one**: `gpt-oss-120b` via a free hosted tier (Groq publishes 131K context and 30 RPM for it).
 
 The reasoning for picking the larger of the two realistic candidates rather than the smaller: the question this PoC exists to answer is whether the rule catalogue and retrieval setup produce useful, correctly-cited flags *at all*. That's best answered with the more capable model, so a weak result can be attributed to the approach rather than to the model being too small to execute it. The separate question of what the smallest deployable model would need to be — real for a production pilot, since a Land will ask what it can self-host — is deferred to the gap list (§11) rather than measured in these five weeks. A single-model PoC cannot answer both questions at once, and answering the first one well matters more than answering the second one badly.
@@ -445,9 +451,11 @@ Note what this design does *not* require: it never demonstrates local self-hosti
 
 ### 6.2 Provider posture
 
-Free-tier constraints as verified September 2026, with the caveat that these numbers move monthly:
+Free-tier constraints as verified September 2026, with the caveat that these numbers move monthly.
 
-- **Groq** — no card, publishes its limits (30 RPM; ~1,000 RPD and ~100K TPD on the larger models). Predictable, plannable. Primary.
+**As actually implemented (2026-09-14): Mistral is primary, not Groq.** Mistral's free "Experiment" tier needs phone verification (unlike the others below) and is rate-limited/eval-only per Mistral's own terms; current limits were not independently re-verified against the console before this switch. This list otherwise stands as the candidate analysis performed at planning time:
+
+- **Groq** — no card, publishes its limits (30 RPM; ~1,000 RPD and ~100K TPD on the larger models). Predictable, plannable. Originally chosen as primary; now implemented as the secondary/fallback backend (`gateway/backends/groq.py`, `MODEL_PROVIDER=groq`), added 2026-09-14 once Mistral's key proved unusable (see §6.1's update note).
 - **Cerebras** — no card, roughly 30 RPM / 14,400 RPD / ~1M tokens per day. Highest daily token headroom, but a volatile model catalogue that has collapsed to a handful of models before. Secondary, never hardcoded.
 - **Google AI Studio** — free Flash models, no card, but limits are not published publicly and the models are proprietary. Not used, on the open-weight grounds above.
 - **OpenRouter** — useful as a fallback layer, but ~50 free-model requests per day is too low for a scored run.
@@ -484,7 +492,7 @@ Both are viable at zero budget. The tradeoff is worth recording because the answ
 | Third-party data exposure | None | Prompts may be used for training; providers are non-EU |
 | Volatility | None. A downloaded model file does not get retired mid-project | Real. Catalogues and published limits change monthly |
 
-**Decision: free hosted APIs as the primary path.** The deciding factor is model size: `gpt-oss-120b`, the model chosen in §6.1, is not reachable on a single Kaggle GPU. Running the PoC's actual model requires a hosted API regardless of any other tradeoff in the table.
+**Decision: free hosted APIs as the primary path.** The deciding factor is model size: at planning time this was argued from `gpt-oss-120b` (§6.1) not being reachable on a single Kaggle GPU; the model actually wired in as of 2026-09-14 is Mistral (§6.1 update), reached the same way — via hosted API, not local GPU — so this decision and its reasoning stand unchanged regardless of which hosted model.
 
 The second factor is iteration speed. In five weeks, the scarcest resource is the number of prompt-and-rule revisions you can get through. Kaggle's setup cost, session interruptions, and generation speed all tax exactly that, independent of which model is chosen.
 
@@ -642,7 +650,7 @@ The write-up in week 5 closes with a concrete gap list for a production version.
 
 Things this document assumes that should be re-checked in week 1, since some are volatile and some were not confirmable from public sources:
 
-- **Free-tier limits and model availability** for `gpt-oss-120b`. Verified September 2026; these change monthly.
+- **Free-tier limits and model availability** for the model actually wired in, Mistral (`open-mistral-nemo` as of 2026-09-14 — see §6.1's update note for why the original `mistral-small-latest` default was replaced) — not `gpt-oss-120b`/Groq as this document originally specified (§6.1, §6.2), though Groq is now also wired in as a manual-switch fallback (`gateway/backends/groq.py`). Confirmed directly: this free-tier key rate-limits specific models to zero (`mistral-small-latest`, `open-mixtral-8x7b`) while others on the same key/tier work immediately. Not yet re-verified: the actual RPM/RPD numbers for whichever model ends up used at volume, and whether Groq's own published limits (§6.2) still hold — do that before relying on volume assumptions elsewhere in this doc (§6.3's token-budget arithmetic was worked out against Groq's published caps, not Mistral's).
 - **BW Leitfaden content depth.** This document assumes it yields roughly ten operationalisable formal rules plus an Operatorenliste. Confirm by reading it fully before fixing the rule count.
 - **Whether Bavaria has unpublished internal guidance** for written Pflege exam construction, obtainable from StMGP or a Regierung. Public sources show none; that is not proof none exists.
 - **The Bavarian Regierung-level review workflow** for the generalistische Ausbildung specifically. The 15-January Aufgabenvorschlag process is documented for the Altenpflege Schulversuch; confirm whether an analogous checkpoint exists for the generalistische Prüfung, since §1.4 leans on it.

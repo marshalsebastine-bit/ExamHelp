@@ -1,25 +1,221 @@
 {
   "aufgabe_id": "C-01",
-  "metadaten": {"pruefungsbereich": "1", "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann", "bearbeitungszeit_minuten": 120, "autor": "synthetisch (PoC-Testkorpus)", "version": "0.3", "datum": "2026-09-08"},
-  "ce_bezug": ["CE 02"],
-  "fallsituation": {
-    "text": "Bei Frau Achterberg, welche zweiundachtzig Jahre alt ist und welche seit fuenf Jahren in der Einrichtung lebt, in der sie aufgrund einer im Rahmen der Multimorbiditaet aufgetretenen Einschraenkung der Mobilitaet betreut wird, wurde eine Verschlechterung der Gehfaehigkeit festgestellt, wobei nicht ausgeschlossen werden kann, dass keine weitere Verschlechterung eintreten wuerde, wenn eine Foerderung erfolgen wuerde. Die Durchfuehrung der Grundpflege wird von den Pflegefachpersonen uebernommen. Es wird berichtet, dass Frau Achterberg fruehere Aktivitaeten nicht mehr wahrnehmen wuerde. Von der Tochter wurde eine Anschaffung eines Rollstuhls angeregt.",
-    "situationsmerkmale": {
-      "handlungsanlaesse": ["beeintraechtigte Gehfaehigkeit", "bewegungsarmer Lebensstil"],
-      "kontextbedingungen": ["Langzeitpflegeeinrichtung"],
-      "handlungsmuster": ["Bewegungsfoerderung"],
-      "akteure": ["Frau Achterberg", "Tochter"]
-    },
-    "versorgungsbereich": "stationaer_langzeit", "altersgruppe": "alter_mensch",
-    "pflegebeduerftigkeit": "mittlerer Grad an Pflegebeduerftigkeit"
+  "metadaten": {
+    "pruefungsbereich": "1",
+    "ausbildungsabschluss": "Pflegefachfrau/Pflegefachmann",
+    "bearbeitungszeit_minuten": 120,
+    "autor": "synthetisch (PoC-Testkorpus)",
+    "version": "0.3",
+    "datum": "2026-09-08"
   },
-  "teilaufgaben": [
-    {"text": "Nennen Sie Massnahmen zur Foerderung der Mobilitaet.", "anforderungsniveau": "I", "punkte": 8.0, "kompetenzzuordnung": ["I.1.c"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Gehtraining", "punkte": 2.0}, {"text": "Hilfsmitteleinsatz", "punkte": 2.0}, {"text": "Bewegungsuebungen im Bett", "punkte": 2.0}]}},
-    {"text": "Es sollte eine Beschreibung der Vorgehensweise bei der Sturzrisikoeinschaetzung erfolgen.", "anforderungsniveau": "I", "punkte": 6.0, "kompetenzzuordnung": ["I.1.d"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Assessmentinstrument anwenden", "punkte": 3.0}, {"text": "Ergebnis dokumentieren", "punkte": 3.0}]}},
-    {"text": "Begruenden Sie zwei Massnahmen, welche im Hinblick auf die von der Tochter angeregte Anschaffung eines Rollstuhls, die nicht ohne eine vorherige Einschaetzung erfolgen sollte, zu beruecksichtigen waeren.", "anforderungsniveau": "II", "punkte": 10.0, "kompetenzzuordnung": ["I.5.a"],
-     "erwartungshorizont": {"erwartungspunkte": [{"text": "Erhalt der Restmobilitaet hat Vorrang", "punkte": 5.0}, {"text": "Rollstuhl nur situativ einsetzen", "punkte": 5.0}]}}
+  "aufgaben": [
+    {
+      "fallsituation": {
+        "text": "Bei Frau Achterberg, welche zweiundachtzig Jahre alt ist und welche seit fuenf Jahren in der Einrichtung lebt, in der sie aufgrund einer im Rahmen der Multimorbiditaet aufgetretenen Einschraenkung der Mobilitaet betreut wird, wurde eine Verschlechterung der Gehfaehigkeit festgestellt, wobei nicht ausgeschlossen werden kann, dass keine weitere Verschlechterung eintreten wuerde, wenn eine Foerderung erfolgen wuerde. Die Durchfuehrung der Grundpflege wird von den Pflegefachpersonen uebernommen. Es wird berichtet, dass Frau Achterberg fruehere Aktivitaeten nicht mehr wahrnehmen wuerde. Von der Tochter wurde eine Anschaffung eines Rollstuhls angeregt.",
+        "titel": "Frau Achterberg - Verschlechterte Gehfaehigkeit bei Multimorbiditaet",
+        "versorgungsbereich": "stationaer_langzeit",
+        "altersgruppe": "alter_mensch"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Nennen Sie Massnahmen zur Foerderung der Mobilitaet.",
+          "anforderungsniveau": "I",
+          "punkte": 8.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Gehtraining",
+                "punkte": 2.0
+              },
+              {
+                "text": "Hilfsmitteleinsatz",
+                "punkte": 2.0
+              },
+              {
+                "text": "Bewegungsuebungen im Bett",
+                "punkte": 2.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "beeintraechtigte Gehfaehigkeit",
+              "bewegungsarmer Lebensstil"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung"
+            ],
+            "handlungsmuster": [
+              "Bewegungsfoerderung"
+            ],
+            "curriculare_einheit": [
+              "CE 09"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.6.d"
+          ]
+        },
+        {
+          "text": "Es sollte eine Beschreibung der Vorgehensweise bei der Sturzrisikoeinschaetzung erfolgen.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Assessmentinstrument anwenden",
+                "punkte": 3.0
+              },
+              {
+                "text": "Ergebnis dokumentieren",
+                "punkte": 3.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "beeintraechtigte Gehfaehigkeit",
+              "bewegungsarmer Lebensstil"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung"
+            ],
+            "handlungsmuster": [
+              "Bewegungsfoerderung"
+            ],
+            "curriculare_einheit": [
+              "CE 09"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "III.1.b"
+          ]
+        },
+        {
+          "text": "Begruenden Sie zwei Massnahmen, welche im Hinblick auf die von der Tochter angeregte Anschaffung eines Rollstuhls, die nicht ohne eine vorherige Einschaetzung erfolgen sollte, zu beruecksichtigen waeren.",
+          "anforderungsniveau": "II",
+          "punkte": 10.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Erhalt der Restmobilitaet hat Vorrang",
+                "punkte": 5.0
+              },
+              {
+                "text": "Rollstuhl nur situativ einsetzen",
+                "punkte": 5.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "beeintraechtigte Gehfaehigkeit",
+              "bewegungsarmer Lebensstil"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung"
+            ],
+            "handlungsmuster": [
+              "Bewegungsfoerderung"
+            ],
+            "curriculare_einheit": [
+              "CE 09"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.5.b"
+          ]
+        }
+      ]
+    },
+    {
+      "fallsituation": {
+        "text": "Herr Brandt, welcher seit einiger Zeit aufgrund einer fortschreitenden Erkrankung, die seine Mobilitaet zunehmend einschraenkt, in der Einrichtung wohnhaft ist, wobei eine genaue Einschaetzung des Ausmasses noch nicht abschliessend erfolgt ist, hat gegenueber dem Pflegepersonal, welches die Grundversorgung sicherstellt, geaeussert, dass er sich haeufig zurueckgezogen fuehle, ohne dass hierfuer bislang eine erkennbare Ursache benannt werden koennte. Er nimmt an gemeinsamen Aktivitaeten kaum noch teil. Es wird angenommen, dass eine Foerderung sinnvoll sein koennte.",
+        "titel": "Herr Brandt - Sozialer Ruecktzug bei fortschreitender Mobilitaetseinschraenkung",
+        "versorgungsbereich": "stationaer_langzeit",
+        "altersgruppe": "alter_mensch"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Nennen Sie Beobachtungen zum Rueckzug von Herrn Brandt.",
+          "anforderungsniveau": "I",
+          "punkte": 8.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Teilnahmeverlust an Aktivitaeten",
+                "punkte": 4.0
+              },
+              {
+                "text": "geaeusserter Rueckzug",
+                "punkte": 4.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "sozialer Rueckzug",
+              "unklare Ursache"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung"
+            ],
+            "handlungsmuster": [
+              "Aktivierung"
+            ],
+            "curriculare_einheit": [
+              "CE 09"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.6.e"
+          ]
+        },
+        {
+          "text": "Es sollten Massnahmen zur Aktivierung von Herrn Brandt beschrieben werden.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Einzelangebot statt Gruppenaktivitaet",
+                "punkte": 3.0
+              },
+              {
+                "text": "Bezugsperson einbeziehen",
+                "punkte": 3.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "sozialer Rueckzug",
+              "unklare Ursache"
+            ],
+            "kontextbedingungen": [
+              "Langzeitpflegeeinrichtung"
+            ],
+            "handlungsmuster": [
+              "Aktivierung"
+            ],
+            "curriculare_einheit": [
+              "CE 09"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "III.1.a"
+          ]
+        }
+      ]
+    }
   ],
-  "geschwister_aufgaben": ["C-02", "C-03"]
+  "geschwister_aufgaben": [
+    "C-02",
+    "C-03"
+  ]
 }

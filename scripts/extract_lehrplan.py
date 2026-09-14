@@ -332,8 +332,9 @@ def main() -> int:
                 "The Lehrplan sets only Handlungsanlaesse, Kontextbedingungen and Handlungsmuster as "
                 "table rows per CE. Akteure and Erleben/Deuten/Verarbeiten are prose in the introduction "
                 "and the didaktischer Kommentar, so there is no per-CE list to compare against. The item "
-                "schema keeps an `akteure` field because authors do describe who appears in a Fallsituation, "
-                "but KOMP-07 can only compare the three structured dimensions."
+                "schema used to keep an `akteure` field for this reason, but removed it (2026-09-11): with "
+                "no per-CE list to check it against, it carried no evidence for any rule. KOMP-07 compares "
+                "only the three structured dimensions."
             ),
             "source": {
                 "document": "Lehrplaene und Ausbildungsplaene fuer die Berufsfachschule fuer Pflege (StMUK / ISB Bayern, Juli 2020)",

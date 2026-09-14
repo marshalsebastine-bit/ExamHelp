@@ -1,203 +1,83 @@
 {
   "note": "Twelve synthetic base Aufsichtsarbeiten (tech doc 7.1). Every item is written for this project. No school items, no published Pruefungsfragen, no scraped practice questions. This is a compliance boundary, not a convenience: it is what makes the non-EU free-tier providers usable at all (tech doc 6.2, 9).",
+  "structure_note": "Each Aufsichtsarbeit is composed of exactly two Aufgabe blocks ('Aufgabe 1' / 'Aufgabe 2'), confirmed as a real domain fact 2026-09-10 and not part of the original week-1 schema. Each block carries its own Fallsituation and its own Teilaufgaben; both share one Bearbeitungszeit, one Punktzahl budget and one Pruefungsbereich correspondence (PflAPrV Sec 14 (1)-(3)). D-01 is the sole exception: it deliberately holds only one Aufgabe block, as the fixture for an in-progress draft where Aufgabe 2 has not been started yet. Anchors are 'ag.<N>.ta.<M>' / 'ag.<N>.ta.<M>.eh.<K>', not the flat 'ta.<M>' used before this restructuring.",
+  "schema_migration_2026_09_11": "ce_bezug moved off Aufgabe and teilaufgabe.kompetenzzuordnung was removed; the CE claim now lives at teilaufgabe.situationsmerkmale.curriculare_einheit, and situationsmerkmale itself moved from Fallsituation down to Teilaufgabe (new fields: wissensgrundlagen, quellenangabe). Fallsituation gained titel (a Versorgungsbereich value, then removed again and reintroduced same day as free text). Teilaufgabe gained kompetenzanforderung (Wissen / Analyse-Synthese / Reflexion-Beurteilung). All twelve items were mechanically migrated: each block's old ce_bezug and Fallsituation.situationsmerkmale were copied onto every Teilaufgabe in that block, and kompetenzanforderung was filled in from the existing anforderungsniveau (I->Wissen, II->Analyse/Synthese, III->Reflexion/Beurteilung); this is a placeholder mapping; kompetenzzuordnung values were dropped with no replacement.",
+  "schema_migration_2026_09_11_komp_revival": "Superseded by the entry above: KOMP-01/03/03B/06 in rules/kompetenz.yaml are runnable again against a new field, teilaufgabe.kompetenzzuordnung_abgeleitet, populated by an LLM (gateway/mistral_gateway.py) rather than an author claim. All twelve items now carry hand-authored derived values for that field, chosen from each Teilaufgabe's own curriculare_einheit's Anlage-2 candidate list (checks/llm/kompetenz_candidates.py) so the fixtures stay honest about what a real derivation could produce. Two teilaufgabe-blocks were retagged in the process: B-01.Aufgabe2 (Mia) and C-01.Aufgabe1 (Achterberg) were declared against CE 02, a 1st/2nd-Ausbildungsdrittel CE with zero Anlage-2 competencies -- under the derivation model that CE correctly yields zero candidates, which would have made every Teilaufgabe in those 'sound'/non-KOMP-demo blocks newly and unintentionally trip KOMP-01. Retagged to CE 10 and CE 09 respectively, both of which fit the case content and both 3rd-Ausbildungsdrittel CEs with real Anlage-2 mappings. KOMP-02 is retired, not revived: its premise (author claim vs. derived value) has no 'claimed' side left in this schema. The known_weaknesses entries below naming KOMP-06/KOMP-03B are live again, not historical.",
   "sets": [
     {
       "exam": "A",
-      "items": [
-        "A-01",
-        "A-02",
-        "A-03"
-      ],
-      "intent": "well-formed and varied; the false-flag baseline. These should produce few or no flags."
+      "items": ["A-01", "A-02", "A-03"],
+      "intent": "well-formed and varied; the false-flag baseline. These should produce few or no flags. Both Aufgabe blocks are balanced in Punkte (roughly 50/50 of the paper total), and the paper as a whole covers a majority (A-02: 2 of 3) or all (A-01, A-03: 4 of 4, 4 of 4) of its Pruefungsbereich's Kompetenzschwerpunkte pooled across both blocks -- no single Aufgabe block's own curriculare Einheit spans every Schwerpunkt on its own, since the CE-to-Anlage-2 mapping (rules/kompetenzen.yaml) does not work that way."
     },
     {
       "exam": "B",
-      "items": [
-        "B-01",
-        "B-02",
-        "B-03"
-      ],
-      "intent": "sound construction across different Versorgungsbereiche; second false-flag baseline."
+      "items": ["B-01", "B-02", "B-03"],
+      "intent": "sound construction across different Versorgungsbereiche; second false-flag baseline. Blocks are balanced in Punkte; B-01 and B-03 each cover 3 of 4 Kompetenzschwerpunkte pooled across the whole paper, which is a majority and must not flag."
     },
     {
       "exam": "C",
-      "items": [
-        "C-01",
-        "C-02",
-        "C-03"
-      ],
-      "intent": "organically weak construction, as an inexperienced author would produce it. Not mutations: these are whole items written badly."
+      "items": ["C-01", "C-02", "C-03"],
+      "intent": "organically weak construction, as an inexperienced author would produce it. Not mutations: these are whole items written badly, in both Aufgabe blocks. Deliberately includes the FORM-16 Punkte-imbalance defect (Aufgabe 2 carries roughly a third of the paper's Punkte in all three items) alongside each item's other documented weaknesses -- an author who writes one weak Fallsituation plausibly shortchanges the second, too."
     },
     {
       "exam": "D",
-      "items": [
-        "D-01",
-        "D-02",
-        "D-03"
-      ],
-      "intent": "exercises the precondition gate and the cross-item rule. D-01 is an unfinished draft; all three share Versorgungsbereich and Altersgruppe."
+      "items": ["D-01", "D-02", "D-03"],
+      "intent": "exercises the precondition gate and the cross-item rule. D-01 is an unfinished draft with only one Aufgabe block written and no Erwartungshorizont in it; all five Aufgabe blocks across the three items (D-01 contributes one, D-02 and D-03 two each) share Versorgungsbereich stationaer_langzeit and Altersgruppe alter_mensch, so the sibling set does not vary as PflAPrV Sec 14 (2) requires."
     }
   ],
   "spread": {
+    "granularity_note": "Recorded per Aufgabe block ('A-01.Aufgabe1'), not per item, since that is the level a Fallsituation theme actually exists at.",
     "versorgungsbereich": {
-      "ambulant": [
-        "A-01",
-        "C-02"
-      ],
-      "stationaer_akut": [
-        "A-02",
-        "B-02"
-      ],
-      "paediatrisch": [
-        "A-03"
-      ],
-      "rehabilitativ": [
-        "B-01"
-      ],
-      "stationaer_langzeit": [
-        "B-03",
-        "C-01",
-        "D-01",
-        "D-02",
-        "D-03"
-      ],
-      "psychiatrisch": [
-        "C-03"
-      ]
+      "ambulant": ["A-01.Aufgabe1", "A-02.Aufgabe2", "B-01.Aufgabe2", "B-02.Aufgabe2", "C-02.Aufgabe1", "C-02.Aufgabe2"],
+      "rehabilitativ": ["A-01.Aufgabe2", "B-01.Aufgabe1"],
+      "stationaer_akut": ["A-02.Aufgabe1", "A-03.Aufgabe2", "B-02.Aufgabe1", "B-03.Aufgabe2"],
+      "paediatrisch": ["A-03.Aufgabe1"],
+      "stationaer_langzeit": ["B-03.Aufgabe1", "C-01.Aufgabe1", "C-01.Aufgabe2", "D-01.Aufgabe1", "D-02.Aufgabe1", "D-02.Aufgabe2", "D-03.Aufgabe1", "D-03.Aufgabe2"],
+      "psychiatrisch": ["C-03.Aufgabe1", "C-03.Aufgabe2"]
     },
     "altersgruppe": {
-      "kind": [
-        "A-03"
-      ],
-      "jugendlicher": [
-        "C-02"
-      ],
-      "erwachsener": [
-        "A-02",
-        "B-01",
-        "C-03"
-      ],
-      "alter_mensch": [
-        "A-01",
-        "B-02",
-        "B-03",
-        "C-01",
-        "D-01",
-        "D-02",
-        "D-03"
-      ]
+      "alter_mensch": ["A-01.Aufgabe1", "A-03.Aufgabe2", "B-02.Aufgabe1", "B-03.Aufgabe1", "B-03.Aufgabe2", "C-01.Aufgabe1", "C-01.Aufgabe2", "D-01.Aufgabe1", "D-02.Aufgabe1", "D-02.Aufgabe2", "D-03.Aufgabe1", "D-03.Aufgabe2"],
+      "erwachsener": ["A-01.Aufgabe2", "A-02.Aufgabe1", "B-01.Aufgabe1", "B-02.Aufgabe2", "C-02.Aufgabe2", "C-03.Aufgabe1", "C-03.Aufgabe2"],
+      "jugendlicher": ["A-02.Aufgabe2", "C-02.Aufgabe1"],
+      "kind": ["A-03.Aufgabe1", "B-01.Aufgabe2"]
     },
     "pruefungsbereich": {
-      "1": [
-        "A-01",
-        "B-01",
-        "C-01",
-        "D-01"
-      ],
-      "2": [
-        "A-02",
-        "B-02",
-        "C-02",
-        "D-02"
-      ],
-      "3": [
-        "A-03",
-        "B-03",
-        "C-03",
-        "D-03"
-      ]
+      "1": ["A-01", "B-01", "C-01", "D-01"],
+      "2": ["A-02", "B-02", "C-02", "D-02"],
+      "3": ["A-03", "B-03", "C-03", "D-03"]
     },
-    "curriculare_einheiten": [
-      "CE 02",
-      "CE 04",
-      "CE 05",
-      "CE 06",
-      "CE 07",
-      "CE 08",
-      "CE 09",
-      "CE 10",
-      "CE 11"
-    ]
+    "curriculare_einheiten": ["CE 04", "CE 05", "CE 06", "CE 07", "CE 08", "CE 09", "CE 10", "CE 11"]
   },
   "known_weaknesses": {
-    "comment": "Recorded here rather than in the items, so the items read like real drafts. These are the organic defects the catalogue should find; they are separate from the harness-generated mutations, whose ground truth lives in mutations/ (tech doc 7.2).",
+    "comment": "Recorded here rather than in the items, so the items read like real drafts. These are the organic defects the catalogue should find; they are separate from the harness-generated mutations, whose ground truth lives in mutations/ (tech doc 7.2). Anchors use the ag.<N>.ta.<M> grammar introduced with the Aufgabe-block restructuring (2026-09-10).",
     "C-01": [
-      {
-        "rule": "FORM-05",
-        "defect": "Fallsituation is one 90-word Schachtelsatz with nested relative clauses and a double negation"
-      },
-      {
-        "rule": "FORM-06",
-        "defect": "ta.1 declares 8 Punkte, its Erwartungshorizont sums to 6; ta.2 and ta.3 also mismatch"
-      },
-      {
-        "rule": "FORM-11",
-        "defect": "ta.2 contains no operator at all, only a nominalised instruction"
-      },
-      {
-        "rule": "FORM-12",
-        "defect": "'zweiundachtzig' and 'fuenf' written as number words in the Fallsituation"
-      },
-      {
-        "rule": "FORM-13",
-        "defect": "ta.1 asks for 'Massnahmen' with no count"
-      },
-      {
-        "rule": "FORM-14",
-        "defect": "Fallsituation is largely in the werden-passive"
-      },
-      {
-        "rule": "FORM-15",
-        "defect": "'wuerde' / 'waeren' in Konjunktiv throughout"
-      }
+      {"rule": "FORM-05", "defect": "Aufgabe 1's Fallsituation is one 90-word Schachtelsatz with nested relative clauses and a double negation; Aufgabe 2's Fallsituation repeats the pattern"},
+      {"rule": "FORM-06", "defect": "ag.1.ta.1 declares 8 Punkte, its Erwartungshorizont sums to 6"},
+      {"rule": "FORM-11", "defect": "ag.1.ta.2 contains no operator at all, only a nominalised instruction; ag.2.ta.2 repeats the pattern"},
+      {"rule": "FORM-12", "defect": "'zweiundachtzig' and 'fuenf' written as number words in Aufgabe 1's Fallsituation"},
+      {"rule": "FORM-13", "defect": "ag.1.ta.1 asks for 'Massnahmen' with no count"},
+      {"rule": "FORM-14", "defect": "both Fallsituationen are largely in the werden-passive"},
+      {"rule": "FORM-15", "defect": "'wuerde' / 'waeren' / 'haette' in Konjunktiv throughout both Fallsituationen"},
+      {"rule": "FORM-16", "defect": "Aufgabe 2 carries 14 of the paper's 38 Punkte (37 percent), below the 40-percent floor -- consistent with the item's overall weak construction"}
     ],
     "C-02": [
-      {
-        "rule": "FORM-04",
-        "defect": "ta.1 uses the Anforderungsbereich-I operator 'nennen' but declares Anforderungsniveau III"
-      },
-      {
-        "rule": "FORM-07",
-        "defect": "ta.1 asks to name causes; its Erwartungshorizont rewards begruenden, bewerten and ableiten"
-      },
-      {
-        "rule": "FORM-09",
-        "defect": "Schuhgroesse, parents' occupations, the dog, and the renovated living room are used by no Teilaufgabe"
-      }
+      {"rule": "FORM-04", "defect": "ag.1.ta.1 uses the Anforderungsbereich-I operator 'nennen' but declares Anforderungsniveau III"},
+      {"rule": "FORM-07", "defect": "ag.1.ta.1 asks to name causes; its Erwartungshorizont rewards begruenden, bewerten and ableiten"},
+      {"rule": "FORM-09", "defect": "Schuhgroesse, parents' occupations, the dog, and the renovated living room in Aufgabe 1's Fallsituation are used by no Teilaufgabe"},
+      {"rule": "FORM-16", "defect": "Aufgabe 2 carries 14 of the paper's 44 Punkte (32 percent), below the 40-percent floor"}
     ],
     "C-03": [
-      {
-        "rule": "FORM-11",
-        "defect": "ta.1 carries two operators: 'Nennen Sie ... und bewerten Sie diese'"
-      },
-      {
-        "rule": "FORM-06",
-        "defect": "ta.1 declares 8 Punkte, its Erwartungshorizont sums to 8 but ta.1's first point is weighted 2 against a 3-point pattern"
-      },
-      {
-        "rule": "KOMP-04",
-        "defect": "every Teilaufgabe declares Anforderungsniveau I, so the distribution is degenerate"
-      },
-      {
-        "rule": "KOMP-06",
-        "defect": "ta.2 claims I.2.g, which exists in Anlage 1 but not in Anlage 2 — the only such code in the catalogue"
-      },
-      {
-        "rule": "KOMP-03B",
-        "defect": "declared Pruefungsbereich 3 requires I.3, I.4, II.3, III.2; the claimed codes cover only I.3 (via ta.1), with I.2.g, IV.1.a and II.1.a all outside the required set -- 1 of 4 Schwerpunkte, below the KOMP-03B majority threshold. Does not trigger KOMP-03 itself, since the intersection is non-empty."
-      }
+      {"rule": "FORM-11", "defect": "ag.1.ta.1 carries two operators: 'Nennen Sie ... und bewerten Sie diese'"},
+      {"rule": "FORM-06", "defect": "ag.1.ta.1 declares 8 Punkte, its Erwartungshorizont sums to 8 but the first point is weighted 2 against a 3-point pattern"},
+      {"rule": "KOMP-04", "defect": "every Teilaufgabe in both Aufgabe blocks declares Anforderungsniveau I, so the distribution is degenerate across the whole paper"},
+      {"rule": "KOMP-06", "defect": "ag.1.ta.2's derived codes include I.2.g, which exists in Anlage 1 but not in Anlage 2 -- the only such code in the catalogue, injected deliberately since real derivation is filtered to a candidate set that is itself always a subset of Anlage 2"},
+      {"rule": "KOMP-03B", "defect": "declared Pruefungsbereich 3 requires I.3, I.4, II.3, III.2; pooled across both Aufgabe blocks the derived codes cover only I.3 (ag.1.ta.1), with I.2.g, II.1.a, IV.1.c, IV.2.b, II.2.a and V.2.c all outside the required set -- 1 of 4 Schwerpunkte, below the KOMP-03B majority threshold. Does not trigger KOMP-03 itself, since the intersection is non-empty."}
     ],
     "D-01": [
-      {
-        "rule": "requires-gate",
-        "defect": "no Erwartungshorizont and only 2 of an intended 4 Teilaufgaben. FORM-06, FORM-07 and QUELL-* must emit NotChecked, never a flag (tech doc 1.5.1)."
-      }
+      {"rule": "requires-gate", "defect": "only one Aufgabe block written (Aufgabe 2 not started) and no Erwartungshorizont in Aufgabe 1. Both are independent completeness gaps: aufgaben.vollstaendig is False and aufgabe_1.teilaufgabe.erwartungshorizont is False. FORM-02, FORM-06, FORM-07, FORM-16 and QUELL-* must emit NotChecked, never a flag (tech doc 1.5.1)."}
     ],
-    "D-02_D-03": [
-      {
-        "rule": "KOMP-05",
-        "defect": "D-01, D-02 and D-03 are all stationaer_langzeit with altersgruppe alter_mensch, so the sibling set does not vary as § 14 Absatz 2 requires"
-      }
+    "D-01_D-02_D-03": [
+      {"rule": "KOMP-05", "defect": "all five Aufgabe blocks across the three sibling items (D-01's one block, D-02's and D-03's two each) are stationaer_langzeit with altersgruppe alter_mensch, so the sibling set does not vary as Sec 14 Absatz 2 requires"}
     ]
   }
 }

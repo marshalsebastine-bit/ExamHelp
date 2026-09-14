@@ -93,7 +93,7 @@ rules:
     authority: binding_federal
     jurisdiction: federal
     check_type: llm
-    scope: aufgabe
+    scope: teilaufgabe
     input_slice: [teilaufgabe.text, teilaufgabe.erwartungshorizont]
     requires: [teilaufgabe.text]
     severity_default: pruefen
@@ -105,5 +105,9 @@ rules:
         Taetigkeit under § 4 PflBG, which it is not.
       target: teilaufgabe.erwartungshorizont
     notes: >
+      Rescoped from aufgabe to teilaufgabe when the Aufgabe-block restructuring was
+      introduced: input_slice and the mutation both operate on one Teilaufgabe's text and
+      Erwartungshorizont, so this fires once per Teilaufgabe (in whichever Aufgabe block it
+      sits) rather than once for the whole paper -- the same over-scoping FORM-06 had.
       The only Family C rule whose source is already in the corpus, which is why it is the
       one that survives the pre-decided cut.

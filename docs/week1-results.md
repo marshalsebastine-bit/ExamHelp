@@ -1,7 +1,9 @@
 # Week 1 results
 
 **Scope:** the seven week-1 tasks in the handdown (tech doc §8, week 1).
-**Status:** all seven complete. 63 tests pass with no network and no model call.
+**Status:** all seven complete. 124 tests pass with no network and no model call
+(63 at week 1's original close; see §6 for the post-week-1 correction that
+accounts for the rest).
 
 ---
 
@@ -169,3 +171,89 @@ rather than around it.
 
 The one thing to do before writing the gateway is the free-tier verification in
 §4, since the token-budget arithmetic in tech doc §6.3 assumes it.
+
+---
+
+## 6. Post-week-1 correction: the two-Aufgabe-block structure (2026-09-10)
+
+Before starting week 2, a review of why every file exists surfaced that the
+week-1 item schema modelled **one** Fallsituation per Aufsichtsarbeit. That is
+wrong: a candidate's 120-minute paper for one Prüfungsbereich is composed of
+**two independently-themed Aufgabe blocks** ("Aufgabe 1" / "Aufgabe 2" — the
+Prüfungsausschuss's own terms), each with its own Fallsituation, its own
+`ce_bezug`, and its own Teilaufgaben, sharing one Bearbeitungszeit and one
+Punktzahl budget. Confirmed against domain knowledge, not derivable from
+PflAPrV's text: § 14 fixes the Aufsichtsarbeit–Prüfungsbereich correspondence
+and the 120-minute/three-Werktage administration, but says nothing about an
+internal two-block split, so this is a Land/school-level practice this
+project's corpus did not otherwise have access to.
+
+This is a correction to a week-1 foundational assumption, not a week-2 feature,
+so it was fixed before week 2 could build checks on top of the wrong shape.
+
+### What changed
+
+- **`schemas/aufgabe.py`** — new `Aufgabe` model (`ce_bezug`, `fallsituation`,
+  `teilaufgaben`); `Aufsichtsarbeit.aufgaben: list[Aufgabe]` replaces the old
+  top-level `ce_bezug` / `fallsituation` / `teilaufgaben` fields. Not pinned to
+  length 2 at the pydantic level — an in-progress draft with only Aufgabe 1
+  written must still validate (tech doc 1.5.1) — so `completeness()` reports
+  `aufgaben.vollstaendig` instead.
+- **Anchor grammar** — `ta.2` → `ag.1.ta.2`; `fs.satz.3` → `ag.1.fs.satz.3`.
+  `Aufsichtsarbeit.anchors()` / `.resolve()` rewritten; `alle_teilaufgaben()`
+  added for whole-paper rules that must pool across both blocks.
+- **`schemas/rule.py`** — `Scope.aufgabe` used to mean "the whole paper"; that
+  collided with real vocabulary once "Aufgabe" turned out to mean the block.
+  Renamed: `Scope.aufsichtsarbeit` is now the whole-paper scope, `Scope.aufgabe`
+  is the per-block scope.
+- **Every rule's `scope` reclassified** against what it actually operates on,
+  which surfaced two rules (FORM-06, QUELL-03) that were already over-scoped at
+  week 1 — both fire per-Teilaufgabe, not per-paper, independent of this
+  restructuring. Whole-paper rules (FORM-02, FORM-16, KOMP-03, KOMP-03B,
+  KOMP-04, KOMP-05) now explicitly flatten across both blocks via
+  `alle_teilaufgaben()`. KOMP-07 (Situationsmerkmale vs. claimed CE) turned out
+  to be a *better* fit after the split: each block now compares its own
+  Fallsituation against its own `ce_bezug`, rather than one paper-level
+  `ce_bezug` standing in for two blocks that might claim different CEs.
+- **`checks/deterministic/komp_03.py`** — `claimed_schwerpunkte()` pools across
+  both blocks, matching the corrected scope.
+- **New rule, FORM-16** — "Aufgabe 1 and Aufgabe 2 contribute roughly equal
+  Punkte." Confirmed as a real construction expectation in the same
+  conversation that surfaced the block structure (illustrated with a 100-point,
+  50/50 example). Deterministic, `construction_principle` authority, fires
+  below a 40% floor rather than demanding exact equality. Catalogue-only for
+  now — `checks/deterministic/form_16.py` is week-2 implementation work, same
+  as the other 25 unimplemented rules.
+- **All 12 synthetic items rewritten** with a genuine second Aufgabe block
+  (D-01 is the deliberate exception — see below). Three fixed corpus facts
+  existing tests depend on were preserved exactly through the rewrite:
+  - **C-03 still covers exactly 1 of Prüfungsbereich 3's 4 Kompetenzschwerpunkte**
+    pooled across both blocks (the KOMP-03B demonstration), and **I.2.g remains
+    the sole Anlage-1-only code claimed** (the KOMP-06 demonstration). Aufgabe
+    2's codes were deliberately drawn from Bereiche outside {I.3, I.4, II.3,
+    III.2} so pooling could only add coverage if it happened to touch those —
+    it doesn't.
+  - **D-01 stays a genuine single-Aufgabe-block draft** rather than getting a
+    second block authored. This is a better fit for "the tool works on an
+    in-progress draft" than before: it now exercises two independent, correct
+    completeness gaps at once (`aufgaben.vollstaendig` is `False`, and Aufgabe
+    1's Erwartungshorizont is still missing).
+  - **D-01/D-02/D-03 stay homogeneous** across all five of their Aufgabe blocks
+    (`stationaer_langzeit` / `alter_mensch`), so KOMP-05's demonstration still
+    fires on the sibling set.
+  - C-01 and C-02 pick up **FORM-16 as an additional organic defect** (Aufgabe
+    2 carries 37% and 32% of the paper's Punkte respectively) — not engineered
+    for that purpose, but a plausible extension of "organically weak
+    construction" that the manifest now documents alongside each item's other
+    known weaknesses.
+- **`items/manifest.json`, `docio/word_template_spec.md`,
+  `docio/template_tags.md`, `README.md`** updated to match.
+
+### What this means for week 2
+
+The entry conditions in §5 still hold, updated for the corrected shape: 12
+items validate (124 tests, up from 63), the catalogue validates with 27 rules
+(25 runnable, 15 deterministic), and the output contract is unchanged. Nothing
+in week 2's scope (permissive parser, deterministic checks, model gateway,
+German-quality spot check, smoke run) depended on the old flat shape in a way
+that would have been cheaper to fix later — this was worth catching now.

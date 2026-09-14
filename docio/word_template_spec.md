@@ -43,18 +43,30 @@ pointing at a field that no longer exists.
 
 ## 3. Repeating structures and the ID problem
 
-`teilaufgaben` and `erwartungspunkte` are **repeating section content controls**.
-Everything else is a plain-text or group control.
+`aufgaben`, `teilaufgaben`, and `erwartungspunkte` are **repeating section content
+controls**. Everything else is a plain-text or group control.
 
-The item schema's IDs (`ta.2`, `ta.2.eh.3`) identify a structural *position*, and
-their known weakness is that inserting or reordering a Teilaufgabe shifts every
-later ID (`schemas/aufgabe.py` module docstring). In a one-shot run against a
-submitted draft that does not bite. In a live task pane it would.
+`aufgaben` is the outermost of the three and the one most recently added: one
+Aufsichtsarbeit is composed of exactly two Aufgabe blocks ("Aufgabe 1" /
+"Aufgabe 2" in the Prüfungsausschuss's own vocabulary), each with its own
+Fallsituation and its own Teilaufgaben (`schemas/aufgabe.py`). The
+curriculare-Einheit claim lives one level deeper still, at
+`teilaufgaben.situationsmerkmale.curriculare_einheit`, since Teilaufgaben
+within one block can target different CEs off a shared Fallsituation.
+The template's outermost repeating section is therefore the Aufgabe block, not
+the Teilaufgabe — a document holds two of them, each internally repeating its
+own Teilaufgaben.
+
+The item schema's IDs (`ag.1.ta.2`, `ag.1.ta.2.eh.3`) identify a structural
+*position*, and their known weakness is that inserting or reordering a
+Teilaufgabe — or an Aufgabe block — shifts every later ID (`schemas/aufgabe.py`
+module docstring). In a one-shot run against a submitted draft that does not
+bite. In a live task pane it would.
 
 The template fixes it in the natural way: **each repeating instance carries its
 own content-control tag, generated once and never reused.** The tag becomes an
-opaque identifier that survives edits, and the visible number ("Teilaufgabe 2")
-becomes display only. Concretely:
+opaque identifier that survives edits, and the visible number ("Aufgabe 2",
+"Teilaufgabe 2") becomes display only. Concretely:
 
 | | one-shot docx path (week 5) | task pane (deferred) |
 |---|---|---|
@@ -104,3 +116,10 @@ Carried from tech doc 12; none of them block week 1.
 - Whether one document holds one Aufsichtsarbeit or all three of an exam. The
   schema supports both through `geschwister_aufgaben`, but the template's top
   level differs, and KOMP-05 needs the sibling set to be resolvable.
+- Whether a template should ever allow more or fewer than two Aufgabe blocks.
+  The domain rule is "always exactly two" (confirmed 2026-09-10), but the schema
+  deliberately does not enforce that at validation time, so an in-progress draft
+  with only Aufgabe 1 written still parses (tech doc 1.5.1). A structured
+  template could enforce exactly two repeating instances at the document level
+  if that turns out to help authors rather than get in their way — worth
+  checking with a real Fachprüfer before deciding either way.

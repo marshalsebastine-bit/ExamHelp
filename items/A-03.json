@@ -8,71 +8,333 @@
     "version": "1.0",
     "datum": "2026-09-08"
   },
-  "ce_bezug": ["CE 06"],
-  "fallsituation": {
-    "text": "Lina ist 7 Jahre alt und liegt seit 1 Tag auf der Kinderstation. Sie hat eine Pneumonie. Um 14 Uhr messen Sie eine Atemfrequenz von 38 pro Minute und eine Sauerstoffsaettigung von 89 Prozent. Lina sitzt aufrecht im Bett und stuetzt sich mit beiden Armen ab. Ihre Lippen sind blaeulich verfaerbt. Sie spricht nur in kurzen Abschnitten und wirkt unruhig. Die Mutter ist anwesend und beginnt zu weinen. Der Arzt ist im Operationsbereich und nicht sofort erreichbar. Auf dem Flur wartet eine weitere Familie auf ein Aufnahmegespraech.",
-    "situationsmerkmale": {
-      "handlungsanlaesse": ["akute respiratorische Verschlechterung", "beginnende Kreislaufinstabilitaet", "Angst bei Kind und Bezugsperson"],
-      "kontextbedingungen": ["Kinderstation", "Arzt nicht sofort verfuegbar", "gleichzeitige konkurrierende Aufgaben"],
-      "handlungsmuster": ["Notfallersteinschaetzung", "Sofortmassnahmen", "Kommunikation in der Krise"],
-      "akteure": ["Lina", "Mutter", "Arzt", "Pflegefachperson"]
-    },
-    "versorgungsbereich": "paediatrisch",
-    "altersgruppe": "kind",
-    "pflegebeduerftigkeit": "akute, hohe Pflegebeduerftigkeit bei instabiler gesundheitlicher Lage"
-  },
-  "teilaufgaben": [
+  "aufgaben": [
     {
-      "text": "Benennen Sie 4 Beobachtungen bei Lina, die auf eine akute Verschlechterung hinweisen.",
-      "anforderungsniveau": "I",
-      "punkte": 6.0,
-      "kompetenzzuordnung": ["I.3.a"],
-      "erwartungshorizont": {
-        "erwartungspunkte": [
-          {"text": "Atemfrequenz von 38 pro Minute", "punkte": 1.5},
-          {"text": "Sauerstoffsaettigung von 89 Prozent", "punkte": 1.5},
-          {"text": "Zyanose der Lippen", "punkte": 1.5},
-          {"text": "Einsatz der Atemhilfsmuskulatur und Sprechen in kurzen Abschnitten", "punkte": 1.5}
-        ]
-      }
+      "fallsituation": {
+        "text": "Lina ist 7 Jahre alt und liegt seit 1 Tag auf der Kinderstation. Sie hat eine Pneumonie. Um 14 Uhr messen Sie eine Atemfrequenz von 38 pro Minute und eine Sauerstoffsaettigung von 89 Prozent. Lina sitzt aufrecht im Bett und stuetzt sich mit beiden Armen ab. Ihre Lippen sind blaeulich verfaerbt. Sie spricht nur in kurzen Abschnitten und wirkt unruhig. Die Mutter ist anwesend und beginnt zu weinen. Der Arzt ist im Operationsbereich und nicht sofort erreichbar. Auf dem Flur wartet eine weitere Familie auf ein Aufnahmegespraech.",
+        "titel": "Lina - Akute Atemnot bei Pneumonie",
+        "versorgungsbereich": "paediatrisch",
+        "altersgruppe": "kind"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Benennen Sie 4 Beobachtungen bei Lina, die auf eine akute Verschlechterung hinweisen.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Atemfrequenz von 38 pro Minute",
+                "punkte": 1.5
+              },
+              {
+                "text": "Sauerstoffsaettigung von 89 Prozent",
+                "punkte": 1.5
+              },
+              {
+                "text": "Zyanose der Lippen",
+                "punkte": 1.5
+              },
+              {
+                "text": "Einsatz der Atemhilfsmuskulatur und Sprechen in kurzen Abschnitten",
+                "punkte": 1.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "akute respiratorische Verschlechterung",
+              "beginnende Kreislaufinstabilitaet",
+              "Angst bei Kind und Bezugsperson"
+            ],
+            "kontextbedingungen": [
+              "Kinderstation",
+              "Arzt nicht sofort verfuegbar",
+              "gleichzeitige konkurrierende Aufgaben"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Kommunikation in der Krise"
+            ],
+            "curriculare_einheit": [
+              "CE 06"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.4.a"
+          ]
+        },
+        {
+          "text": "Bestimmen Sie 3 Sofortmassnahmen, die Sie bei Lina vor Eintreffen des Arztes durchfuehren.",
+          "anforderungsniveau": "II",
+          "punkte": 9.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "atemunterstuetzende Positionierung beibehalten und sichern",
+                "punkte": 3.0
+              },
+              {
+                "text": "Sauerstoffgabe nach Standard einleiten",
+                "punkte": 3.0
+              },
+              {
+                "text": "Vitalparameter kontinuierlich ueberwachen und Notruf ausloesen",
+                "punkte": 3.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "akute respiratorische Verschlechterung",
+              "beginnende Kreislaufinstabilitaet",
+              "Angst bei Kind und Bezugsperson"
+            ],
+            "kontextbedingungen": [
+              "Kinderstation",
+              "Arzt nicht sofort verfuegbar",
+              "gleichzeitige konkurrierende Aufgaben"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Kommunikation in der Krise"
+            ],
+            "curriculare_einheit": [
+              "CE 06"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.4.b"
+          ]
+        },
+        {
+          "text": "Erlaeutern Sie 2 Aspekte, die Sie bei der Durchfuehrung der aerztlichen Anordnung zur Sauerstoffgabe beachten.",
+          "anforderungsniveau": "II",
+          "punkte": 7.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Anordnung auf Vollstaendigkeit und Plausibilitaet pruefen",
+                "punkte": 3.5
+              },
+              {
+                "text": "Wirkung kontrollieren und Abweichungen unverzueglich rueckmelden",
+                "punkte": 3.5
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "akute respiratorische Verschlechterung",
+              "beginnende Kreislaufinstabilitaet",
+              "Angst bei Kind und Bezugsperson"
+            ],
+            "kontextbedingungen": [
+              "Kinderstation",
+              "Arzt nicht sofort verfuegbar",
+              "gleichzeitige konkurrierende Aufgaben"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Kommunikation in der Krise"
+            ],
+            "curriculare_einheit": [
+              "CE 06"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "III.2.b"
+          ]
+        },
+        {
+          "text": "Beurteilen Sie 2 Handlungsmoeglichkeiten im Umgang mit der weinenden Mutter unter ethischen Gesichtspunkten.",
+          "anforderungsniveau": "III",
+          "punkte": 8.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Mutter im Zimmer belassen und einbeziehen, Abwaegung von Beistand und Handlungsfaehigkeit",
+                "punkte": 4.0
+              },
+              {
+                "text": "Mutter kurzzeitig begleiten lassen, Abwaegung von Fuersorge fuer das Kind und fuer die Bezugsperson",
+                "punkte": 4.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Reflexion/Beurteilung",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "akute respiratorische Verschlechterung",
+              "beginnende Kreislaufinstabilitaet",
+              "Angst bei Kind und Bezugsperson"
+            ],
+            "kontextbedingungen": [
+              "Kinderstation",
+              "Arzt nicht sofort verfuegbar",
+              "gleichzeitige konkurrierende Aufgaben"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Kommunikation in der Krise"
+            ],
+            "curriculare_einheit": [
+              "CE 06"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.3.b"
+          ]
+        }
+      ]
     },
     {
-      "text": "Bestimmen Sie 3 Sofortmassnahmen, die Sie bei Lina vor Eintreffen des Arztes durchfuehren.",
-      "anforderungsniveau": "II",
-      "punkte": 9.0,
-      "kompetenzzuordnung": ["I.4.a"],
-      "erwartungshorizont": {
-        "erwartungspunkte": [
-          {"text": "atemunterstuetzende Positionierung beibehalten und sichern", "punkte": 3.0},
-          {"text": "Sauerstoffgabe nach Standard einleiten", "punkte": 3.0},
-          {"text": "Vitalparameter kontinuierlich ueberwachen und Notruf ausloesen", "punkte": 3.0}
-        ]
-      }
-    },
-    {
-      "text": "Erlaeutern Sie 2 Aspekte, die Sie bei der Durchfuehrung der aerztlichen Anordnung zur Sauerstoffgabe beachten.",
-      "anforderungsniveau": "II",
-      "punkte": 7.0,
-      "kompetenzzuordnung": ["III.2.c"],
-      "erwartungshorizont": {
-        "erwartungspunkte": [
-          {"text": "Anordnung auf Vollstaendigkeit und Plausibilitaet pruefen", "punkte": 3.5},
-          {"text": "Wirkung kontrollieren und Abweichungen unverzueglich rueckmelden", "punkte": 3.5}
-        ]
-      }
-    },
-    {
-      "text": "Beurteilen Sie 2 Handlungsmoeglichkeiten im Umgang mit der weinenden Mutter unter ethischen Gesichtspunkten.",
-      "anforderungsniveau": "III",
-      "punkte": 8.0,
-      "kompetenzzuordnung": ["II.3.b"],
-      "erwartungshorizont": {
-        "erwartungspunkte": [
-          {"text": "Mutter im Zimmer belassen und einbeziehen, Abwaegung von Beistand und Handlungsfaehigkeit", "punkte": 4.0},
-          {"text": "Mutter kurzzeitig begleiten lassen, Abwaegung von Fuersorge fuer das Kind und fuer die Bezugsperson", "punkte": 4.0}
-        ]
-      }
+      "fallsituation": {
+        "text": "Herr Aslan ist 68 Jahre alt und wird um 10 Uhr von seiner Ehefrau in der Notaufnahme vorgestellt. Sie berichtet, sein rechter Mundwinkel haenge seit etwa 30 Minuten herab und er koenne den rechten Arm nicht mehr heben. Herr Aslan spricht verwaschen und nur in einzelnen Worten. Sein Blutdruck betraegt 178 zu 96 mmHg. Die Ehefrau gibt an, er nehme Blutverduenner wegen Vorhofflimmern. Der Arzt ordnet eine sofortige Bildgebung an. Herr Aslan wirkt aengstlich und versucht, aus dem Bett aufzustehen.",
+        "titel": "Herr Aslan - Verdacht auf Schlaganfall in der Notaufnahme",
+        "versorgungsbereich": "stationaer_akut",
+        "altersgruppe": "alter_mensch"
+      },
+      "teilaufgaben": [
+        {
+          "text": "Benennen Sie 3 Beobachtungen bei Herrn Aslan, die auf einen Schlaganfall hinweisen.",
+          "anforderungsniveau": "I",
+          "punkte": 6.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "haengender rechter Mundwinkel",
+                "punkte": 2.0
+              },
+              {
+                "text": "Kraftverlust im rechten Arm",
+                "punkte": 2.0
+              },
+              {
+                "text": "verwaschene, eingeschraenkte Sprache",
+                "punkte": 2.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Wissen",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Verdacht auf akuten Schlaganfall",
+              "Zeitkritik bis zur Diagnostik",
+              "Sturzrisiko bei Unruhe"
+            ],
+            "kontextbedingungen": [
+              "Notaufnahme",
+              "Antikoagulation",
+              "anwesende Ehefrau"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Kommunikation unter Zeitdruck"
+            ],
+            "curriculare_einheit": [
+              "CE 08"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "I.3.a"
+          ]
+        },
+        {
+          "text": "Bestimmen Sie 2 Sofortmassnahmen, die Sie bei Herrn Aslan bis zur Bildgebung durchfuehren.",
+          "anforderungsniveau": "II",
+          "punkte": 8.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Sturzgefahr durch Unruhe sichern und Herrn Aslan im Bett halten",
+                "punkte": 4.0
+              },
+              {
+                "text": "engmaschige Vitalzeichenkontrolle und Zeitpunkt des Symptombeginns dokumentieren",
+                "punkte": 4.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Analyse/Synthese",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Verdacht auf akuten Schlaganfall",
+              "Zeitkritik bis zur Diagnostik",
+              "Sturzrisiko bei Unruhe"
+            ],
+            "kontextbedingungen": [
+              "Notaufnahme",
+              "Antikoagulation",
+              "anwesende Ehefrau"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Kommunikation unter Zeitdruck"
+            ],
+            "curriculare_einheit": [
+              "CE 08"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "III.2.d"
+          ]
+        },
+        {
+          "text": "Beurteilen Sie 2 Handlungsmoeglichkeiten im Umgang mit der aengstlichen Ehefrau von Herrn Aslan unter ethischen Gesichtspunkten.",
+          "anforderungsniveau": "III",
+          "punkte": 16.0,
+          "erwartungshorizont": {
+            "erwartungspunkte": [
+              {
+                "text": "Ehefrau kurz und verstaendlich ueber den Ablauf informieren, Abwaegung von Transparenz und Zeitdruck",
+                "punkte": 8.0
+              },
+              {
+                "text": "Ehefrau einen Warteplatz zuweisen und spaeter aktiv informieren, Abwaegung von Fuersorge fuer Patient und Angehoerige",
+                "punkte": 8.0
+              }
+            ]
+          },
+          "kompetenzanforderung": "Reflexion/Beurteilung",
+          "situationsmerkmale": {
+            "handlungsanlaesse": [
+              "Verdacht auf akuten Schlaganfall",
+              "Zeitkritik bis zur Diagnostik",
+              "Sturzrisiko bei Unruhe"
+            ],
+            "kontextbedingungen": [
+              "Notaufnahme",
+              "Antikoagulation",
+              "anwesende Ehefrau"
+            ],
+            "handlungsmuster": [
+              "Notfallersteinschaetzung",
+              "Sofortmassnahmen",
+              "Kommunikation unter Zeitdruck"
+            ],
+            "curriculare_einheit": [
+              "CE 08"
+            ]
+          },
+          "kompetenzzuordnung_abgeleitet": [
+            "II.3.a"
+          ]
+        }
+      ]
     }
   ],
-  "geschwister_aufgaben": ["A-01", "A-02"]
+  "geschwister_aufgaben": [
+    "A-01",
+    "A-02"
+  ]
 }
