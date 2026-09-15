@@ -141,3 +141,98 @@ def classify_kompetenz(
         return sorted(set(codes) & set(candidates))
 
     return cached_call("kompetenz", cache_key, compute)
+
+
+FORM_07_PROMPT_TEMPLATE = """\
+Du hilfst, eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2) zu prüfen.
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+\"\"\"{erwartungshorizont_text}\"\"\"
+
+Wähle aus der folgenden Liste von Operatoren ausschließlich denjenigen, der die im \
+Erwartungshorizont tatsächlich bepunktete Leistung am besten beschreibt. Wähle keinen \
+Operator, der nicht in der Liste steht, und erfinde keinen eigenen Operator. Wenn keiner \
+passt, gib einen leeren String zurück.
+
+Operatoren:
+{operatoren}
+
+Antworte ausschließlich mit JSON in der Form {{"erwartungshorizont_operator": "<operator-oder-leer>"}}.
+"""
+
+
+def _build_form_07_prompt(erwartungshorizont_text: str, candidates: list[str], operator_explanations: dict[str, str]) -> str:
+    operatoren = "\n".join(f"- {op}: {operator_explanations.get(op, '(keine Erklaerung verfuegbar)')}" for op in candidates)
+    return FORM_07_PROMPT_TEMPLATE.format(erwartungshorizont_text=erwartungshorizont_text, operatoren=operatoren)
+
+
+def judge_form_07(
+    erwartungshorizont_text: str,
+    candidates: list[str],
+    *,
+    operator_explanations: dict[str, str],
+    provider: str | None = None,
+    model: str | None = None,
+) -> str:
+    """FORM-07: which catalogue operator (rules/operators.yaml) best
+    describes the performance the Erwartungshorizont actually rewards?
+
+    Only half of FORM-07's comparison is a model judgement. The other half
+    -- which operator the Teilaufgabe's own text demands -- is already
+    solved deterministically and reliably by
+    ``checks/deterministic/form_operators.py::find_operator_matches`` (the
+    same extraction FORM-03/04/11/13 already trust), so
+    ``checks/llm/form_07.py`` uses that directly instead of asking the model
+    to re-derive it. An earlier version of this function asked the model to
+    judge *both* sides as free-form labels, and it visibly mislabelled a
+    Teilaufgabe that opened with the explicit operator "Beschreiben Sie" as
+    "Aufzählung" -- a plain misread a keyword match never gets wrong. Asking
+    the model only the genuinely judgement-shaped half (what does this
+    grading key actually reward) removes that failure mode entirely, not
+    just in the one case observed.
+
+    Grounding the answer in the closed operator catalogue (rather than an
+    open-ended label like an earlier version's "Aufzählung"/"Begründung")
+    also incidentally resolves a real vocabulary collision with
+    ``schemas/flag.py``'s grading-language guard: "bewerten"/"beurteilen"
+    are themselves legitimate catalogue operators (Anforderungsbereich III),
+    but their deverbal noun "Bewertung" trips ``GRADING_WORDS``. Operator
+    infinitives never collide with that noun-form list, so this sidesteps
+    the collision rather than needing an exception carved into a validator
+    every other check also relies on.
+
+    Defense in depth, same posture as ``classify_kompetenz``: the result is
+    filtered to ``candidates`` before returning, even though the prompt
+    already constrains the model to this list.
+
+    Cached on (erwartungshorizont_text, candidates, provider, model).
+
+    Malformed or off-list model output degrades to ``""`` (no operator
+    identified) rather than raising -- ``checks/llm/form_07.py`` treats that
+    as "cannot compare, no flag", the same "no flag without evidence"-safe
+    default ``classify_kompetenz`` takes for unparseable output.
+    """
+    if not candidates:
+        return ""
+
+    resolved_provider = provider or os.environ.get("MODEL_PROVIDER") or DEFAULT_PROVIDER
+    backend = get_backend(resolved_provider)
+    resolved_model = model or getattr(backend, "model", None)
+    cache_key = {
+        "erwartungshorizont_text": erwartungshorizont_text,
+        "candidates": sorted(candidates),
+        "provider": resolved_provider,
+        "model": resolved_model,
+    }
+
+    def compute() -> str:
+        prompt = _build_form_07_prompt(erwartungshorizont_text, candidates, operator_explanations)
+        raw = backend.complete(prompt, json_mode=True, temperature=0.0)
+        try:
+            parsed = json.loads(raw)
+            operator = str(parsed.get("erwartungshorizont_operator") or "")
+        except (json.JSONDecodeError, AttributeError):
+            operator = ""
+        return operator if operator in candidates else ""
+
+    return cached_call("form_07", cache_key, compute)

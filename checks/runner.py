@@ -34,6 +34,20 @@ it ``None`` to skip KOMP-01 offline, the same "no key, no network call"
 posture as ``tests/test_gateway_integration.py``. ``model`` is a plain
 label for ``CheckResult.model`` -- the runner never asks the gateway what
 backend or model resolved, since that decision is the caller's.
+
+KOMP-01 keeps its own dedicated ``classify`` parameter (it is not just a
+judgement call -- it also populates
+``teilaufgabe.kompetenzzuordnung_abgeleitet`` for downstream deterministic
+checks, so it must run first, always, not alongside the rest). Every other
+model-based check (FORM-07 today; FORM-08/09/10 and KOMP-07 next) is a
+judgement call with no such side effect, so those share one mechanism:
+``LLM_JUDGEMENT_CHECKS`` maps rule ID -> its check function, and the caller
+passes a ``judges`` dict of rule ID -> the matching
+``gateway.model_gateway`` function (e.g. ``{"FORM-07": judge_form_07}``). A
+rule missing from ``judges`` gets one NotChecked, same "no model, no guess"
+posture KOMP-01 already has for ``classify=None`` -- adding a new judgement
+check is then one line in ``LLM_JUDGEMENT_CHECKS`` plus whatever the caller
+passes into ``judges``, nothing else in this module changes.
 """
 from __future__ import annotations
 
@@ -46,11 +60,19 @@ from checks.deterministic.form_sprache import check_form_05, check_form_12, chec
 from checks.deterministic.komp_03 import check_komp_03, check_komp_03b
 from checks.deterministic.komp_04 import check_komp_04
 from checks.deterministic.komp_06 import check_komp_06
+from checks.llm.form_07 import check_form_07
 from checks.llm.komp_01 import check_komp_01
 from schemas.aufgabe import Aufsichtsarbeit
 from schemas.flag import CheckResult, Flag, NotChecked
 
 Classifier = Callable[..., list[str]]
+JudgementCheck = Callable[..., list]
+
+# Every LLM check that is a judgement call, not a code-selection call like
+# KOMP-01 -- see the module docstring for why these share one mechanism.
+LLM_JUDGEMENT_CHECKS: dict[str, JudgementCheck] = {
+    "FORM-07": check_form_07,
+}
 
 # Every rule with a check function, deterministic and LLM together. Rules
 # absent from this dict are handled by the "not yet implemented" branch in
@@ -78,10 +100,12 @@ def run_checks(
     aufgabe: Aufsichtsarbeit,
     *,
     classify: Classifier | None = None,
+    judges: dict[str, Callable[..., dict]] | None = None,
     model: str | None = None,
 ) -> CheckResult:
     flags: list[Flag] = []
     not_checked: list[NotChecked] = []
+    judges = judges or {}
 
     # KOMP-01 first, always -- it is the only thing that populates
     # teilaufgabe.kompetenzzuordnung_abgeleitet, which KOMP-03/03B/06 read.
@@ -97,8 +121,22 @@ def run_checks(
             )
         )
 
+    for rule_id, check_fn in LLM_JUDGEMENT_CHECKS.items():
+        judge = judges.get(rule_id)
+        if judge is None:
+            not_checked.append(
+                NotChecked(
+                    rule_id=rule_id,
+                    reason=f"kein Modell verfuegbar (judge fehlt); {rule_id} nicht durchgefuehrt",
+                    missing=[],
+                )
+            )
+            continue
+        for result in check_fn(aufgabe, judge=judge):
+            (flags if isinstance(result, Flag) else not_checked).append(result)
+
     for rule in load_ruleset().rules:
-        if rule.id == "KOMP-01":
+        if rule.id == "KOMP-01" or rule.id in LLM_JUDGEMENT_CHECKS:
             continue  # already handled above
 
         if not rule.runnable:

@@ -28,7 +28,7 @@ sys.path.insert(0, str(ROOT))
 
 from checks.catalogue import load_anlage_2_text
 from checks.runner import run_checks
-from gateway.model_gateway import classify_kompetenz, get_backend
+from gateway.model_gateway import classify_kompetenz, get_backend, judge_form_07
 from schemas.aufgabe import Aufsichtsarbeit
 from schemas.flag import CheckResult
 
@@ -76,10 +76,11 @@ def render(result: CheckResult) -> list[str]:
 
 def run() -> None:
     classify, model = resolve_classifier()
+    judges = {"FORM-07": judge_form_07} if classify is not None else {}
 
     all_lines: list[str] = [f"Smoke run over {SMOKE_SET}, model={model!r}", ""]
     for name in SMOKE_SET:
-        result = run_checks(load(name), classify=classify, model=model)
+        result = run_checks(load(name), classify=classify, judges=judges, model=model)
         block = render(result)
         all_lines.extend(block)
         print("\n".join(block))

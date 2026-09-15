@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 from checks.catalogue import load_ruleset
-from checks.runner import CHECKS, run_checks
+from checks.runner import CHECKS, LLM_JUDGEMENT_CHECKS, run_checks
 from schemas.aufgabe import Aufsichtsarbeit
 from schemas.flag import Flag, NotChecked
 
@@ -34,7 +34,7 @@ def test_every_catalogue_rule_is_dispatchable_or_reported_missing() -> None:
     "kein Check implementiert" when actually run -- so a truly-missing
     check can never be silently invisible."""
     all_ids = {r.id for r in load_ruleset().rules}
-    implemented = set(CHECKS) | {"KOMP-01"}
+    implemented = set(CHECKS) | set(LLM_JUDGEMENT_CHECKS) | {"KOMP-01"}
     blocked = {r.id for r in load_ruleset().rules if not r.runnable}
     residual = all_ids - implemented - blocked
     assert residual, "sanity: the catalogue should still have some unimplemented rules"
@@ -57,7 +57,27 @@ def test_blocked_rules_are_not_checked_with_the_block_reason() -> None:
 def test_unimplemented_rules_are_not_checked() -> None:
     result = run_checks(load("A-01"), classify=fake_classify)
     not_checked_ids = {n.rule_id: n.reason for n in result.not_checked}
-    assert "kein Check implementiert" in not_checked_ids["FORM-07"]
+    assert "kein Check implementiert" in not_checked_ids["FORM-08"]
+
+
+def test_judgement_check_without_a_judge_is_not_checked_with_no_model_reason() -> None:
+    """FORM-07 is dispatchable (checks/llm/form_07.py exists) but reports
+    its own "no model" NotChecked, not "kein Check implementiert", when the
+    caller passes no judge for it -- same posture KOMP-01 has for
+    classify=None."""
+    result = run_checks(load("A-01"), classify=fake_classify)
+    not_checked_ids = {n.rule_id: n.reason for n in result.not_checked}
+    assert "judge fehlt" in not_checked_ids["FORM-07"]
+
+
+def test_judgement_check_runs_when_its_judge_is_provided() -> None:
+    def fake_judge(erwartungshorizont_text: str, candidates: list[str], *, operator_explanations: dict) -> str:
+        return "bewerten"  # Anforderungsbereich III, guaranteed to mismatch most A-01 operators
+
+    result = run_checks(load("A-01"), classify=fake_classify, judges={"FORM-07": fake_judge})
+    form07_flags = [f for f in result.flags if f.rule_id == "FORM-07"]
+    assert form07_flags
+    assert all(f.mechanism == "llm" for f in form07_flags)
 
 
 def test_komp_01_runs_before_the_deterministic_sweep_reads_its_output() -> None:
