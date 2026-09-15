@@ -264,6 +264,15 @@ rules:
     notes: >
       The most compelling single check in the tool and the one that should lead the demo:
       this mismatch is common, consequential, and invisible to a checklist (tech doc 3.4).
+      Implemented scope, accepted 2026-09-15: the check detects one direction of the
+      rule_text only -- the Erwartungshorizont demands MORE than the operator asks (a
+      "nennen" Teilaufgabe whose Erwartungshorizont says "Begruenden Sie ..."). It does
+      not detect the reverse ("... und umgekehrt": a "beurteilen" Teilaufgabe whose
+      Erwartungshorizont is only bare Schlagworte). That direction is not separable from a
+      terse-but-adequate Erwartungshorizont in note form, and the instruction that keeps
+      false positives at zero is exactly what hides it; measured, not assumed -- see
+      docs/week3-form07-quality-spot-check.md 4. MUT-FORM-07 above is the detected
+      direction, so the harness and the implementation agree.
 
   - id: FORM-08
     family: A

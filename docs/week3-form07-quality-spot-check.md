@@ -316,3 +316,56 @@ flag on ag.1.ta.1 quoting the offending Erwartungspunkt; A-01 -> 0; C-03 -> 0
 - **The §1/§2 grading rows above are now largely moot** as quality evidence:
   by ground truth every one of them is a false positive on a clean item. They
   are kept as a record of what was tried, not as an open grading task.
+
+---
+
+## 4. Does it generalise? Held-out test (2026-09-15)
+
+The §3 examples were written while looking at the corpus failures, and then
+scored on the corpus. A reader asked the right question: doesn't that just
+put the answer in the prompt? Tested by scoring three prompt variants on the
+26 corpus cases **and** on 13 new hand-written cases the examples do not
+resemble -- 6 broken (different operator pairs, different topics, including
+the reverse direction the §3 examples never showed) and 7 clean.
+
+| Prompt examples | Corpus (1 broken / 25 clean) | Held-out (6 broken / 7 clean) |
+|---|---|---|
+| mirror the corpus (§3 version) | caught 1, false alarms 0 | **caught 0**, false alarms 0 |
+| neutral, unrelated topics (**landed**) | caught 1, false alarms 0 | caught 2, false alarms 0 |
+| no examples at all | caught 1, false alarms 3 | caught 4, false alarms 1 |
+
+**The §3 result was memorisation.** With corpus-mirroring examples the
+check scores perfectly on the corpus and catches nothing new. The neutral
+examples are strictly better -- same corpus score, some real
+generalisation, still zero false alarms -- and are what now ships.
+
+**What it catches and what it cannot see.** Across all three variants, the
+held-out defects it catches are the ones where the answer key *literally
+contains a higher-order operator verb* than the question asked for
+("Nennen Sie…" question, key says "Begründen Sie…" / "Erklären Sie…"). The
+ones every variant misses (P1, P4) are the **reverse direction**: a
+demanding question ("Erläutern Sie…", "Beurteilen Sie…") whose key is only
+bare nouns ("Ergotherapie", "Patientenautonomie"). That blind spot is
+structural, not a tuning problem: the instruction that removed the 23 false
+positives -- *terse note form is never evidence of a mismatch* -- is exactly
+what makes a shallow key for a demanding question invisible, because in
+note form a shallow key and a terse-but-adequate key look the same. A human
+grader would often disagree about those cases too.
+
+**Honest status:** FORM-07 reliably detects "the key demands more than the
+question asked" and does not detect "the key rewards less than the question
+asked". The rule text (`rules/form.yaml`) covers both ("… und umgekehrt");
+the implementation covers one.
+
+**Decision (2026-09-15): accepted as-is.** The implemented scope is the
+detected direction only, recorded in FORM-07's `notes` in `rules/form.yaml`
+so it is visible where the rule lives. Note the rule's own `MUT-FORM-07`
+(lower the operator to "nennen", keep a reasoning-rewarding key) is that
+same direction, so the evaluation harness and the implementation agree.
+The reverse direction is not being attempted: it would trade false
+positives back in and is not cleanly separable from a terse-but-adequate
+key.
+
+Held-out cases live in the session scratchpad (`eval_heldout.py`); they
+should be moved into the repo as fixtures once the `mutations/` harness
+exists, since that is what they are.

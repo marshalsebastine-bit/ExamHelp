@@ -1,0 +1,443 @@
+========================================================================================
+timestamp: 2026-09-15T20:39:37.697690+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Begründet die Reihenfolge."""
+
+Beispiel A (Widerspruch): Operator 'ableiten', der Erwartungshorizont notiert nur "RR 150/95 mmHg" und "Puls 98/min" -> mismatch=true, denn das sind bloße Messwerte; die verlangte Ableitung (was folgt daraus?) wird nicht bepunktet.
+Beispiel B (KEIN Widerspruch): Operator 'benennen', der Erwartungshorizont notiert "Händedesinfektion", "Einmalhandschuhe", "Schutzkittel" -> mismatch=false, denn eine knappe Liste ist genau die verlangte Leistung.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"beleg_zitat": "Begründet die Reihenfolge.", "mismatch": true, "begruendung": "Aufzaehlung verlangt, Begruendung bepunktet."}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:37.699167+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Begründet die Reihenfolge."""
+
+Beispiel A (Widerspruch): Operator 'ableiten', der Erwartungshorizont notiert nur "RR 150/95 mmHg" und "Puls 98/min" -> mismatch=true, denn das sind bloße Messwerte; die verlangte Ableitung (was folgt daraus?) wird nicht bepunktet.
+Beispiel B (KEIN Widerspruch): Operator 'benennen', der Erwartungshorizont notiert "Händedesinfektion", "Einmalhandschuhe", "Schutzkittel" -> mismatch=false, denn eine knappe Liste ist genau die verlangte Leistung.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"beleg_zitat": "", "mismatch": false, "begruendung": ""}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:37.699906+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Begründet die Reihenfolge."""
+
+Beispiel A (Widerspruch): Operator 'ableiten', der Erwartungshorizont notiert nur "RR 150/95 mmHg" und "Puls 98/min" -> mismatch=true, denn das sind bloße Messwerte; die verlangte Ableitung (was folgt daraus?) wird nicht bepunktet.
+Beispiel B (KEIN Widerspruch): Operator 'benennen', der Erwartungshorizont notiert "Händedesinfektion", "Einmalhandschuhe", "Schutzkittel" -> mismatch=false, denn eine knappe Liste ist genau die verlangte Leistung.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+not json at all
+
+========================================================================================
+timestamp: 2026-09-15T20:39:37.700584+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Begründet die Reihenfolge."""
+
+Beispiel A (Widerspruch): Operator 'ableiten', der Erwartungshorizont notiert nur "RR 150/95 mmHg" und "Puls 98/min" -> mismatch=true, denn das sind bloße Messwerte; die verlangte Ableitung (was folgt daraus?) wird nicht bepunktet.
+Beispiel B (KEIN Widerspruch): Operator 'benennen', der Erwartungshorizont notiert "Händedesinfektion", "Einmalhandschuhe", "Schutzkittel" -> mismatch=false, denn eine knappe Liste ist genau die verlangte Leistung.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"beleg_zitat": "", "mismatch": false, "begruendung": ""}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:37.701248+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Begründet die Reihenfolge."""
+
+Beispiel A (Widerspruch): Operator 'ableiten', der Erwartungshorizont notiert nur "RR 150/95 mmHg" und "Puls 98/min" -> mismatch=true, denn das sind bloße Messwerte; die verlangte Ableitung (was folgt daraus?) wird nicht bepunktet.
+Beispiel B (KEIN Widerspruch): Operator 'benennen', der Erwartungshorizont notiert "Händedesinfektion", "Einmalhandschuhe", "Schutzkittel" -> mismatch=false, denn eine knappe Liste ist genau die verlangte Leistung.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"beleg_zitat": "", "mismatch": false, "begruendung": ""}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:37.701910+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Begründet die Reihenfolge."""
+
+Beispiel A (Widerspruch): Operator 'ableiten', der Erwartungshorizont notiert nur "RR 150/95 mmHg" und "Puls 98/min" -> mismatch=true, denn das sind bloße Messwerte; die verlangte Ableitung (was folgt daraus?) wird nicht bepunktet.
+Beispiel B (KEIN Widerspruch): Operator 'benennen', der Erwartungshorizont notiert "Händedesinfektion", "Einmalhandschuhe", "Schutzkittel" -> mismatch=false, denn eine knappe Liste ist genau die verlangte Leistung.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"beleg_zitat": "z", "mismatch": true, "begruendung": "x"}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:37.702635+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Begründet die Reihenfolge."""
+
+Beispiel A (Widerspruch): Operator 'ableiten', der Erwartungshorizont notiert nur "RR 150/95 mmHg" und "Puls 98/min" -> mismatch=true, denn das sind bloße Messwerte; die verlangte Ableitung (was folgt daraus?) wird nicht bepunktet.
+Beispiel B (KEIN Widerspruch): Operator 'benennen', der Erwartungshorizont notiert "Händedesinfektion", "Einmalhandschuhe", "Schutzkittel" -> mismatch=false, denn eine knappe Liste ist genau die verlangte Leistung.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"beleg_zitat": "z", "mismatch": true, "begruendung": "x"}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:37.704077+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Etwas ganz anderes."""
+
+Beispiel A (Widerspruch): Operator 'ableiten', der Erwartungshorizont notiert nur "RR 150/95 mmHg" und "Puls 98/min" -> mismatch=true, denn das sind bloße Messwerte; die verlangte Ableitung (was folgt daraus?) wird nicht bepunktet.
+Beispiel B (KEIN Widerspruch): Operator 'benennen', der Erwartungshorizont notiert "Händedesinfektion", "Einmalhandschuhe", "Schutzkittel" -> mismatch=false, denn eine knappe Liste ist genau die verlangte Leistung.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"beleg_zitat": "z", "mismatch": true, "begruendung": "x"}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:38.695983+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Teilaufgabe:
+"""irgendein Text"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+- I.2.a: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": ["I.1.h"]}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:38.698543+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": ["I.1.h", "Z.9.z"]}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:38.700282+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": ["I.1.h"]}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:38.702104+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Frau Ostermann ist 82 Jahre alt."""
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": []}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:38.703666+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": []}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:38.705207+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Fall A"""
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": ["I.1.h"]}
+
+========================================================================================
+timestamp: 2026-09-15T20:39:38.705789+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Fall B"""
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": ["I.1.h"]}
+

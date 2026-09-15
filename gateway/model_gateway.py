@@ -222,12 +222,12 @@ Erkannter Operator der Teilaufgabe: {operator_liste} ({anforderungsbereich_besch
 Erwartungshorizont (die bepunkteten Erwartungspunkte):
 \"\"\"{erwartungshorizont_text}\"\"\"
 
-Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt \
-"Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine \
-Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
-Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig \
-"Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe \
-Notation ändert daran nichts.
+Beispiel A (Widerspruch): Operator 'ableiten', der Erwartungshorizont notiert nur "RR 150/95 mmHg" \
+und "Puls 98/min" -> mismatch=true, denn das sind bloße Messwerte; die verlangte Ableitung (was \
+folgt daraus?) wird nicht bepunktet.
+Beispiel B (KEIN Widerspruch): Operator 'benennen', der Erwartungshorizont notiert \
+"Händedesinfektion", "Einmalhandschuhe", "Schutzkittel" -> mismatch=false, denn eine knappe Liste \
+ist genau die verlangte Leistung.
 
 Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? \
 Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich \
@@ -296,6 +296,15 @@ def judge_form_07(
        Erwartungshorizont had "keine Ursache-Wirkungs-Zusammenhänge" about
        text that literally read "..., weil erhaltene Mobilität die
        Selbstversorgung trägt". One-sided priming, not a model limitation.
+       **The examples must not resemble the corpus.** A first version used
+       examples that mirrored C-02 and A-01 almost verbatim, scored perfectly
+       on the corpus -- and caught 0 of 6 held-out defects it had not seen.
+       It had memorised, not learned. The current examples (Vitalwerte,
+       Hygiene) resemble neither the corpus nor the held-out set; with them
+       the corpus result is unchanged and held-out detection rises to 2/6
+       with 0 false positives. See docs/week3-form07-quality-spot-check.md 4
+       for the full table, including the direction this check still cannot
+       see.
     2. **Saying what an Erwartungshorizont *is*.** It is a marking scheme in
        note form: always terse, always list-shaped, even for
        Anforderungsbereich-III operators. Without being told that, the model
