@@ -1,8 +1,7 @@
 # Regel-Katalog: Alle geprueften Regeln
 
 Diese Uebersicht listet alle Regeln, die das Tool aktuell prueft (oder vorsieht zu pruefen), mit
-Regel-ID, Titel und Regeltext. Sie richtet sich an Leserinnen und Leser ohne Programmierkenntnisse
-und fasst zusammen, *was* geprueft wird — nicht *wie*.
+Regel-ID, Titel und Regeltext.
 
 Quelle: [rules/form.yaml](../rules/form.yaml) (Familie A) und
 [rules/kompetenz.yaml](../rules/kompetenz.yaml) (Familie B).
