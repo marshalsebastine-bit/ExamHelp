@@ -1,7 +1,6 @@
-"""FORM-07: operator extraction (deterministic) + Anforderungsbereich
-comparison against a fake judge for the Erwartungshorizont side only -- no
-network call in this test module (same posture as
-tests/test_checks_komp_01.py's fake classifier).
+"""FORM-07: operator extraction (deterministic) + dispatch on the judge's
+free-form mismatch verdict -- no network call in this test module (same
+posture as tests/test_checks_komp_01.py's fake classifier).
 """
 from __future__ import annotations
 
@@ -15,46 +14,34 @@ def _aufgabe(teilaufgabe_text: str, **teilaufgabe_kwargs) -> Aufsichtsarbeit:
     return Aufsichtsarbeit.model_validate({"aufgaben": [{"teilaufgaben": [teilaufgabe]}]})
 
 
-def _judge_returning(operator: str):
-    def judge(erwartungshorizont_text, candidates, *, operator_explanations):
-        return operator
+def _judge_returning(mismatch: bool, begruendung: str = "", beleg_zitat: str = "Begruendet die Reihenfolge."):
+    def judge(teilaufgabe_text, teilaufgabe_operatoren, erwartungshorizont_text, *, operators, rule_text):
+        return {"mismatch": mismatch, "beleg_zitat": beleg_zitat, "begruendung": begruendung}
 
     return judge
 
 
-def test_fires_when_operators_share_no_anforderungsbereich() -> None:
-    """'Zaehlen Sie auf' is Anforderungsbereich I; 'bewerten' is III -- no overlap."""
+def test_fires_when_judge_reports_a_mismatch() -> None:
     aufgabe = _aufgabe(
         "Zaehlen Sie 3 Massnahmen auf.",
-        erwartungshorizont={"erwartungspunkte": [{"text": "Bewertet die Massnahmen kritisch.", "punkte": 3}]},
+        erwartungshorizont={"erwartungspunkte": [{"text": "Begruendet die Reihenfolge.", "punkte": 3}]},
     )
-    results = check_form_07(aufgabe, judge=_judge_returning("bewerten"))
+    results = check_form_07(aufgabe, judge=_judge_returning(True, "Aufzaehlung verlangt, Begruendung bepunktet."))
     assert len(results) == 1
     assert isinstance(results[0], Flag)
     assert results[0].rule_id == "FORM-07"
     assert results[0].anchor == "ag.1.ta.1"
     assert results[0].mechanism == "llm"
     assert "aufzählen" in results[0].finding
-    assert "bewerten" in results[0].finding
+    assert "Aufzaehlung verlangt" in results[0].finding
 
 
-def test_does_not_fire_when_operators_share_an_anforderungsbereich() -> None:
+def test_does_not_fire_when_judge_reports_no_mismatch() -> None:
     aufgabe = _aufgabe(
         "Zaehlen Sie 3 Massnahmen auf.",
         erwartungshorizont={"erwartungspunkte": [{"text": "Nennt 3 Massnahmen.", "punkte": 3}]},
     )
-    results = check_form_07(aufgabe, judge=_judge_returning("aufzählen"))
-    assert results == []
-
-
-def test_does_not_fire_when_judge_finds_no_matching_operator() -> None:
-    """An empty verdict means the model could not identify a matching
-    operator -- 'cannot compare' must not become a guessed flag."""
-    aufgabe = _aufgabe(
-        "Zaehlen Sie 3 Massnahmen auf.",
-        erwartungshorizont={"erwartungspunkte": [{"text": "Etwas Unklares.", "punkte": 3}]},
-    )
-    results = check_form_07(aufgabe, judge=_judge_returning(""))
+    results = check_form_07(aufgabe, judge=_judge_returning(False))
     assert results == []
 
 
@@ -64,7 +51,7 @@ def test_missing_teilaufgabe_text_is_not_checked_not_flagged() -> None:
 
     def judge(*args, **kwargs):
         calls.append(1)
-        return ""
+        return {"mismatch": False, "beleg_zitat": "", "begruendung": ""}
 
     results = check_form_07(aufgabe, judge=judge)
     assert len(results) == 1
@@ -79,7 +66,7 @@ def test_missing_erwartungshorizont_is_not_checked_not_flagged() -> None:
 
     def judge(*args, **kwargs):
         calls.append(1)
-        return ""
+        return {"mismatch": False, "beleg_zitat": "", "begruendung": ""}
 
     results = check_form_07(aufgabe, judge=judge)
     assert len(results) == 1
@@ -99,7 +86,7 @@ def test_no_recognisable_operator_is_not_checked_not_flagged() -> None:
 
     def judge(*args, **kwargs):
         calls.append(1)
-        return ""
+        return {"mismatch": False, "beleg_zitat": "", "begruendung": ""}
 
     results = check_form_07(aufgabe, judge=judge)
     assert len(results) == 1
@@ -107,21 +94,74 @@ def test_no_recognisable_operator_is_not_checked_not_flagged() -> None:
     assert not calls, "the judge must never be called when no Teilaufgabe operator was found"
 
 
-def test_judge_receives_erwartungshorizont_text_and_the_full_operator_candidate_list() -> None:
+def test_judge_receives_full_context() -> None:
     aufgabe = _aufgabe(
         "Zaehlen Sie 3 Massnahmen auf.",
         erwartungshorizont={"erwartungspunkte": [{"text": "Nennt 3 Massnahmen.", "punkte": 3}]},
     )
     seen = {}
 
-    def judge(erwartungshorizont_text, candidates, *, operator_explanations):
+    def judge(teilaufgabe_text, teilaufgabe_operatoren, erwartungshorizont_text, *, operators, rule_text):
+        seen["teilaufgabe_text"] = teilaufgabe_text
+        seen["teilaufgabe_operatoren"] = teilaufgabe_operatoren
         seen["erwartungshorizont_text"] = erwartungshorizont_text
-        seen["candidates"] = candidates
-        seen["operator_explanations"] = operator_explanations
-        return ""
+        seen["operators"] = operators
+        seen["rule_text"] = rule_text
+        return {"mismatch": False, "beleg_zitat": "", "begruendung": ""}
 
     check_form_07(aufgabe, judge=judge)
+    assert seen["teilaufgabe_text"] == "Zaehlen Sie 3 Massnahmen auf."
+    assert seen["teilaufgabe_operatoren"] == ["aufzählen"]
     assert "Nennt 3 Massnahmen." in seen["erwartungshorizont_text"]
-    assert "aufzählen" in seen["candidates"]
-    assert "bewerten" in seen["candidates"]
-    assert seen["operator_explanations"]["nennen"]
+    assert "aufzählen" in seen["operators"]
+    assert seen["rule_text"]
+
+
+def test_finding_falls_back_when_begruendung_is_empty() -> None:
+    aufgabe = _aufgabe(
+        "Zaehlen Sie 3 Massnahmen auf.",
+        erwartungshorizont={"erwartungspunkte": [{"text": "Begruendet die Reihenfolge.", "punkte": 3}]},
+    )
+    results = check_form_07(aufgabe, judge=_judge_returning(True, ""))
+    assert len(results) == 1
+    assert results[0].finding
+
+
+def test_mismatch_without_a_quote_does_not_produce_a_flag() -> None:
+    """No quote, no flag -- the project's "no flag without evidence" rule
+    applied to the model's own reasoning step, enforced here rather than
+    trusted from the prompt (docs/week3-form07-quality-spot-check.md 3)."""
+    aufgabe = _aufgabe(
+        "Zaehlen Sie 3 Massnahmen auf.",
+        erwartungshorizont={"erwartungspunkte": [{"text": "Begruendet die Reihenfolge.", "punkte": 3}]},
+    )
+    results = check_form_07(aufgabe, judge=_judge_returning(True, "Irgendein Widerspruch.", beleg_zitat=""))
+    assert results == []
+
+
+def test_flag_quotes_the_offending_erwartungspunkt() -> None:
+    aufgabe = _aufgabe(
+        "Zaehlen Sie 3 Massnahmen auf.",
+        erwartungshorizont={"erwartungspunkte": [{"text": "Begruendet die Reihenfolge.", "punkte": 3}]},
+    )
+    results = check_form_07(aufgabe, judge=_judge_returning(True, beleg_zitat="Begruendet die Reihenfolge."))
+    assert "Begruendet die Reihenfolge." in results[0].finding
+
+
+def test_realistic_well_constructed_teilaufgabe_stays_quiet() -> None:
+    """The case the suite was missing entirely: a terse, note-form
+    Erwartungshorizont that legitimately matches its operator. Terseness is
+    normal in a marking scheme and must not itself read as a mismatch -- the
+    exact false positive that made this check flag 23 of 25 clean
+    Teilaufgaben before the prompt was fixed."""
+    aufgabe = _aufgabe(
+        "Begruenden Sie 2 pflegerische Massnahmen, die die Selbststaendigkeit von Frau Ostermann erhalten.",
+        erwartungshorizont={
+            "erwartungspunkte": [
+                {"text": "Anleitung zum sicheren Rollatorgebrauch, weil erhaltene Mobilitaet die Selbstversorgung traegt", "punkte": 3},
+                {"text": "Beibehaltung der eigenen Mahlzeitenzubereitung, weil Alltagsaktivitaet Faehigkeiten stabilisiert", "punkte": 3},
+            ]
+        },
+    )
+    results = check_form_07(aufgabe, judge=_judge_returning(False))
+    assert results == []

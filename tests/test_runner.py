@@ -71,8 +71,8 @@ def test_judgement_check_without_a_judge_is_not_checked_with_no_model_reason() -
 
 
 def test_judgement_check_runs_when_its_judge_is_provided() -> None:
-    def fake_judge(erwartungshorizont_text: str, candidates: list[str], *, operator_explanations: dict) -> str:
-        return "bewerten"  # Anforderungsbereich III, guaranteed to mismatch most A-01 operators
+    def fake_judge(teilaufgabe_text: str, teilaufgabe_operatoren: list[str], erwartungshorizont_text: str, *, operators: dict, rule_text: str) -> dict:
+        return {"mismatch": True, "beleg_zitat": "Zitat aus dem Erwartungshorizont.", "begruendung": "Testbegruendung."}
 
     result = run_checks(load("A-01"), classify=fake_classify, judges={"FORM-07": fake_judge})
     form07_flags = [f for f in result.flags if f.rule_id == "FORM-07"]

@@ -16,24 +16,9 @@ from "a model thinks this may be a problem".
 """
 from __future__ import annotations
 
-import re
 from enum import Enum
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
-
-# Grading vocabulary a flag must not use.  Flags advise; they never grade
-# (tech doc 1.5.4).  Matched on word boundaries, not as substrings: "notieren"
-# contains "note", and "verfaelscht" contains "falsch", so substring matching
-# would reject legitimate findings.
-#
-# Deliberately narrow.  Factual words like "falsch" or "unzureichend" are not
-# listed: "unzureichende Schmerzkontrolle" is clinical description, and the
-# constraint is about the register of a *judgement*, not about vocabulary.
-GRADING_WORDS = re.compile(
-    r"\b(?:fehler|fehlerhaft|mangelhaft|ungenügend|ungenuegend|"
-    r"note|noten|bewertung|punktabzug|mangel)\b",
-    re.IGNORECASE,
-)
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class Severity(str, Enum):
@@ -91,24 +76,15 @@ class Flag(BaseModel):
     # honest version of the same information (tech doc 4.2).
     confidence: None = None
 
-    @field_validator("finding")
-    @classmethod
-    def no_grading_language(cls, value: str) -> str:
-        """Keep the advisory register the tone constraint requires.
-
-        This is a development-time guard on prompt quality, not a runtime filter:
-        a model asked to critique an exam item will reach for "Fehler" unprompted,
-        and the fix is to correct the prompt, never to drop the flag.  The runner
-        must therefore treat a rejection here as a defect in the rule's prompt
-        rather than swallowing it (tech doc 1.5.4).
-        """
-        match = GRADING_WORDS.search(value)
-        if match:
-            raise ValueError(
-                f"finding uses grading language {match.group(0)!r}; flags advise, they never "
-                "grade (tech doc 1.5.4). Reword the rule's prompt, do not drop the flag."
-            )
-        return value
+    # The advisory register (flags advise, they never grade -- tech doc 1.5.4)
+    # is a prompt responsibility, not a schema one. A word-list validator used
+    # to live here and was removed 2026-09-15: it rejected a *correct* FORM-07
+    # finding because the word "Bewertung" is both grading vocabulary and the
+    # honest name for what the catalogue operator "bewerten" demands -- a
+    # blocklist cannot tell those apart, and discarding a correct finding is
+    # worse than an occasional wrong word. Each LLM prompt states the register
+    # itself (see gateway/model_gateway.py); deterministic findings are
+    # fixed strings written by hand.
 
 
 class NotChecked(BaseModel):

@@ -65,14 +65,16 @@ def test_confidence_cannot_be_set() -> None:
     ],
 )
 def test_factual_findings_are_accepted(finding: str) -> None:
-    """The tone guard must not reject clinical or arithmetic description."""
     assert flag(finding=finding).finding == finding
 
 
-@pytest.mark.parametrize("finding", ["Das ist ein Fehler.", "Die Konstruktion ist mangelhaft.", "Die Bewertung ergibt 3 Punkte."])
-def test_grading_language_is_rejected(finding: str) -> None:
-    with pytest.raises(ValidationError):
-        flag(finding=finding)
+def test_findings_are_not_word_filtered() -> None:
+    """The advisory register is the prompt's job, not the schema's. A
+    blocklist validator here used to reject a correct FORM-07 finding because
+    "Bewertung" is also the honest name for what the operator "bewerten"
+    demands -- see schemas/flag.py's comment on ``Flag``."""
+    finding = "Der Erwartungshorizont bildet die vom Operator 'bewerten' verlangte Bewertung nicht ab."
+    assert flag(finding=finding).finding == finding
 
 
 # ---- not-checked and results -------------------------------------------------

@@ -17,11 +17,57 @@ from __future__ import annotations
 
 import json
 import os
+from datetime import datetime, timezone
+from pathlib import Path
 
 from gateway.base import ModelBackend
 from gateway.cache import cached_call
 
 BACKENDS: dict[str, type] = {}
+
+LOG_DIR = Path(__file__).resolve().parents[1] / "logs"
+_log_path: Path | None = None
+
+
+def _get_log_path() -> Path:
+    """One log file per process, created lazily on the first real model call.
+
+    Not the response cache (gateway/cache.py) -- this is a plain, append-only,
+    human-readable transcript for manual inspection (tech doc 6.5's "German
+    quality is an assumption to test, not to hold" applies to every
+    judgement-type check, not just KOMP-01), never read back by any check.
+    Same "regenerable, not a deliverable" posture as scripts/smoke_run.py's
+    own logs/ output -- logs/ is gitignored.
+    """
+    global _log_path
+    if _log_path is None:
+        LOG_DIR.mkdir(exist_ok=True)
+        stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        _log_path = LOG_DIR / f"model_gateway_calls_{stamp}.txt"
+    return _log_path
+
+
+def _log_call(task: str, *, provider: str, model: str | None, prompt: str, response: str) -> None:
+    """Append one real model call's exact prompt and raw response to the log.
+
+    Called once per cache *miss* (i.e. once per actual network call) from
+    each task function's ``compute()`` -- a cache hit already has a logged
+    entry from whenever it was first computed, so logging it again would
+    just be noise, not a more complete record.
+    """
+    entry = (
+        f"{'=' * 88}\n"
+        f"timestamp: {datetime.now(timezone.utc).isoformat()}\n"
+        f"task: {task}\n"
+        f"provider: {provider}\n"
+        f"model: {model}\n"
+        f"{'-' * 88}\n"
+        f"PROMPT:\n{prompt}\n"
+        f"{'-' * 88}\n"
+        f"RESPONSE:\n{response}\n\n"
+    )
+    with _get_log_path().open("a", encoding="utf-8") as f:
+        f.write(entry)
 
 
 def _register_default_backends() -> None:
@@ -133,6 +179,7 @@ def classify_kompetenz(
     def compute() -> list[str]:
         prompt = _build_prompt(teilaufgabe_text, candidates, kompetenz_text, fallsituation_text=fallsituation_text)
         raw = backend.complete(prompt, json_mode=True, temperature=0.0)
+        _log_call("classify_kompetenz", provider=resolved_provider, model=resolved_model, prompt=prompt, response=raw)
         try:
             parsed = json.loads(raw)
             codes = parsed.get("codes", [])
@@ -144,95 +191,159 @@ def classify_kompetenz(
 
 
 FORM_07_PROMPT_TEMPLATE = """\
-Du hilfst, eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2) zu prüfen.
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). \
+Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER \
+knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform \
+sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von \
+Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: {rule_text}
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+\"\"\"{teilaufgabe_text}\"\"\"
+
+Erkannter Operator der Teilaufgabe: {operator_liste} ({anforderungsbereich_beschreibung}).
 
 Erwartungshorizont (die bepunkteten Erwartungspunkte):
 \"\"\"{erwartungshorizont_text}\"\"\"
 
-Wähle aus der folgenden Liste von Operatoren ausschließlich denjenigen, der die im \
-Erwartungshorizont tatsächlich bepunktete Leistung am besten beschreibt. Wähle keinen \
-Operator, der nicht in der Liste steht, und erfinde keinen eigenen Operator. Wenn keiner \
-passt, gib einen leeren String zurück.
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt \
+"Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine \
+Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig \
+"Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe \
+Notation ändert daran nichts.
 
-Operatoren:
-{operatoren}
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? \
+Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich \
+zitieren kannst, der eine andere Leistungsart bepunktet.
 
-Antworte ausschließlich mit JSON in der Form {{"erwartungshorizont_operator": "<operator-oder-leer>"}}.
+Tonfall der Begründung: Du berätst die Autorin oder den Autor der Aufgabe, du benotest nicht. \
+Beschreibe sachlich, was die Teilaufgabe verlangt und was der Erwartungshorizont bepunktet. \
+Vermeide Urteile über Qualität wie "Fehler", "fehlerhaft", "mangelhaft", "ungenügend" oder \
+"Note". Operatoren dürfen selbstverständlich beim Namen genannt werden -- "eine Bewertung \
+fehlt" ist eine sachliche Beschreibung, wenn der Operator 'bewerten' lautet.
+
+Antworte ausschließlich mit JSON in der Form {{"beleg_zitat": "<wörtliches Zitat aus dem \
+Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}}.
 """
 
 
-def _build_form_07_prompt(erwartungshorizont_text: str, candidates: list[str], operator_explanations: dict[str, str]) -> str:
-    operatoren = "\n".join(f"- {op}: {operator_explanations.get(op, '(keine Erklaerung verfuegbar)')}" for op in candidates)
-    return FORM_07_PROMPT_TEMPLATE.format(erwartungshorizont_text=erwartungshorizont_text, operatoren=operatoren)
+def _build_form_07_prompt(
+    teilaufgabe_text: str,
+    teilaufgabe_operatoren: list[str],
+    erwartungshorizont_text: str,
+    *,
+    operators: dict[str, list[str]],
+    rule_text: str,
+) -> str:
+    operator_liste = ", ".join(repr(op) for op in teilaufgabe_operatoren)
+    anforderungsbereiche = sorted({level for op in teilaufgabe_operatoren for level in operators.get(op, [])})
+    anforderungsbereich_beschreibung = (
+        f"Anforderungsbereich {', '.join(anforderungsbereiche)}" if anforderungsbereiche else "Anforderungsbereich unbekannt"
+    )
+    return FORM_07_PROMPT_TEMPLATE.format(
+        rule_text=rule_text.strip(),
+        teilaufgabe_text=teilaufgabe_text,
+        operator_liste=operator_liste,
+        anforderungsbereich_beschreibung=anforderungsbereich_beschreibung,
+        erwartungshorizont_text=erwartungshorizont_text,
+    )
 
 
 def judge_form_07(
+    teilaufgabe_text: str,
+    teilaufgabe_operatoren: list[str],
     erwartungshorizont_text: str,
-    candidates: list[str],
     *,
-    operator_explanations: dict[str, str],
+    operators: dict[str, list[str]],
+    rule_text: str,
     provider: str | None = None,
     model: str | None = None,
-) -> str:
-    """FORM-07: which catalogue operator (rules/operators.yaml) best
-    describes the performance the Erwartungshorizont actually rewards?
+) -> dict:
+    """FORM-07: does the Erwartungshorizont reward the performance the
+    Teilaufgabe's own operator actually demands?
 
-    Only half of FORM-07's comparison is a model judgement. The other half
-    -- which operator the Teilaufgabe's own text demands -- is already
-    solved deterministically and reliably by
-    ``checks/deterministic/form_operators.py::find_operator_matches`` (the
-    same extraction FORM-03/04/11/13 already trust), so
-    ``checks/llm/form_07.py`` uses that directly instead of asking the model
-    to re-derive it. An earlier version of this function asked the model to
-    judge *both* sides as free-form labels, and it visibly mislabelled a
-    Teilaufgabe that opened with the explicit operator "Beschreiben Sie" as
-    "Aufzählung" -- a plain misread a keyword match never gets wrong. Asking
-    the model only the genuinely judgement-shaped half (what does this
-    grading key actually reward) removes that failure mode entirely, not
-    just in the one case observed.
+    Returns ``{"mismatch": bool, "beleg_zitat": str, "begruendung": str}``.
 
-    Grounding the answer in the closed operator catalogue (rather than an
-    open-ended label like an earlier version's "Aufzählung"/"Begründung")
-    also incidentally resolves a real vocabulary collision with
-    ``schemas/flag.py``'s grading-language guard: "bewerten"/"beurteilen"
-    are themselves legitimate catalogue operators (Anforderungsbereich III),
-    but their deverbal noun "Bewertung" trips ``GRADING_WORDS``. Operator
-    infinitives never collide with that noun-form list, so this sidesteps
-    the collision rather than needing an exception carved into a validator
-    every other check also relies on.
+    **This prompt's exact wording is load-bearing and was arrived at by
+    measurement, not taste** -- see docs/week3-form07-quality-spot-check.md §3
+    for the numbers. Measured against the corpus's own ground truth
+    (items/manifest.json's ``known_weaknesses``: C-02 ag.1.ta.1 is the one
+    planted FORM-07 defect; A-01/A-02/A-03 carry none), an earlier version of
+    this prompt scored 1 true positive but **23 false positives out of 25
+    labelled-clean Teilaufgaben**. This version, same model
+    (``open-mistral-nemo``) and same items, scores 1 true positive and **0
+    false positives**. Three things in here cause that difference, so do not
+    quietly drop any of them:
 
-    Defense in depth, same posture as ``classify_kompetenz``: the result is
-    filtered to ``candidates`` before returning, even though the prompt
-    already constrains the model to this list.
+    1. **Both examples, not just the mismatch one.** The earlier prompt gave
+       one worked example -- a mismatch -- and none of a legitimate match.
+       The model then echoed that example's own vocabulary back as
+       justification for false positives, at one point asserting an
+       Erwartungshorizont had "keine Ursache-Wirkungs-Zusammenhänge" about
+       text that literally read "..., weil erhaltene Mobilität die
+       Selbstversorgung trägt". One-sided priming, not a model limitation.
+    2. **Saying what an Erwartungshorizont *is*.** It is a marking scheme in
+       note form: always terse, always list-shaped, even for
+       Anforderungsbereich-III operators. Without being told that, the model
+       read normal note-form brevity as missing cognitive depth and flagged
+       essentially everything.
+    3. **Requiring a quote, and defaulting to false.** ``beleg_zitat`` makes
+       the model point at the specific Erwartungspunkt it objects to. This is
+       the project's own "no flag without evidence" rule
+       (schemas/flag.py) applied one step earlier -- to the reasoning step,
+       not only to the Flag built afterwards. ``checks/llm/form_07.py``
+       enforces it structurally: no quote, no flag.
 
-    Cached on (erwartungshorizont_text, candidates, provider, model).
+    The Teilaufgabe's own operator is *given* to the model, not asked of it --
+    it comes from the deterministic, already-verified
+    ``checks/deterministic/form_operators.py::find_operator_matches``. An even
+    earlier version asked the model to derive that too and it misread an
+    explicit "Beschreiben Sie" as "Aufzählung", which a keyword match never
+    gets wrong.
 
-    Malformed or off-list model output degrades to ``""`` (no operator
-    identified) rather than raising -- ``checks/llm/form_07.py`` treats that
-    as "cannot compare, no flag", the same "no flag without evidence"-safe
-    default ``classify_kompetenz`` takes for unparseable output.
+    The advisory register ("flags advise, they never grade", tech doc 1.5.4)
+    is this prompt's responsibility -- the "Tonfall" paragraph. There is no
+    longer a word-list validator on ``Flag.finding`` to catch a slip: one used
+    to exist and it rejected a *correct* finding because "Bewertung" is both
+    grading vocabulary and the honest name for what the catalogue operator
+    "bewerten" demands. A wrong word occasionally reaching the author is the
+    better failure than a correct finding never reaching them.
+
+    Cached on (teilaufgabe_text, teilaufgabe_operatoren, erwartungshorizont_text, provider, model).
+
+    Malformed model output degrades to no mismatch rather than raising -- a
+    judgement call defaulting to "no flag" on a parse failure is the same
+    posture ``classify_kompetenz`` takes for unparseable output (empty codes).
     """
-    if not candidates:
-        return ""
-
     resolved_provider = provider or os.environ.get("MODEL_PROVIDER") or DEFAULT_PROVIDER
     backend = get_backend(resolved_provider)
     resolved_model = model or getattr(backend, "model", None)
     cache_key = {
+        "teilaufgabe_text": teilaufgabe_text,
+        "teilaufgabe_operatoren": sorted(teilaufgabe_operatoren),
         "erwartungshorizont_text": erwartungshorizont_text,
-        "candidates": sorted(candidates),
         "provider": resolved_provider,
         "model": resolved_model,
     }
 
-    def compute() -> str:
-        prompt = _build_form_07_prompt(erwartungshorizont_text, candidates, operator_explanations)
+    def compute() -> dict:
+        prompt = _build_form_07_prompt(
+            teilaufgabe_text, teilaufgabe_operatoren, erwartungshorizont_text, operators=operators, rule_text=rule_text
+        )
         raw = backend.complete(prompt, json_mode=True, temperature=0.0)
+        _log_call("judge_form_07", provider=resolved_provider, model=resolved_model, prompt=prompt, response=raw)
         try:
             parsed = json.loads(raw)
-            operator = str(parsed.get("erwartungshorizont_operator") or "")
+            return {
+                "mismatch": bool(parsed.get("mismatch", False)),
+                "beleg_zitat": str(parsed.get("beleg_zitat") or ""),
+                "begruendung": str(parsed.get("begruendung") or ""),
+            }
         except (json.JSONDecodeError, AttributeError):
-            operator = ""
-        return operator if operator in candidates else ""
+            return {"mismatch": False, "beleg_zitat": "", "begruendung": ""}
 
     return cached_call("form_07", cache_key, compute)
