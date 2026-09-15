@@ -1,0 +1,407 @@
+========================================================================================
+timestamp: 2026-09-15T08:40:55.930580+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Begründet die Reihenfolge."""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"mismatch": true, "begruendung": "Aufzaehlung verlangt, Begruendung bepunktet."}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:55.932545+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Begründet die Reihenfolge."""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"mismatch": false, "begruendung": ""}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:55.933368+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Begründet die Reihenfolge."""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+not json at all
+
+========================================================================================
+timestamp: 2026-09-15T08:40:55.934740+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Begründet die Reihenfolge."""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"mismatch": false, "begruendung": ""}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:55.935598+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Begründet die Reihenfolge."""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"mismatch": true, "begruendung": "x"}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:55.936470+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Begründet die Reihenfolge."""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"mismatch": true, "begruendung": "x"}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:55.936748+00:00
+task: judge_form_07
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Zählen Sie 3 Massnahmen auf."""
+
+Erkannter Operator der Teilaufgabe: 'aufzählen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Etwas ganz anderes."""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"mismatch": true, "begruendung": "x"}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:56.806778+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Teilaufgabe:
+"""Planen Sie 3 Schritte fuer ein Beratungsgespraech mit der Tochter von Frau Ostermann zur Frage des Umzugs in eine Pflegeeinrichtung, unter Beruecksichtigung ihres Wunsches, moeglichst selbststaendig zu bleiben."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.g: entwickeln mit Menschen aller Altersstufen und ihren Bezugspersonen und dem sozialen Netz altersentsprechende lebensweltorientierte Angebote zur Auseinandersetzung mit und Bewältigung von Pflegebedürftigkeit und ihren Folgen,
+- I.5.a: erheben soziale, familiale und biografische Informationen sowie Unterstützungsmöglichkeiten durch Bezugspersonen und soziale Netzwerke bei Menschen aller Altersstufen und identifizieren Ressourcen und Herausforderungen in der Lebens- und Entwicklungsgestaltung,
+- I.5.b: entwickeln gemeinsam mit Menschen aller Altersstufen und ihren Bezugspersonen Angebote zur sinnstiftenden Aktivität, zur kulturellen Teilhabe, zum Lernen und Spielen und fördern damit die Lebensqualität und die soziale Integration,
+- I.5.c: berücksichtigen bei der Planung und Gestaltung von Alltagsaktivitäten die diversen Bedürfnisse und Erwartungen, die kulturellen und religiösen Kontexte, die sozialen Lagen, die Entwicklungsphase und Entwicklungsaufgaben von Menschen aller Altersstufen,
+- I.5.d: beziehen freiwillig Engagierte zur Unterstützung und Bereicherung der Lebensgestaltung in die Versorgungsprozesse von Menschen aller Altersstufen ein.
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- I.6.e: stimmen die Interaktion sowie die Gestaltung des Pflegeprozesses auf den individuellen Entwicklungsstand der zu pflegenden Menschen aller Altersstufen ab und unterstützen entwicklungsbedingte Formen der Krankheitsbewältigung.
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.3.b: fördern und unterstützen Menschen aller Altersstufen bei der Selbstverwirklichung und Selbstbestimmung über das eigene Leben, auch unter Abwägung konkurrierender ethischer Prinzipien,
+- III.1.a: stimmen ihr Pflegehandeln zur Gewährleistung klientenorientierter komplexer Pflegeprozesse im qualifikationsheterogenen Pflegeteam ab und koordinieren die Pflege von Menschen aller Altersstufen unter Berücksichtigung der jeweiligen Verantwortungs- und Aufgabenbereiche in unterschiedlichen Versorgungsformen,
+- III.1.b: delegieren unter Berücksichtigung weiterer rechtlicher Bestimmungen ausgewählte Maßnahmen an Personen anderer Qualifikationsniveaus und überwachen die Durchführungsqualität,
+- III.1.c: beraten Teammitglieder kollegial bei pflegefachlichen Fragestellungen und unterstützen sie bei der Übernahme und Ausgestaltung ihres jeweiligen Verantwortungs- und Aufgabenbereiches,
+- III.1.d: beteiligen sich im Team an der Einarbeitung neuer Kolleginnen und Kollegen und leiten Auszubildende, Praktikantinnen und Praktikanten sowie freiwillig Engagierte in unterschiedlichen Versorgungssettings an,
+- III.1.e: übernehmen Mitverantwortung für die Organisation und Gestaltung der gemeinsamen Arbeitsprozesse,
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "I.5.a",
+    "II.1.b",
+    "II.3.b"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:56.819815+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Teilaufgabe:
+"""irgendein Text"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+- I.2.a: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": ["I.1.h"]}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:56.821835+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": ["I.1.h", "Z.9.z"]}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:56.823359+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": ["I.1.h"]}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:56.825113+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Frau Ostermann ist 82 Jahre alt."""
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": []}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:56.826621+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": []}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:56.829144+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Fall A"""
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": ["I.1.h"]}
+
+========================================================================================
+timestamp: 2026-09-15T08:40:56.829806+00:00
+task: classify_kompetenz
+provider: fake
+model: fake-1
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Fall B"""
+
+Teilaufgabe:
+"""x"""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.h: (kein Text verfügbar)
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{"codes": ["I.1.h"]}
+

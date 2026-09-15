@@ -1,0 +1,90 @@
+Model: open-mistral-nemo (provider resolved via MODEL_PROVIDER, see gateway/model_gateway.py)
+
+=== A-01 ag.1.ta.1 ===
+Teilaufgabe: Beschreiben Sie 4 Beobachtungen aus der Fallsituation, die die Selbstversorgung von Frau Ostermann betreffen.
+Candidates (19): I.1.g, I.5.a, I.5.b, I.5.c, I.5.d, I.6.d, I.6.e, II.1.b, II.1.e, II.3.b, III.1.a, III.1.b, III.1.c, III.1.d, III.1.e, III.3.a, IV.1.c, V.1.c, V.2.a
+Raw LLM response:
+{
+  "codes": ["I.5.a", "I.5.c", "II.1.e", "II.3.b"]
+}
+Parsed + filtered to candidate set: ['I.5.a', 'I.5.c', 'II.1.e', 'II.3.b']
+
+=== A-02 ag.1.ta.1 ===
+Teilaufgabe: Nennen Sie 5 Risikofaktoren fuer Folgeerkrankungen, die die Fallsituation von Herrn Baumgartner benennt.
+Candidates (22): I.6.a, I.6.d, II.1.a, II.1.b, II.1.d, II.2.a, II.2.b, II.2.c, II.2.d, III.1.c, III.1.f, III.3.c, IV.2.b, IV.2.c, IV.2.e, V.1.b, V.1.c, V.2.a, V.2.b, V.2.c, V.2.e, V.2.f
+Raw LLM response:
+{
+  "codes": [
+    "V.1.b"
+  ]
+}
+Parsed + filtered to candidate set: ['V.1.b']
+
+=== A-03 ag.1.ta.1 ===
+Teilaufgabe: Benennen Sie 4 Beobachtungen bei Lina, die auf eine akute Verschlechterung hinweisen.
+Candidates (12): I.1.d, I.4.a, I.4.b, I.4.c, I.6.a, II.1.b, II.1.c, II.3.b, II.3.c, III.2.b, V.2.b, V.2.c
+Raw LLM response:
+{
+  "codes": ["I.1.d", "I.4.c"]
+}
+Parsed + filtered to candidate set: ['I.1.d', 'I.4.c']
+
+=== B-01 ag.1.ta.1 ===
+Teilaufgabe: Beschreiben Sie 4 Faehigkeiten von Frau Cikara, die Sie fuer die aktivierende Pflege nutzen.
+Candidates (24): I.5.a, I.5.b, I.5.d, I.6.b, I.6.c, I.6.d, II.1.e, II.2.a, II.2.c, II.2.d, II.3.a, III.2.f, III.3.a, III.3.b, III.3.c, III.3.d, III.3.e, III.3.f, IV.1.a, IV.2.b, IV.2.d, V.2.d, V.2.e, V.2.g
+Raw LLM response:
+{
+  "codes": ["I.5.b"]
+}
+Parsed + filtered to candidate set: ['I.5.b']
+
+=== B-02 ag.1.ta.1 ===
+Teilaufgabe: Nennen Sie 5 Risiken, die sich fuer Herrn Novak aus der Fallsituation ergeben.
+Candidates (28): I.2.a, I.2.b, I.2.e, I.3.c, II.1.d, II.2.a, II.2.b, II.2.c, II.2.d, II.3.b, III.1.b, III.1.c, III.2.a, III.2.b, III.2.c, III.2.d, III.2.e, III.2.f, III.3.e, III.3.f, IV.1.a, IV.1.b, IV.2.a, IV.2.e, V.1.a, V.1.b, V.1.c, V.2.e
+Raw LLM response:
+{
+  "codes": [
+    "I.2.e",
+    "II.2.c",
+    "III.2.c"
+  ]
+}
+Parsed + filtered to candidate set: ['I.2.e', 'II.2.c', 'III.2.c']
+
+=== B-03 ag.1.ta.1 ===
+Teilaufgabe: Benennen Sie 4 Beobachtungen bei Frau Lindqvist, die auf die letzte Lebensphase hinweisen.
+Candidates (25): I.3.a, I.3.b, I.3.c, I.3.d, I.3.e, I.3.f, I.6.a, II.1.a, II.2.c, II.3.a, III.1.a, III.1.e, III.2.b, III.2.d, III.2.f, III.3.e, IV.1.b, IV.1.d, IV.2.b, IV.2.e, V.1.b, V.1.c, V.1.d, V.2.b, V.2.c
+Raw LLM response:
+{
+  "codes": [
+    "I.3.a",
+    "I.3.d",
+    "I.3.e"
+  ]
+}
+Parsed + filtered to candidate set: ['I.3.a', 'I.3.d', 'I.3.e']
+
+=== C-01 ag.1.ta.1 ===
+Teilaufgabe: Nennen Sie Massnahmen zur Foerderung der Mobilitaet.
+Candidates (19): I.1.g, I.5.a, I.5.b, I.5.c, I.5.d, I.6.d, I.6.e, II.1.b, II.1.e, II.3.b, III.1.a, III.1.b, III.1.c, III.1.d, III.1.e, III.3.a, IV.1.c, V.1.c, V.2.a
+Raw LLM response:
+{
+  "codes": [
+    "I.5.b",
+    "I.5.c",
+    "II.1.b",
+    "II.3.b"
+  ]
+}
+Parsed + filtered to candidate set: ['I.5.b', 'I.5.c', 'II.1.b', 'II.3.b']
+
+=== C-02 ag.1.ta.1 ===
+Teilaufgabe: Nennen Sie 3 Ursachen fuer die Verschlechterung des HbA1c bei Jonas.
+Candidates (26): I.1.b, I.1.c, I.1.e, I.2.c, I.3.b, I.6.e, II.1.c, II.1.f, II.1.g, II.2.a, II.2.b, II.2.c, II.3.a, II.3.c, III.2.a, III.2.d, III.2.f, III.3.a, III.3.b, IV.1.b, IV.1.d, IV.2.a, V.1.c, V.2.a, V.2.b, V.2.d
+Raw LLM response:
+{
+  "codes": [
+    "II.2.c"
+  ]
+}
+Parsed + filtered to candidate set: ['II.2.c']

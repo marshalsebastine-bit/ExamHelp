@@ -26,11 +26,19 @@ from gateway.cache import cached_call
 BACKENDS: dict[str, type] = {}
 
 LOG_DIR = Path(__file__).resolve().parents[1] / "logs"
-_log_path: Path | None = None
+_log_paths: dict[str, Path] = {}
 
 
-def _get_log_path() -> Path:
-    """One log file per process, created lazily on the first real model call.
+def _get_log_path(kind: str) -> Path:
+    """One log file per process per kind, created lazily on first use.
+
+    ``kind`` is ``"real"`` for a call that went to a production provider
+    (Mistral, Groq -- anything in ``PRODUCTION_PROVIDERS``) and ``"fake"``
+    for anything else, i.e. a backend a test registered. They go to
+    *separate files* -- ``model_calls_real_<stamp>.txt`` vs
+    ``model_calls_fake_<stamp>.txt`` -- because a pytest run produces a log
+    full of hardcoded fixture responses that looks, at a glance, exactly like
+    a real transcript, and that was misread as model behaviour once already.
 
     Not the response cache (gateway/cache.py) -- this is a plain, append-only,
     human-readable transcript for manual inspection (tech doc 6.5's "German
@@ -39,22 +47,22 @@ def _get_log_path() -> Path:
     Same "regenerable, not a deliverable" posture as scripts/smoke_run.py's
     own logs/ output -- logs/ is gitignored.
     """
-    global _log_path
-    if _log_path is None:
+    if kind not in _log_paths:
         LOG_DIR.mkdir(exist_ok=True)
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        _log_path = LOG_DIR / f"model_gateway_calls_{stamp}.txt"
-    return _log_path
+        _log_paths[kind] = LOG_DIR / f"model_calls_{kind}_{stamp}.txt"
+    return _log_paths[kind]
 
 
 def _log_call(task: str, *, provider: str, model: str | None, prompt: str, response: str) -> None:
-    """Append one real model call's exact prompt and raw response to the log.
+    """Append one model call's exact prompt and raw response to the log.
 
-    Called once per cache *miss* (i.e. once per actual network call) from
+    Called once per cache *miss* (i.e. once per actual backend call) from
     each task function's ``compute()`` -- a cache hit already has a logged
     entry from whenever it was first computed, so logging it again would
     just be noise, not a more complete record.
     """
+    kind = "real" if provider in PRODUCTION_PROVIDERS else "fake"
     entry = (
         f"{'=' * 88}\n"
         f"timestamp: {datetime.now(timezone.utc).isoformat()}\n"
@@ -66,7 +74,7 @@ def _log_call(task: str, *, provider: str, model: str | None, prompt: str, respo
         f"{'-' * 88}\n"
         f"RESPONSE:\n{response}\n\n"
     )
-    with _get_log_path().open("a", encoding="utf-8") as f:
+    with _get_log_path(kind).open("a", encoding="utf-8") as f:
         f.write(entry)
 
 
@@ -85,6 +93,11 @@ def _register_default_backends() -> None:
 
 
 _register_default_backends()
+
+# Snapshot taken right after the defaults are registered, so anything a test
+# adds to BACKENDS later (a fake) is, by construction, not in here. Drives the
+# real/fake split in _log_call without a hardcoded provider list.
+PRODUCTION_PROVIDERS = frozenset(BACKENDS)
 
 DEFAULT_PROVIDER = "mistral"
 
@@ -220,11 +233,8 @@ Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Op
 Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich \
 zitieren kannst, der eine andere Leistungsart bepunktet.
 
-Tonfall der Begründung: Du berätst die Autorin oder den Autor der Aufgabe, du benotest nicht. \
-Beschreibe sachlich, was die Teilaufgabe verlangt und was der Erwartungshorizont bepunktet. \
-Vermeide Urteile über Qualität wie "Fehler", "fehlerhaft", "mangelhaft", "ungenügend" oder \
-"Note". Operatoren dürfen selbstverständlich beim Namen genannt werden -- "eine Bewertung \
-fehlt" ist eine sachliche Beschreibung, wenn der Operator 'bewerten' lautet.
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", \
+"mangelhaft" oder "Note".
 
 Antworte ausschließlich mit JSON in der Form {{"beleg_zitat": "<wörtliches Zitat aus dem \
 Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}}.
@@ -306,12 +316,22 @@ def judge_form_07(
     gets wrong.
 
     The advisory register ("flags advise, they never grade", tech doc 1.5.4)
-    is this prompt's responsibility -- the "Tonfall" paragraph. There is no
-    longer a word-list validator on ``Flag.finding`` to catch a slip: one used
-    to exist and it rejected a *correct* finding because "Bewertung" is both
-    grading vocabulary and the honest name for what the catalogue operator
-    "bewerten" demands. A wrong word occasionally reaching the author is the
-    better failure than a correct finding never reaching them.
+    is this prompt's responsibility -- the one-line "Tonfall" instruction.
+    There is no longer a word-list validator on ``Flag.finding`` to catch a
+    slip: one used to exist and it rejected a *correct* finding because
+    "Bewertung" is both grading vocabulary and the honest name for what the
+    catalogue operator "bewerten" demands. A wrong word occasionally reaching
+    the author is the better failure than a correct finding never reaching
+    them.
+
+    **Keep the Tonfall line short.** A five-line version of it -- with an
+    explanatory example mentioning "Bewertung" -- made the model lose the
+    C-02 true positive outright: it hallucinated Erwartungspunkte that were
+    not in the item and answered mismatch=false (measured 2026-09-15: long
+    paragraph TP=0, one line TP=1, same 26 labelled cases, same model). This
+    12B model is sensitive to prompt length and to late-prompt examples; any
+    change to this template must be re-measured against the labelled set
+    before landing, not eyeballed.
 
     Cached on (teilaufgabe_text, teilaufgabe_operatoren, erwartungshorizont_text, provider, model).
 

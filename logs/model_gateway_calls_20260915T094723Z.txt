@@ -1,0 +1,1694 @@
+========================================================================================
+timestamp: 2026-09-15T09:47:23.441320+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Jonas ist 15 Jahre alt und kommt zur Kontrolle in die Ambulanz. Er hat seit dem 9. Lebensjahr einen Diabetes mellitus Typ 1. Jonas spielt im Verein Handball und traegt Schuhgroesse 44. Seine Mutter arbeitet als Steuerfachangestellte und der Vater ist Fliesenleger. Die Familie hat einen Hund namens Rocky. In den letzten 3 Monaten hat Jonas seine Blutzuckerwerte nur unregelmaessig dokumentiert. Sein HbA1c ist von 7,1 auf 8,9 Prozent gestiegen. Jonas sagt, die Messungen seien ihm vor seinen Freunden unangenehm. Das Wohnzimmer der Familie wurde im letzten Jahr renoviert."""
+
+Teilaufgabe:
+"""Nennen Sie 3 Ursachen fuer die Verschlechterung des HbA1c bei Jonas."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.b: übernehmen Verantwortung für die Organisation, Steuerung und Gestaltung des Pflegeprozesses bei Menschen aller Altersstufen,
+- I.1.c: nutzen allgemeine und spezifische Assessmentverfahren bei Menschen aller Altersstufen und beschreiben den Pflegebedarf unter Verwendung von pflegediagnostischen Begriffen,
+- I.1.e: handeln die Pflegeprozessgestaltung mit den zu pflegenden Menschen aller Altersstufen und gegebenenfalls ihren Bezugspersonen aus, setzen gesicherte Pflegemaßnahmen ein und evaluieren gemeinsam die Wirksamkeit der Pflege,
+- I.2.c: stärken die Kompetenzen von Angehörigen im Umgang mit pflegebedürftigen Menschen aller Altersstufen und unterstützen und fördern die Familiengesundheit,
+- I.3.b: unterstützen Familien, die sich insbesondere infolge einer Frühgeburt, einer schweren chronischen oder einer lebenslimitierenden Erkrankung in einer Lebenskrise befinden, und wirken bei der Stabilisierung des Familiensystems mit,
+- I.6.e: stimmen die Interaktion sowie die Gestaltung des Pflegeprozesses auf den individuellen Entwicklungsstand der zu pflegenden Menschen aller Altersstufen ab und unterstützen entwicklungsbedingte Formen der Krankheitsbewältigung.
+- II.1.c: gestalten die Kommunikation von Menschen aller Altersstufen und ihren Bezugspersonen in unterschiedlichen Pflegesituationen unter Einsatz verschiedener Interaktionsformen und balancieren das Spannungsfeld von Nähe und Distanz aus,
+- II.1.f: reflektieren sich abzeichnende oder bestehende Konflikte in pflegerischen Versorgungssituationen mit Menschen aller Altersstufen und entwickeln Ansätze zur Konfliktschlichtung und -lösung, auch unter Hinzuziehung von Angeboten zur Reflexion professioneller Kommunikation,
+- II.1.g: reflektieren Phänomene von Macht und Machtmissbrauch in pflegerischen Handlungsfeldern der Versorgung von zu pflegenden Menschen aller Altersstufen.
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.2.c: beraten zu pflegende Menschen aller Altersstufen und ihre Bezugspersonen im Umgang mit krankheits- sowie therapie- und pflegebedingten Anforderungen und befähigen sie, ihre Gesundheitsziele in größtmöglicher Selbständigkeit und Selbstbestimmung zu erreichen,
+- II.3.a: setzen sich für die Verwirklichung von Menschenrechten, Ethikkodizes und die Förderung der spezifischen Bedürfnisse und Gewohnheiten von zu pflegenden Menschen aller Altersstufen und ihren Bezugspersonen ein,
+- II.3.c: tragen in ethischen Dilemmasituationen mit Menschen aller Altersstufen oder ihren Bezugspersonen im interprofessionellen Gespräch zur gemeinsamen Entscheidungsfindung bei.
+- III.2.a: beachten umfassend die Anforderungen der Hygiene und wirken verantwortlich an der Infektionsprävention in den unterschiedlichen pflegerischen Versorgungsbereichen mit,
+- III.2.d: unterstützen und begleiten zu pflegende Menschen aller Altersstufen umfassend auch bei invasiven Maßnahmen der Diagnostik und Therapie,
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- IV.1.b: wirken an Maßnahmen der Qualitätssicherung sowie -verbesserung mit, setzen sich für die Umsetzung evidenzbasierter und/oder interprofessioneller Leitlinien und Standards ein und leisten so einen Beitrag zur Weiterentwicklung einrichtungsspezifischer Konzepte,
+- IV.1.d: überprüfen regelmäßig die eigene pflegerische Praxis durch kritische Reflexionen und Evaluation im Hinblick auf Ergebnis- und Patientenorientierung und ziehen Schlussfolgerungen für die Weiterentwicklung der Pflegequalität.
+- IV.2.a: üben den Beruf im Rahmen der gesetzlichen Vorgaben sowie unter Berücksichtigung ihrer ausbildungs- und berufsbezogenen Rechte und Pflichten eigenverantwortlich aus,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+- V.2.b: nehmen drohende Über- oder Unterforderungen frühzeitig wahr, erkennen die notwendigen Veränderungen am Arbeitsplatz und/oder des eigenen Kompetenzprofils und leiten daraus entsprechende Handlungsinitiativen ab,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "II.2.c",
+    "II.2.a",
+    "II.1.c"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:24.084628+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Jonas ist 15 Jahre alt und kommt zur Kontrolle in die Ambulanz. Er hat seit dem 9. Lebensjahr einen Diabetes mellitus Typ 1. Jonas spielt im Verein Handball und traegt Schuhgroesse 44. Seine Mutter arbeitet als Steuerfachangestellte und der Vater ist Fliesenleger. Die Familie hat einen Hund namens Rocky. In den letzten 3 Monaten hat Jonas seine Blutzuckerwerte nur unregelmaessig dokumentiert. Sein HbA1c ist von 7,1 auf 8,9 Prozent gestiegen. Jonas sagt, die Messungen seien ihm vor seinen Freunden unangenehm. Das Wohnzimmer der Familie wurde im letzten Jahr renoviert."""
+
+Teilaufgabe:
+"""Erklaeren Sie 2 Beratungsinhalte fuer Jonas zum Umgang mit der Messung in der Gruppe."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.b: übernehmen Verantwortung für die Organisation, Steuerung und Gestaltung des Pflegeprozesses bei Menschen aller Altersstufen,
+- I.1.c: nutzen allgemeine und spezifische Assessmentverfahren bei Menschen aller Altersstufen und beschreiben den Pflegebedarf unter Verwendung von pflegediagnostischen Begriffen,
+- I.1.e: handeln die Pflegeprozessgestaltung mit den zu pflegenden Menschen aller Altersstufen und gegebenenfalls ihren Bezugspersonen aus, setzen gesicherte Pflegemaßnahmen ein und evaluieren gemeinsam die Wirksamkeit der Pflege,
+- I.2.c: stärken die Kompetenzen von Angehörigen im Umgang mit pflegebedürftigen Menschen aller Altersstufen und unterstützen und fördern die Familiengesundheit,
+- I.3.b: unterstützen Familien, die sich insbesondere infolge einer Frühgeburt, einer schweren chronischen oder einer lebenslimitierenden Erkrankung in einer Lebenskrise befinden, und wirken bei der Stabilisierung des Familiensystems mit,
+- I.6.e: stimmen die Interaktion sowie die Gestaltung des Pflegeprozesses auf den individuellen Entwicklungsstand der zu pflegenden Menschen aller Altersstufen ab und unterstützen entwicklungsbedingte Formen der Krankheitsbewältigung.
+- II.1.c: gestalten die Kommunikation von Menschen aller Altersstufen und ihren Bezugspersonen in unterschiedlichen Pflegesituationen unter Einsatz verschiedener Interaktionsformen und balancieren das Spannungsfeld von Nähe und Distanz aus,
+- II.1.f: reflektieren sich abzeichnende oder bestehende Konflikte in pflegerischen Versorgungssituationen mit Menschen aller Altersstufen und entwickeln Ansätze zur Konfliktschlichtung und -lösung, auch unter Hinzuziehung von Angeboten zur Reflexion professioneller Kommunikation,
+- II.1.g: reflektieren Phänomene von Macht und Machtmissbrauch in pflegerischen Handlungsfeldern der Versorgung von zu pflegenden Menschen aller Altersstufen.
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.2.c: beraten zu pflegende Menschen aller Altersstufen und ihre Bezugspersonen im Umgang mit krankheits- sowie therapie- und pflegebedingten Anforderungen und befähigen sie, ihre Gesundheitsziele in größtmöglicher Selbständigkeit und Selbstbestimmung zu erreichen,
+- II.3.a: setzen sich für die Verwirklichung von Menschenrechten, Ethikkodizes und die Förderung der spezifischen Bedürfnisse und Gewohnheiten von zu pflegenden Menschen aller Altersstufen und ihren Bezugspersonen ein,
+- II.3.c: tragen in ethischen Dilemmasituationen mit Menschen aller Altersstufen oder ihren Bezugspersonen im interprofessionellen Gespräch zur gemeinsamen Entscheidungsfindung bei.
+- III.2.a: beachten umfassend die Anforderungen der Hygiene und wirken verantwortlich an der Infektionsprävention in den unterschiedlichen pflegerischen Versorgungsbereichen mit,
+- III.2.d: unterstützen und begleiten zu pflegende Menschen aller Altersstufen umfassend auch bei invasiven Maßnahmen der Diagnostik und Therapie,
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- IV.1.b: wirken an Maßnahmen der Qualitätssicherung sowie -verbesserung mit, setzen sich für die Umsetzung evidenzbasierter und/oder interprofessioneller Leitlinien und Standards ein und leisten so einen Beitrag zur Weiterentwicklung einrichtungsspezifischer Konzepte,
+- IV.1.d: überprüfen regelmäßig die eigene pflegerische Praxis durch kritische Reflexionen und Evaluation im Hinblick auf Ergebnis- und Patientenorientierung und ziehen Schlussfolgerungen für die Weiterentwicklung der Pflegequalität.
+- IV.2.a: üben den Beruf im Rahmen der gesetzlichen Vorgaben sowie unter Berücksichtigung ihrer ausbildungs- und berufsbezogenen Rechte und Pflichten eigenverantwortlich aus,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+- V.2.b: nehmen drohende Über- oder Unterforderungen frühzeitig wahr, erkennen die notwendigen Veränderungen am Arbeitsplatz und/oder des eigenen Kompetenzprofils und leiten daraus entsprechende Handlungsinitiativen ab,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "II.2.a",
+    "II.2.c"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:24.715092+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Jonas ist 15 Jahre alt und kommt zur Kontrolle in die Ambulanz. Er hat seit dem 9. Lebensjahr einen Diabetes mellitus Typ 1. Jonas spielt im Verein Handball und traegt Schuhgroesse 44. Seine Mutter arbeitet als Steuerfachangestellte und der Vater ist Fliesenleger. Die Familie hat einen Hund namens Rocky. In den letzten 3 Monaten hat Jonas seine Blutzuckerwerte nur unregelmaessig dokumentiert. Sein HbA1c ist von 7,1 auf 8,9 Prozent gestiegen. Jonas sagt, die Messungen seien ihm vor seinen Freunden unangenehm. Das Wohnzimmer der Familie wurde im letzten Jahr renoviert."""
+
+Teilaufgabe:
+"""Beschreiben Sie 2 Massnahmen zur Einbeziehung der Eltern von Jonas."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.b: übernehmen Verantwortung für die Organisation, Steuerung und Gestaltung des Pflegeprozesses bei Menschen aller Altersstufen,
+- I.1.c: nutzen allgemeine und spezifische Assessmentverfahren bei Menschen aller Altersstufen und beschreiben den Pflegebedarf unter Verwendung von pflegediagnostischen Begriffen,
+- I.1.e: handeln die Pflegeprozessgestaltung mit den zu pflegenden Menschen aller Altersstufen und gegebenenfalls ihren Bezugspersonen aus, setzen gesicherte Pflegemaßnahmen ein und evaluieren gemeinsam die Wirksamkeit der Pflege,
+- I.2.c: stärken die Kompetenzen von Angehörigen im Umgang mit pflegebedürftigen Menschen aller Altersstufen und unterstützen und fördern die Familiengesundheit,
+- I.3.b: unterstützen Familien, die sich insbesondere infolge einer Frühgeburt, einer schweren chronischen oder einer lebenslimitierenden Erkrankung in einer Lebenskrise befinden, und wirken bei der Stabilisierung des Familiensystems mit,
+- I.6.e: stimmen die Interaktion sowie die Gestaltung des Pflegeprozesses auf den individuellen Entwicklungsstand der zu pflegenden Menschen aller Altersstufen ab und unterstützen entwicklungsbedingte Formen der Krankheitsbewältigung.
+- II.1.c: gestalten die Kommunikation von Menschen aller Altersstufen und ihren Bezugspersonen in unterschiedlichen Pflegesituationen unter Einsatz verschiedener Interaktionsformen und balancieren das Spannungsfeld von Nähe und Distanz aus,
+- II.1.f: reflektieren sich abzeichnende oder bestehende Konflikte in pflegerischen Versorgungssituationen mit Menschen aller Altersstufen und entwickeln Ansätze zur Konfliktschlichtung und -lösung, auch unter Hinzuziehung von Angeboten zur Reflexion professioneller Kommunikation,
+- II.1.g: reflektieren Phänomene von Macht und Machtmissbrauch in pflegerischen Handlungsfeldern der Versorgung von zu pflegenden Menschen aller Altersstufen.
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.2.c: beraten zu pflegende Menschen aller Altersstufen und ihre Bezugspersonen im Umgang mit krankheits- sowie therapie- und pflegebedingten Anforderungen und befähigen sie, ihre Gesundheitsziele in größtmöglicher Selbständigkeit und Selbstbestimmung zu erreichen,
+- II.3.a: setzen sich für die Verwirklichung von Menschenrechten, Ethikkodizes und die Förderung der spezifischen Bedürfnisse und Gewohnheiten von zu pflegenden Menschen aller Altersstufen und ihren Bezugspersonen ein,
+- II.3.c: tragen in ethischen Dilemmasituationen mit Menschen aller Altersstufen oder ihren Bezugspersonen im interprofessionellen Gespräch zur gemeinsamen Entscheidungsfindung bei.
+- III.2.a: beachten umfassend die Anforderungen der Hygiene und wirken verantwortlich an der Infektionsprävention in den unterschiedlichen pflegerischen Versorgungsbereichen mit,
+- III.2.d: unterstützen und begleiten zu pflegende Menschen aller Altersstufen umfassend auch bei invasiven Maßnahmen der Diagnostik und Therapie,
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- IV.1.b: wirken an Maßnahmen der Qualitätssicherung sowie -verbesserung mit, setzen sich für die Umsetzung evidenzbasierter und/oder interprofessioneller Leitlinien und Standards ein und leisten so einen Beitrag zur Weiterentwicklung einrichtungsspezifischer Konzepte,
+- IV.1.d: überprüfen regelmäßig die eigene pflegerische Praxis durch kritische Reflexionen und Evaluation im Hinblick auf Ergebnis- und Patientenorientierung und ziehen Schlussfolgerungen für die Weiterentwicklung der Pflegequalität.
+- IV.2.a: üben den Beruf im Rahmen der gesetzlichen Vorgaben sowie unter Berücksichtigung ihrer ausbildungs- und berufsbezogenen Rechte und Pflichten eigenverantwortlich aus,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+- V.2.b: nehmen drohende Über- oder Unterforderungen frühzeitig wahr, erkennen die notwendigen Veränderungen am Arbeitsplatz und/oder des eigenen Kompetenzprofils und leiten daraus entsprechende Handlungsinitiativen ab,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"codes": [
+		"I.1.e",
+		"II.2.c"
+	]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:26.123518+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Jonas ist 15 Jahre alt und kommt zur Kontrolle in die Ambulanz. Er hat seit dem 9. Lebensjahr einen Diabetes mellitus Typ 1. Jonas spielt im Verein Handball und traegt Schuhgroesse 44. Seine Mutter arbeitet als Steuerfachangestellte und der Vater ist Fliesenleger. Die Familie hat einen Hund namens Rocky. In den letzten 3 Monaten hat Jonas seine Blutzuckerwerte nur unregelmaessig dokumentiert. Sein HbA1c ist von 7,1 auf 8,9 Prozent gestiegen. Jonas sagt, die Messungen seien ihm vor seinen Freunden unangenehm. Das Wohnzimmer der Familie wurde im letzten Jahr renoviert."""
+
+Teilaufgabe:
+"""Begruenden Sie 2 praeventive Massnahmen zur Vermeidung von Folgeerkrankungen bei Jonas."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.b: übernehmen Verantwortung für die Organisation, Steuerung und Gestaltung des Pflegeprozesses bei Menschen aller Altersstufen,
+- I.1.c: nutzen allgemeine und spezifische Assessmentverfahren bei Menschen aller Altersstufen und beschreiben den Pflegebedarf unter Verwendung von pflegediagnostischen Begriffen,
+- I.1.e: handeln die Pflegeprozessgestaltung mit den zu pflegenden Menschen aller Altersstufen und gegebenenfalls ihren Bezugspersonen aus, setzen gesicherte Pflegemaßnahmen ein und evaluieren gemeinsam die Wirksamkeit der Pflege,
+- I.2.c: stärken die Kompetenzen von Angehörigen im Umgang mit pflegebedürftigen Menschen aller Altersstufen und unterstützen und fördern die Familiengesundheit,
+- I.3.b: unterstützen Familien, die sich insbesondere infolge einer Frühgeburt, einer schweren chronischen oder einer lebenslimitierenden Erkrankung in einer Lebenskrise befinden, und wirken bei der Stabilisierung des Familiensystems mit,
+- I.6.e: stimmen die Interaktion sowie die Gestaltung des Pflegeprozesses auf den individuellen Entwicklungsstand der zu pflegenden Menschen aller Altersstufen ab und unterstützen entwicklungsbedingte Formen der Krankheitsbewältigung.
+- II.1.c: gestalten die Kommunikation von Menschen aller Altersstufen und ihren Bezugspersonen in unterschiedlichen Pflegesituationen unter Einsatz verschiedener Interaktionsformen und balancieren das Spannungsfeld von Nähe und Distanz aus,
+- II.1.f: reflektieren sich abzeichnende oder bestehende Konflikte in pflegerischen Versorgungssituationen mit Menschen aller Altersstufen und entwickeln Ansätze zur Konfliktschlichtung und -lösung, auch unter Hinzuziehung von Angeboten zur Reflexion professioneller Kommunikation,
+- II.1.g: reflektieren Phänomene von Macht und Machtmissbrauch in pflegerischen Handlungsfeldern der Versorgung von zu pflegenden Menschen aller Altersstufen.
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.2.c: beraten zu pflegende Menschen aller Altersstufen und ihre Bezugspersonen im Umgang mit krankheits- sowie therapie- und pflegebedingten Anforderungen und befähigen sie, ihre Gesundheitsziele in größtmöglicher Selbständigkeit und Selbstbestimmung zu erreichen,
+- II.3.a: setzen sich für die Verwirklichung von Menschenrechten, Ethikkodizes und die Förderung der spezifischen Bedürfnisse und Gewohnheiten von zu pflegenden Menschen aller Altersstufen und ihren Bezugspersonen ein,
+- II.3.c: tragen in ethischen Dilemmasituationen mit Menschen aller Altersstufen oder ihren Bezugspersonen im interprofessionellen Gespräch zur gemeinsamen Entscheidungsfindung bei.
+- III.2.a: beachten umfassend die Anforderungen der Hygiene und wirken verantwortlich an der Infektionsprävention in den unterschiedlichen pflegerischen Versorgungsbereichen mit,
+- III.2.d: unterstützen und begleiten zu pflegende Menschen aller Altersstufen umfassend auch bei invasiven Maßnahmen der Diagnostik und Therapie,
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- IV.1.b: wirken an Maßnahmen der Qualitätssicherung sowie -verbesserung mit, setzen sich für die Umsetzung evidenzbasierter und/oder interprofessioneller Leitlinien und Standards ein und leisten so einen Beitrag zur Weiterentwicklung einrichtungsspezifischer Konzepte,
+- IV.1.d: überprüfen regelmäßig die eigene pflegerische Praxis durch kritische Reflexionen und Evaluation im Hinblick auf Ergebnis- und Patientenorientierung und ziehen Schlussfolgerungen für die Weiterentwicklung der Pflegequalität.
+- IV.2.a: üben den Beruf im Rahmen der gesetzlichen Vorgaben sowie unter Berücksichtigung ihrer ausbildungs- und berufsbezogenen Rechte und Pflichten eigenverantwortlich aus,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+- V.2.b: nehmen drohende Über- oder Unterforderungen frühzeitig wahr, erkennen die notwendigen Veränderungen am Arbeitsplatz und/oder des eigenen Kompetenzprofils und leiten daraus entsprechende Handlungsinitiativen ab,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "II.2.a",
+    "II.2.c"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:27.003171+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Frau Kellner, welche im Rahmen einer Nachsorgeuntersuchung, die im Anschluss an eine laengere Phase erhoehter Blutdruckwerte, deren genaue Ursache bislang nicht abschliessend geklaert werden konnte, angesetzt wurde, vorstellig wird, berichtet, dass sie sich hinsichtlich der von ihr gewuenschten Umstellung ihrer Ernaehrungsgewohnheiten, welche sie eigentlich schon seit laengerem beabsichtigt habe, bislang nicht in der Lage gesehen habe, diese auch tatsaechlich umzusetzen. Es liegt ein Blutdruck von 150 zu 95 mmHg vor."""
+
+Teilaufgabe:
+"""Nennen Sie Risikofaktoren bei Frau Kellner."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.6.a: wahren das Selbstbestimmungsrecht der zu pflegenden Menschen aller Altersstufen, insbesondere auch, wenn sie in ihrer Selbstbestimmungsfähigkeit eingeschränkt sind,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.a: machen sich eigene Deutungs- und Handlungsmuster in der pflegerischen Interaktion mit Menschen aller Altersstufen und ihren Bezugspersonen und mit ihren unterschiedlichen, insbesondere kulturellen und sozialen, Hintergründen bewusst und reflektieren sie,
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.d: gestalten pflegeberufliche Kommunikationssituationen mit zu pflegenden Menschen aller Altersstufen und deren Bezugspersonen auch bei divergierenden Zielsetzungen oder Sichtweisen verständigungsorientiert und fördern eine beteiligungsorientierte Entscheidungsfindung,
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.2.c: beraten zu pflegende Menschen aller Altersstufen und ihre Bezugspersonen im Umgang mit krankheits- sowie therapie- und pflegebedingten Anforderungen und befähigen sie, ihre Gesundheitsziele in größtmöglicher Selbständigkeit und Selbstbestimmung zu erreichen,
+- II.2.d: reflektieren ihre Möglichkeiten und Begrenzungen zur Gestaltung von professionellen Informations-, Instruktions-, Schulungs- und Beratungsangeboten bei Menschen aller Altersstufen.
+- III.1.c: beraten Teammitglieder kollegial bei pflegefachlichen Fragestellungen und unterstützen sie bei der Übernahme und Ausgestaltung ihres jeweiligen Verantwortungs- und Aufgabenbereiches,
+- III.1.f: sind aufmerksam für Spannungen und Konflikte im Team, reflektieren diesbezüglich die eigene Rolle und Persönlichkeit und bringen sich zur Bewältigung von Spannungen und Konflikten konstruktiv im Pflegeteam ein.
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- IV.2.c: erkennen die Funktion der Gesetzgebung im Gesundheits- und Sozialbereich zur Sicherstellung des gesellschaftlichen Versorgungsauftrags in stationären, teilstationären und ambulanten Handlungsfeldern,
+- IV.2.e: wirken an der Umsetzung von Konzepten und Leitlinien zur ökonomischen und ökologischen Gestaltung der Einrichtung mit.
+- V.1.b: erschließen sich pflege- und bezugswissenschaftliche Forschungsergebnisse bezogen auf die Pflege von Menschen aller Altersstufen und bewerten sie hinsichtlich der Reichweite, des Nutzens, der Relevanz und des Umsetzungspotenzials,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+- V.2.b: nehmen drohende Über- oder Unterforderungen frühzeitig wahr, erkennen die notwendigen Veränderungen am Arbeitsplatz und/oder des eigenen Kompetenzprofils und leiten daraus entsprechende Handlungsinitiativen ab,
+- V.2.c: setzen Strategien zur Kompensation und Bewältigung unvermeidbarer beruflicher Belastungen gezielt ein und nehmen Unterstützungsangebote frühzeitig wahr oder fordern diese aktiv ein,
+- V.2.e: verfügen über ein Verständnis für die historischen Zusammenhänge des Pflegeberufs und positionieren sich mit ihrer beruflichen Pflegeausbildung im Kontext der Gesundheitsberufe unter Berücksichtigung der ausgewiesenen Vorbehaltsaufgaben,
+- V.2.f: verstehen die Zusammenhänge zwischen den gesellschaftlichen, soziodemografischen und ökonomischen Veränderungen und der Berufsentwicklung,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "II.2.c"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:27.806426+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Frau Kellner, welche im Rahmen einer Nachsorgeuntersuchung, die im Anschluss an eine laengere Phase erhoehter Blutdruckwerte, deren genaue Ursache bislang nicht abschliessend geklaert werden konnte, angesetzt wurde, vorstellig wird, berichtet, dass sie sich hinsichtlich der von ihr gewuenschten Umstellung ihrer Ernaehrungsgewohnheiten, welche sie eigentlich schon seit laengerem beabsichtigt habe, bislang nicht in der Lage gesehen habe, diese auch tatsaechlich umzusetzen. Es liegt ein Blutdruck von 150 zu 95 mmHg vor."""
+
+Teilaufgabe:
+"""Es sollten Beratungsinhalte zur Ernaehrungsumstellung beschrieben werden."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.6.a: wahren das Selbstbestimmungsrecht der zu pflegenden Menschen aller Altersstufen, insbesondere auch, wenn sie in ihrer Selbstbestimmungsfähigkeit eingeschränkt sind,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.a: machen sich eigene Deutungs- und Handlungsmuster in der pflegerischen Interaktion mit Menschen aller Altersstufen und ihren Bezugspersonen und mit ihren unterschiedlichen, insbesondere kulturellen und sozialen, Hintergründen bewusst und reflektieren sie,
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.d: gestalten pflegeberufliche Kommunikationssituationen mit zu pflegenden Menschen aller Altersstufen und deren Bezugspersonen auch bei divergierenden Zielsetzungen oder Sichtweisen verständigungsorientiert und fördern eine beteiligungsorientierte Entscheidungsfindung,
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.2.c: beraten zu pflegende Menschen aller Altersstufen und ihre Bezugspersonen im Umgang mit krankheits- sowie therapie- und pflegebedingten Anforderungen und befähigen sie, ihre Gesundheitsziele in größtmöglicher Selbständigkeit und Selbstbestimmung zu erreichen,
+- II.2.d: reflektieren ihre Möglichkeiten und Begrenzungen zur Gestaltung von professionellen Informations-, Instruktions-, Schulungs- und Beratungsangeboten bei Menschen aller Altersstufen.
+- III.1.c: beraten Teammitglieder kollegial bei pflegefachlichen Fragestellungen und unterstützen sie bei der Übernahme und Ausgestaltung ihres jeweiligen Verantwortungs- und Aufgabenbereiches,
+- III.1.f: sind aufmerksam für Spannungen und Konflikte im Team, reflektieren diesbezüglich die eigene Rolle und Persönlichkeit und bringen sich zur Bewältigung von Spannungen und Konflikten konstruktiv im Pflegeteam ein.
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- IV.2.c: erkennen die Funktion der Gesetzgebung im Gesundheits- und Sozialbereich zur Sicherstellung des gesellschaftlichen Versorgungsauftrags in stationären, teilstationären und ambulanten Handlungsfeldern,
+- IV.2.e: wirken an der Umsetzung von Konzepten und Leitlinien zur ökonomischen und ökologischen Gestaltung der Einrichtung mit.
+- V.1.b: erschließen sich pflege- und bezugswissenschaftliche Forschungsergebnisse bezogen auf die Pflege von Menschen aller Altersstufen und bewerten sie hinsichtlich der Reichweite, des Nutzens, der Relevanz und des Umsetzungspotenzials,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+- V.2.b: nehmen drohende Über- oder Unterforderungen frühzeitig wahr, erkennen die notwendigen Veränderungen am Arbeitsplatz und/oder des eigenen Kompetenzprofils und leiten daraus entsprechende Handlungsinitiativen ab,
+- V.2.c: setzen Strategien zur Kompensation und Bewältigung unvermeidbarer beruflicher Belastungen gezielt ein und nehmen Unterstützungsangebote frühzeitig wahr oder fordern diese aktiv ein,
+- V.2.e: verfügen über ein Verständnis für die historischen Zusammenhänge des Pflegeberufs und positionieren sich mit ihrer beruflichen Pflegeausbildung im Kontext der Gesundheitsberufe unter Berücksichtigung der ausgewiesenen Vorbehaltsaufgaben,
+- V.2.f: verstehen die Zusammenhänge zwischen den gesellschaftlichen, soziodemografischen und ökonomischen Veränderungen und der Berufsentwicklung,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "II.2.a",
+    "II.2.c"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:30.509826+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie 3 Ursachen fuer die Verschlechterung des HbA1c bei Jonas."""
+
+Erkannter Operator der Teilaufgabe: 'nennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Begruenden Sie, warum die unregelmaessige Dokumentation zur Verschlechterung fuehrt
+Bewerten Sie den Einfluss der Peer-Gruppe auf das Messverhalten
+Leiten Sie aus dem Sportpensum den veraenderten Insulinbedarf ab"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "Begruenden Sie, warum die unregelmäßige Dokumentation zur Verschlechterung führt",
+  "mismatch": true,
+  "begruendung": "Der Erwartungshorizont verlangt eine Begründung, während die Teilaufgabe lediglich das Nennen von Ursachen abfragt. Dies stellt einen klaren Widerspruch dar, da die geforderte Leistung nicht zur Operatorik passt."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:32.148584+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Erklaeren Sie 2 Beratungsinhalte fuer Jonas zum Umgang mit der Messung in der Gruppe."""
+
+Erkannter Operator der Teilaufgabe: 'erklären' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""diskrete Messmoeglichkeiten und Sensortechnik besprechen
+Umgang mit Nachfragen der Freunde einueben"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont bepunktet eine Erklärungsleistung durch die Beschreibung von konkreten Beratungsinhalten ('diskrete Messmöglichkeiten und Sensortechnik besprechen' sowie 'Umgang mit Nachfragen der Freunde einüben'), die im Einklang mit dem Operator 'erklären' steht. Es werden keine Begründungen oder Aufzählungen ohne Erläuterung verlangt."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:33.341511+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Beschreiben Sie 2 Massnahmen zur Einbeziehung der Eltern von Jonas."""
+
+Erkannter Operator der Teilaufgabe: 'beschreiben' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""gemeinsames Gespraech zur Rollenklaerung
+Vereinbarung ueber die Eigenverantwortung von Jonas"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont beschränkt sich auf die Beschreibung von Maßnahmen (konkrete Handlungsvorschläge), was dem Operator 'beschreiben' (Anforderungsbereich I) entspricht. Es werden keine Begründungen oder Erklärungen verlangt."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:36.263010+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Begruenden Sie 2 praeventive Massnahmen zur Vermeidung von Folgeerkrankungen bei Jonas."""
+
+Erkannter Operator der Teilaufgabe: 'begründen' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""strukturierte Schulung, weil Selbstmanagement die Stoffwechsellage verbessert
+regelmaessige Verlaufskontrollen, weil Folgeschaeden frueh erkennbar sind"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont bepunktet korrekt eine Begründungsleistung, indem er zu jeder Maßnahme eine kurze Begründung in Form von ‚weil‘ angibt. Die knappe, stichpunktartige Notation entspricht dem Operator ‚begründen‘ (Anforderungsbereich II), da die Begründung explizit gefordert und abgebildet wird."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:38.752688+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie Risikofaktoren bei Frau Kellner."""
+
+Erkannter Operator der Teilaufgabe: 'nennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""erhoehter Blutdruck
+bisher nicht umgesetzte Ernaehrungsumstellung"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont enthält lediglich eine Aufzählung von Risikofaktoren ('erhöhter Blutdruck', 'bisher nicht umgesetzte Ernährungsumstellung'), was exakt der Anforderung des Operators 'nennen' entspricht. Es werden keine Begründungen, Erklärungen oder weitere Leistungsarten verlangt."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:39.345108+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Herr Petrovic ist 47 Jahre alt und seit 5 Tagen auf einer psychiatrischen Station. Er hat eine paranoide Schizophrenie. Herr Petrovic hat die Medikamenteneinnahme vor 3 Wochen beendet. Er aeussert die Ueberzeugung, dass die Nachbarn ihn abhoeren. In der Nacht ist er unruhig und laeuft im Flur auf und ab. Am Morgen spricht er Sie mit lauter Stimme an und wirft einen Stuhl um. Zwei Mitpatienten verlassen den Aufenthaltsraum. Herr Petrovic arbeitet als Lagerlogistiker und hat eine 12-jaehrige Tochter."""
+
+Teilaufgabe:
+"""Nennen Sie 3 Beobachtungen bei Herrn Petrovic und bewerten Sie diese hinsichtlich einer Eigen- oder Fremdgefaehrdung."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.2.a: erheben, erklären und interpretieren pflegebezogene Daten von Menschen aller Altersstufen auch in komplexen gesundheitlichen Problemlagen anhand von pflege- und bezugswissenschaftlichen Erkenntnissen,
+- I.2.b: unterstützen Menschen aller Altersstufen durch Mitwirkung an der Entwicklung von fachlich begründeten Pflegeinterventionen der Gesundheitsförderung, Prävention und Kuration,
+- I.3.a: pflegen, begleiten, unterstützen und beraten Menschen aller Altersstufen sowie deren Bezugspersonen in Phasen fortschreitender Demenz oder schwerer chronischer Krankheitsverläufe sowie am Lebensende,
+- I.6.a: wahren das Selbstbestimmungsrecht der zu pflegenden Menschen aller Altersstufen, insbesondere auch, wenn sie in ihrer Selbstbestimmungsfähigkeit eingeschränkt sind,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.a: machen sich eigene Deutungs- und Handlungsmuster in der pflegerischen Interaktion mit Menschen aller Altersstufen und ihren Bezugspersonen und mit ihren unterschiedlichen, insbesondere kulturellen und sozialen, Hintergründen bewusst und reflektieren sie,
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.c: gestalten die Kommunikation von Menschen aller Altersstufen und ihren Bezugspersonen in unterschiedlichen Pflegesituationen unter Einsatz verschiedener Interaktionsformen und balancieren das Spannungsfeld von Nähe und Distanz aus,
+- II.1.d: gestalten pflegeberufliche Kommunikationssituationen mit zu pflegenden Menschen aller Altersstufen und deren Bezugspersonen auch bei divergierenden Zielsetzungen oder Sichtweisen verständigungsorientiert und fördern eine beteiligungsorientierte Entscheidungsfindung,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.1.f: reflektieren sich abzeichnende oder bestehende Konflikte in pflegerischen Versorgungssituationen mit Menschen aller Altersstufen und entwickeln Ansätze zur Konfliktschlichtung und -lösung, auch unter Hinzuziehung von Angeboten zur Reflexion professioneller Kommunikation,
+- II.1.g: reflektieren Phänomene von Macht und Machtmissbrauch in pflegerischen Handlungsfeldern der Versorgung von zu pflegenden Menschen aller Altersstufen.
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.3.c: tragen in ethischen Dilemmasituationen mit Menschen aller Altersstufen oder ihren Bezugspersonen im interprofessionellen Gespräch zur gemeinsamen Entscheidungsfindung bei.
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- III.3.d: koordinieren die Pflege von Menschen aller Altersstufen in verschiedenen Versorgungskontexten und organisieren Termine sowie berufsgruppenübergreifende Leistungen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- V.1.d: leiten aus beruflichen Erfahrungen in der pflegerischen Versorgung und Unterstützung von Menschen aller Altersstufen und ihren Angehörigen mögliche Fragen an Pflegewissenschaft und -forschung ab.
+- V.2.c: setzen Strategien zur Kompensation und Bewältigung unvermeidbarer beruflicher Belastungen gezielt ein und nehmen Unterstützungsangebote frühzeitig wahr oder fordern diese aktiv ein,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "I.2.a",
+    "II.1.e"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:40.210931+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Herr Petrovic ist 47 Jahre alt und seit 5 Tagen auf einer psychiatrischen Station. Er hat eine paranoide Schizophrenie. Herr Petrovic hat die Medikamenteneinnahme vor 3 Wochen beendet. Er aeussert die Ueberzeugung, dass die Nachbarn ihn abhoeren. In der Nacht ist er unruhig und laeuft im Flur auf und ab. Am Morgen spricht er Sie mit lauter Stimme an und wirft einen Stuhl um. Zwei Mitpatienten verlassen den Aufenthaltsraum. Herr Petrovic arbeitet als Lagerlogistiker und hat eine 12-jaehrige Tochter."""
+
+Teilaufgabe:
+"""Nennen Sie 3 deeskalierende Massnahmen fuer die Situation im Aufenthaltsraum."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.2.a: erheben, erklären und interpretieren pflegebezogene Daten von Menschen aller Altersstufen auch in komplexen gesundheitlichen Problemlagen anhand von pflege- und bezugswissenschaftlichen Erkenntnissen,
+- I.2.b: unterstützen Menschen aller Altersstufen durch Mitwirkung an der Entwicklung von fachlich begründeten Pflegeinterventionen der Gesundheitsförderung, Prävention und Kuration,
+- I.3.a: pflegen, begleiten, unterstützen und beraten Menschen aller Altersstufen sowie deren Bezugspersonen in Phasen fortschreitender Demenz oder schwerer chronischer Krankheitsverläufe sowie am Lebensende,
+- I.6.a: wahren das Selbstbestimmungsrecht der zu pflegenden Menschen aller Altersstufen, insbesondere auch, wenn sie in ihrer Selbstbestimmungsfähigkeit eingeschränkt sind,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.a: machen sich eigene Deutungs- und Handlungsmuster in der pflegerischen Interaktion mit Menschen aller Altersstufen und ihren Bezugspersonen und mit ihren unterschiedlichen, insbesondere kulturellen und sozialen, Hintergründen bewusst und reflektieren sie,
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.c: gestalten die Kommunikation von Menschen aller Altersstufen und ihren Bezugspersonen in unterschiedlichen Pflegesituationen unter Einsatz verschiedener Interaktionsformen und balancieren das Spannungsfeld von Nähe und Distanz aus,
+- II.1.d: gestalten pflegeberufliche Kommunikationssituationen mit zu pflegenden Menschen aller Altersstufen und deren Bezugspersonen auch bei divergierenden Zielsetzungen oder Sichtweisen verständigungsorientiert und fördern eine beteiligungsorientierte Entscheidungsfindung,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.1.f: reflektieren sich abzeichnende oder bestehende Konflikte in pflegerischen Versorgungssituationen mit Menschen aller Altersstufen und entwickeln Ansätze zur Konfliktschlichtung und -lösung, auch unter Hinzuziehung von Angeboten zur Reflexion professioneller Kommunikation,
+- II.1.g: reflektieren Phänomene von Macht und Machtmissbrauch in pflegerischen Handlungsfeldern der Versorgung von zu pflegenden Menschen aller Altersstufen.
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.3.c: tragen in ethischen Dilemmasituationen mit Menschen aller Altersstufen oder ihren Bezugspersonen im interprofessionellen Gespräch zur gemeinsamen Entscheidungsfindung bei.
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- III.3.d: koordinieren die Pflege von Menschen aller Altersstufen in verschiedenen Versorgungskontexten und organisieren Termine sowie berufsgruppenübergreifende Leistungen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- V.1.d: leiten aus beruflichen Erfahrungen in der pflegerischen Versorgung und Unterstützung von Menschen aller Altersstufen und ihren Angehörigen mögliche Fragen an Pflegewissenschaft und -forschung ab.
+- V.2.c: setzen Strategien zur Kompensation und Bewältigung unvermeidbarer beruflicher Belastungen gezielt ein und nehmen Unterstützungsangebote frühzeitig wahr oder fordern diese aktiv ein,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "II.1.b",
+    "II.1.c",
+    "II.1.e"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:40.720334+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Herr Petrovic ist 47 Jahre alt und seit 5 Tagen auf einer psychiatrischen Station. Er hat eine paranoide Schizophrenie. Herr Petrovic hat die Medikamenteneinnahme vor 3 Wochen beendet. Er aeussert die Ueberzeugung, dass die Nachbarn ihn abhoeren. In der Nacht ist er unruhig und laeuft im Flur auf und ab. Am Morgen spricht er Sie mit lauter Stimme an und wirft einen Stuhl um. Zwei Mitpatienten verlassen den Aufenthaltsraum. Herr Petrovic arbeitet als Lagerlogistiker und hat eine 12-jaehrige Tochter."""
+
+Teilaufgabe:
+"""Nennen Sie 2 rechtliche Grundlagen fuer freiheitsentziehende Massnahmen."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.2.a: erheben, erklären und interpretieren pflegebezogene Daten von Menschen aller Altersstufen auch in komplexen gesundheitlichen Problemlagen anhand von pflege- und bezugswissenschaftlichen Erkenntnissen,
+- I.2.b: unterstützen Menschen aller Altersstufen durch Mitwirkung an der Entwicklung von fachlich begründeten Pflegeinterventionen der Gesundheitsförderung, Prävention und Kuration,
+- I.3.a: pflegen, begleiten, unterstützen und beraten Menschen aller Altersstufen sowie deren Bezugspersonen in Phasen fortschreitender Demenz oder schwerer chronischer Krankheitsverläufe sowie am Lebensende,
+- I.6.a: wahren das Selbstbestimmungsrecht der zu pflegenden Menschen aller Altersstufen, insbesondere auch, wenn sie in ihrer Selbstbestimmungsfähigkeit eingeschränkt sind,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.a: machen sich eigene Deutungs- und Handlungsmuster in der pflegerischen Interaktion mit Menschen aller Altersstufen und ihren Bezugspersonen und mit ihren unterschiedlichen, insbesondere kulturellen und sozialen, Hintergründen bewusst und reflektieren sie,
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.c: gestalten die Kommunikation von Menschen aller Altersstufen und ihren Bezugspersonen in unterschiedlichen Pflegesituationen unter Einsatz verschiedener Interaktionsformen und balancieren das Spannungsfeld von Nähe und Distanz aus,
+- II.1.d: gestalten pflegeberufliche Kommunikationssituationen mit zu pflegenden Menschen aller Altersstufen und deren Bezugspersonen auch bei divergierenden Zielsetzungen oder Sichtweisen verständigungsorientiert und fördern eine beteiligungsorientierte Entscheidungsfindung,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.1.f: reflektieren sich abzeichnende oder bestehende Konflikte in pflegerischen Versorgungssituationen mit Menschen aller Altersstufen und entwickeln Ansätze zur Konfliktschlichtung und -lösung, auch unter Hinzuziehung von Angeboten zur Reflexion professioneller Kommunikation,
+- II.1.g: reflektieren Phänomene von Macht und Machtmissbrauch in pflegerischen Handlungsfeldern der Versorgung von zu pflegenden Menschen aller Altersstufen.
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.3.c: tragen in ethischen Dilemmasituationen mit Menschen aller Altersstufen oder ihren Bezugspersonen im interprofessionellen Gespräch zur gemeinsamen Entscheidungsfindung bei.
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- III.3.d: koordinieren die Pflege von Menschen aller Altersstufen in verschiedenen Versorgungskontexten und organisieren Termine sowie berufsgruppenübergreifende Leistungen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- V.1.d: leiten aus beruflichen Erfahrungen in der pflegerischen Versorgung und Unterstützung von Menschen aller Altersstufen und ihren Angehörigen mögliche Fragen an Pflegewissenschaft und -forschung ab.
+- V.2.c: setzen Strategien zur Kompensation und Bewältigung unvermeidbarer beruflicher Belastungen gezielt ein und nehmen Unterstützungsangebote frühzeitig wahr oder fordern diese aktiv ein,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "III.3.b",
+    "IV.1.c"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:42.356390+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Herr Petrovic ist 47 Jahre alt und seit 5 Tagen auf einer psychiatrischen Station. Er hat eine paranoide Schizophrenie. Herr Petrovic hat die Medikamenteneinnahme vor 3 Wochen beendet. Er aeussert die Ueberzeugung, dass die Nachbarn ihn abhoeren. In der Nacht ist er unruhig und laeuft im Flur auf und ab. Am Morgen spricht er Sie mit lauter Stimme an und wirft einen Stuhl um. Zwei Mitpatienten verlassen den Aufenthaltsraum. Herr Petrovic arbeitet als Lagerlogistiker und hat eine 12-jaehrige Tochter."""
+
+Teilaufgabe:
+"""Nennen Sie 2 Aspekte zur Einbeziehung der Tochter von Herrn Petrovic."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.2.a: erheben, erklären und interpretieren pflegebezogene Daten von Menschen aller Altersstufen auch in komplexen gesundheitlichen Problemlagen anhand von pflege- und bezugswissenschaftlichen Erkenntnissen,
+- I.2.b: unterstützen Menschen aller Altersstufen durch Mitwirkung an der Entwicklung von fachlich begründeten Pflegeinterventionen der Gesundheitsförderung, Prävention und Kuration,
+- I.3.a: pflegen, begleiten, unterstützen und beraten Menschen aller Altersstufen sowie deren Bezugspersonen in Phasen fortschreitender Demenz oder schwerer chronischer Krankheitsverläufe sowie am Lebensende,
+- I.6.a: wahren das Selbstbestimmungsrecht der zu pflegenden Menschen aller Altersstufen, insbesondere auch, wenn sie in ihrer Selbstbestimmungsfähigkeit eingeschränkt sind,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.a: machen sich eigene Deutungs- und Handlungsmuster in der pflegerischen Interaktion mit Menschen aller Altersstufen und ihren Bezugspersonen und mit ihren unterschiedlichen, insbesondere kulturellen und sozialen, Hintergründen bewusst und reflektieren sie,
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.c: gestalten die Kommunikation von Menschen aller Altersstufen und ihren Bezugspersonen in unterschiedlichen Pflegesituationen unter Einsatz verschiedener Interaktionsformen und balancieren das Spannungsfeld von Nähe und Distanz aus,
+- II.1.d: gestalten pflegeberufliche Kommunikationssituationen mit zu pflegenden Menschen aller Altersstufen und deren Bezugspersonen auch bei divergierenden Zielsetzungen oder Sichtweisen verständigungsorientiert und fördern eine beteiligungsorientierte Entscheidungsfindung,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.1.f: reflektieren sich abzeichnende oder bestehende Konflikte in pflegerischen Versorgungssituationen mit Menschen aller Altersstufen und entwickeln Ansätze zur Konfliktschlichtung und -lösung, auch unter Hinzuziehung von Angeboten zur Reflexion professioneller Kommunikation,
+- II.1.g: reflektieren Phänomene von Macht und Machtmissbrauch in pflegerischen Handlungsfeldern der Versorgung von zu pflegenden Menschen aller Altersstufen.
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.3.c: tragen in ethischen Dilemmasituationen mit Menschen aller Altersstufen oder ihren Bezugspersonen im interprofessionellen Gespräch zur gemeinsamen Entscheidungsfindung bei.
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- III.3.d: koordinieren die Pflege von Menschen aller Altersstufen in verschiedenen Versorgungskontexten und organisieren Termine sowie berufsgruppenübergreifende Leistungen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- V.1.d: leiten aus beruflichen Erfahrungen in der pflegerischen Versorgung und Unterstützung von Menschen aller Altersstufen und ihren Angehörigen mögliche Fragen an Pflegewissenschaft und -forschung ab.
+- V.2.c: setzen Strategien zur Kompensation und Bewältigung unvermeidbarer beruflicher Belastungen gezielt ein und nehmen Unterstützungsangebote frühzeitig wahr oder fordern diese aktiv ein,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "I.6.d",
+    "II.1.d"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:43.122831+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Frau Yilmaz, welche seit einiger Zeit unter einer im Zusammenhang mit einer depressiven Episode stehenden Antriebsminderung leidet, deren Verlauf bislang nicht klar abzuschaetzen ist, wurde von den Mitpatienten dabei beobachtet, wie sie sich, ohne dass hierfuer eine unmittelbare Ursache erkennbar gewesen waere, in ihr Zimmer zurueckgezogen habe und dort ueber laengere Zeit verharrt sei. Es wird angenommen, dass eine Ansprache erfolgen sollte."""
+
+Teilaufgabe:
+"""Nennen Sie Beobachtungen zum Rueckzug von Frau Yilmaz."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.2.a: erheben, erklären und interpretieren pflegebezogene Daten von Menschen aller Altersstufen auch in komplexen gesundheitlichen Problemlagen anhand von pflege- und bezugswissenschaftlichen Erkenntnissen,
+- I.2.b: unterstützen Menschen aller Altersstufen durch Mitwirkung an der Entwicklung von fachlich begründeten Pflegeinterventionen der Gesundheitsförderung, Prävention und Kuration,
+- I.3.a: pflegen, begleiten, unterstützen und beraten Menschen aller Altersstufen sowie deren Bezugspersonen in Phasen fortschreitender Demenz oder schwerer chronischer Krankheitsverläufe sowie am Lebensende,
+- I.6.a: wahren das Selbstbestimmungsrecht der zu pflegenden Menschen aller Altersstufen, insbesondere auch, wenn sie in ihrer Selbstbestimmungsfähigkeit eingeschränkt sind,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.a: machen sich eigene Deutungs- und Handlungsmuster in der pflegerischen Interaktion mit Menschen aller Altersstufen und ihren Bezugspersonen und mit ihren unterschiedlichen, insbesondere kulturellen und sozialen, Hintergründen bewusst und reflektieren sie,
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.c: gestalten die Kommunikation von Menschen aller Altersstufen und ihren Bezugspersonen in unterschiedlichen Pflegesituationen unter Einsatz verschiedener Interaktionsformen und balancieren das Spannungsfeld von Nähe und Distanz aus,
+- II.1.d: gestalten pflegeberufliche Kommunikationssituationen mit zu pflegenden Menschen aller Altersstufen und deren Bezugspersonen auch bei divergierenden Zielsetzungen oder Sichtweisen verständigungsorientiert und fördern eine beteiligungsorientierte Entscheidungsfindung,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.1.f: reflektieren sich abzeichnende oder bestehende Konflikte in pflegerischen Versorgungssituationen mit Menschen aller Altersstufen und entwickeln Ansätze zur Konfliktschlichtung und -lösung, auch unter Hinzuziehung von Angeboten zur Reflexion professioneller Kommunikation,
+- II.1.g: reflektieren Phänomene von Macht und Machtmissbrauch in pflegerischen Handlungsfeldern der Versorgung von zu pflegenden Menschen aller Altersstufen.
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.3.c: tragen in ethischen Dilemmasituationen mit Menschen aller Altersstufen oder ihren Bezugspersonen im interprofessionellen Gespräch zur gemeinsamen Entscheidungsfindung bei.
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- III.3.d: koordinieren die Pflege von Menschen aller Altersstufen in verschiedenen Versorgungskontexten und organisieren Termine sowie berufsgruppenübergreifende Leistungen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- V.1.d: leiten aus beruflichen Erfahrungen in der pflegerischen Versorgung und Unterstützung von Menschen aller Altersstufen und ihren Angehörigen mögliche Fragen an Pflegewissenschaft und -forschung ab.
+- V.2.c: setzen Strategien zur Kompensation und Bewältigung unvermeidbarer beruflicher Belastungen gezielt ein und nehmen Unterstützungsangebote frühzeitig wahr oder fordern diese aktiv ein,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "I.2.a",
+    "II.1.b",
+    "II.1.c",
+    "II.1.e"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:43.938332+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Frau Yilmaz, welche seit einiger Zeit unter einer im Zusammenhang mit einer depressiven Episode stehenden Antriebsminderung leidet, deren Verlauf bislang nicht klar abzuschaetzen ist, wurde von den Mitpatienten dabei beobachtet, wie sie sich, ohne dass hierfuer eine unmittelbare Ursache erkennbar gewesen waere, in ihr Zimmer zurueckgezogen habe und dort ueber laengere Zeit verharrt sei. Es wird angenommen, dass eine Ansprache erfolgen sollte."""
+
+Teilaufgabe:
+"""Es sollten Aspekte der Ansprache von Frau Yilmaz beschrieben werden."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.2.a: erheben, erklären und interpretieren pflegebezogene Daten von Menschen aller Altersstufen auch in komplexen gesundheitlichen Problemlagen anhand von pflege- und bezugswissenschaftlichen Erkenntnissen,
+- I.2.b: unterstützen Menschen aller Altersstufen durch Mitwirkung an der Entwicklung von fachlich begründeten Pflegeinterventionen der Gesundheitsförderung, Prävention und Kuration,
+- I.3.a: pflegen, begleiten, unterstützen und beraten Menschen aller Altersstufen sowie deren Bezugspersonen in Phasen fortschreitender Demenz oder schwerer chronischer Krankheitsverläufe sowie am Lebensende,
+- I.6.a: wahren das Selbstbestimmungsrecht der zu pflegenden Menschen aller Altersstufen, insbesondere auch, wenn sie in ihrer Selbstbestimmungsfähigkeit eingeschränkt sind,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.a: machen sich eigene Deutungs- und Handlungsmuster in der pflegerischen Interaktion mit Menschen aller Altersstufen und ihren Bezugspersonen und mit ihren unterschiedlichen, insbesondere kulturellen und sozialen, Hintergründen bewusst und reflektieren sie,
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.c: gestalten die Kommunikation von Menschen aller Altersstufen und ihren Bezugspersonen in unterschiedlichen Pflegesituationen unter Einsatz verschiedener Interaktionsformen und balancieren das Spannungsfeld von Nähe und Distanz aus,
+- II.1.d: gestalten pflegeberufliche Kommunikationssituationen mit zu pflegenden Menschen aller Altersstufen und deren Bezugspersonen auch bei divergierenden Zielsetzungen oder Sichtweisen verständigungsorientiert und fördern eine beteiligungsorientierte Entscheidungsfindung,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.1.f: reflektieren sich abzeichnende oder bestehende Konflikte in pflegerischen Versorgungssituationen mit Menschen aller Altersstufen und entwickeln Ansätze zur Konfliktschlichtung und -lösung, auch unter Hinzuziehung von Angeboten zur Reflexion professioneller Kommunikation,
+- II.1.g: reflektieren Phänomene von Macht und Machtmissbrauch in pflegerischen Handlungsfeldern der Versorgung von zu pflegenden Menschen aller Altersstufen.
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.b: setzen Schulungen mit Einzelpersonen und kleineren Gruppen zu pflegender Menschen aller Altersstufen um,
+- II.3.c: tragen in ethischen Dilemmasituationen mit Menschen aller Altersstufen oder ihren Bezugspersonen im interprofessionellen Gespräch zur gemeinsamen Entscheidungsfindung bei.
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- III.3.d: koordinieren die Pflege von Menschen aller Altersstufen in verschiedenen Versorgungskontexten und organisieren Termine sowie berufsgruppenübergreifende Leistungen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- V.1.d: leiten aus beruflichen Erfahrungen in der pflegerischen Versorgung und Unterstützung von Menschen aller Altersstufen und ihren Angehörigen mögliche Fragen an Pflegewissenschaft und -forschung ab.
+- V.2.c: setzen Strategien zur Kompensation und Bewältigung unvermeidbarer beruflicher Belastungen gezielt ein und nehmen Unterstützungsangebote frühzeitig wahr oder fordern diese aktiv ein,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "II.1.b",
+    "II.1.c",
+    "II.1.d",
+    "II.1.e"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:46.472475+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie 3 Beobachtungen bei Herrn Petrovic und bewerten Sie diese hinsichtlich einer Eigen- oder Fremdgefaehrdung."""
+
+Erkannter Operator der Teilaufgabe: 'nennen', 'bewerten' (Anforderungsbereich I, III).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""naechtliche Unruhe
+lautes Ansprechen und Umwerfen eines Stuhls
+Wahnerleben bezogen auf die Nachbarn"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont enthält ausschließlich Beobachtungen (Aufzählung), die dem Operator 'nennen' entsprechen. Die Bewertung der Beobachtungen hinsichtlich Eigen- oder Fremdgefährdung wird durch die Struktur des Erwartungshorizonts nicht explizit bepunktet, da diese Leistung durch den Operator 'bewerten' (Anforderungsbereich III) abgedeckt wird und nicht durch zusätzliche Begründungen oder Erklärungen im Erwartungshorizont ersetzt werden muss."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:48.091029+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie 3 deeskalierende Massnahmen fuer die Situation im Aufenthaltsraum."""
+
+Erkannter Operator der Teilaufgabe: 'nennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Reizreduktion herstellen
+ruhige Ansprache mit Abstand
+Mitpatienten schuetzen"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont bepunktet ausschließlich eine Aufzählung von Maßnahmen (Reizreduktion, ruhige Ansprache, Schutz der Mitpatienten), was exakt dem Operator 'nennen' entspricht. Es gibt keine Hinweise auf eine geforderte Begründung oder weitere Leistungsarten."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:49.962905+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie 2 rechtliche Grundlagen fuer freiheitsentziehende Massnahmen."""
+
+Erkannter Operator der Teilaufgabe: 'nennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""richterliche Genehmigung erforderlich
+rechtfertigender Notstand als Ausnahme"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont verlangt lediglich die Nennung von zwei rechtlichen Grundlagen (Stichpunkte: 'richterliche Genehmigung erforderlich' und 'rechtfertigender Notstand als Ausnahme'), was exakt dem Operator 'nennen' entspricht. Es gibt keine Begründungsleistung oder andere Leistungsart, die nicht von der Aufgabenstellung abgedeckt wird."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:53.272464+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie 2 Aspekte zur Einbeziehung der Tochter von Herrn Petrovic."""
+
+Erkannter Operator der Teilaufgabe: 'nennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""altersgerechte Information
+Schweigepflicht beachten"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont bepunktet ausschließlich eine Aufzählung (zwei Aspekte), was dem Operator 'nennen' entspricht. Es gibt keine Hinweise auf eine geforderte Begründung oder weitere Leistungsart."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:54.518945+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie Beobachtungen zum Rueckzug von Frau Yilmaz."""
+
+Erkannter Operator der Teilaufgabe: 'nennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""laengerer Rueckzug ins Zimmer
+keine erkennbare unmittelbare Ursache"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont verlangt lediglich die Nennung von Beobachtungen (Aufzählung), was exakt dem Operator 'nennen' entspricht. Es gibt keine Hinweise auf eine andere Leistungsart wie Begründung oder Analyse."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:55.647682+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Frau Ostermann ist 79 Jahre alt und lebt allein in ihrer Wohnung im zweiten Stock. Sie erhaelt seit 8 Monaten zweimal taeglich Unterstuetzung durch einen ambulanten Pflegedienst. Frau Ostermann hat eine Coxarthrose beidseits und geht in der Wohnung an einem Rollator. Das Treppenhaus verlaesst sie seit 3 Monaten nicht mehr. Ihre Tochter wohnt 200 Kilometer entfernt und ruft jeden Abend an. Frau Ostermann berichtet Ihnen, dass sie den Chor vermisst, in dem sie 30 Jahre gesungen hat. Beim Fruehstueck sagt sie: 'Ich sitze hier nur noch herum.' Sie bereitet ihre Mahlzeiten selbst zu und moechte das weiterhin tun. Die Tochter hat beim letzten Besuch gefragt, ob ein Umzug in eine Pflegeeinrichtung noetig ist."""
+
+Teilaufgabe:
+"""Beschreiben Sie 4 Beobachtungen aus der Fallsituation, die die Selbstversorgung von Frau Ostermann betreffen."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.g: entwickeln mit Menschen aller Altersstufen und ihren Bezugspersonen und dem sozialen Netz altersentsprechende lebensweltorientierte Angebote zur Auseinandersetzung mit und Bewältigung von Pflegebedürftigkeit und ihren Folgen,
+- I.5.a: erheben soziale, familiale und biografische Informationen sowie Unterstützungsmöglichkeiten durch Bezugspersonen und soziale Netzwerke bei Menschen aller Altersstufen und identifizieren Ressourcen und Herausforderungen in der Lebens- und Entwicklungsgestaltung,
+- I.5.b: entwickeln gemeinsam mit Menschen aller Altersstufen und ihren Bezugspersonen Angebote zur sinnstiftenden Aktivität, zur kulturellen Teilhabe, zum Lernen und Spielen und fördern damit die Lebensqualität und die soziale Integration,
+- I.5.c: berücksichtigen bei der Planung und Gestaltung von Alltagsaktivitäten die diversen Bedürfnisse und Erwartungen, die kulturellen und religiösen Kontexte, die sozialen Lagen, die Entwicklungsphase und Entwicklungsaufgaben von Menschen aller Altersstufen,
+- I.5.d: beziehen freiwillig Engagierte zur Unterstützung und Bereicherung der Lebensgestaltung in die Versorgungsprozesse von Menschen aller Altersstufen ein.
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- I.6.e: stimmen die Interaktion sowie die Gestaltung des Pflegeprozesses auf den individuellen Entwicklungsstand der zu pflegenden Menschen aller Altersstufen ab und unterstützen entwicklungsbedingte Formen der Krankheitsbewältigung.
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.3.b: fördern und unterstützen Menschen aller Altersstufen bei der Selbstverwirklichung und Selbstbestimmung über das eigene Leben, auch unter Abwägung konkurrierender ethischer Prinzipien,
+- III.1.a: stimmen ihr Pflegehandeln zur Gewährleistung klientenorientierter komplexer Pflegeprozesse im qualifikationsheterogenen Pflegeteam ab und koordinieren die Pflege von Menschen aller Altersstufen unter Berücksichtigung der jeweiligen Verantwortungs- und Aufgabenbereiche in unterschiedlichen Versorgungsformen,
+- III.1.b: delegieren unter Berücksichtigung weiterer rechtlicher Bestimmungen ausgewählte Maßnahmen an Personen anderer Qualifikationsniveaus und überwachen die Durchführungsqualität,
+- III.1.c: beraten Teammitglieder kollegial bei pflegefachlichen Fragestellungen und unterstützen sie bei der Übernahme und Ausgestaltung ihres jeweiligen Verantwortungs- und Aufgabenbereiches,
+- III.1.d: beteiligen sich im Team an der Einarbeitung neuer Kolleginnen und Kollegen und leiten Auszubildende, Praktikantinnen und Praktikanten sowie freiwillig Engagierte in unterschiedlichen Versorgungssettings an,
+- III.1.e: übernehmen Mitverantwortung für die Organisation und Gestaltung der gemeinsamen Arbeitsprozesse,
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"codes": [
+		"I.5.a",
+		"I.5.c",
+		"II.1.b",
+		"II.3.b"
+	]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:56.797656+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Frau Ostermann ist 79 Jahre alt und lebt allein in ihrer Wohnung im zweiten Stock. Sie erhaelt seit 8 Monaten zweimal taeglich Unterstuetzung durch einen ambulanten Pflegedienst. Frau Ostermann hat eine Coxarthrose beidseits und geht in der Wohnung an einem Rollator. Das Treppenhaus verlaesst sie seit 3 Monaten nicht mehr. Ihre Tochter wohnt 200 Kilometer entfernt und ruft jeden Abend an. Frau Ostermann berichtet Ihnen, dass sie den Chor vermisst, in dem sie 30 Jahre gesungen hat. Beim Fruehstueck sagt sie: 'Ich sitze hier nur noch herum.' Sie bereitet ihre Mahlzeiten selbst zu und moechte das weiterhin tun. Die Tochter hat beim letzten Besuch gefragt, ob ein Umzug in eine Pflegeeinrichtung noetig ist."""
+
+Teilaufgabe:
+"""Begruenden Sie 2 pflegerische Massnahmen, die die Selbststaendigkeit von Frau Ostermann erhalten."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.g: entwickeln mit Menschen aller Altersstufen und ihren Bezugspersonen und dem sozialen Netz altersentsprechende lebensweltorientierte Angebote zur Auseinandersetzung mit und Bewältigung von Pflegebedürftigkeit und ihren Folgen,
+- I.5.a: erheben soziale, familiale und biografische Informationen sowie Unterstützungsmöglichkeiten durch Bezugspersonen und soziale Netzwerke bei Menschen aller Altersstufen und identifizieren Ressourcen und Herausforderungen in der Lebens- und Entwicklungsgestaltung,
+- I.5.b: entwickeln gemeinsam mit Menschen aller Altersstufen und ihren Bezugspersonen Angebote zur sinnstiftenden Aktivität, zur kulturellen Teilhabe, zum Lernen und Spielen und fördern damit die Lebensqualität und die soziale Integration,
+- I.5.c: berücksichtigen bei der Planung und Gestaltung von Alltagsaktivitäten die diversen Bedürfnisse und Erwartungen, die kulturellen und religiösen Kontexte, die sozialen Lagen, die Entwicklungsphase und Entwicklungsaufgaben von Menschen aller Altersstufen,
+- I.5.d: beziehen freiwillig Engagierte zur Unterstützung und Bereicherung der Lebensgestaltung in die Versorgungsprozesse von Menschen aller Altersstufen ein.
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- I.6.e: stimmen die Interaktion sowie die Gestaltung des Pflegeprozesses auf den individuellen Entwicklungsstand der zu pflegenden Menschen aller Altersstufen ab und unterstützen entwicklungsbedingte Formen der Krankheitsbewältigung.
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.3.b: fördern und unterstützen Menschen aller Altersstufen bei der Selbstverwirklichung und Selbstbestimmung über das eigene Leben, auch unter Abwägung konkurrierender ethischer Prinzipien,
+- III.1.a: stimmen ihr Pflegehandeln zur Gewährleistung klientenorientierter komplexer Pflegeprozesse im qualifikationsheterogenen Pflegeteam ab und koordinieren die Pflege von Menschen aller Altersstufen unter Berücksichtigung der jeweiligen Verantwortungs- und Aufgabenbereiche in unterschiedlichen Versorgungsformen,
+- III.1.b: delegieren unter Berücksichtigung weiterer rechtlicher Bestimmungen ausgewählte Maßnahmen an Personen anderer Qualifikationsniveaus und überwachen die Durchführungsqualität,
+- III.1.c: beraten Teammitglieder kollegial bei pflegefachlichen Fragestellungen und unterstützen sie bei der Übernahme und Ausgestaltung ihres jeweiligen Verantwortungs- und Aufgabenbereiches,
+- III.1.d: beteiligen sich im Team an der Einarbeitung neuer Kolleginnen und Kollegen und leiten Auszubildende, Praktikantinnen und Praktikanten sowie freiwillig Engagierte in unterschiedlichen Versorgungssettings an,
+- III.1.e: übernehmen Mitverantwortung für die Organisation und Gestaltung der gemeinsamen Arbeitsprozesse,
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "I.1.g",
+    "I.5.b",
+    "II.1.b",
+    "II.3.b"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:57.935941+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Frau Ostermann ist 79 Jahre alt und lebt allein in ihrer Wohnung im zweiten Stock. Sie erhaelt seit 8 Monaten zweimal taeglich Unterstuetzung durch einen ambulanten Pflegedienst. Frau Ostermann hat eine Coxarthrose beidseits und geht in der Wohnung an einem Rollator. Das Treppenhaus verlaesst sie seit 3 Monaten nicht mehr. Ihre Tochter wohnt 200 Kilometer entfernt und ruft jeden Abend an. Frau Ostermann berichtet Ihnen, dass sie den Chor vermisst, in dem sie 30 Jahre gesungen hat. Beim Fruehstueck sagt sie: 'Ich sitze hier nur noch herum.' Sie bereitet ihre Mahlzeiten selbst zu und moechte das weiterhin tun. Die Tochter hat beim letzten Besuch gefragt, ob ein Umzug in eine Pflegeeinrichtung noetig ist."""
+
+Teilaufgabe:
+"""Planen Sie 3 Schritte fuer ein Beratungsgespraech mit der Tochter von Frau Ostermann zur Frage des Umzugs."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.g: entwickeln mit Menschen aller Altersstufen und ihren Bezugspersonen und dem sozialen Netz altersentsprechende lebensweltorientierte Angebote zur Auseinandersetzung mit und Bewältigung von Pflegebedürftigkeit und ihren Folgen,
+- I.5.a: erheben soziale, familiale und biografische Informationen sowie Unterstützungsmöglichkeiten durch Bezugspersonen und soziale Netzwerke bei Menschen aller Altersstufen und identifizieren Ressourcen und Herausforderungen in der Lebens- und Entwicklungsgestaltung,
+- I.5.b: entwickeln gemeinsam mit Menschen aller Altersstufen und ihren Bezugspersonen Angebote zur sinnstiftenden Aktivität, zur kulturellen Teilhabe, zum Lernen und Spielen und fördern damit die Lebensqualität und die soziale Integration,
+- I.5.c: berücksichtigen bei der Planung und Gestaltung von Alltagsaktivitäten die diversen Bedürfnisse und Erwartungen, die kulturellen und religiösen Kontexte, die sozialen Lagen, die Entwicklungsphase und Entwicklungsaufgaben von Menschen aller Altersstufen,
+- I.5.d: beziehen freiwillig Engagierte zur Unterstützung und Bereicherung der Lebensgestaltung in die Versorgungsprozesse von Menschen aller Altersstufen ein.
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- I.6.e: stimmen die Interaktion sowie die Gestaltung des Pflegeprozesses auf den individuellen Entwicklungsstand der zu pflegenden Menschen aller Altersstufen ab und unterstützen entwicklungsbedingte Formen der Krankheitsbewältigung.
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.3.b: fördern und unterstützen Menschen aller Altersstufen bei der Selbstverwirklichung und Selbstbestimmung über das eigene Leben, auch unter Abwägung konkurrierender ethischer Prinzipien,
+- III.1.a: stimmen ihr Pflegehandeln zur Gewährleistung klientenorientierter komplexer Pflegeprozesse im qualifikationsheterogenen Pflegeteam ab und koordinieren die Pflege von Menschen aller Altersstufen unter Berücksichtigung der jeweiligen Verantwortungs- und Aufgabenbereiche in unterschiedlichen Versorgungsformen,
+- III.1.b: delegieren unter Berücksichtigung weiterer rechtlicher Bestimmungen ausgewählte Maßnahmen an Personen anderer Qualifikationsniveaus und überwachen die Durchführungsqualität,
+- III.1.c: beraten Teammitglieder kollegial bei pflegefachlichen Fragestellungen und unterstützen sie bei der Übernahme und Ausgestaltung ihres jeweiligen Verantwortungs- und Aufgabenbereiches,
+- III.1.d: beteiligen sich im Team an der Einarbeitung neuer Kolleginnen und Kollegen und leiten Auszubildende, Praktikantinnen und Praktikanten sowie freiwillig Engagierte in unterschiedlichen Versorgungssettings an,
+- III.1.e: übernehmen Mitverantwortung für die Organisation und Gestaltung der gemeinsamen Arbeitsprozesse,
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"codes": [
+		"I.5.a",
+		"I.5.b",
+		"I.5.c",
+		"I.6.d",
+		"II.1.b",
+		"II.3.b"
+	]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:58.453360+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Frau Ostermann ist 79 Jahre alt und lebt allein in ihrer Wohnung im zweiten Stock. Sie erhaelt seit 8 Monaten zweimal taeglich Unterstuetzung durch einen ambulanten Pflegedienst. Frau Ostermann hat eine Coxarthrose beidseits und geht in der Wohnung an einem Rollator. Das Treppenhaus verlaesst sie seit 3 Monaten nicht mehr. Ihre Tochter wohnt 200 Kilometer entfernt und ruft jeden Abend an. Frau Ostermann berichtet Ihnen, dass sie den Chor vermisst, in dem sie 30 Jahre gesungen hat. Beim Fruehstueck sagt sie: 'Ich sitze hier nur noch herum.' Sie bereitet ihre Mahlzeiten selbst zu und moechte das weiterhin tun. Die Tochter hat beim letzten Besuch gefragt, ob ein Umzug in eine Pflegeeinrichtung noetig ist."""
+
+Teilaufgabe:
+"""Erlaeutern Sie 2 Moeglichkeiten, wie Sie Frau Ostermann bei der Wiederaufnahme sozialer Kontakte unterstuetzen."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.1.g: entwickeln mit Menschen aller Altersstufen und ihren Bezugspersonen und dem sozialen Netz altersentsprechende lebensweltorientierte Angebote zur Auseinandersetzung mit und Bewältigung von Pflegebedürftigkeit und ihren Folgen,
+- I.5.a: erheben soziale, familiale und biografische Informationen sowie Unterstützungsmöglichkeiten durch Bezugspersonen und soziale Netzwerke bei Menschen aller Altersstufen und identifizieren Ressourcen und Herausforderungen in der Lebens- und Entwicklungsgestaltung,
+- I.5.b: entwickeln gemeinsam mit Menschen aller Altersstufen und ihren Bezugspersonen Angebote zur sinnstiftenden Aktivität, zur kulturellen Teilhabe, zum Lernen und Spielen und fördern damit die Lebensqualität und die soziale Integration,
+- I.5.c: berücksichtigen bei der Planung und Gestaltung von Alltagsaktivitäten die diversen Bedürfnisse und Erwartungen, die kulturellen und religiösen Kontexte, die sozialen Lagen, die Entwicklungsphase und Entwicklungsaufgaben von Menschen aller Altersstufen,
+- I.5.d: beziehen freiwillig Engagierte zur Unterstützung und Bereicherung der Lebensgestaltung in die Versorgungsprozesse von Menschen aller Altersstufen ein.
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- I.6.e: stimmen die Interaktion sowie die Gestaltung des Pflegeprozesses auf den individuellen Entwicklungsstand der zu pflegenden Menschen aller Altersstufen ab und unterstützen entwicklungsbedingte Formen der Krankheitsbewältigung.
+- II.1.b: gestalten kurz- und langfristige professionelle Beziehungen mit Menschen aller Altersstufen und ihren Bezugspersonen, die auch bei divergierenden Sichtweisen oder Zielsetzungen und schwer nachvollziehbaren Verhaltensweisen von Empathie, Wertschätzung, Achtsamkeit und Kongruenz gekennzeichnet sind,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.3.b: fördern und unterstützen Menschen aller Altersstufen bei der Selbstverwirklichung und Selbstbestimmung über das eigene Leben, auch unter Abwägung konkurrierender ethischer Prinzipien,
+- III.1.a: stimmen ihr Pflegehandeln zur Gewährleistung klientenorientierter komplexer Pflegeprozesse im qualifikationsheterogenen Pflegeteam ab und koordinieren die Pflege von Menschen aller Altersstufen unter Berücksichtigung der jeweiligen Verantwortungs- und Aufgabenbereiche in unterschiedlichen Versorgungsformen,
+- III.1.b: delegieren unter Berücksichtigung weiterer rechtlicher Bestimmungen ausgewählte Maßnahmen an Personen anderer Qualifikationsniveaus und überwachen die Durchführungsqualität,
+- III.1.c: beraten Teammitglieder kollegial bei pflegefachlichen Fragestellungen und unterstützen sie bei der Übernahme und Ausgestaltung ihres jeweiligen Verantwortungs- und Aufgabenbereiches,
+- III.1.d: beteiligen sich im Team an der Einarbeitung neuer Kolleginnen und Kollegen und leiten Auszubildende, Praktikantinnen und Praktikanten sowie freiwillig Engagierte in unterschiedlichen Versorgungssettings an,
+- III.1.e: übernehmen Mitverantwortung für die Organisation und Gestaltung der gemeinsamen Arbeitsprozesse,
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- IV.1.c: bewerten den Beitrag der eigenen Berufsgruppe zur Qualitätsentwicklung und -sicherung und erfüllen die anfallenden Dokumentationsverpflichtungen auch im Kontext von interner und externer Kontrolle und Aufsicht,
+- V.1.c: begründen und reflektieren das Pflegehandeln kontinuierlich auf der Basis von vielfältigen oder spezifischen pflegewissenschaftlichen und bezugswissenschaftlichen evidenzbasierten Studienergebnissen, Theorien, Konzepten und Modellen sowie gendermedizinischen Erkenntnissen,
+- V.2.a: bewerten das lebenslange Lernen als ein Element der persönlichen und beruflichen Weiterentwicklung und übernehmen Eigeninitiative und Verantwortung für das eigene Lernen und nutzen hierfür auch moderne Informations- und Kommunikationstechnologien,
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"codes": [
+		"I.1.g",
+		"I.5.b"
+	]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:59.063111+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Herr Vogt ist 45 Jahre alt und wurde vor 4 Tagen an der linken Schulter operiert. Er arbeitet als Fliesenleger und ist seit dem Unfall arbeitsunfaehig. Herr Vogt traegt eine Abduktionsschiene und darf den Arm noch nicht aktiv heben. Die Physiotherapie hat mit passiven Bewegungsuebungen begonnen. Herr Vogt uebt taeglich selbststaendig einfache Uebungen fuer die nicht betroffene Seite. Er berichtet, dass ihm die Rueckkehr zur Arbeit wichtig ist. Seine Ehefrau hat vorerst Urlaub genommen, um ihn zu unterstuetzen. Im interprofessionellen Team wird die weitere Rehabilitation besprochen."""
+
+Teilaufgabe:
+"""Beschreiben Sie 3 Ressourcen von Herrn Vogt, die die Rehabilitation unterstuetzen."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.5.a: erheben soziale, familiale und biografische Informationen sowie Unterstützungsmöglichkeiten durch Bezugspersonen und soziale Netzwerke bei Menschen aller Altersstufen und identifizieren Ressourcen und Herausforderungen in der Lebens- und Entwicklungsgestaltung,
+- I.5.b: entwickeln gemeinsam mit Menschen aller Altersstufen und ihren Bezugspersonen Angebote zur sinnstiftenden Aktivität, zur kulturellen Teilhabe, zum Lernen und Spielen und fördern damit die Lebensqualität und die soziale Integration,
+- I.5.d: beziehen freiwillig Engagierte zur Unterstützung und Bereicherung der Lebensgestaltung in die Versorgungsprozesse von Menschen aller Altersstufen ein.
+- I.6.b: unterstützen Menschen aller Altersstufen mit angeborener oder erworbener Behinderung bei der Wiederherstellung, Kompensation und Adaption eingeschränkter Fähigkeiten, um sie für eine möglichst selbständige Entwicklung, Lebensführung und gesellschaftliche Teilhabe zu befähigen,
+- I.6.c: tragen durch rehabilitative Maßnahmen und durch die Integration technischer und digitaler Assistenzsysteme zum Erhalt und zur Wiedererlangung der Alltagskompetenz von Menschen aller Altersstufen bei und reflektieren die Potenziale und Grenzen technischer und digitaler Unterstützung,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.c: beraten zu pflegende Menschen aller Altersstufen und ihre Bezugspersonen im Umgang mit krankheits- sowie therapie- und pflegebedingten Anforderungen und befähigen sie, ihre Gesundheitsziele in größtmöglicher Selbständigkeit und Selbstbestimmung zu erreichen,
+- II.2.d: reflektieren ihre Möglichkeiten und Begrenzungen zur Gestaltung von professionellen Informations-, Instruktions-, Schulungs- und Beratungsangeboten bei Menschen aller Altersstufen.
+- II.3.a: setzen sich für die Verwirklichung von Menschenrechten, Ethikkodizes und die Förderung der spezifischen Bedürfnisse und Gewohnheiten von zu pflegenden Menschen aller Altersstufen und ihren Bezugspersonen ein,
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- III.3.d: koordinieren die Pflege von Menschen aller Altersstufen in verschiedenen Versorgungskontexten und organisieren Termine sowie berufsgruppenübergreifende Leistungen,
+- III.3.e: koordinieren die integrierte Versorgung von chronisch kranken Menschen aller Altersstufen in der Primärversorgung,
+- III.3.f: evaluieren den gesamten Versorgungsprozess gemeinsam mit dem therapeutischen Team im Hinblick auf Patientenorientierung und -partizipation.
+- IV.1.a: integrieren erweiterte Anforderungen zur internen und externen Qualitätssicherung in das Pflegehandeln und verstehen Qualitätsentwicklung und -sicherung als rechtlich verankertes und interdisziplinäres Anliegen in Institutionen des Gesundheitswesens,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- IV.2.d: reflektieren auf der Grundlage eines breiten Wissens ihre Handlungs- und Entscheidungsspielräume in unterschiedlichen Abrechnungssystemen,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+- V.2.e: verfügen über ein Verständnis für die historischen Zusammenhänge des Pflegeberufs und positionieren sich mit ihrer beruflichen Pflegeausbildung im Kontext der Gesundheitsberufe unter Berücksichtigung der ausgewiesenen Vorbehaltsaufgaben,
+- V.2.g: bringen sich den gesellschaftlichen Veränderungen und berufspolitischen Entwicklungen entsprechend in die Weiterentwicklung des Pflegeberufs ein.
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": ["I.5.a"]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:47:59.661814+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Herr Vogt ist 45 Jahre alt und wurde vor 4 Tagen an der linken Schulter operiert. Er arbeitet als Fliesenleger und ist seit dem Unfall arbeitsunfaehig. Herr Vogt traegt eine Abduktionsschiene und darf den Arm noch nicht aktiv heben. Die Physiotherapie hat mit passiven Bewegungsuebungen begonnen. Herr Vogt uebt taeglich selbststaendig einfache Uebungen fuer die nicht betroffene Seite. Er berichtet, dass ihm die Rueckkehr zur Arbeit wichtig ist. Seine Ehefrau hat vorerst Urlaub genommen, um ihn zu unterstuetzen. Im interprofessionellen Team wird die weitere Rehabilitation besprochen."""
+
+Teilaufgabe:
+"""Begruenden Sie 2 pflegerische Massnahmen zur Foerderung der Eigenaktivitaet von Herrn Vogt."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.5.a: erheben soziale, familiale und biografische Informationen sowie Unterstützungsmöglichkeiten durch Bezugspersonen und soziale Netzwerke bei Menschen aller Altersstufen und identifizieren Ressourcen und Herausforderungen in der Lebens- und Entwicklungsgestaltung,
+- I.5.b: entwickeln gemeinsam mit Menschen aller Altersstufen und ihren Bezugspersonen Angebote zur sinnstiftenden Aktivität, zur kulturellen Teilhabe, zum Lernen und Spielen und fördern damit die Lebensqualität und die soziale Integration,
+- I.5.d: beziehen freiwillig Engagierte zur Unterstützung und Bereicherung der Lebensgestaltung in die Versorgungsprozesse von Menschen aller Altersstufen ein.
+- I.6.b: unterstützen Menschen aller Altersstufen mit angeborener oder erworbener Behinderung bei der Wiederherstellung, Kompensation und Adaption eingeschränkter Fähigkeiten, um sie für eine möglichst selbständige Entwicklung, Lebensführung und gesellschaftliche Teilhabe zu befähigen,
+- I.6.c: tragen durch rehabilitative Maßnahmen und durch die Integration technischer und digitaler Assistenzsysteme zum Erhalt und zur Wiedererlangung der Alltagskompetenz von Menschen aller Altersstufen bei und reflektieren die Potenziale und Grenzen technischer und digitaler Unterstützung,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.c: beraten zu pflegende Menschen aller Altersstufen und ihre Bezugspersonen im Umgang mit krankheits- sowie therapie- und pflegebedingten Anforderungen und befähigen sie, ihre Gesundheitsziele in größtmöglicher Selbständigkeit und Selbstbestimmung zu erreichen,
+- II.2.d: reflektieren ihre Möglichkeiten und Begrenzungen zur Gestaltung von professionellen Informations-, Instruktions-, Schulungs- und Beratungsangeboten bei Menschen aller Altersstufen.
+- II.3.a: setzen sich für die Verwirklichung von Menschenrechten, Ethikkodizes und die Förderung der spezifischen Bedürfnisse und Gewohnheiten von zu pflegenden Menschen aller Altersstufen und ihren Bezugspersonen ein,
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- III.3.d: koordinieren die Pflege von Menschen aller Altersstufen in verschiedenen Versorgungskontexten und organisieren Termine sowie berufsgruppenübergreifende Leistungen,
+- III.3.e: koordinieren die integrierte Versorgung von chronisch kranken Menschen aller Altersstufen in der Primärversorgung,
+- III.3.f: evaluieren den gesamten Versorgungsprozess gemeinsam mit dem therapeutischen Team im Hinblick auf Patientenorientierung und -partizipation.
+- IV.1.a: integrieren erweiterte Anforderungen zur internen und externen Qualitätssicherung in das Pflegehandeln und verstehen Qualitätsentwicklung und -sicherung als rechtlich verankertes und interdisziplinäres Anliegen in Institutionen des Gesundheitswesens,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- IV.2.d: reflektieren auf der Grundlage eines breiten Wissens ihre Handlungs- und Entscheidungsspielräume in unterschiedlichen Abrechnungssystemen,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+- V.2.e: verfügen über ein Verständnis für die historischen Zusammenhänge des Pflegeberufs und positionieren sich mit ihrer beruflichen Pflegeausbildung im Kontext der Gesundheitsberufe unter Berücksichtigung der ausgewiesenen Vorbehaltsaufgaben,
+- V.2.g: bringen sich den gesellschaftlichen Veränderungen und berufspolitischen Entwicklungen entsprechend in die Weiterentwicklung des Pflegeberufs ein.
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "codes": [
+    "II.2.c",
+    "I.6.b"
+  ]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:48:00.343191+00:00
+task: classify_kompetenz
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du bewertest eine Teilaufgabe einer staatlichen Pflegeprüfung (PflAPrV Anlage 2).
+
+Fallsituation, auf die sich diese Teilaufgabe bezieht:
+"""Herr Vogt ist 45 Jahre alt und wurde vor 4 Tagen an der linken Schulter operiert. Er arbeitet als Fliesenleger und ist seit dem Unfall arbeitsunfaehig. Herr Vogt traegt eine Abduktionsschiene und darf den Arm noch nicht aktiv heben. Die Physiotherapie hat mit passiven Bewegungsuebungen begonnen. Herr Vogt uebt taeglich selbststaendig einfache Uebungen fuer die nicht betroffene Seite. Er berichtet, dass ihm die Rueckkehr zur Arbeit wichtig ist. Seine Ehefrau hat vorerst Urlaub genommen, um ihn zu unterstuetzen. Im interprofessionellen Team wird die weitere Rehabilitation besprochen."""
+
+Teilaufgabe:
+"""Entwickeln Sie 4 Kriterien, anhand derer Sie den Rehabilitationsfortschritt von Herrn Vogt beurteilen."""
+
+Wähle aus der folgenden Liste ausschließlich die Kompetenzcodes, die diese Teilaufgabe tatsächlich prüft. Wähle keinen Code, der nicht in der Liste steht, und erfinde keinen eigenen Code. Wenn keiner der Codes passt, gib eine leere Liste zurück.
+
+Kompetenzen:
+- I.5.a: erheben soziale, familiale und biografische Informationen sowie Unterstützungsmöglichkeiten durch Bezugspersonen und soziale Netzwerke bei Menschen aller Altersstufen und identifizieren Ressourcen und Herausforderungen in der Lebens- und Entwicklungsgestaltung,
+- I.5.b: entwickeln gemeinsam mit Menschen aller Altersstufen und ihren Bezugspersonen Angebote zur sinnstiftenden Aktivität, zur kulturellen Teilhabe, zum Lernen und Spielen und fördern damit die Lebensqualität und die soziale Integration,
+- I.5.d: beziehen freiwillig Engagierte zur Unterstützung und Bereicherung der Lebensgestaltung in die Versorgungsprozesse von Menschen aller Altersstufen ein.
+- I.6.b: unterstützen Menschen aller Altersstufen mit angeborener oder erworbener Behinderung bei der Wiederherstellung, Kompensation und Adaption eingeschränkter Fähigkeiten, um sie für eine möglichst selbständige Entwicklung, Lebensführung und gesellschaftliche Teilhabe zu befähigen,
+- I.6.c: tragen durch rehabilitative Maßnahmen und durch die Integration technischer und digitaler Assistenzsysteme zum Erhalt und zur Wiedererlangung der Alltagskompetenz von Menschen aller Altersstufen bei und reflektieren die Potenziale und Grenzen technischer und digitaler Unterstützung,
+- I.6.d: fördern und gestalten die Koordination und Zusammenarbeit zwischen familialen Systemen sowie den sozialen Netzwerken und den professionellen Pflegesystemen in der pflegerischen Versorgung von Menschen aller Altersstufen,
+- II.1.e: erkennen Kommunikationsbarrieren bei zu pflegenden Menschen aller Altersstufen, insbesondere bei spezifischen Gesundheitsstörungen oder Formen von Behinderungen, und setzen unterstützende und kompensierende Maßnahmen ein, um diese zu überbrücken,
+- II.2.a: informieren Menschen aller Altersstufen zu komplexen gesundheits- und pflegebezogenen Fragestellungen und weitergehenden Fragen der pflegerischen Versorgung,
+- II.2.c: beraten zu pflegende Menschen aller Altersstufen und ihre Bezugspersonen im Umgang mit krankheits- sowie therapie- und pflegebedingten Anforderungen und befähigen sie, ihre Gesundheitsziele in größtmöglicher Selbständigkeit und Selbstbestimmung zu erreichen,
+- II.2.d: reflektieren ihre Möglichkeiten und Begrenzungen zur Gestaltung von professionellen Informations-, Instruktions-, Schulungs- und Beratungsangeboten bei Menschen aller Altersstufen.
+- II.3.a: setzen sich für die Verwirklichung von Menschenrechten, Ethikkodizes und die Förderung der spezifischen Bedürfnisse und Gewohnheiten von zu pflegenden Menschen aller Altersstufen und ihren Bezugspersonen ein,
+- III.2.f: vertreten die im Rahmen des Pflegeprozesses gewonnenen Einschätzungen zu Pflegediagnosen und erforderlichen Behandlungskonsequenzen bei Menschen aller Altersstufen in der interprofessionellen Zusammenarbeit.
+- III.3.a: übernehmen Mitverantwortung in der interdisziplinären Versorgung und Behandlung von Menschen aller Altersstufen und unterstützen die Kontinuität an interdisziplinären und institutionellen Schnittstellen,
+- III.3.b: bringen die pflegefachliche Sichtweise in die interprofessionelle Kommunikation ein,
+- III.3.c: bearbeiten interprofessionelle Konflikte in einem gemeinsamen Aushandlungsprozess auf Augenhöhe und beteiligen sich an der Entwicklung und Umsetzung einrichtungsbezogener Konzepte zum Schutz vor Gewalt,
+- III.3.d: koordinieren die Pflege von Menschen aller Altersstufen in verschiedenen Versorgungskontexten und organisieren Termine sowie berufsgruppenübergreifende Leistungen,
+- III.3.e: koordinieren die integrierte Versorgung von chronisch kranken Menschen aller Altersstufen in der Primärversorgung,
+- III.3.f: evaluieren den gesamten Versorgungsprozess gemeinsam mit dem therapeutischen Team im Hinblick auf Patientenorientierung und -partizipation.
+- IV.1.a: integrieren erweiterte Anforderungen zur internen und externen Qualitätssicherung in das Pflegehandeln und verstehen Qualitätsentwicklung und -sicherung als rechtlich verankertes und interdisziplinäres Anliegen in Institutionen des Gesundheitswesens,
+- IV.2.b: erfassen den Einfluss gesamtgesellschaftlicher Veränderungen, ökonomischer Anforderungen, technologischer sowie epidemiologischer und demografischer Entwicklungen auf die Versorgungsverträge und Versorgungsstrukturen im Gesundheits- und Sozialsystem,
+- IV.2.d: reflektieren auf der Grundlage eines breiten Wissens ihre Handlungs- und Entscheidungsspielräume in unterschiedlichen Abrechnungssystemen,
+- V.2.d: reflektieren ihre persönliche Entwicklung als professionell Pflegende und entwickeln ein eigenes Pflegeverständnis sowie ein berufliches Selbstverständnis unter Berücksichtigung berufsethischer und eigener ethischer Überzeugungen,
+- V.2.e: verfügen über ein Verständnis für die historischen Zusammenhänge des Pflegeberufs und positionieren sich mit ihrer beruflichen Pflegeausbildung im Kontext der Gesundheitsberufe unter Berücksichtigung der ausgewiesenen Vorbehaltsaufgaben,
+- V.2.g: bringen sich den gesellschaftlichen Veränderungen und berufspolitischen Entwicklungen entsprechend in die Weiterentwicklung des Pflegeberufs ein.
+
+Antworte ausschließlich mit JSON in der Form {"codes": ["<code>", ...]}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"codes": [
+		"I.6.b",
+		"II.2.c",
+		"III.3.a",
+		"III.3.f"
+	]
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:48:02.663818+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Beschreiben Sie 4 Beobachtungen aus der Fallsituation, die die Selbstversorgung von Frau Ostermann betreffen."""
+
+Erkannter Operator der Teilaufgabe: 'beschreiben' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""bereitet Mahlzeiten selbstaendig zu
+nutzt den Rollator innerhalb der Wohnung
+verlaesst das Treppenhaus seit 3 Monaten nicht
+erhaelt zweimal taeglich Unterstuetzung durch den Pflegedienst"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont besteht aus einer reinen Aufzählung von vier Beobachtungen, die die Selbstversorgung betreffen, ohne zusätzliche Begründungen oder Erklärungen. Dies entspricht exakt dem Operator 'beschreiben', der eine Beschreibung (Aufzählung) von Beobachtungen verlangt."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:48:04.297541+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Begruenden Sie 2 pflegerische Massnahmen, die die Selbststaendigkeit von Frau Ostermann erhalten."""
+
+Erkannter Operator der Teilaufgabe: 'begründen' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Anleitung zum sicheren Rollatorgebrauch, weil erhaltene Mobilitaet die Selbstversorgung traegt
+Beibehaltung der eigenen Mahlzeitenzubereitung, weil Alltagsaktivitaet Faehigkeiten stabilisiert"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"beleg_zitat": "",
+	"mismatch": false,
+	"begruendung": "Der Erwartungshorizont bepunktet korrekt die geforderte Begründungsleistung durch die explizite Angabe von Maßnahmen *sowie* deren Begründung mit dem Konnektor 'weil', was dem Operator 'begründen' (Anforderungsbereich II) entspricht. Die Stichpunktform ist hier konsequent und widerspricht nicht der Aufgabenstellung."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:48:06.052353+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Planen Sie 3 Schritte fuer ein Beratungsgespraech mit der Tochter von Frau Ostermann zur Frage des Umzugs."""
+
+Erkannter Operator der Teilaufgabe: 'planen' (Anforderungsbereich III).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Anliegen und Sorgen der Tochter erheben
+Wunsch von Frau Ostermann als Ausgangspunkt darstellen
+Versorgungsalternativen im ambulanten Setting aufzeigen"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont bepunktet eine **Aufzählung von Schritten** (konkrete Handlungsvorschläge für ein Beratungsgespräch), was exakt zur Operatorleistung ‚planen‘ (Erstellung eines strukturierten Vorgehens) passt. Kein Stichpunkt verlangt eine Begründung oder Reflexion, sondern beschränkt sich auf die Beschreibung von Maßnahmen."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:48:07.846927+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Erlaeutern Sie 2 Moeglichkeiten, wie Sie Frau Ostermann bei der Wiederaufnahme sozialer Kontakte unterstuetzen."""
+
+Erkannter Operator der Teilaufgabe: 'erläutern' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Kontakt zum Chor ueber ein Telefonat oder einen Besuchsdienst herstellen
+Begleitung beim Verlassen der Wohnung organisieren"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Operator ‚erläutern‘ verlangt eine kurze, sachliche Beschreibung oder Erklärung von Möglichkeiten zur Unterstützung. Der Erwartungshorizont listet zwei konkrete Handlungsvorschläge auf, ohne zusätzliche Begründungen oder Erklärungen zu verlangen. Es handelt sich um eine reine Aufzählung von Maßnahmen, die dem Operator entspricht."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:48:09.254112+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Beschreiben Sie 3 Ressourcen von Herrn Vogt, die die Rehabilitation unterstuetzen."""
+
+Erkannter Operator der Teilaufgabe: 'beschreiben' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""uebt taeglich selbststaendig Uebungen fuer die nicht betroffene Seite
+hat ein klares Rehabilitationsziel (Rueckkehr zur Arbeit)
+wird von der Ehefrau unterstuetzt"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont bepunktet eine **Aufzählung von Ressourcen** (konkrete Beispiele), was dem Operator ‚beschreiben‘ (Anforderungsbereich I) entspricht. Es werden keine Begründungen oder Erklärungen verlangt, sondern die Darstellung von Ressourcen in Stichpunkten, die die Rehabilitation unterstützen. Die knappe, listenförmige Notation ist hier angemessen und passt zur geforderten Leistung."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:48:13.216688+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Begruenden Sie 2 pflegerische Massnahmen zur Foerderung der Eigenaktivitaet von Herrn Vogt."""
+
+Erkannter Operator der Teilaufgabe: 'begründen' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Anleitung zu erlaubten Eigenuebungen, weil aktive Beteiligung den Rehabilitationsverlauf foerdert
+Einbindung in die Tagesplanung, weil Selbstwirksamkeit die Motivation staerkt"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont bepunktet korrekt die geforderte Begründungsleistung durch die explizite Angabe von Maßnahmen in Kombination mit einer kurzen Begründung (durch das ‚weil‘), was exakt dem Operator ‚begründen‘ entspricht. Die knappe, stichpunktartige Form ändert nichts an der geforderten Leistungsart."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:48:15.264261+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Du prüfst die Konstruktion einer Prüfungsaufgabe (staatliche Pflegeprüfung, PflAPrV Anlage 2). Es gibt hier keinen Prüfling und keine Prüfungsleistung zu beurteilen.
+
+WICHTIG -- was ein Erwartungshorizont ist: eine Korrekturhilfe in Stichpunktform. Er ist IMMER knapp und listenförmig notiert, auch bei anspruchsvollen Operatoren. Knappheit oder Listenform sind daher NIEMALS ein Hinweis auf einen Widerspruch. Entscheidend ist allein, welche ART von Leistung die Stichpunkte inhaltlich bepunkten.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Entwickeln Sie 4 Kriterien, anhand derer Sie den Rehabilitationsfortschritt von Herrn Vogt beurteilen."""
+
+Erkannter Operator der Teilaufgabe: 'entwickeln' (Anforderungsbereich III).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte):
+"""Zunahme des aktiven Bewegungsausmasses innerhalb der erlaubten Grenzen
+Ruecklauf der postoperativen Schmerzen bei Belastung
+Grad der Selbststaendigkeit bei Alltagsverrichtungen der nicht betroffenen Seite
+Einschaetzung von Herrn Vogt zur eigenen Belastbarkeit im Abgleich mit dem Team"""
+
+Beispiel A (Widerspruch): Operator 'nennen' (bloßes Aufzählen), der Erwartungshorizont verlangt "Begründen Sie, warum ..." -> mismatch=true, denn der Erwartungshorizont fordert eine Begründungsleistung, die die Teilaufgabe gar nicht verlangt.
+Beispiel B (KEIN Widerspruch): Operator 'begründen', der Erwartungshorizont notiert stichpunktartig "Maßnahme X, weil Y" -> mismatch=false, denn das "weil" bepunktet genau die Begründung; die knappe Notation ändert daran nichts.
+
+Prüfe: Bepunktet der Erwartungshorizont eine ANDERE Art von Leistung als der Operator verlangt? Im Zweifel mismatch=false. Setze mismatch=true nur, wenn du einen konkreten Stichpunkt wörtlich zitieren kannst, der eine andere Leistungsart bepunktet.
+
+Tonfall der Begründung: beratend und sachlich, nicht benotend -- keine Wörter wie "Fehler", "mangelhaft" oder "Note".
+
+Antworte ausschließlich mit JSON in der Form {"beleg_zitat": "<wörtliches Zitat aus dem Erwartungshorizont oder leer>", "mismatch": <true|false>, "begruendung": "<ein sachlicher Satz>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "beleg_zitat": "",
+  "mismatch": false,
+  "begruendung": "Der Erwartungshorizont bepunktet ausschließlich eine Aufzählung von Kriterien zur Beurteilung des Rehabilitationsfortschritts, was exakt der Anforderung des Operators 'entwickeln' (hier als Aufzählungsleistung im Anforderungsbereich III) entspricht. Kein Stichpunkt verlangt eine Begründung oder weitere Erläuterungen."
+}
+

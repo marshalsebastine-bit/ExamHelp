@@ -16,9 +16,10 @@ corpus/chunks/*
 # Extraction caches: rebuild from the sources in corpus/raw
 build/
 
-# Run logs (e.g. scripts/spot_check_german_quality.py's raw LLM responses):
-# regenerable by re-running the script, not a deliverable to track
-logs/
+# logs/ is tracked on purpose (since 2026-09-15): the model_calls_real_*.txt
+# transcripts are the evidence behind the quality spot-check docs, and they
+# cannot be regenerated identically -- providers retire models and answers
+# drift. All content in them is synthetic exam data; no keys are ever logged.
 
 # Mutation variants are reproducible from a seed, so ground truth cannot
 # drift from the variants (tech doc 9).

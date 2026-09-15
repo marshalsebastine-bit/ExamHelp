@@ -1,0 +1,823 @@
+========================================================================================
+timestamp: 2026-09-15T09:19:16.900369+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie 3 Ursachen fuer die Verschlechterung des HbA1c bei Jonas."""
+
+Erkannter Operator der Teilaufgabe: 'nennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Begruenden Sie, warum die unregelmaessige Dokumentation zur Verschlechterung fuehrt
+Bewerten Sie den Einfluss der Peer-Gruppe auf das Messverhalten
+Leiten Sie aus dem Sportpensum den veraenderten Insulinbedarf ab"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Der Operator 'nennen' (Anforderungsbereich I) verlangt eine **Aufzählung von Fakten oder konkreten Ursachen** ohne weitere Erläuterung oder Begründung. Der Erwartungshorizont fordert jedoch **Begrundungen, Bewertungen und Ableitungen** (z. B. Ursache-Wirkungs-Zusammenhänge, Einflussanalysen oder logische Schlussfolgerungen), was dem Anforderungsbereich III/IV entspricht und damit inkompatibel zur Aufgabenstellung ist."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:17.983776+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Erklaeren Sie 2 Beratungsinhalte fuer Jonas zum Umgang mit der Messung in der Gruppe."""
+
+Erkannter Operator der Teilaufgabe: 'erklären' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""diskrete Messmoeglichkeiten und Sensortechnik besprechen
+Umgang mit Nachfragen der Freunde einueben"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt eine Erklärung (Operator 'erklären' im Anforderungsbereich II), die typischerweise eine sachliche Darlegung oder Begründung der Inhalte erfordert. Der Erwartungshorizont hingegen enthält zwei kurze, unverbundene Aufzählungen ohne explizite Erklärungen oder Begründungen, was einer bloßen Auflistung entspricht und damit nicht konsistent mit dem Operator ist."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:19.371848+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Beschreiben Sie 2 Massnahmen zur Einbeziehung der Eltern von Jonas."""
+
+Erkannter Operator der Teilaufgabe: 'beschreiben' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""gemeinsames Gespraech zur Rollenklaerung
+Vereinbarung ueber die Eigenverantwortung von Jonas"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt mit dem Operator 'beschreiben' eine **konkrete Aufzählung von Maßnahmen** (Anforderungsbereich I), während der Erwartungshorizont **keine reine Auflistung** liefert, sondern die genannten Punkte als **formulierte Antworten mit impliziter Begründung** (z. B. durch inhaltliche Ausgestaltung der Maßnahmen) bewertet. Dies widerspricht der Anforderung nach einer neutralen Aufzählung ohne zusätzliche Erläuterungen."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:24.056087+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Begruenden Sie 2 praeventive Massnahmen zur Vermeidung von Folgeerkrankungen bei Jonas."""
+
+Erkannter Operator der Teilaufgabe: 'begründen' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""strukturierte Schulung, weil Selbstmanagement die Stoffwechsellage verbessert
+regelmaessige Verlaufskontrollen, weil Folgeschaeden frueh erkennbar sind"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"mismatch": true,
+	"begruendung": "Die Teilaufgabe verlangt explizit eine **Begründung** (Operator ‚begründen‘, Anforderungsbereich II), während der Erwartungshorizont lediglich **Aufzählungen ohne kausale Verknüpfung** (z. B. ‚weil‘-Sätze als bloße Beilegen) als Leistungspunkte bewertet. Dies widerspricht der Anforderung nach argumentativer Fundierung und Ursache-Wirkungs-Zusammenhängen."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:25.639921+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie Risikofaktoren bei Frau Kellner."""
+
+Erkannter Operator der Teilaufgabe: 'nennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""erhoehter Blutdruck
+bisher nicht umgesetzte Ernaehrungsumstellung"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Der Operator 'nennen' verlangt eine **Aufzählung von Risikofaktoren** (Anforderungsbereich I, Faktenebene), während der Erwartungshorizont **keine strukturierte Auflistung** bietet, sondern nur zwei konkrete Beispiele ohne Hinweis auf eine vollständige oder systematische Nennung. Zudem fehlt eine klare Vorgabe zur **Umfangsmäßigkeit** (z. B. 'mindestens 3 Risikofaktoren'), was die Konsistenz zur Operatoranforderung untergräbt."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:27.176764+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Beschreiben Sie 4 Beobachtungen aus der Fallsituation, die die Selbstversorgung von Frau Ostermann betreffen."""
+
+Erkannter Operator der Teilaufgabe: 'beschreiben' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""bereitet Mahlzeiten selbstaendig zu
+nutzt den Rollator innerhalb der Wohnung
+verlaesst das Treppenhaus seit 3 Monaten nicht
+erhaelt zweimal taeglich Unterstuetzung durch den Pflegedienst"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt eine **Beschreibung von 4 Beobachtungen** (faktische Aufzählung), während der Erwartungshorizont **konkrete Handlungen oder Zustände** als punktierte Antworten vorgibt, die zwar als Aufzählung formuliert sind, aber **keine Beobachtungen** darstellen, sondern bereits interpretierte oder bewertete Fakten (z. B. ‚verlässt das Treppenhaus seit 3 Monaten nicht‘ als Schlussfolgerung statt Beobachtung). Der Operator ‚beschreiben‘ erfordert eine **neutrale, wahrnehmbare Feststellung**, nicht eine Zusammenfassung von Handlungsmustern oder Pflegemaßnahmen."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:28.573613+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Begruenden Sie 2 pflegerische Massnahmen, die die Selbststaendigkeit von Frau Ostermann erhalten."""
+
+Erkannter Operator der Teilaufgabe: 'begründen' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Anleitung zum sicheren Rollatorgebrauch, weil erhaltene Mobilitaet die Selbstversorgung traegt
+Beibehaltung der eigenen Mahlzeitenzubereitung, weil Alltagsaktivitaet Faehigkeiten stabilisiert"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt explizit eine **Begründung** der gewählten pflegerischen Maßnahmen (Operator: *begründen*), während der Erwartungshorizont lediglich **Aufzählungen von Maßnahmen ohne analytische Ursache-Wirkungs-Zusammenhänge** liefert. Dies widerspricht der Anforderung, da der Operator eine argumentative Auseinandersetzung mit der Relevanz der Maßnahmen für die Selbstständigkeit erfordert, nicht nur deren Nennung."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:30.347790+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Planen Sie 3 Schritte fuer ein Beratungsgespraech mit der Tochter von Frau Ostermann zur Frage des Umzugs."""
+
+Erkannter Operator der Teilaufgabe: 'planen' (Anforderungsbereich III).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Anliegen und Sorgen der Tochter erheben
+Wunsch von Frau Ostermann als Ausgangspunkt darstellen
+Versorgungsalternativen im ambulanten Setting aufzeigen"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"mismatch": true,
+	"begruendung": "Der Operator ‚planen‘ (Anforderungsbereich III) verlangt eine strukturierte, zielgerichtete **Abfolge von Handlungsvorschlägen** (Schritte), während der Erwartungshorizont eine **ungeordnete Aufzählung von Inhalten** (Beratungsinhalte) bewertet. Die Teilaufgabe fordert eine **prozessuale Planung**, nicht eine thematische Auflistung."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:31.501373+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Erlaeutern Sie 2 Moeglichkeiten, wie Sie Frau Ostermann bei der Wiederaufnahme sozialer Kontakte unterstuetzen."""
+
+Erkannter Operator der Teilaufgabe: 'erläutern' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Kontakt zum Chor ueber ein Telefonat oder einen Besuchsdienst herstellen
+Begleitung beim Verlassen der Wohnung organisieren"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Der Operator ‚erläutern‘ (Anforderungsbereich II) verlangt eine **ausführliche, begründete Darlegung** der Möglichkeiten, während der Erwartungshorizont lediglich **konkrete, unkommentierte Handlungsvorschläge** (Aufzählung) als korrekt bewertet. Dies führt zu einem Widerspruch zwischen Anforderung und Bewertungskriterium."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:33.434209+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Beschreiben Sie 3 Ressourcen von Herrn Vogt, die die Rehabilitation unterstuetzen."""
+
+Erkannter Operator der Teilaufgabe: 'beschreiben' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""uebt taeglich selbststaendig Uebungen fuer die nicht betroffene Seite
+hat ein klares Rehabilitationsziel (Rueckkehr zur Arbeit)
+wird von der Ehefrau unterstuetzt"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt eine **Beschreibung von 3 Ressourcen** (Aufzählung von Fakten), während der Erwartungshorizont **keine strukturierte Auflistung** bietet, sondern eine **ungeordnete, unkommentierte Aufzählung ohne explizite Formvorgabe** – allerdings ohne zusätzliche Begründung oder Analyse. Da der Operator *Beschreiben* hier eine **faktische, prägnante Darstellung** erfordert, wäre eine **punktgenaue, nummerierte oder klare Abfolge** im Erwartungshorizont konsistenter gewesen. Die fehlende explizite Struktur (z. B. Aufzählungszeichen) führt zu einer impliziten Inkonsistenz, da der Erwartungshorizont zwar keine Begründung verlangt, aber auch keine klare Faktendarstellung garantiert."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:35.024973+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Begruenden Sie 2 pflegerische Massnahmen zur Foerderung der Eigenaktivitaet von Herrn Vogt."""
+
+Erkannter Operator der Teilaufgabe: 'begründen' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Anleitung zu erlaubten Eigenuebungen, weil aktive Beteiligung den Rehabilitationsverlauf foerdert
+Einbindung in die Tagesplanung, weil Selbstwirksamkeit die Motivation staerkt"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"mismatch": true,
+	"begruendung": "Die Teilaufgabe verlangt explizit eine **Begründung** (Operator ‚begründen‘, Anforderungsbereich II), während der Erwartungshorizont zwar zwei Maßnahmen auflistet, diese jedoch jeweils mit **kausalen Begründungen** (Ursache-Wirkungs-Zusammenhang) bewertet. Der Operator fordert zwar eine Begründung *für die Maßnahmen*, nicht die Maßnahmen selbst – der Erwartungshorizont bewertet jedoch *nur* die Begründungen, nicht die Aufzählung der Maßnahmen selbst, was zu einer inkonsistenten Fokussierung führt."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:36.377621+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Entwickeln Sie 4 Kriterien, anhand derer Sie den Rehabilitationsfortschritt von Herrn Vogt beurteilen."""
+
+Erkannter Operator der Teilaufgabe: 'entwickeln' (Anforderungsbereich III).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Zunahme des aktiven Bewegungsausmasses innerhalb der erlaubten Grenzen
+Ruecklauf der postoperativen Schmerzen bei Belastung
+Grad der Selbststaendigkeit bei Alltagsverrichtungen der nicht betroffenen Seite
+Einschaetzung von Herrn Vogt zur eigenen Belastbarkeit im Abgleich mit dem Team"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"mismatch": true,
+	"begruendung": "Der Operator ‚entwickeln‘ (Anforderungsbereich III) verlangt eine **reflektierte, strukturierte Leistung** (z. B. systematische Abgrenzung, Gewichtung oder Begründung der Kriterien), während der Erwartungshorizont **lediglich eine unkommentierte Aufzählung von vier konkreten Kriterien** ohne analytische Tiefe oder Begründung bepunktet. Die Teilaufgabe fordert damit implizit eine **Leistungsdimension**, die der Erwartungshorizont nicht abbildet."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:37.933419+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie 5 Risikofaktoren fuer Folgeerkrankungen, die die Fallsituation von Herrn Baumgartner benennt."""
+
+Erkannter Operator der Teilaufgabe: 'nennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""HbA1c von 9,4 Prozent
+Nikotinkonsum von 20 Zigaretten taeglich ueber 30 Jahre
+Body-Mass-Index von 32
+Schichtarbeit mit unregelmaessigen Mahlzeiten
+geringes Wissen ueber die Erkrankung"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": false,
+  "begruendung": "Die Teilaufgabe verlangt explizit eine **Aufzählung von 5 Risikofaktoren** (Operator ‚nennen‘, Anforderungsbereich I), während der Erwartungshorizont **genau diese Fakten als unkommentierte Liste** benennt – ohne zusätzliche Begründung, Analyse oder Bewertung. Die Konsistenz zwischen Operator und Erwartungshorizont ist somit gegeben."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:39.691883+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Erklaeren Sie 3 Inhalte, die Sie mit Herrn Baumgartner im Beratungsgespraech zur Ernaehrung bei Schichtarbeit besprechen."""
+
+Erkannter Operator der Teilaufgabe: 'erklären' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Mahlzeitenverteilung ueber die Schicht statt einer Hauptmahlzeit
+Auswahlmoeglichkeiten an Raststaetten realistisch besprechen
+Einbeziehung der Ehefrau in die Mahlzeitenplanung"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt eine **Erklärung von 3 Inhalten** (Operator ‚erklären‘ im Anforderungsbereich II), was eine **Begründung oder Vertiefung** der genannten Punkte voraussetzt (z. B. warum diese Inhalte relevant sind oder wie sie umgesetzt werden können). Der Erwartungshorizont liefert jedoch **lediglich eine Aufzählung von drei Stichpunkten ohne sachliche Begründung oder Erläuterung**, was dem Operator nicht entspricht. Eine Erklärung erfordert eine inhaltliche Auseinandersetzung, nicht bloße Nennung."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:40.915881+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Begruenden Sie 2 praeventive Massnahmen fuer Herrn Baumgartner mit pflegewissenschaftlichem Begruendungswissen."""
+
+Erkannter Operator der Teilaufgabe: 'begründen' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""strukturierte Schulung, weil Selbstmanagementkompetenz die Stoffwechsellage nachweislich verbessert
+Fussinspektion und Fusspflege, weil die Polyneuropathie ein Hauptrisiko fuer Ulzerationen ist"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt explizit eine **Begründung** (Operator ‚begründen‘, Anforderungsbereich II), während der Erwartungshorizont lediglich **Aufzählungen von Maßnahmen ohne wissenschaftliche Ursache-Wirkungs-Zusammenhänge** bewertet. Dies widerspricht der geforderten Anforderung, da Begründungen zwingend eine pflegewissenschaftliche Fundierung erfordern."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:42.197106+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Beurteilen Sie 2 Auswirkungen der Erkrankung auf die Berufstaetigkeit von Herrn Baumgartner."""
+
+Erkannter Operator der Teilaufgabe: 'beurteilen' (Anforderungsbereich III).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Hypoglykaemierisiko im Strassenverkehr und dessen arbeitsmedizinische Bedeutung
+Vereinbarkeit von Schichtdienst und Therapieregime, Berufsausuebung bleibt bei stabiler Einstellung moeglich"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Der Operator 'beurteilen' (Anforderungsbereich III) verlangt eine wertende, abwägende Leistung mit Begründung oder Analyse der Auswirkungen, während der Erwartungshorizont lediglich eine **Aufzählung zweier konkreter Auswirkungen** ohne vertiefende Bewertung oder Ursache-Wirkungs-Zusammenhänge vorsieht. Dies führt zu einem Widerspruch zwischen Anforderungsniveau und Bewertungskriterium."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:43.518592+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Nennen Sie 3 Risikofaktoren, die die Fallsituation von Lena benennt."""
+
+Erkannter Operator der Teilaufgabe: 'nennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Body-Mass-Index von 29
+geringe koerperliche Aktivitaet im Alltag
+grenzwertig erhoehter Naechternblutzucker"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt explizit eine **Aufzählung von 3 Risikofaktoren** (Operator *nennen* im Anforderungsbereich I), während der Erwartungshorizont **konkrete Werte oder Messergebnisse** (z. B. BMI von 29, Nüchternblutzucker) als korrekte Antworten benennt. Dies entspricht einer **Faktendarstellung** statt einer reinen Aufzählung von Risikofaktoren und verstößt gegen die geforderte Konsistenz zwischen Operator und Erwartungshorizont."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:45.326074+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Erklaeren Sie 3 Beratungsinhalte, die Sie mit Lena zur Alltagsbewegung besprechen."""
+
+Erkannter Operator der Teilaufgabe: 'erklären' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""kleine, alltagsnahe Bewegungsziele statt eines pauschalen Sportprogramms
+Einbeziehung der Mutter bei der Mahlzeitenplanung als unterstuetzenden Faktor
+realistische Alternativen zur Schulmensa fuer die Pausenverpflegung"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"mismatch": true,
+	"begruendung": "Die Teilaufgabe verlangt eine **Erklärung von 3 Beratungsinhalten** (Operator ‚erklären‘ im Anforderungsbereich II), was eine **Begründung oder Ausführung** der Inhalte erfordert. Der Erwartungshorizont liefert jedoch **lediglich eine Aufzählung von drei konkreten Punkten ohne weitere Erläuterung oder Begründung**, was dem Operator widerspricht. Eine Erklärung setzt eine inhaltliche Vertiefung voraus, die hier fehlt."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:46.466267+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Begruenden Sie 2 praeventive Massnahmen fuer Lena mit pflegewissenschaftlichem Begruendungswissen."""
+
+Erkannter Operator der Teilaufgabe: 'begründen' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""schrittweise Verhaltensaenderung statt radikaler Diaetvorgabe, weil kleine Schritte nachweislich nachhaltiger wirken
+Einbeziehung der Peergroup, weil soziale Unterstuetzung die Umsetzung im Jugendalter erleichtert"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe fordert explizit eine *Begründung* (Operator ‚begründen‘, Anforderungsbereich II) mit pflegewissenschaftlichem Wissen, während der Erwartungshorizont nur zwei *konkrete Maßnahmen* ohne systematische Ursache-Wirkungs-Zusammenhänge oder wissenschaftliche Fundierung bewertet. Dies widerspricht der geforderten Anforderung, da der Operator eine argumentative Aufarbeitung verlangt, nicht eine bloße Aufzählung."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:48.090547+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Benennen Sie 4 Beobachtungen bei Lina, die auf eine akute Verschlechterung hinweisen."""
+
+Erkannter Operator der Teilaufgabe: 'benennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Atemfrequenz von 38 pro Minute
+Sauerstoffsaettigung von 89 Prozent
+Zyanose der Lippen
+Einsatz der Atemhilfsmuskulatur und Sprechen in kurzen Abschnitten"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt explizit eine **Aufzählung von 4 Beobachtungen** (Operator ‚benennen‘ im Anforderungsbereich I), während der Erwartungshorizont zwar eine korrekte Faktenliste liefert, aber **keine strukturierte Bewertung der Konsistenz oder Vollständigkeit** der Aufzählung vornimmt. Der Operator erfordert eine **quantitative Abbildung** (4 Punkte), nicht eine qualitative Bewertung der Antwortform (z. B. ob ‚Begründungen‘ oder ‚Erläuterungen‘ fehlen)."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:51.819848+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Bestimmen Sie 3 Sofortmassnahmen, die Sie bei Lina vor Eintreffen des Arztes durchfuehren."""
+
+Erkannter Operator der Teilaufgabe: 'bestimmen' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""atemunterstuetzende Positionierung beibehalten und sichern
+Sauerstoffgabe nach Standard einleiten
+Vitalparameter kontinuierlich ueberwachen und Notruf ausloesen"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt explizit die **Bestimmung von 3 Sofortmaßnahmen** (Aufzählung), während der Erwartungshorizont zwar eine korrekte **Aufzählung von Maßnahmen** enthält, aber keine strukturierte Begründung, Begründungshinweise oder eine Bewertung von Ursache-Wirkungs-Zusammenhängen bietet. Der Operator ‚bestimmen‘ (Anforderungsbereich II) erfordert jedoch eine **explizite, unkommentierte Auflistung ohne zusätzliche Erläuterungen**, was hier zwar formal erfüllt ist, aber der Erwartungshorizont keine **falsche oder unnötige Bewertung** (z. B. durch Begründungen) enthält – der eigentliche Widerspruch liegt vielmehr in der **impliziten Erwartungshaltung**, dass die Maßnahmen *ohne weitere Ausführungen* zu benennen sind, während der Erwartungshorizont keine *falsche* Leistungsperspektive (z. B. eine Begründung) setzt, sondern schlicht die korrekte Aufzählung abbildet. **Konsistenz liegt vor, da der Erwartungshorizont keine unpassende Leistung abbildet, aber die Aufgabenstellung keine *explizite* Forderung nach einer rein faktischen Aufzählung ohne weitere Anforderungen stellt.**"
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:52.996410+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Erlaeutern Sie 2 Aspekte, die Sie bei der Durchfuehrung der aerztlichen Anordnung zur Sauerstoffgabe beachten."""
+
+Erkannter Operator der Teilaufgabe: 'erläutern' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Anordnung auf Vollstaendigkeit und Plausibilitaet pruefen
+Wirkung kontrollieren und Abweichungen unverzueglich rueckmelden"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+  "mismatch": true,
+  "begruendung": "Die Teilaufgabe verlangt mit dem Operator ‚erläutern‘ (Anforderungsbereich II) eine **ausführliche, begründete Darlegung** der Aspekte, während der Erwartungshorizont lediglich eine **unstrukturierte Aufzählung von Handlungsvorgaben** ohne explizite Erläuterung oder Begründung bereitstellt. Der Operator erfordert eine qualitative Auseinandersetzung mit den Aspekten, nicht eine bloße Auflistung."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:54.426375+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Beurteilen Sie 2 Handlungsmoeglichkeiten im Umgang mit der weinenden Mutter unter ethischen Gesichtspunkten."""
+
+Erkannter Operator der Teilaufgabe: 'beurteilen' (Anforderungsbereich III).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Mutter im Zimmer belassen und einbeziehen, Abwaegung von Beistand und Handlungsfaehigkeit
+Mutter kurzzeitig begleiten lassen, Abwaegung von Fuersorge fuer das Kind und fuer die Bezugsperson"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"mismatch": true,
+	"begruendung": "Der Operator ‚beurteilen‘ (Anforderungsbereich III) verlangt eine **bewertende Abwägung mit ethischen Argumenten**, während der Erwartungshorizont lediglich **konkrete Handlungsoptionen** (Aufzählungen) ohne systematische Begründung oder Abwägungsprozess benennt. Die geforderte Leistung (Bewertung) und die bewertete Leistung (reine Aufzählung) sind damit inkonsistent."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:55.823538+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Benennen Sie 3 Beobachtungen bei Herrn Aslan, die auf einen Schlaganfall hinweisen."""
+
+Erkannter Operator der Teilaufgabe: 'benennen' (Anforderungsbereich I).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""haengender rechter Mundwinkel
+Kraftverlust im rechten Arm
+verwaschene, eingeschraenkte Sprache"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"mismatch": false,
+	"begruendung": "Die Teilaufgabe verlangt explizit eine **Aufzählung von 3 Beobachtungen** (Operator *benennen* im Anforderungsbereich I), während der Erwartungshorizont genau diese **faktische Aufzählung** in Form von drei klar abgegrenzten Punkten abbildet. Es liegt kein Widerspruch zwischen Operator und Erwartungshorizont vor, da beide auf eine **nominative Leistung** (Nennung von Fakten) ausgerichtet sind."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:57.195332+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Bestimmen Sie 2 Sofortmassnahmen, die Sie bei Herrn Aslan bis zur Bildgebung durchfuehren."""
+
+Erkannter Operator der Teilaufgabe: 'bestimmen' (Anforderungsbereich II).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Sturzgefahr durch Unruhe sichern und Herrn Aslan im Bett halten
+engmaschige Vitalzeichenkontrolle und Zeitpunkt des Symptombeginns dokumentieren"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"mismatch": true,
+	"begruendung": "Der Operator ‚bestimmen‘ (Anforderungsbereich II) verlangt eine **Aufzählung von Maßnahmen** ohne weitere Erläuterung oder Begründung. Der Erwartungshorizont enthält jedoch keine reine Auflistung, sondern **implizit begründete Handlungen** (z. B. ‚Sturzgefahr durch Unruhe sichern‘ als Handlungsmotivation), was gegen die Konsistenz zur Aufgabenstellung verstößt. Eine korrekte Umsetzung erfordere eine rein faktische Nennung von zwei Maßnahmen ohne inhaltliche Vertiefung."
+}
+
+========================================================================================
+timestamp: 2026-09-15T09:19:58.462758+00:00
+task: judge_form_07
+provider: mistral
+model: open-mistral-nemo
+----------------------------------------------------------------------------------------
+PROMPT:
+Kontext: Du unterstützt die Qualitätssicherung einer staatlichen Pflegeprüfung (PflAPrV Anlage 2), bevor sie geschrieben wird. Es gibt in dieser Aufgabe keinen Prüfling und keine Antwort eines Kandidaten zu beurteilen -- du prüfst ausschließlich, ob die Teilaufgabe und ihr Erwartungshorizont in sich konsistent konstruiert sind.
+
+Zu prüfende Regel: Der Erwartungshorizont muss die Leistung abbilden, die die Teilaufgabe verlangt. Verlangt die Teilaufgabe eine Aufzaehlung, darf der Erwartungshorizont keine Begruendung bepunkten, und umgekehrt.
+
+Teilaufgabe (die Aufgabenstellung, wie ein Prüfling sie liest):
+"""Beurteilen Sie 2 Handlungsmoeglichkeiten im Umgang mit der aengstlichen Ehefrau von Herrn Aslan unter ethischen Gesichtspunkten."""
+
+Erkannter Operator der Teilaufgabe: 'beurteilen' (Anforderungsbereich III).
+
+Erwartungshorizont (die bepunkteten Erwartungspunkte -- was die Korrigierenden als richtige Antwort erwarten):
+"""Ehefrau kurz und verstaendlich ueber den Ablauf informieren, Abwaegung von Transparenz und Zeitdruck
+Ehefrau einen Warteplatz zuweisen und spaeter aktiv informieren, Abwaegung von Fuersorge fuer Patient und Angehoerige"""
+
+Deine Aufgabe: Verlangt die Art von Leistung, die im Erwartungshorizont bepunktet wird, tatsächlich das, was der oben genannte Operator von der Teilaufgabe fordert (verlangt der Operator z. B. eine Aufzählung von Fakten, bepunktet der Erwartungshorizont aber eine Begründung mit Ursache-Wirkungs-Zusammenhang, dann liegt ein Widerspruch vor)? Begründe sachlich und technisch, bezogen ausschließlich auf die Konstruktion der Aufgabe. Sprich niemals über die Qualität einer Antwort, eines Prüfungskandidaten oder eine Note -- es geht ausschließlich um die interne Konsistenz der Aufgabenkonstruktion selbst, nicht um eine Prüfungsleistung.
+
+Antworte ausschließlich mit JSON in der Form {"mismatch": <true|false>, "begruendung": "<ein bis zwei sachliche Sätze zur Konstruktion, nicht zu einer Prüfungsleistung>"}.
+
+----------------------------------------------------------------------------------------
+RESPONSE:
+{
+	"mismatch": true,
+	"begruendung": "Der Operator ‚beurteilen‘ (Anforderungsbereich III) verlangt eine **bewertende Analyse mit ethischen Abwägungen und Begründungen**, während der Erwartungshorizont lediglich **konkrete Handlungsvorschläge als Aufzählung** ohne systematische ethische Reflexion oder Abwägungsprozesse benennt. Die geforderte Leistung (Beurteilung) und die bewerteten Inhalte (reine Aufzählung) sind damit inkonsistent."
+}
+

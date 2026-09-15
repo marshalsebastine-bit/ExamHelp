@@ -1,0 +1,84 @@
+Smoke run over ['A-01', 'C-03', 'D-01'], model='open-mistral-nemo'
+
+=== A-01 ===
+model: open-mistral-nemo
+coverage: {'flags': 1, 'rules_not_checked': 11, 'deterministic_flags': 1, 'llm_flags': 0}
+
+Flags (1):
+  [hinweis/deterministic] FORM-14 @ ag.2: Passivkonstruktion ("wurde" ...): "Herr Vogt ist 45 Jahre alt und wurde vor 4 Tagen an der linken Schulter operiert."
+
+NotChecked (11):
+  FORM-01: kein Check implementiert
+  FORM-07: kein Check implementiert
+  FORM-08: kein Check implementiert
+  FORM-09: kein Check implementiert
+  FORM-10: kein Check implementiert
+  KOMP-02: blockiert: Retired, not merely blocked: this rule's entire premise is comparing an author-declared claim against a derived value, and the schema has no author-facing claim field any more (teilaufgabe.kompetenzzuordnung, removed 2026-09-11) nor is one being reinstated -- competency evidence is now LLM-derived only (teilaufgabe.kompetenzzuordnung_abgeleitet via KOMP-01, checks/llm/komp_01.py). There is no "claimed" side left for a "derived" side to be compared against, so unlike KOMP-01/03/03B/06 this is not a matter of re-pointing input_slice at a new field.
+
+  KOMP-05: kein Check implementiert
+  KOMP-07: kein Check implementiert
+  QUELL-01: blockiert: corpus source dnqp_mobilitaet is not yet acquired (see corpus/source_manifest.json). Without it this rule cannot quote the passage its flag depends on, so it must not run.
+
+  QUELL-02: blockiert: corpus source dnqp_mobilitaet is not yet acquired (see corpus/source_manifest.json). Without it this rule cannot quote the passage its flag depends on, so it must not run.
+
+  QUELL-03: kein Check implementiert
+
+=== C-03 ===
+model: open-mistral-nemo
+coverage: {'flags': 9, 'rules_not_checked': 14, 'deterministic_flags': 9, 'llm_flags': 0}
+
+Flags (9):
+  [hinweis/deterministic] FORM-12 @ ag.1: Zahlwort statt Ziffer verwendet: Zwei.
+  [pruefen/deterministic] FORM-11 @ ag.1.ta.1: Die Teilaufgabe enthaelt mehr als einen Operator: nennen, bewerten.
+  [hinweis/deterministic] FORM-14 @ ag.2: Passivkonstruktion ("wurde" ...): "Frau Yilmaz, welche seit einiger Zeit unter einer im Zusammenhang mit einer depressiven Episode stehenden Antriebsminderung leidet, deren Verlauf bislang nicht klar abzuschaetzen ist, wurde von den Mitpatienten dabei beobachtet, wie sie sich, ohne dass hierfuer eine unmittelbare Ursache erkennbar gewesen waere, in ihr Zimmer zurueckgezogen habe und dort ueber laengere Zeit verharrt sei."
+  [hinweis/deterministic] FORM-15 @ ag.2: Konjunktiv-II-Form statt Indikativ verwendet: waere.
+  [pruefen/deterministic] FORM-13 @ ag.2.ta.1: Die Teilaufgabe verlangt mit dem Operator nennen eine Aufzaehlung, nennt aber keine Anzahl der erwarteten Nennungen.
+  [pruefen/deterministic] FORM-11 @ ag.2.ta.2: Die Teilaufgabe enthaelt keinen erkennbaren Operator.
+  [pruefen/deterministic] FORM-16 @ aufgabe: ag.2 traegt 14 von 39 Punkten der Aufsichtsarbeit (36%), unter der 40%-Schwelle fuer eine ausgewogene Verteilung.
+  [pruefen/deterministic] KOMP-03B @ aufgabe: Nur 1 von 4 Kompetenzschwerpunkten des Pruefungsbereichs 3 werden beruehrt (I.3 von I.3, I.4, II.3, III.2).
+  [pruefen/deterministic] KOMP-04 @ aufgabe: Alle 6 Teilaufgaben mit Anforderungsniveau liegen auf Stufe I; die Verteilung ueber die gesamte Aufsichtsarbeit ist degeneriert.
+
+NotChecked (14):
+  FORM-01: kein Check implementiert
+  FORM-03 @ ag.2.ta.2: kein Verb-Sie-Muster am Satzanfang erkannt
+  FORM-04 @ ag.2.ta.2: kein Operator aus der Liste erkannt, Niveauabgleich nicht moeglich
+  FORM-07: kein Check implementiert
+  FORM-08: kein Check implementiert
+  FORM-09: kein Check implementiert
+  FORM-10: kein Check implementiert
+  FORM-13 @ ag.2.ta.2: kein Operator aus der Liste erkannt, Aufzaehlungscharakter nicht feststellbar
+  KOMP-02: blockiert: Retired, not merely blocked: this rule's entire premise is comparing an author-declared claim against a derived value, and the schema has no author-facing claim field any more (teilaufgabe.kompetenzzuordnung, removed 2026-09-11) nor is one being reinstated -- competency evidence is now LLM-derived only (teilaufgabe.kompetenzzuordnung_abgeleitet via KOMP-01, checks/llm/komp_01.py). There is no "claimed" side left for a "derived" side to be compared against, so unlike KOMP-01/03/03B/06 this is not a matter of re-pointing input_slice at a new field.
+
+  KOMP-05: kein Check implementiert
+  KOMP-07: kein Check implementiert
+  QUELL-01: blockiert: corpus source dnqp_mobilitaet is not yet acquired (see corpus/source_manifest.json). Without it this rule cannot quote the passage its flag depends on, so it must not run.
+
+  QUELL-02: blockiert: corpus source dnqp_mobilitaet is not yet acquired (see corpus/source_manifest.json). Without it this rule cannot quote the passage its flag depends on, so it must not run.
+
+  QUELL-03: kein Check implementiert
+
+=== D-01 ===
+model: open-mistral-nemo
+coverage: {'flags': 0, 'rules_not_checked': 15, 'deterministic_flags': 0, 'llm_flags': 0}
+
+Flags: none
+
+NotChecked (15):
+  FORM-01: kein Check implementiert
+  FORM-02: Aufsichtsarbeit ist nicht vollstaendig (nicht beide Aufgabe-Bloecke vorhanden)
+  FORM-06 @ ag.1.ta.1: kein Erwartungshorizont vorhanden
+  FORM-06 @ ag.1.ta.2: kein Erwartungshorizont vorhanden
+  FORM-07: kein Check implementiert
+  FORM-08: kein Check implementiert
+  FORM-09: kein Check implementiert
+  FORM-10: kein Check implementiert
+  FORM-16: weniger als zwei Aufgabe-Bloecke vorhanden
+  KOMP-02: blockiert: Retired, not merely blocked: this rule's entire premise is comparing an author-declared claim against a derived value, and the schema has no author-facing claim field any more (teilaufgabe.kompetenzzuordnung, removed 2026-09-11) nor is one being reinstated -- competency evidence is now LLM-derived only (teilaufgabe.kompetenzzuordnung_abgeleitet via KOMP-01, checks/llm/komp_01.py). There is no "claimed" side left for a "derived" side to be compared against, so unlike KOMP-01/03/03B/06 this is not a matter of re-pointing input_slice at a new field.
+
+  KOMP-05: kein Check implementiert
+  KOMP-07: kein Check implementiert
+  QUELL-01: blockiert: corpus source dnqp_mobilitaet is not yet acquired (see corpus/source_manifest.json). Without it this rule cannot quote the passage its flag depends on, so it must not run.
+
+  QUELL-02: blockiert: corpus source dnqp_mobilitaet is not yet acquired (see corpus/source_manifest.json). Without it this rule cannot quote the passage its flag depends on, so it must not run.
+
+  QUELL-03: kein Check implementiert

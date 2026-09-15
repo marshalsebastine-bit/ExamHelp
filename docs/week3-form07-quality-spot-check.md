@@ -13,9 +13,14 @@ This file now documents **two different prompt designs**, in the order they
 were actually tried, because the second one is *not* a strict improvement on
 the first -- see §2 below for real numbers. Every model call anywhere in the
 gateway is now logged in full (exact prompt, exact response) to
-`logs/model_gateway_calls_<timestamp>.txt` (`gateway/model_gateway.py::_log_call`)
+`logs/model_calls_real_<timestamp>.txt` (`gateway/model_gateway.py::_log_call`)
 -- the excerpts in this file are copied straight out of one such log, not
 retyped or summarised, so they're safe to trust as literal transcripts.
+**Only read the `_real_` files.** A pytest run writes
+`logs/model_calls_fake_<timestamp>.txt` with hardcoded fixture responses
+that look deceptively like transcripts; those say nothing about the model.
+(Logs from before 2026-09-15 used one shared name,
+`model_gateway_calls_<timestamp>.txt`, for both.)
 
 ---
 
